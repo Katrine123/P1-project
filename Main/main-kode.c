@@ -1,0 +1,4 @@
+#include "bib.h"
+
+
+//DET HER ER EN TEST MENS JEG STADIG SÆTTER TING OP :]

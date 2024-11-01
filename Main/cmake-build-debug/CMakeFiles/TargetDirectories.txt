@@ -1,0 +1,4 @@
+C:/Users/katri/CLionProjects/P1-project/Main/cmake-build-debug/CMakeFiles/main-kode.dir
+C:/Users/katri/CLionProjects/P1-project/Main/cmake-build-debug/CMakeFiles/bib.dir
+C:/Users/katri/CLionProjects/P1-project/Main/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/katri/CLionProjects/P1-project/Main/cmake-build-debug/CMakeFiles/rebuild_cache.dir

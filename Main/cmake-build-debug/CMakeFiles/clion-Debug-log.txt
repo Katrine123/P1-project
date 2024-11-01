@@ -1,0 +1,33 @@
+"C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S C:\Users\katri\CLionProjects\P1-project\Main -B C:\Users\katri\CLionProjects\P1-project\Main\cmake-build-debug
+CMake Warning (dev) in CMakeLists.txt:
+  No project() command is present.  The top-level CMakeLists.txt file must
+  contain a literal, direct call to the project() command.  Add a line of
+  code such as
+
+    project(ProjectName)
+
+  near the top of the file, but after cmake_minimum_required().
+
+  CMake is pretending there is a "project(Project)" command on the first
+  line.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) in CMakeLists.txt:
+  cmake_minimum_required() should be called prior to this top-level project()
+  call.  Please see the cmake-commands(7) manual for usage documentation of
+  both commands.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done (0.3s)
+CMake Warning (dev) at CMakeLists.txt:2 (add_library):
+  Policy CMP0115 is not set: Source file extensions must be explicit.  Run
+  "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  File:
+
+    C:/Users/katri/CLionProjects/P1-project/Main/bib.c
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/katri/CLionProjects/P1-project/Main/cmake-build-debug
