@@ -6,6 +6,8 @@
 #include "new_user_questionnaire.h"
 #include "routine.h"
 
+// test
+
 void main() {
     exercise* all_exercises = create_all_exercises();
     questionnaire user_questionnaire = create_and_answer_questionaire();
