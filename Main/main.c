@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "bib.h"
 #include "exercises.h"
 #include "new_user_questionnaire.h"
 #include "routine.h"

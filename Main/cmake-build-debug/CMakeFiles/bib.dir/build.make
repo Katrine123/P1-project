@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main"
+CMAKE_SOURCE_DIR = "C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/bib.dir/depend.make
@@ -69,18 +69,18 @@ include CMakeFiles/bib.dir/progress.make
 include CMakeFiles/bib.dir/flags.make
 
 CMakeFiles/bib.dir/bib.c.obj: CMakeFiles/bib.dir/flags.make
-CMakeFiles/bib.dir/bib.c.obj: C:/Users/jespj/OneDrive\ -\ Aalborg\ Universitet/Jesp's\ University\ OneDrive/1.\ semester/Projekt\ -\ P1/P1\ Project/Main/bib.c
+CMakeFiles/bib.dir/bib.c.obj: C:/Users/Jesp/OneDrive\ -\ Aalborg\ Universitet/Jesp's\ University\ OneDrive/1.\ semester/Projekt\ -\ P1/P1\ Project/Main/bib.c
 CMakeFiles/bib.dir/bib.c.obj: CMakeFiles/bib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/bib.dir/bib.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/bib.dir/bib.c.obj -MF CMakeFiles\bib.dir\bib.c.obj.d -o CMakeFiles\bib.dir\bib.c.obj -c "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\bib.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/bib.dir/bib.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/bib.dir/bib.c.obj -MF CMakeFiles\bib.dir\bib.c.obj.d -o CMakeFiles\bib.dir\bib.c.obj -c "C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\bib.c"
 
 CMakeFiles/bib.dir/bib.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/bib.dir/bib.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\bib.c" > CMakeFiles\bib.dir\bib.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\bib.c" > CMakeFiles\bib.dir\bib.c.i
 
 CMakeFiles/bib.dir/bib.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/bib.dir/bib.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\bib.c" -o CMakeFiles\bib.dir\bib.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\bib.c" -o CMakeFiles\bib.dir\bib.c.s
 
 # Object files for target bib
 bib_OBJECTS = \
@@ -92,7 +92,7 @@ bib_EXTERNAL_OBJECTS =
 libbib.a: CMakeFiles/bib.dir/bib.c.obj
 libbib.a: CMakeFiles/bib.dir/build.make
 libbib.a: CMakeFiles/bib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libbib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libbib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\bib.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\bib.dir\link.txt --verbose=$(VERBOSE)
 
@@ -105,6 +105,6 @@ CMakeFiles/bib.dir/clean:
 .PHONY : CMakeFiles/bib.dir/clean
 
 CMakeFiles/bib.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main" "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main" "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug" "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug" "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug\CMakeFiles\bib.dir\DependInfo.cmake" "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main" "C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main" "C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug" "C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug" "C:\Users\Jesp\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug\CMakeFiles\bib.dir\DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/bib.dir/depend
 
