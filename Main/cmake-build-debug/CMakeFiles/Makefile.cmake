@@ -29,7 +29,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake"
   "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake"
   "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake"
-  "C:/Users/katri/CLionProjects/P1-project/Main/CMakeLists.txt"
+  "C:/Users/jespj/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main/CMakeLists.txt"
   "CMakeFiles/3.29.6/CMakeCCompiler.cmake"
   "CMakeFiles/3.29.6/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.29.6/CMakeRCCompiler.cmake"
@@ -49,6 +49,10 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/main-kode.dir/DependInfo.cmake"
+  "CMakeFiles/main.dir/DependInfo.cmake"
   "CMakeFiles/bib.dir/DependInfo.cmake"
+  "CMakeFiles/exercises.dir/DependInfo.cmake"
+  "CMakeFiles/new_user_questionnaire.dir/DependInfo.cmake"
+  "CMakeFiles/routine.dir/DependInfo.cmake"
+  "CMakeFiles/evaluation_questionnaire.dir/DependInfo.cmake"
   )

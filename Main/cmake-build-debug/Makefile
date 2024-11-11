@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\katri\CLionProjects\P1-project\Main
+CMAKE_SOURCE_DIR = "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\katri\CLionProjects\P1-project\Main\cmake-build-debug
+CMAKE_BINARY_DIR = "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\katri\CLionProjects\P1-project\Main\cmake-build-debug\CMakeFiles C:\Users\katri\CLionProjects\P1-project\Main\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug\CMakeFiles" "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\katri\CLionProjects\P1-project\Main\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\jespj\OneDrive - Aalborg Universitet\Jesp's University OneDrive\1. semester\Projekt - P1\P1 Project\Main\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -116,17 +116,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main-kode
+# Target rules for targets named main
 
 # Build rule for target.
-main-kode: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 main-kode
-.PHONY : main-kode
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-main-kode/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main-kode.dir\build.make CMakeFiles/main-kode.dir/build
-.PHONY : main-kode/fast
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 #=============================================================================
 # Target rules for targets named bib
@@ -140,6 +140,58 @@ bib: cmake_check_build_system
 bib/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\bib.dir\build.make CMakeFiles/bib.dir/build
 .PHONY : bib/fast
+
+#=============================================================================
+# Target rules for targets named exercises
+
+# Build rule for target.
+exercises: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 exercises
+.PHONY : exercises
+
+# fast build rule for target.
+exercises/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exercises.dir\build.make CMakeFiles/exercises.dir/build
+.PHONY : exercises/fast
+
+#=============================================================================
+# Target rules for targets named new_user_questionnaire
+
+# Build rule for target.
+new_user_questionnaire: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 new_user_questionnaire
+.PHONY : new_user_questionnaire
+
+# fast build rule for target.
+new_user_questionnaire/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\new_user_questionnaire.dir\build.make CMakeFiles/new_user_questionnaire.dir/build
+.PHONY : new_user_questionnaire/fast
+
+#=============================================================================
+# Target rules for targets named routine
+
+# Build rule for target.
+routine: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 routine
+.PHONY : routine
+
+# fast build rule for target.
+routine/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\routine.dir\build.make CMakeFiles/routine.dir/build
+.PHONY : routine/fast
+
+#=============================================================================
+# Target rules for targets named evaluation_questionnaire
+
+# Build rule for target.
+evaluation_questionnaire: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 evaluation_questionnaire
+.PHONY : evaluation_questionnaire
+
+# fast build rule for target.
+evaluation_questionnaire/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\evaluation_questionnaire.dir\build.make CMakeFiles/evaluation_questionnaire.dir/build
+.PHONY : evaluation_questionnaire/fast
 
 bib.obj: bib.c.obj
 .PHONY : bib.obj
@@ -165,29 +217,125 @@ bib.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\bib.dir\build.make CMakeFiles/bib.dir/bib.c.s
 .PHONY : bib.c.s
 
-main-kode.obj: main-kode.c.obj
-.PHONY : main-kode.obj
+evaluation_questionnaire.obj: evaluation_questionnaire.c.obj
+.PHONY : evaluation_questionnaire.obj
 
 # target to build an object file
-main-kode.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main-kode.dir\build.make CMakeFiles/main-kode.dir/main-kode.c.obj
-.PHONY : main-kode.c.obj
+evaluation_questionnaire.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\evaluation_questionnaire.dir\build.make CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.obj
+.PHONY : evaluation_questionnaire.c.obj
 
-main-kode.i: main-kode.c.i
-.PHONY : main-kode.i
+evaluation_questionnaire.i: evaluation_questionnaire.c.i
+.PHONY : evaluation_questionnaire.i
 
 # target to preprocess a source file
-main-kode.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main-kode.dir\build.make CMakeFiles/main-kode.dir/main-kode.c.i
-.PHONY : main-kode.c.i
+evaluation_questionnaire.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\evaluation_questionnaire.dir\build.make CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.i
+.PHONY : evaluation_questionnaire.c.i
 
-main-kode.s: main-kode.c.s
-.PHONY : main-kode.s
+evaluation_questionnaire.s: evaluation_questionnaire.c.s
+.PHONY : evaluation_questionnaire.s
 
 # target to generate assembly for a file
-main-kode.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main-kode.dir\build.make CMakeFiles/main-kode.dir/main-kode.c.s
-.PHONY : main-kode.c.s
+evaluation_questionnaire.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\evaluation_questionnaire.dir\build.make CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.s
+.PHONY : evaluation_questionnaire.c.s
+
+exercises.obj: exercises.c.obj
+.PHONY : exercises.obj
+
+# target to build an object file
+exercises.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exercises.dir\build.make CMakeFiles/exercises.dir/exercises.c.obj
+.PHONY : exercises.c.obj
+
+exercises.i: exercises.c.i
+.PHONY : exercises.i
+
+# target to preprocess a source file
+exercises.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exercises.dir\build.make CMakeFiles/exercises.dir/exercises.c.i
+.PHONY : exercises.c.i
+
+exercises.s: exercises.c.s
+.PHONY : exercises.s
+
+# target to generate assembly for a file
+exercises.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exercises.dir\build.make CMakeFiles/exercises.dir/exercises.c.s
+.PHONY : exercises.c.s
+
+main.obj: main.c.obj
+.PHONY : main.obj
+
+# target to build an object file
+main.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.c.obj
+.PHONY : main.c.obj
+
+main.i: main.c.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.c.i
+.PHONY : main.c.i
+
+main.s: main.c.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.c.s
+.PHONY : main.c.s
+
+new_user_questionnaire.obj: new_user_questionnaire.c.obj
+.PHONY : new_user_questionnaire.obj
+
+# target to build an object file
+new_user_questionnaire.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\new_user_questionnaire.dir\build.make CMakeFiles/new_user_questionnaire.dir/new_user_questionnaire.c.obj
+.PHONY : new_user_questionnaire.c.obj
+
+new_user_questionnaire.i: new_user_questionnaire.c.i
+.PHONY : new_user_questionnaire.i
+
+# target to preprocess a source file
+new_user_questionnaire.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\new_user_questionnaire.dir\build.make CMakeFiles/new_user_questionnaire.dir/new_user_questionnaire.c.i
+.PHONY : new_user_questionnaire.c.i
+
+new_user_questionnaire.s: new_user_questionnaire.c.s
+.PHONY : new_user_questionnaire.s
+
+# target to generate assembly for a file
+new_user_questionnaire.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\new_user_questionnaire.dir\build.make CMakeFiles/new_user_questionnaire.dir/new_user_questionnaire.c.s
+.PHONY : new_user_questionnaire.c.s
+
+routine.obj: routine.c.obj
+.PHONY : routine.obj
+
+# target to build an object file
+routine.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\routine.dir\build.make CMakeFiles/routine.dir/routine.c.obj
+.PHONY : routine.c.obj
+
+routine.i: routine.c.i
+.PHONY : routine.i
+
+# target to preprocess a source file
+routine.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\routine.dir\build.make CMakeFiles/routine.dir/routine.c.i
+.PHONY : routine.c.i
+
+routine.s: routine.c.s
+.PHONY : routine.s
+
+# target to generate assembly for a file
+routine.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\routine.dir\build.make CMakeFiles/routine.dir/routine.c.s
+.PHONY : routine.c.s
 
 # Help Target
 help:
@@ -198,13 +346,29 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... bib
-	@echo ... main-kode
+	@echo ... evaluation_questionnaire
+	@echo ... exercises
+	@echo ... main
+	@echo ... new_user_questionnaire
+	@echo ... routine
 	@echo ... bib.obj
 	@echo ... bib.i
 	@echo ... bib.s
-	@echo ... main-kode.obj
-	@echo ... main-kode.i
-	@echo ... main-kode.s
+	@echo ... evaluation_questionnaire.obj
+	@echo ... evaluation_questionnaire.i
+	@echo ... evaluation_questionnaire.s
+	@echo ... exercises.obj
+	@echo ... exercises.i
+	@echo ... exercises.s
+	@echo ... main.obj
+	@echo ... main.i
+	@echo ... main.s
+	@echo ... new_user_questionnaire.obj
+	@echo ... new_user_questionnaire.i
+	@echo ... new_user_questionnaire.s
+	@echo ... routine.obj
+	@echo ... routine.i
+	@echo ... routine.s
 .PHONY : help
 
 

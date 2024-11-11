@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/katri/CLionProjects/P1-project/Main
+# Install script for directory: C:/Users/jespj/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/katri/CLionProjects/P1-project/Main/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/jespj/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
