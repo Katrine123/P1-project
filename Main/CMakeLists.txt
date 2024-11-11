@@ -9,7 +9,7 @@ add_library(evaluation_questionnaire evaluation_questionnaire)
 
 target_link_libraries(main
         bib
-        routine
-        evaluation_questionnaire
         exercises
-        new_user_questionnaire)
+        new_user_questionnaire
+        routine
+        evaluation_questionnaire)
