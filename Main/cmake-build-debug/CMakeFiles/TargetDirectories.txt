@@ -1,8 +1,0 @@
-C:/Users/Jesp/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main/cmake-build-debug/CMakeFiles/main.dir
-C:/Users/Jesp/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main/cmake-build-debug/CMakeFiles/bib.dir
-C:/Users/Jesp/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main/cmake-build-debug/CMakeFiles/exercises.dir
-C:/Users/Jesp/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main/cmake-build-debug/CMakeFiles/new_user_questionnaire.dir
-C:/Users/Jesp/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main/cmake-build-debug/CMakeFiles/routine.dir
-C:/Users/Jesp/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main/cmake-build-debug/CMakeFiles/evaluation_questionnaire.dir
-C:/Users/Jesp/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Jesp/OneDrive - Aalborg Universitet/Jesp's University OneDrive/1. semester/Projekt - P1/P1 Project/Main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
