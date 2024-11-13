@@ -5,6 +5,8 @@
 
 #include <string.h>
 
+//DET HER ER EN TEST
+
 int homemade_scan(char type, int antal_inputs, char* input) {//FIKS SÅ DEN OGSÅ KAN TAGE INTEGERS?
     if(type == 'i') {
         scanf("%c",input);
