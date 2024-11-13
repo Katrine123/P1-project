@@ -6,17 +6,17 @@
 
 char* naming_equipment(enum equipment eq) {
     switch(eq) {
-        case 0: return "Nothing";
+        case nothing: return "Nothing";
         break;
-        case 1: return "Barbell";
+        case barbell: return "Barbell";
         break;
-        case 2: return "Bench";
+        case bench: return "Bench";
         break;
-        case 3: return "Pull up bar";
+        case pull_up_bar: return "Pull up bar";
         break;
-        case 4: return "Pull down machine";
+        case pull_down_machine: return "Pull down machine";
         break;
-        case 5: return "Resistance bands";
+        case resistance_bands: return "Resistance bands";
         break;
     }
 }
@@ -25,7 +25,7 @@ char* naming_equipment(enum equipment eq) {
 questionnaire create_and_answer_questionaire() {
     questionnaire user;
 
-    printf("Welcome to your personolized fitness trainer, please answer this questionaire to create your person workout routine");
+    printf("Welcome to your personalized fitness trainer, please answer this questionnaire to create your person workout routine");
     printf("\n");
     printf("What is your age in years?");
     scanf("%d", &user.age);
@@ -82,7 +82,15 @@ questionnaire create_and_answer_questionaire() {
 
 
     do {
-        printf("What is your fitness level/experience level in a scale of 1-5?");
+        printf("What is your fitness level/experience level in a scale of 1-5?\n");
+
+        printf("fitness level 1: No experience with exercising \n"
+               "fitness level 2: A little experience with exercising\n"
+               "fitness level 3: intermediate experience with exercising\n"
+               "fitness level 4: advanced experience with exercising\n"
+               "fitness level 5: expert experience with exercising\n");
+
+
         scanf("%d", &user.fitness_level);
         if(user.fitness_level < 1 || user.fitness_level > 5) {
             printf("It has to be between 1-5!");
