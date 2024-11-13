@@ -105,7 +105,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.29/Modules/Platform/Darwin-Initialize.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.29/Modules/Platform/Darwin.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.29/Modules/Platform/UnixPaths.cmake"
-  "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/CMakeLists.txt"
+  "/Users/rasmus/AAU Software/P1 Coding/Main/CMakeLists.txt"
   "CMakeFiles/3.29.6/CMakeCCompiler.cmake"
   "CMakeFiles/3.29.6/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.29.6/CMakeSystem.cmake"

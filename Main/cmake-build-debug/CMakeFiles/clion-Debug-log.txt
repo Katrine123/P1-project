@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main" -B "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug"
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S "/Users/rasmus/AAU Software/P1 Coding/Main" -B "/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug"
 CMake Warning (dev) in CMakeLists.txt:
   No project() command is present.  The top-level CMakeLists.txt file must
   contain a literal, direct call to the project() command.  Add a line of
@@ -30,7 +30,7 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 -- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Configuring done (4.1s)
+-- Configuring done (0.3s)
 CMake Warning (dev) at CMakeLists.txt:4 (add_library):
   Policy CMP0115 is not set: Source file extensions must be explicit.  Run
   "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
@@ -38,7 +38,7 @@ CMake Warning (dev) at CMakeLists.txt:4 (add_library):
 
   File:
 
-    /Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/bib.c
+    /Users/rasmus/AAU Software/P1 Coding/Main/bib.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:5 (add_library):
@@ -48,7 +48,7 @@ CMake Warning (dev) at CMakeLists.txt:5 (add_library):
 
   File:
 
-    /Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/exercises.c
+    /Users/rasmus/AAU Software/P1 Coding/Main/exercises.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:6 (add_library):
@@ -58,7 +58,7 @@ CMake Warning (dev) at CMakeLists.txt:6 (add_library):
 
   File:
 
-    /Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/new_user_questionnaire.c
+    /Users/rasmus/AAU Software/P1 Coding/Main/new_user_questionnaire.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:7 (add_library):
@@ -68,7 +68,7 @@ CMake Warning (dev) at CMakeLists.txt:7 (add_library):
 
   File:
 
-    /Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/routine.c
+    /Users/rasmus/AAU Software/P1 Coding/Main/routine.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:8 (add_library):
@@ -78,8 +78,8 @@ CMake Warning (dev) at CMakeLists.txt:8 (add_library):
 
   File:
 
-    /Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/evaluation_questionnaire.c
+    /Users/rasmus/AAU Software/P1 Coding/Main/evaluation_questionnaire.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 -- Generating done (0.0s)
--- Build files have been written to: /Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug
+-- Build files have been written to: /Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug

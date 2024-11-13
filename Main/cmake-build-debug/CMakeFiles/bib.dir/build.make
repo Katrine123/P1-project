@@ -53,10 +53,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main"
+CMAKE_SOURCE_DIR = "/Users/rasmus/AAU Software/P1 Coding/Main"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/bib.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/bib.dir/progress.make
 include CMakeFiles/bib.dir/flags.make
 
 CMakeFiles/bib.dir/bib.c.o: CMakeFiles/bib.dir/flags.make
-CMakeFiles/bib.dir/bib.c.o: /Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1\ Project/Kodning/First1/Main/bib.c
+CMakeFiles/bib.dir/bib.c.o: /Users/rasmus/AAU\ Software/P1\ Coding/Main/bib.c
 CMakeFiles/bib.dir/bib.c.o: CMakeFiles/bib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/bib.dir/bib.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/bib.dir/bib.c.o -MF CMakeFiles/bib.dir/bib.c.o.d -o CMakeFiles/bib.dir/bib.c.o -c "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/bib.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/bib.dir/bib.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/bib.dir/bib.c.o -MF CMakeFiles/bib.dir/bib.c.o.d -o CMakeFiles/bib.dir/bib.c.o -c "/Users/rasmus/AAU Software/P1 Coding/Main/bib.c"
 
 CMakeFiles/bib.dir/bib.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/bib.dir/bib.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/bib.c" > CMakeFiles/bib.dir/bib.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/rasmus/AAU Software/P1 Coding/Main/bib.c" > CMakeFiles/bib.dir/bib.c.i
 
 CMakeFiles/bib.dir/bib.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/bib.dir/bib.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/bib.c" -o CMakeFiles/bib.dir/bib.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/rasmus/AAU Software/P1 Coding/Main/bib.c" -o CMakeFiles/bib.dir/bib.c.s
 
 # Object files for target bib
 bib_OBJECTS = \
@@ -93,7 +93,7 @@ bib_EXTERNAL_OBJECTS =
 libbib.a: CMakeFiles/bib.dir/bib.c.o
 libbib.a: CMakeFiles/bib.dir/build.make
 libbib.a: CMakeFiles/bib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libbib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libbib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/bib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bib.dir/link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/bib.dir/clean:
 .PHONY : CMakeFiles/bib.dir/clean
 
 CMakeFiles/bib.dir/depend:
-	cd "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main" "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main" "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug" "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug" "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles/bib.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/rasmus/AAU Software/P1 Coding/Main" "/Users/rasmus/AAU Software/P1 Coding/Main" "/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug" "/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug" "/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles/bib.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/bib.dir/depend
 

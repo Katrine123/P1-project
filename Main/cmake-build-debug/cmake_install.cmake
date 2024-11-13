@@ -1,4 +1,4 @@
-# Install script for directory: /Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main
+# Install script for directory: /Users/rasmus/AAU Software/P1 Coding/Main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

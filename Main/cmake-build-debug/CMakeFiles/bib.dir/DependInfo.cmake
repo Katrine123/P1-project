@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/bib.c" "CMakeFiles/bib.dir/bib.c.o" "gcc" "CMakeFiles/bib.dir/bib.c.o.d"
+  "/Users/rasmus/AAU Software/P1 Coding/Main/bib.c" "CMakeFiles/bib.dir/bib.c.o" "gcc" "CMakeFiles/bib.dir/bib.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

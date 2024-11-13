@@ -1,8 +1,8 @@
-/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles/main.dir
-/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles/bib.dir
-/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles/exercises.dir
-/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles/new_user_questionnaire.dir
-/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles/routine.dir
-/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles/evaluation_questionnaire.dir
-/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/rasmus/Library/CloudStorage/OneDrive-AalborgUniversitet/P1 Project/Kodning/First1/Main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles/main.dir
+/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles/bib.dir
+/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles/exercises.dir
+/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles/new_user_questionnaire.dir
+/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles/routine.dir
+/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles/evaluation_questionnaire.dir
+/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug/CMakeFiles/rebuild_cache.dir

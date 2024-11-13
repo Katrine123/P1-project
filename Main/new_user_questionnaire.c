@@ -4,6 +4,23 @@
 
 #include <string.h>
 
+char* naming_equipment(enum equipment eq) {
+    switch(eq) {
+        case 0: return "Nothing";
+        break;
+        case 1: return "Barbell";
+        break;
+        case 2: return "Bench";
+        break;
+        case 3: return "Pull up bar";
+        break;
+        case 4: return "Pull down machine";
+        break;
+        case 5: return "Resistance bands";
+        break;
+    }
+}
+
 
 questionnaire create_and_answer_questionaire() {
     questionnaire user;
@@ -33,7 +50,10 @@ questionnaire create_and_answer_questionaire() {
     while(user.weight < 20 || user.weight > 300) {
         printf("What is your weight in kg");
         scanf("%lf", &user.weight);
-        if(user.weight < 20 || user.weight > 300) {
+       /* if (scanf("%lf", &user.weight)==0) {
+            printf("Please enter a number");
+            user.weight = 0;
+        } else*/ if(user.weight < 20 || user.weight > 300) {
             printf("I don't think that is correct!");
             printf("\n");
         }
@@ -72,7 +92,7 @@ questionnaire create_and_answer_questionaire() {
 
 
     do {
-        printf("What is your weekly time available on a weekly basis?");
+        printf("What is your weekly time available on a weekly basis in hours?");
         scanf("%lf", &user.time_available_week);
         if(user.time_available_week > 168) {
             printf("You do not have more hours than there is in a week!");
@@ -83,6 +103,38 @@ questionnaire create_and_answer_questionaire() {
             exit(-1);
         }
     }while(user.time_available_week > 168);
+
+    char gym[5];
+
+    printf("Do you have access to a gym?");
+    scanf("%s", gym);
+
+    if(strcmp(gym,"Yes")==0) {
+        for(int i=0; i<6; i++) {
+            user.available_equipment[i]=i+1;
+        }
+    } else if(strcmp(gym, "No")==0) {
+        printf("Of these options what equipment do you have? Please enter the number and when you are done press -1");
+        printf("\n");
+        for(int i=0; i<6; i++) {
+            printf("%d: %s \n", i, naming_equipment(i));
+        }
+        int answer[6];
+        int i = 0;
+        do {
+            scanf("%d", &answer[i]);
+            if(answer[i]> 5 || answer[i] < -1) {
+                printf("please enter a number that is in the equipment list!");
+            } else {
+                i++;
+            }
+
+        }while(answer[i-1] != -1);
+        for(int j = 0; answer[j]!=-1; j++) {
+            user.available_equipment[j] = answer[j];
+        }
+    }
+
 
     return user;
 }
