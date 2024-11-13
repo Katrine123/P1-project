@@ -4,7 +4,7 @@
 //  Test placeholders - dette kommer fra questionnaire
 double body_weight = 74;
 double rep_max_pushup = 30;
-double rep_max_squats =
+double rep_max_squats = 20;
 
 //  All exercises funktion:
 int main(void) {
@@ -16,12 +16,13 @@ int main(void) {
 
     exercise bench_press = {"Bench press", bench_press_equipment, 2.5, base_weight_bench_press(body_weight,rep_max_pushup)};
 
+    print_exercise(bench_press);
     //  Weighted squats
     check_equipment weighted_squats_equipment =
     {0, 1, 0, 0, 0, 0};
     exercise weighted_squats = {"Weighted squats", weighted_squats_equipment, 2.5, base_weight_weighted_squats(body_weight,rep_max_pushup)};
 
-    print_exercise(bench_press);
+    print_exercise(weighted_squats);
 }
 
 
@@ -32,30 +33,30 @@ double base_weight_bench_press(double body_weight, double rep_max_pushup) {
     //  Multiply by 0.65 since that is the percentage of bodyweigth lifted during a pushup
     double body_weight_pushup = body_weight* 0.65;
     //  Mayhews calculation for 1rm:
-    double calculation_1rm_bench_press = (100 * body_weight_pushup)/(52.2+41.9*pow(M_E,(-0.055*rep_max_pushup)));
+    double calculation_1rm_weighted_squat = (100 * body_weight_pushup)/(52.2+41.9*pow(M_E,(-0.055*rep_max_pushup)));
 
     //  Returning modified calculation
     /*
-    if(calculation_1rm_bench_press % 2 == 0) {
+    if(calculation_1rm_weighted_squat % 2 == 0) {
 
     }*/
-    return calculation_1rm_bench_press * rep_factor_12;
+    return calculation_1rm_weighted_squat * rep_factor_12;
 }
 
-double base_weight_weighted_squats(double body_weight, double rep_max_pushup) {
+double base_weight_weighted_squats(double body_weight, double rep_max_squats) {
     //  Multiplying by a factor so amount of weight based on 12 reps is found
     double rep_factor_12 = 0.71;
-    //  Multiply by 0.65 since that is the percentage of bodyweigth lifted during a pushup
-    double body_weight_pushup = body_weight* 0.65;
+    //  Multiply by 0.66 since that is the percentage of bodyweigth lifted during an air squat
+    double body_weight_squats = body_weight* 0.66;
     //  Mayhews calculation for 1rm:
-    double calculation_1rm_bench_press = (100 * body_weight_pushup)/(52.2+41.9*pow(M_E,(-0.055*rep_max_pushup)));
+    double calculation_1rm_weighted_squat = (100 * body_weight_squats)/(52.2+41.9*pow(M_E,(-0.055*rep_max_pushup)));
 
     //  Returning modified calculation
     /*
-    if(calculation_1rm_bench_press % 2 == 0) {
+    if(calculation_1rm_weighted_squat % 2 == 0) {
 
     }*/
-    return calculation_1rm_bench_press * rep_factor_12;
+    return calculation_1rm_weighted_squat * rep_factor_12;
 }
 
 void print_exercise(exercise exercise) {
