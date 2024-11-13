@@ -1,0 +1,101 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Project",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "bib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-bib-Debug-d5c07a94846b37a52b1e.json",
+					"name" : "bib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "evaluation_questionnaire::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-evaluation_questionnaire-Debug-368ec2d33458a0a01aa7.json",
+					"name" : "evaluation_questionnaire",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "exercises::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercises-Debug-5d8ff0136db52a0c72ea.json",
+					"name" : "exercises",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-Debug-9b0b3b78818276c0e258.json",
+					"name" : "main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "new_user_questionnaire::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-new_user_questionnaire-Debug-a3aa64b065b0b2aeb4b1.json",
+					"name" : "new_user_questionnaire",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "routine::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-routine-Debug-5dc6d908597f2d52bc1f.json",
+					"name" : "routine",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/katri/Downloads/P1-project/Main/cmake-build-debug",
+		"source" : "C:/Users/katri/Downloads/P1-project/Main"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

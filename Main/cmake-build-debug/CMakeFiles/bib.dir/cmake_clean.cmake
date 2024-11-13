@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/bib.dir/bib.c.o"
-  "CMakeFiles/bib.dir/bib.c.o.d"
+  "CMakeFiles/bib.dir/bib.c.obj"
+  "CMakeFiles/bib.dir/bib.c.obj.d"
   "libbib.a"
   "libbib.pdb"
 )

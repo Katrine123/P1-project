@@ -1,8 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "new_user_questionnaire.h"
+#include <ctype.h> //https://www.tutorialspoint.com/c_standard_library/ctype_h.htm
 
 #include <string.h>
+
+int homemade_scan(char type, int antal_inputs, char* input) {//FIKS SÅ DEN OGSÅ KAN TAGE INTEGERS?
+    if(type == 'i') {
+        scanf("%c",input);
+        while ((getchar()) != '\n'); //(https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/)
+        if(isdigit(*input)!=0) {
+            printf("YAH");
+            return 1;
+        }else {
+            printf("NAH");
+            return 0;
+        }
+        //Sørg for at man kun kan få integers
+    }else if(type == 'c') {
+        scanf("%c",input);
+        printf("Is a letter? %d ",isalpha(*input));
+    }else if(type == 'd') {
+        //kun doubles
+    }else if(type == 's') {
+        //Kun string
+    }
+}
+
+/*KUN INT
+ *  - Man skal kun bruge antal inputs (ex. kig på første tal, og fjern resten fra memory) - brug fflush
+ *  - Matcher input med den datatype vi vil have?
+ *  - Hvis ja, så output 1
+ *  - Hvis nej så output 0
+ */
+
+
 
 char* naming_equipment(enum equipment eq) {
     switch(eq) {
@@ -23,6 +55,10 @@ char* naming_equipment(enum equipment eq) {
 
 
 questionnaire create_and_answer_questionaire() {
+    char test;
+    homemade_scan('i',1,&test);
+
+
     questionnaire user;
 
     printf("Welcome to your personalized fitness trainer, please answer this questionnaire to create your person workout routine");

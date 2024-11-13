@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S "/Users/rasmus/AAU Software/P1 Coding/Main" -B "/Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug"
+"C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S C:\Users\katri\Downloads\P1-project\Main -B C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug
 CMake Warning (dev) in CMakeLists.txt:
   No project() command is present.  The top-level CMakeLists.txt file must
   contain a literal, direct call to the project() command.  Add a line of
@@ -18,19 +18,19 @@ CMake Warning (dev) in CMakeLists.txt:
   both commands.
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
--- The C compiler identification is AppleClang 16.0.0.16000026
--- The CXX compiler identification is AppleClang 16.0.0.16000026
+-- The C compiler identification is GNU 13.1.0
+-- The CXX compiler identification is GNU 13.1.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc - skipped
+-- Check for working C compiler: C:/Program Files/JetBrains/CLion 2024.2.1/bin/mingw/bin/gcc.exe - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Check for working CXX compiler: C:/Program Files/JetBrains/CLion 2024.2.1/bin/mingw/bin/g++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Configuring done (0.3s)
+-- Configuring done (2.3s)
 CMake Warning (dev) at CMakeLists.txt:4 (add_library):
   Policy CMP0115 is not set: Source file extensions must be explicit.  Run
   "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
@@ -38,7 +38,7 @@ CMake Warning (dev) at CMakeLists.txt:4 (add_library):
 
   File:
 
-    /Users/rasmus/AAU Software/P1 Coding/Main/bib.c
+    C:/Users/katri/Downloads/P1-project/Main/bib.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:5 (add_library):
@@ -48,7 +48,7 @@ CMake Warning (dev) at CMakeLists.txt:5 (add_library):
 
   File:
 
-    /Users/rasmus/AAU Software/P1 Coding/Main/exercises.c
+    C:/Users/katri/Downloads/P1-project/Main/exercises.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:6 (add_library):
@@ -58,7 +58,7 @@ CMake Warning (dev) at CMakeLists.txt:6 (add_library):
 
   File:
 
-    /Users/rasmus/AAU Software/P1 Coding/Main/new_user_questionnaire.c
+    C:/Users/katri/Downloads/P1-project/Main/new_user_questionnaire.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:7 (add_library):
@@ -68,7 +68,7 @@ CMake Warning (dev) at CMakeLists.txt:7 (add_library):
 
   File:
 
-    /Users/rasmus/AAU Software/P1 Coding/Main/routine.c
+    C:/Users/katri/Downloads/P1-project/Main/routine.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:8 (add_library):
@@ -78,8 +78,8 @@ CMake Warning (dev) at CMakeLists.txt:8 (add_library):
 
   File:
 
-    /Users/rasmus/AAU Software/P1 Coding/Main/evaluation_questionnaire.c
+    C:/Users/katri/Downloads/P1-project/Main/evaluation_questionnaire.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
--- Generating done (0.0s)
--- Build files have been written to: /Users/rasmus/AAU Software/P1 Coding/Main/cmake-build-debug
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/katri/Downloads/P1-project/Main/cmake-build-debug
