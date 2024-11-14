@@ -7,7 +7,7 @@ enum stage { begynder, let_øvet, øvet, meget_øvet, ekspert };
 //enum equipment { nothing, barbell, bench, pull_up_bar, pull_down_machine, resistance_bands, length_of_equipment_enum };
 // nothing, barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
 typedef struct {
-    int nothing;
+    int nothing = 0;
     int barbell;
     int bench;
     int pull_up_bar;
