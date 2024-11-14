@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libbib.a CMakeFiles/bib.dir/bib.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libbib.a
