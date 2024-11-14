@@ -5,10 +5,12 @@
 #include <math.h>
 //  Test placeholders - dette kommer fra questionnaire
 double body_weight = 74;
-double rep_max_pushup = 30;
-double rep_max_squats = 20;
+double rep_max_pushup = 90;
+double rep_max_squats = 40;
+int stage_of_exercise = advanced_beginner;
 
 //  All exercises funktion:
+//  Ændr til en struct array hvor den returnerer en exercise i arrayet for hver gange der skabes en
 int main(void) {
 
     //  With equipment
@@ -17,28 +19,41 @@ int main(void) {
         {0, 1, 1, 0, 0, 0};
     //  Ændr til at initialisere dem til
 
-    exercise bench_press = {"Bench press", bench_press_equipment, 2.5, base_weight_bench_press(body_weight,rep_max_pushup)};
+    exercise bench_press = {"Bench press", bench_press_equipment, 2.5, base_weight_bench_press(body_weight,rep_max_pushup), 12};
 
     print_exercise(bench_press);
 
     //  Weighted squats
     check_equipment weighted_squats_equipment =
     {0, 1, 0, 0, 0, 0};
-    exercise weighted_squats = {"Weighted squats", weighted_squats_equipment, 2.5, base_weight_weighted_squats(body_weight,rep_max_pushup)};
+    exercise weighted_squats = {"Weighted squats", weighted_squats_equipment, 2.5, base_weight_weighted_squats(body_weight,rep_max_squats), 12};
 
     print_exercise(weighted_squats);
 
     //  Air squats
-    check_equipment air_squats_equipment = {1, 0, 0, 0, 0, 0};
-    exercise air_squats = {"Air squats", air_squats_equipment, 2, };
+    check_equipment air_squats_equipment = {1, 0, 0, 0, 0, 0, };
+    exercise air_squats = {"Air squats", air_squats_equipment, 1, body_weight, base_amount_air_squats(rep_max_squats)};
+    print_exercise(air_squats);
 
+    //  Pushups
+    check_equipment pushups_equipment = {1, 0, 0, 0, 0, 0, };
+    exercise pushups = {"Pushups", pushups_equipment, 1, body_weight, base_amount_pushups(rep_max_pushup)};
+    print_exercise(pushups);
+
+    //  Elevated Pushups
+    check_equipment elevated_pushups_equipment = {1, 0, 0, 0, 0, 0, };
+    exercise elevated_pushups = {"Elevated pushups", elevated_pushups_equipment, 1, body_weight, base_amount_elevated_pushups(rep_max_pushup)};
+    print_exercise(elevated_pushups);
 }
 
 //function for rounding down to the nearest number divisbl by 2.5
+
 double round_down_to_nearest (double number, double divisor) {
     return floor(number / divisor) * divisor;
 }
 
+//  Base_weight functions:
+//  Calculating base weight for bench press from pushups
 double base_weight_bench_press(double body_weight, double rep_max_pushup) {
     //  Multiplying by a factor so amount of weight based on 12 reps is found
     double rep_factor_12 = 0.71;
@@ -51,7 +66,6 @@ double base_weight_bench_press(double body_weight, double rep_max_pushup) {
 
     //rounding the number down to a number that is divisble by 2.5 because thats the minimun to increase
     double weight_to_lift_rounded = round_down_to_nearest(weight_to_lift_unrounded, 2.5);
-
     return weight_to_lift_rounded;
 }
 
@@ -67,16 +81,52 @@ double base_weight_weighted_squats(double body_weight, double rep_max_squats) {
     double weight_to_lift_unrounded = calculation_1rm_weighted_squat * rep_factor_12;
 
     //rounding the number down to a number that is divisble by 2.5 because thats the minimun to increase
+
     double weight_to_lift_rounded = round_down_to_nearest(weight_to_lift_unrounded, 2.5);
 
     return weight_to_lift_rounded;
-
 }
 
-double base_weight_air_squats(double body_weight, double rep_max_squats) {
-    //  We already know maximum repititions of air squats
-    //  Base the calculation on stage of exercise and subtract it from
+// Function if a person is over 15 reps in the harder calestenic exercise a self chosen exercise in lower body
+// An alternative to this would be creating a database with 100+ exercises they can choose from
+double base_amount_own_exercise_lower_body(double rep_max_squats) {
+    int reps_amount_lower_body = rep_max_squats - stage_of_exercise;
+    return reps_amount_lower_body;
 }
+
+// Function if a person is over 15 reps in the harder calestenic exercise a self chosen exercise in upper front body
+// An alternative to this would be creating a database with 100+ exercises they can choose from
+double base_amount_own_exercise_upper_front_body(double rep_max_pushups) {
+    int reps_amount_upper_front_body = rep_max_pushups - stage_of_exercise;
+    return reps_amount_upper_front_body;
+}
+
+// Air squats should be the exercise if the perosn can take less than 15 consecutive air squats
+double base_amount_air_squats(double rep_max_squats) {
+    int reps_amount_squats = rep_max_squats - stage_of_exercise;
+    return reps_amount_squats;
+}
+
+//Split squats should be the printed exercise if the person can take more than 15 consecutive air squats
+double base_amount_split_squats(double rep_max_squats) {
+    int reps_amount_split_squats = rep_max_squats - stage_of_exercise;
+    return reps_amount_split_squats;
+}
+
+//Elevated pushups should be the printed exercise if the person can take more than 15 consecutive pushups
+int base_amount_elevated_pushups(double rep_max_pushup) {
+        rep_max_pushup = 15;
+        int reps_amount_elevated_pushups = rep_max_pushup - stage_of_exercise;
+        return reps_amount_elevated_pushups;
+}
+
+//Pushups should be the printed exercise if the person can tak less than 15 consecutive pushups
+int base_amount_pushups(double rep_max_pushup) {
+        int reps_amount_pushups = rep_max_pushup - stage_of_exercise;
+        return reps_amount_pushups;
+}
+
+
 
 void print_exercise(exercise exercise) {
     //få værdierne i struct ud
@@ -84,6 +134,7 @@ void print_exercise(exercise exercise) {
     //int equipment_required = exercise.necessary_equipment;
     double addition = exercise.addition;
     double base_weight = exercise.base_weight;
+    int amount_of_reps = exercise.amount_of_reps;
 
     //print værdierne
     printf("Name: %s\n", name);
@@ -107,7 +158,12 @@ void print_exercise(exercise exercise) {
         printf(" - Resistance bands\n");
     }
     printf("Addition: %lf\n", addition);
-    printf("base weight: %lf\n", base_weight);
+    if(base_weight == body_weight) {
+        // do nothing
+    } else {
+        printf("Base weight: %lf\n", base_weight);
+    }
+    printf("Amount of Repititions: %d\n", amount_of_reps);
     printf("\n");
 
 }
