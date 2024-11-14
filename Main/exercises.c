@@ -49,7 +49,7 @@ double base_weight_weighted_squats(double body_weight, double rep_max_squats) {
     //  Multiply by 0.66 since that is the percentage of bodyweigth lifted during an air squat
     double body_weight_squats = body_weight* 0.66;
     //  Mayhews calculation for 1rm:
-    double calculation_1rm_weighted_squat = (100 * body_weight_squats)/(52.2+41.9*pow(M_E,(-0.055*rep_max_pushup)));
+    double calculation_1rm_weighted_squat = (100 * body_weight_squats)/(52.2+41.9*pow(M_E,(-0.055*rep_max_squats)));
 
     //  Returning modified calculation
     /*

@@ -66,7 +66,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-main-Debug-968a8d97058ed8faf3b3.json",
+					"jsonFile" : "target-main-Debug-11dba3b04d52e16aca65.json",
 					"name" : "main",
 					"projectIndex" : 0
 				},
@@ -90,8 +90,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug",
-		"source" : "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main"
+		"build" : "/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug",
+		"source" : "/Users/nicolaischultz/Documents/GitHub/P1-project/Main"
 	},
 	"version" : 
 	{

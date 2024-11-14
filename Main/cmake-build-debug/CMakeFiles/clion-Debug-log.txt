@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main" -B "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug"
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /Users/nicolaischultz/Documents/GitHub/P1-project/Main -B /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug
 CMake Warning (dev) in CMakeLists.txt:
   No project() command is present.  The top-level CMakeLists.txt file must
   contain a literal, direct call to the project() command.  Add a line of
@@ -18,7 +18,19 @@ CMake Warning (dev) in CMakeLists.txt:
   both commands.
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
--- Configuring done (0.1s)
+-- The C compiler identification is AppleClang 15.0.0.15000040
+-- The CXX compiler identification is AppleClang 15.0.0.15000040
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (1.1s)
 CMake Warning (dev) at CMakeLists.txt:4 (add_library):
   Policy CMP0115 is not set: Source file extensions must be explicit.  Run
   "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
@@ -26,7 +38,7 @@ CMake Warning (dev) at CMakeLists.txt:4 (add_library):
 
   File:
 
-    /Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/bib.c
+    /Users/nicolaischultz/Documents/GitHub/P1-project/Main/bib.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:5 (add_library):
@@ -36,7 +48,7 @@ CMake Warning (dev) at CMakeLists.txt:5 (add_library):
 
   File:
 
-    /Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/exercises.c
+    /Users/nicolaischultz/Documents/GitHub/P1-project/Main/exercises.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:6 (add_library):
@@ -46,7 +58,7 @@ CMake Warning (dev) at CMakeLists.txt:6 (add_library):
 
   File:
 
-    /Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/new_user_questionnaire.c
+    /Users/nicolaischultz/Documents/GitHub/P1-project/Main/new_user_questionnaire.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:7 (add_library):
@@ -56,7 +68,7 @@ CMake Warning (dev) at CMakeLists.txt:7 (add_library):
 
   File:
 
-    /Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/routine.c
+    /Users/nicolaischultz/Documents/GitHub/P1-project/Main/routine.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 CMake Warning (dev) at CMakeLists.txt:8 (add_library):
@@ -66,8 +78,8 @@ CMake Warning (dev) at CMakeLists.txt:8 (add_library):
 
   File:
 
-    /Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/evaluation_questionnaire.c
+    /Users/nicolaischultz/Documents/GitHub/P1-project/Main/evaluation_questionnaire.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
--- Generating done (0.0s)
--- Build files have been written to: /Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug
+-- Generating done (0.2s)
+-- Build files have been written to: /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug
