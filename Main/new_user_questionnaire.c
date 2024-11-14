@@ -5,6 +5,7 @@
 
 questionnaire create_and_answer_questionaire() {
 
+
     questionnaire user;
 
     printf("Welcome to your personalized fitness trainer, please answer this questionnaire to create your person workout routine");

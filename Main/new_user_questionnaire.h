@@ -1,7 +1,7 @@
 #include "tools.h"
 
 typedef struct {
-    enum equipment available_equipment[50];
+    enum equipment available_equipment[5];
 
     int age;
     char gender[20];
@@ -12,13 +12,7 @@ typedef struct {
     double time_available_week;
 } questionnaire;
 
-typedef struct {
-    int barbell;
-    int bench;
-    int pull_up_bar;
-    int pull_down_machine;
-    int resistance_bands;
-} check_equipment;
+
 
 
 questionnaire create_and_answer_questionaire();
