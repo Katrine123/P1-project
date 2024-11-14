@@ -1,6 +1,7 @@
 CMakeFiles/exercises.dir/exercises.c.o: \
   /Users/nicolaischultz/Library/Mobile\ Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/exercises.c \
   /Users/nicolaischultz/Library/Mobile\ Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/exercises.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/iso646.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/sys/cdefs.h \
