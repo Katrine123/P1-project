@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/routine.dir/routine.c.obj"
-  "CMakeFiles/routine.dir/routine.c.obj.d"
+  "CMakeFiles/routine.dir/routine.c.o"
+  "CMakeFiles/routine.dir/routine.c.o.d"
   "libroutine.a"
   "libroutine.pdb"
 )

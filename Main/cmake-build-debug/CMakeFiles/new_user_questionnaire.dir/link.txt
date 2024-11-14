@@ -1,2 +1,2 @@
-C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc libnew_user_questionnaire.a CMakeFiles/new_user_questionnaire.dir/new_user_questionnaire.c.obj
-C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ranlib.exe libnew_user_questionnaire.a
+/Library/Developer/CommandLineTools/usr/bin/ar qc libnew_user_questionnaire.a CMakeFiles/new_user_questionnaire.dir/new_user_questionnaire.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libnew_user_questionnaire.a

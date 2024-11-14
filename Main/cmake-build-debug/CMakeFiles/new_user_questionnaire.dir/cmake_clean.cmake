@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/new_user_questionnaire.dir/new_user_questionnaire.c.obj"
-  "CMakeFiles/new_user_questionnaire.dir/new_user_questionnaire.c.obj.d"
+  "CMakeFiles/new_user_questionnaire.dir/new_user_questionnaire.c.o"
+  "CMakeFiles/new_user_questionnaire.dir/new_user_questionnaire.c.o.d"
   "libnew_user_questionnaire.a"
   "libnew_user_questionnaire.pdb"
 )

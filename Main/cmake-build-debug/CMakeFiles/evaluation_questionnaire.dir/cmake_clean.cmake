@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.obj"
-  "CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.obj.d"
+  "CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o"
+  "CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o.d"
   "libevaluation_questionnaire.a"
   "libevaluation_questionnaire.pdb"
 )
