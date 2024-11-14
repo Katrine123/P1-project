@@ -1,30 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "new_user_questionnaire.h"
-#include <ctype.h> //https://www.tutorialspoint.com/c_standard_library/ctype_h.htm
-
 #include <string.h>
 
 //DET HER ER EN TEST
 
-int homemade_scan(char type, int antal_inputs, char* input) {//FIKS SÅ DEN OGSÅ KAN TAGE INTEGERS?
+int homemade_scan(char type, int antal_inputs, void* input) {
     if(type == 'i') {
-        scanf("%c",input);
-        while ((getchar()) != '\n'); //(https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/)
-        if(isdigit(*input)!=0) {
+        if(scanf("%d",input)==1) {
             printf("YAH");
+            while ((getchar()) != '\n'); //(https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/)
             return 1;
         }else {
             printf("NAH");
+            while ((getchar()) != '\n');
             return 0;
         }
-        //Sørg for at man kun kan få integers
     }else if(type == 'c') {
-        scanf("%c",input);
-        printf("Is a letter? %d ",isalpha(*input));
+        if(scanf("%c",input)==1) {
+            printf("YAH");
+            while ((getchar()) != '\n'); //(https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/)
+            return 1;
+        }else {
+            printf("NAH");
+            while ((getchar()) != '\n');
+            return 0;
+        }
     }else if(type == 'd') {
-        //kun doubles
+        if(scanf("%lf",input)==1) {
+            printf("YAH");
+            while ((getchar()) != '\n'); //(https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/)
+            return 1;
+        }else {
+            printf("NAH");
+            while ((getchar()) != '\n');
+            return 0;
+        }
     }else if(type == 's') {
+        if(scanf("%s",input)==1) {
+            printf("YAH");
+            while ((getchar()) != '\n'); //(https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/)
+            return 1;
+        }else {
+            printf("NAH");
+            while ((getchar()) != '\n');
+            return 0;
+        }
         //Kun string
     }
 }
@@ -57,8 +78,14 @@ char* naming_equipment(enum equipment eq) {
 
 
 questionnaire create_and_answer_questionaire() {
-    char test;
+    int test;
     homemade_scan('i',1,&test);
+    char test2;
+    homemade_scan('c',1,&test2);
+    double test3;
+    homemade_scan('d',1,&test3);
+    char test4[10];
+    homemade_scan('s',1,&test4);
 
 
     questionnaire user;
