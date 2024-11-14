@@ -53,10 +53,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main"
+CMAKE_SOURCE_DIR = /Users/nicolaischultz/Documents/GitHub/P1-project/Main
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/exercises.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/exercises.dir/progress.make
 include CMakeFiles/exercises.dir/flags.make
 
 CMakeFiles/exercises.dir/exercises.c.o: CMakeFiles/exercises.dir/flags.make
-CMakeFiles/exercises.dir/exercises.c.o: /Users/nicolaischultz/Library/Mobile\ Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/exercises.c
+CMakeFiles/exercises.dir/exercises.c.o: /Users/nicolaischultz/Documents/GitHub/P1-project/Main/exercises.c
 CMakeFiles/exercises.dir/exercises.c.o: CMakeFiles/exercises.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/exercises.dir/exercises.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/exercises.dir/exercises.c.o -MF CMakeFiles/exercises.dir/exercises.c.o.d -o CMakeFiles/exercises.dir/exercises.c.o -c "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/exercises.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/exercises.dir/exercises.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/exercises.dir/exercises.c.o -MF CMakeFiles/exercises.dir/exercises.c.o.d -o CMakeFiles/exercises.dir/exercises.c.o -c /Users/nicolaischultz/Documents/GitHub/P1-project/Main/exercises.c
 
 CMakeFiles/exercises.dir/exercises.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/exercises.dir/exercises.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/exercises.c" > CMakeFiles/exercises.dir/exercises.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nicolaischultz/Documents/GitHub/P1-project/Main/exercises.c > CMakeFiles/exercises.dir/exercises.c.i
 
 CMakeFiles/exercises.dir/exercises.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/exercises.dir/exercises.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/exercises.c" -o CMakeFiles/exercises.dir/exercises.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nicolaischultz/Documents/GitHub/P1-project/Main/exercises.c -o CMakeFiles/exercises.dir/exercises.c.s
 
 # Object files for target exercises
 exercises_OBJECTS = \
@@ -93,7 +93,7 @@ exercises_EXTERNAL_OBJECTS =
 libexercises.a: CMakeFiles/exercises.dir/exercises.c.o
 libexercises.a: CMakeFiles/exercises.dir/build.make
 libexercises.a: CMakeFiles/exercises.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libexercises.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libexercises.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/exercises.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/exercises.dir/link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/exercises.dir/clean:
 .PHONY : CMakeFiles/exercises.dir/clean
 
 CMakeFiles/exercises.dir/depend:
-	cd "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main" "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main" "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug" "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug" "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles/exercises.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/nicolaischultz/Documents/GitHub/P1-project/Main /Users/nicolaischultz/Documents/GitHub/P1-project/Main /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles/exercises.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/exercises.dir/depend
 

@@ -1,8 +1,8 @@
-/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles/main.dir
-/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles/bib.dir
-/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles/exercises.dir
-/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles/new_user_questionnaire.dir
-/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles/routine.dir
-/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles/evaluation_questionnaire.dir
-/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles/main.dir
+/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles/bib.dir
+/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles/exercises.dir
+/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles/new_user_questionnaire.dir
+/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles/routine.dir
+/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles/evaluation_questionnaire.dir
+/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles/rebuild_cache.dir

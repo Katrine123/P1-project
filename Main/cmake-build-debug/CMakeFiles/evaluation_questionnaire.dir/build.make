@@ -53,10 +53,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main"
+CMAKE_SOURCE_DIR = /Users/nicolaischultz/Documents/GitHub/P1-project/Main
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/evaluation_questionnaire.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/evaluation_questionnaire.dir/progress.make
 include CMakeFiles/evaluation_questionnaire.dir/flags.make
 
 CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o: CMakeFiles/evaluation_questionnaire.dir/flags.make
-CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o: /Users/nicolaischultz/Library/Mobile\ Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/evaluation_questionnaire.c
+CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o: /Users/nicolaischultz/Documents/GitHub/P1-project/Main/evaluation_questionnaire.c
 CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o: CMakeFiles/evaluation_questionnaire.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o -MF CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o.d -o CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o -c "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/evaluation_questionnaire.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o -MF CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o.d -o CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o -c /Users/nicolaischultz/Documents/GitHub/P1-project/Main/evaluation_questionnaire.c
 
 CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/evaluation_questionnaire.c" > CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nicolaischultz/Documents/GitHub/P1-project/Main/evaluation_questionnaire.c > CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.i
 
 CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/evaluation_questionnaire.c" -o CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nicolaischultz/Documents/GitHub/P1-project/Main/evaluation_questionnaire.c -o CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.s
 
 # Object files for target evaluation_questionnaire
 evaluation_questionnaire_OBJECTS = \
@@ -93,7 +93,7 @@ evaluation_questionnaire_EXTERNAL_OBJECTS =
 libevaluation_questionnaire.a: CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o
 libevaluation_questionnaire.a: CMakeFiles/evaluation_questionnaire.dir/build.make
 libevaluation_questionnaire.a: CMakeFiles/evaluation_questionnaire.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libevaluation_questionnaire.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libevaluation_questionnaire.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/evaluation_questionnaire.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/evaluation_questionnaire.dir/link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/evaluation_questionnaire.dir/clean:
 .PHONY : CMakeFiles/evaluation_questionnaire.dir/clean
 
 CMakeFiles/evaluation_questionnaire.dir/depend:
-	cd "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main" "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main" "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug" "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug" "/Users/nicolaischultz/Library/Mobile Documents/com~apple~CloudDocs/UNI/IMPR/P1-project/Main/cmake-build-debug/CMakeFiles/evaluation_questionnaire.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/nicolaischultz/Documents/GitHub/P1-project/Main /Users/nicolaischultz/Documents/GitHub/P1-project/Main /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug /Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug/CMakeFiles/evaluation_questionnaire.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/evaluation_questionnaire.dir/depend
 
