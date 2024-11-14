@@ -1,68 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "new_user_questionnaire.h"
-#include <ctype.h>//https://www.w3schools.com/c/c_ref_ctype.php
 #include <string.h>
 
-//Function that scans and checks for the right datatype
-int homemade_scan(char type, void* input) {//Evt. Antal inputs? Forskellige inputs??
-    int is_right = 0;
-    //Checks what datatype we want - ex if i then int
-    if(type == 'i') {
-        //Test wether scanf gets the right input (it return 1 if true)
-        if(scanf("%d",input)==1) {
-            is_right = 1;
-        }
-    }else if(type == 'c') {
-        //With chars we test that it's a letter with isalpha()
-        if(scanf("%c",input)==1&&isalpha(*(char*)input)!=0) {
-            is_right = 1;
-        }
-    }else if(type == 'd') {
-        if(scanf("%lf",input)==1) {
-            is_right=1;
-        }
-    }else if(type == 's') {
-        if(scanf("%s",input)==1&&isalpha(*(char**)input)!=0) {
-            is_right = 1;
-        }
-    }
-    //Clears any extra inputs
-    while ((getchar()) != '\n');//https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/
-    //Return a true/false, of whether the datatype matches what we want
-    return is_right;
-}
-
-
-
-char* naming_equipment(enum equipment eq) {
-    switch(eq) {
-        case nothing: return "Nothing";
-        break;
-        case barbell: return "Barbell";
-        break;
-        case bench: return "Bench";
-        break;
-        case pull_up_bar: return "Pull up bar";
-        break;
-        case pull_down_machine: return "Pull down machine";
-        break;
-        case resistance_bands: return "Resistance bands";
-        break;
-    }
-}
-
-
 questionnaire create_and_answer_questionaire() {
-    int test;
-    homemade_scan('i',&test);
-    char test2;
-    homemade_scan('c',&test2);
-    double test3;
-    homemade_scan('d',&test3);
-    char test4[10];
-    homemade_scan('s',&test4);
-
 
     questionnaire user;
 

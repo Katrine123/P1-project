@@ -34,7 +34,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 10,
+				"line" : 11,
 				"parent" : 0
 			}
 		]
@@ -59,6 +59,14 @@
 	[
 		{
 			"backtrace" : 2,
+			"id" : "bib::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "exercises::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
 			"id" : "new_user_questionnaire::@6890427a1f51a3e7e1df"
 		},
 		{
@@ -67,15 +75,11 @@
 		},
 		{
 			"backtrace" : 2,
-			"id" : "exercises::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "bib::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 2,
 			"id" : "evaluation_questionnaire::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "tools::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "main::@6890427a1f51a3e7e1df",
@@ -114,6 +118,11 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "libevaluation_questionnaire.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libtools.a",
 				"role" : "libraries"
 			},
 			{

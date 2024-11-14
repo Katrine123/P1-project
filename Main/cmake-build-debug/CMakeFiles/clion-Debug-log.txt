@@ -18,19 +18,7 @@ CMake Warning (dev) in CMakeLists.txt:
   both commands.
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
--- The C compiler identification is GNU 13.1.0
--- The CXX compiler identification is GNU 13.1.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: C:/Program Files/JetBrains/CLion 2024.2.1/bin/mingw/bin/gcc.exe - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: C:/Program Files/JetBrains/CLion 2024.2.1/bin/mingw/bin/g++.exe - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Configuring done (2.3s)
+-- Configuring done (0.3s)
 CMake Warning (dev) at CMakeLists.txt:4 (add_library):
   Policy CMP0115 is not set: Source file extensions must be explicit.  Run
   "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
@@ -79,6 +67,16 @@ CMake Warning (dev) at CMakeLists.txt:8 (add_library):
   File:
 
     C:/Users/katri/Downloads/P1-project/Main/evaluation_questionnaire.c
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at CMakeLists.txt:9 (add_library):
+  Policy CMP0115 is not set: Source file extensions must be explicit.  Run
+  "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  File:
+
+    C:/Users/katri/Downloads/P1-project/Main/tools.c
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 -- Generating done (0.1s)

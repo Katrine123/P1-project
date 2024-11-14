@@ -193,6 +193,19 @@ evaluation_questionnaire/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\evaluation_questionnaire.dir\build.make CMakeFiles/evaluation_questionnaire.dir/build
 .PHONY : evaluation_questionnaire/fast
 
+#=============================================================================
+# Target rules for targets named tools
+
+# Build rule for target.
+tools: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tools
+.PHONY : tools
+
+# fast build rule for target.
+tools/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tools.dir\build.make CMakeFiles/tools.dir/build
+.PHONY : tools/fast
+
 bib.obj: bib.c.obj
 .PHONY : bib.obj
 
@@ -337,6 +350,30 @@ routine.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\routine.dir\build.make CMakeFiles/routine.dir/routine.c.s
 .PHONY : routine.c.s
 
+tools.obj: tools.c.obj
+.PHONY : tools.obj
+
+# target to build an object file
+tools.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tools.dir\build.make CMakeFiles/tools.dir/tools.c.obj
+.PHONY : tools.c.obj
+
+tools.i: tools.c.i
+.PHONY : tools.i
+
+# target to preprocess a source file
+tools.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tools.dir\build.make CMakeFiles/tools.dir/tools.c.i
+.PHONY : tools.c.i
+
+tools.s: tools.c.s
+.PHONY : tools.s
+
+# target to generate assembly for a file
+tools.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tools.dir\build.make CMakeFiles/tools.dir/tools.c.s
+.PHONY : tools.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -351,6 +388,7 @@ help:
 	@echo ... main
 	@echo ... new_user_questionnaire
 	@echo ... routine
+	@echo ... tools
 	@echo ... bib.obj
 	@echo ... bib.i
 	@echo ... bib.s
@@ -369,6 +407,9 @@ help:
 	@echo ... routine.obj
 	@echo ... routine.i
 	@echo ... routine.s
+	@echo ... tools.obj
+	@echo ... tools.i
+	@echo ... tools.s
 .PHONY : help
 
 

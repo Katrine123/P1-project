@@ -96,6 +96,7 @@ main.exe: libexercises.a
 main.exe: libnew_user_questionnaire.a
 main.exe: libroutine.a
 main.exe: libevaluation_questionnaire.a
+main.exe: libtools.a
 main.exe: CMakeFiles/main.dir/linkLibs.rsp
 main.exe: CMakeFiles/main.dir/objects1.rsp
 main.exe: CMakeFiles/main.dir/link.txt
