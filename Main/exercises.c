@@ -8,48 +8,38 @@
 double body_weight = 74;
 double rep_max_pushup = 90;
 double rep_max_squats = 40;
-int stage_of_exercise = advanced_beginner;
+int stage_of_exercise = novice;
+
+int check_eq[length_of_equipment_enum - 1] = {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands};
+
 
 //  All exercises funktion:
 //  Ændr til en struct array hvor den returnerer en exercise i arrayet for hver gange der skabes en
 int main(void) {
     //  With equipment
     //  Bench press
-    check_equipment bench_press_equipment =
-        {0, 1, 1, 0, 0, 0};
-    //  Ændr til at initialisere dem til
-    exercise bench_press = {"Bench press", bench_press_equipment, 2.5, base_weight_bench_press(body_weight,rep_max_pushup), 12};
-
-    print_exercise(bench_press);
+    exercise bench_press = {"Bench press", {0, 1, 1, 0, 0}, 2.5, base_weight_bench_press(body_weight,rep_max_pushup), 12};
 
     //  Weighted squats
-    check_equipment weighted_squats_equipment =
-    {0, 1, 0, 0, 0, 0};
-    exercise weighted_squats = {"Weighted squats", weighted_squats_equipment, 2.5, base_weight_weighted_squats(body_weight,rep_max_squats), 12};
-
-    print_exercise(weighted_squats);
+    exercise weighted_squats = {"Weighted squats", {0, 1, 0, 0, 0}, 2.5, base_weight_weighted_squats(body_weight,rep_max_squats), 12};
 
     //  Air squats
-    check_equipment air_squats_equipment = {1, 0, 0, 0, 0, 0, };
-    exercise air_squats = {"Air squats", air_squats_equipment, 1, body_weight, base_amount_air_squats(rep_max_squats)};
-    print_exercise(air_squats);
+    exercise air_squats = {"Air squats", {0, 0, 0, 0, 0}, 1, body_weight, base_amount_air_squats(rep_max_squats)};
 
     //  Pushups
-    check_equipment pushups_equipment = {1, 0, 0, 0, 0, 0, };
-    exercise pushups = {"Pushups", pushups_equipment, 1, body_weight, base_amount_pushups(rep_max_pushup)};
-    print_exercise(pushups);
+    exercise pushups = {"Pushups", {0, 0, 0, 0, 0}, 1, body_weight, base_amount_pushups(rep_max_pushup)};
 
     //  Elevated Pushups
-    check_equipment elevated_pushups_equipment = {1, 0, 0, 0, 0, 0, };
-    exercise elevated_pushups = {"Elevated pushups", elevated_pushups_equipment, 1, body_weight, base_amount_elevated_pushups(rep_max_pushup)};
-    print_exercise(elevated_pushups);
+    exercise elevated_pushups = {"Elevated pushups", {0, 0, 0, 0, 0}, 1, body_weight, base_amount_elevated_pushups(rep_max_pushup)};
 
     //  HIIT
     //  Burpees
-    check_equipment burpees_equipment = {1, 0, 0, 0, 0, 0, };
-    exercise burpees = {"Burpees", burpees_equipment, 1, body_weight, base_amount_burpees(MAX_REPS)};
-    print_exercise(burpees);
+    //  Potential lowest bound is 5 reps pr. set. The exercise is more suitable to an increase in additions, therefore 2 instead of 1.
+    exercise burpees = {"Burpees", {0, 0, 0, 0, 0}, 2, body_weight, base_amount_burpees(MAX_REPS)};
 
+    //  Create array
+    exercise exercises_list[] = {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees};
+    print_exercise(exercises_list);
 }
 
 ///function for rounding down to the nearest number divisbl by 2.5
@@ -66,7 +56,7 @@ double base_weight_bench_press(double body_weight, double rep_max_pushup) {
     double body_weight_pushup = body_weight* 0.65;
     //  Mayhews calculation for 1rm:
     double calculation_1rm_bench_press = (100 * body_weight_pushup)/(52.2+41.9*pow(M_E,(-0.055*rep_max_pushup)));
-    //  Calculating the wheight the person can lift in sets of 12
+    //  Calculating the height the person can lift in sets of 12
     double weight_to_lift_unrounded = calculation_1rm_bench_press * rep_factor_12;
 
     //rounding the number down to a number that is divisble by 2.5 because thats the minimun to increase
@@ -124,44 +114,42 @@ double base_amount_burpees(double rep_max_squats) {
 }
 
 
-void print_exercise(exercise exercise) {
-    //få værdierne i struct ud
-    char *name = exercise.name;
-    //int equipment_required = exercise.necessary_equipment;
-    double addition = exercise.addition;
-    double base_weight = exercise.base_weight;
-    int amount_of_reps = exercise.amount_of_reps;
+void print_exercise(exercise exercises_list[]) {
+    for(int i = 0; i < length_of_exercises_list; i++) {
+        //få værdierne i struct ud
+        char *name = exercises_list[i].name;
+        //int equipment_required = exercise.necessary_equipment;
+        double addition = exercises_list[i].addition;
+        double base_weight = exercises_list[i].base_weight;
+        int amount_of_reps = exercises_list[i].amount_of_reps;
 
-    //print værdierne
-    printf("Name: %s\n", name);
-    printf("Needed equipment: \n");
-    if (exercise.necessary_equipment.nothing == 1) {
-        printf(" - Nothing\n");
+        //print værdierne
+        printf("Name: %s\n", name);
+        printf("Needed equipment: \n");
+        if (exercises_list[i].check_eq[0] == 1) {
+            printf(" - Barbell\n");
+        }
+        if (exercises_list[i].check_eq[1] == 1) {
+            printf(" - Bench\n");
+        }
+        if (exercises_list[i].check_eq[2] == 1) {
+            printf(" - Pull up bar\n");
+        }
+        if (exercises_list[i].check_eq[3] == 1) {
+            printf(" - Pull down machine\n");
+        }
+        if (exercises_list[i].check_eq[4] == 1) {
+            printf(" - Resistance bands\n");
+        }
+        printf("Addition: %.2lf\n", addition);
+        if(base_weight == body_weight) {
+            // do nothing
+        } else {
+            printf("Base weight: %.2lf\n", base_weight);
+        }
+        printf("Amount of Repititions: %d\n", amount_of_reps);
+        printf("\n");
     }
-    if (exercise.necessary_equipment.barbell == 1) {
-        printf(" - Barbell\n");
-    }
-    if (exercise.necessary_equipment.bench == 1) {
-        printf(" - Bench\n");
-    }
-    if (exercise.necessary_equipment.pull_up_bar == 1) {
-        printf(" - Pull up bar\n");
-    }
-    if (exercise.necessary_equipment.pull_down_machine == 1) {
-        printf(" - Pull down machine\n");
-    }
-    if (exercise.necessary_equipment.resistance_bands == 1) {
-        printf(" - Resistance bands\n");
-    }
-    printf("Addition: %lf\n", addition);
-    if(base_weight == body_weight) {
-        // do nothing
-    } else {
-        printf("Base weight: %lf\n", base_weight);
-    }
-    printf("Amount of Repititions: %d\n", amount_of_reps);
-    printf("\n");
-
 }
 
 

@@ -10,8 +10,12 @@ double base_amount_burpees(double rep_max_squats);
 
 //  Stages from problem analysis
 enum stage_base_factor { novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1 };
-//enum equipment { nothing, barbell, bench, pull_up_bar, pull_down_machine, resistance_bands, length_of_equipment_enum };
+enum equipment { nothing, barbell = 0, bench = 0, pull_up_bar = 0, pull_down_machine = 0, resistance_bands = 0, length_of_equipment_enum };
+enum exercises {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, length_of_exercises_list};
 // nothing, barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
+
+//  Lav til et array så der kan loopes igennem
+
 typedef struct {
     int nothing;
     int barbell;
@@ -25,7 +29,8 @@ typedef struct {
 typedef struct {
     char name[20];
     //  When calling necessary_equipment.x it searches in the check_equipment struct
-    check_equipment necessary_equipment;
+    //  Kald på array her, ændr type
+    int check_eq[length_of_exercises_list - 1];
     //  We assume that weight only increases by 2.5, argue for this in implementation/design
     double addition;
     double base_weight;
@@ -36,5 +41,4 @@ typedef struct {
 
 
 exercise* create_all_exercises();
-void print_exercise(exercise exercise);
-
+void print_exercise(exercise exercises_list[]);
