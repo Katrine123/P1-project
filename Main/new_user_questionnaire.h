@@ -12,9 +12,6 @@ typedef struct {
 } questionnaire;
 
 
-
-/***/
-/***/
 questionnaire create_and_answer_questionnaire();
 
 void print_quiestionnare(questionnaire user);

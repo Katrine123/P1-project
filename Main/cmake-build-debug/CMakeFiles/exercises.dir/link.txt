@@ -1,0 +1,2 @@
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc libexercises.a CMakeFiles/exercises.dir/exercises.c.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ranlib.exe libexercises.a
