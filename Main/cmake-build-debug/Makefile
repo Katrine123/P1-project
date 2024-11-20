@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\katri\Downloads\P1-project\Main
+CMAKE_SOURCE_DIR = C:\Users\mwsan\Documents\GitHub\P1-project\Main
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug\CMakeFiles C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug\CMakeFiles C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -350,6 +350,30 @@ routine.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\routine.dir\build.make CMakeFiles/routine.dir/routine.c.s
 .PHONY : routine.c.s
 
+savesystem.obj: savesystem.c.obj
+.PHONY : savesystem.obj
+
+# target to build an object file
+savesystem.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bib.dir\build.make CMakeFiles/bib.dir/savesystem.c.obj
+.PHONY : savesystem.c.obj
+
+savesystem.i: savesystem.c.i
+.PHONY : savesystem.i
+
+# target to preprocess a source file
+savesystem.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bib.dir\build.make CMakeFiles/bib.dir/savesystem.c.i
+.PHONY : savesystem.c.i
+
+savesystem.s: savesystem.c.s
+.PHONY : savesystem.s
+
+# target to generate assembly for a file
+savesystem.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bib.dir\build.make CMakeFiles/bib.dir/savesystem.c.s
+.PHONY : savesystem.c.s
+
 tools.obj: tools.c.obj
 .PHONY : tools.obj
 
@@ -407,6 +431,9 @@ help:
 	@echo ... routine.obj
 	@echo ... routine.i
 	@echo ... routine.s
+	@echo ... savesystem.obj
+	@echo ... savesystem.i
+	@echo ... savesystem.s
 	@echo ... tools.obj
 	@echo ... tools.i
 	@echo ... tools.s

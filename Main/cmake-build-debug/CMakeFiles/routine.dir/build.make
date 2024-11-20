@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\katri\Downloads\P1-project\Main
+CMAKE_SOURCE_DIR = C:\Users\mwsan\Documents\GitHub\P1-project\Main
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/routine.dir/depend.make
@@ -69,18 +69,18 @@ include CMakeFiles/routine.dir/progress.make
 include CMakeFiles/routine.dir/flags.make
 
 CMakeFiles/routine.dir/routine.c.obj: CMakeFiles/routine.dir/flags.make
-CMakeFiles/routine.dir/routine.c.obj: C:/Users/katri/Downloads/P1-project/Main/routine.c
+CMakeFiles/routine.dir/routine.c.obj: C:/Users/mwsan/Documents/GitHub/P1-project/Main/routine.c
 CMakeFiles/routine.dir/routine.c.obj: CMakeFiles/routine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/routine.dir/routine.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/routine.dir/routine.c.obj -MF CMakeFiles\routine.dir\routine.c.obj.d -o CMakeFiles\routine.dir\routine.c.obj -c C:\Users\katri\Downloads\P1-project\Main\routine.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/routine.dir/routine.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/routine.dir/routine.c.obj -MF CMakeFiles\routine.dir\routine.c.obj.d -o CMakeFiles\routine.dir\routine.c.obj -c C:\Users\mwsan\Documents\GitHub\P1-project\Main\routine.c
 
 CMakeFiles/routine.dir/routine.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/routine.dir/routine.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\katri\Downloads\P1-project\Main\routine.c > CMakeFiles\routine.dir\routine.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\mwsan\Documents\GitHub\P1-project\Main\routine.c > CMakeFiles\routine.dir\routine.c.i
 
 CMakeFiles/routine.dir/routine.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/routine.dir/routine.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\katri\Downloads\P1-project\Main\routine.c -o CMakeFiles\routine.dir\routine.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\mwsan\Documents\GitHub\P1-project\Main\routine.c -o CMakeFiles\routine.dir\routine.c.s
 
 # Object files for target routine
 routine_OBJECTS = \
@@ -92,7 +92,7 @@ routine_EXTERNAL_OBJECTS =
 libroutine.a: CMakeFiles/routine.dir/routine.c.obj
 libroutine.a: CMakeFiles/routine.dir/build.make
 libroutine.a: CMakeFiles/routine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libroutine.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libroutine.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\routine.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\routine.dir\link.txt --verbose=$(VERBOSE)
 
@@ -105,6 +105,6 @@ CMakeFiles/routine.dir/clean:
 .PHONY : CMakeFiles/routine.dir/clean
 
 CMakeFiles/routine.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\katri\Downloads\P1-project\Main C:\Users\katri\Downloads\P1-project\Main C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug\CMakeFiles\routine.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\mwsan\Documents\GitHub\P1-project\Main C:\Users\mwsan\Documents\GitHub\P1-project\Main C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug\CMakeFiles\routine.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/routine.dir/depend
 

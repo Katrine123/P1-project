@@ -1,2 +1,2 @@
-C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc libbib.a CMakeFiles/bib.dir/bib.c.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc libbib.a CMakeFiles/bib.dir/bib.c.obj CMakeFiles/bib.dir/savesystem.c.obj
 C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ranlib.exe libbib.a

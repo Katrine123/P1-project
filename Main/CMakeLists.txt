@@ -1,7 +1,8 @@
 
 add_executable(main main.c)
 
-add_library(bib bib)
+add_library(bib bib
+        savesystem.c)
 add_library(exercises exercises)
 add_library(new_user_questionnaire new_user_questionnaire)
 add_library(routine routine)

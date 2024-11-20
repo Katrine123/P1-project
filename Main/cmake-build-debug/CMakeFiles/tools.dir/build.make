@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\katri\Downloads\P1-project\Main
+CMAKE_SOURCE_DIR = C:\Users\mwsan\Documents\GitHub\P1-project\Main
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/tools.dir/depend.make
@@ -69,18 +69,18 @@ include CMakeFiles/tools.dir/progress.make
 include CMakeFiles/tools.dir/flags.make
 
 CMakeFiles/tools.dir/tools.c.obj: CMakeFiles/tools.dir/flags.make
-CMakeFiles/tools.dir/tools.c.obj: C:/Users/katri/Downloads/P1-project/Main/tools.c
+CMakeFiles/tools.dir/tools.c.obj: C:/Users/mwsan/Documents/GitHub/P1-project/Main/tools.c
 CMakeFiles/tools.dir/tools.c.obj: CMakeFiles/tools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/tools.dir/tools.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tools.dir/tools.c.obj -MF CMakeFiles\tools.dir\tools.c.obj.d -o CMakeFiles\tools.dir\tools.c.obj -c C:\Users\katri\Downloads\P1-project\Main\tools.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/tools.dir/tools.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tools.dir/tools.c.obj -MF CMakeFiles\tools.dir\tools.c.obj.d -o CMakeFiles\tools.dir\tools.c.obj -c C:\Users\mwsan\Documents\GitHub\P1-project\Main\tools.c
 
 CMakeFiles/tools.dir/tools.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/tools.dir/tools.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\katri\Downloads\P1-project\Main\tools.c > CMakeFiles\tools.dir\tools.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\mwsan\Documents\GitHub\P1-project\Main\tools.c > CMakeFiles\tools.dir\tools.c.i
 
 CMakeFiles/tools.dir/tools.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tools.dir/tools.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\katri\Downloads\P1-project\Main\tools.c -o CMakeFiles\tools.dir\tools.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\mwsan\Documents\GitHub\P1-project\Main\tools.c -o CMakeFiles\tools.dir\tools.c.s
 
 # Object files for target tools
 tools_OBJECTS = \
@@ -92,7 +92,7 @@ tools_EXTERNAL_OBJECTS =
 libtools.a: CMakeFiles/tools.dir/tools.c.obj
 libtools.a: CMakeFiles/tools.dir/build.make
 libtools.a: CMakeFiles/tools.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libtools.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libtools.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\tools.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\tools.dir\link.txt --verbose=$(VERBOSE)
 
@@ -105,6 +105,6 @@ CMakeFiles/tools.dir/clean:
 .PHONY : CMakeFiles/tools.dir/clean
 
 CMakeFiles/tools.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\katri\Downloads\P1-project\Main C:\Users\katri\Downloads\P1-project\Main C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug C:\Users\katri\Downloads\P1-project\Main\cmake-build-debug\CMakeFiles\tools.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\mwsan\Documents\GitHub\P1-project\Main C:\Users\mwsan\Documents\GitHub\P1-project\Main C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug C:\Users\mwsan\Documents\GitHub\P1-project\Main\cmake-build-debug\CMakeFiles\tools.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/tools.dir/depend
 
