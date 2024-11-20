@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libexercises.a CMakeFiles/exercises.dir/exercises.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libexercises.a

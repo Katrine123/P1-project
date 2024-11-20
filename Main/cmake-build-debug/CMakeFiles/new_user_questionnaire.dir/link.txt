@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libnew_user_questionnaire.a CMakeFiles/new_user_questionnaire.dir/new_user_questionnaire.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libnew_user_questionnaire.a
