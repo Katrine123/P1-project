@@ -5,9 +5,11 @@ int base_amount_pushups(double rep_max_pushup);
 int base_amount_elevated_pushups(double rep_max_pushup);
 double base_amount_own_exercise_lower_body(double rep_max_squats);
 double base_amount_own_exercise_upper_front_body(double rep_max_pushups);
+double base_amount_burpees(double rep_max_squats);
+
 
 //  Stages from problem analysis
-enum stage_base_factor { expert, proficient, competent, advanced_beginner, novice };
+enum stage_base_factor { novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1 };
 //enum equipment { nothing, barbell, bench, pull_up_bar, pull_down_machine, resistance_bands, length_of_equipment_enum };
 // nothing, barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
 typedef struct {
