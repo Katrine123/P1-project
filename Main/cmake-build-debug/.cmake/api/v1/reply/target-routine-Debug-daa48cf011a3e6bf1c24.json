@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "libnew_user_questionnaire.a"
+			"path" : "libroutine.a"
 		}
 	],
 	"backtrace" : 1,
@@ -25,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 7,
 				"parent" : 0
 			}
 		]
@@ -36,7 +36,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.6 -fcolor-diagnostics"
 				}
 			],
 			"language" : "C",
@@ -46,9 +46,9 @@
 			]
 		}
 	],
-	"id" : "new_user_questionnaire::@6890427a1f51a3e7e1df",
-	"name" : "new_user_questionnaire",
-	"nameOnDisk" : "libnew_user_questionnaire.a",
+	"id" : "routine::@6890427a1f51a3e7e1df",
+	"name" : "routine",
+	"nameOnDisk" : "libroutine.a",
 	"paths" : 
 	{
 		"build" : ".",
@@ -69,7 +69,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "new_user_questionnaire.c",
+			"path" : "routine.c",
 			"sourceGroupIndex" : 0
 		}
 	],

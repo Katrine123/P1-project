@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/tools.dir/tools.c.obj"
-  "CMakeFiles/tools.dir/tools.c.obj.d"
+  "CMakeFiles/tools.dir/tools.c.o"
+  "CMakeFiles/tools.dir/tools.c.o.d"
   "libtools.a"
   "libtools.pdb"
 )

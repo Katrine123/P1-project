@@ -1,2 +1,2 @@
-C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc libroutine.a CMakeFiles/routine.dir/routine.c.obj
-C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ranlib.exe libroutine.a
+/Library/Developer/CommandLineTools/usr/bin/ar qc libroutine.a CMakeFiles/routine.dir/routine.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libroutine.a
