@@ -3,7 +3,7 @@
 #include "new_user_questionnaire.h"
 #include <string.h>
 
-questionnaire create_and_answer_questionaire() {
+questionnaire create_and_answer_questionnaire() {
 
 
     questionnaire user;
@@ -99,17 +99,17 @@ questionnaire create_and_answer_questionaire() {
 
     // If user have access to a gym, they have access to all the equipment in the array.
     if(strcmp(gym,"Yes")==0) {
-        for(int i=0; i<6; i++) {
+        for(int i=0; i<5; i++) {
             user.available_equipment[i]=i+1;
         }
         // If the user do not have access to a gym, they will be asked to enter the equipment available based on a defined list.
     } else if(strcmp(gym, "No")==0) {
         printf("Of these options what equipment do you have? Please enter the number and when you are done press -1\n");
-        for(int i=0; i<6; i++) {
+        for(int i=0; i<5; i++) {
             printf("%d: %s \n", i, naming_equipment(i));
         }
         // Array to store equipment option selected by user.
-        int answer[6];
+        int answer[5];
         int i = 0;
         // Loops to gather the equipment selected by the user, stopping at -1.
         do {
@@ -121,9 +121,13 @@ questionnaire create_and_answer_questionaire() {
             }
 
         }while(answer[i-1] != -1);
+
+        for(int n = 0; n < 5; n++) {
+            user.available_equipment[n] = 0;
+        }
         // Transfer selected equipment to the user struct "questionnaire".
         for(int j = 0; answer[j]!=-1; j++) {
-            user.available_equipment[j] = answer[j];
+            user.available_equipment[answer[j]] = 1;
         }
     }
     return user;
@@ -138,14 +142,15 @@ void print_quiestionnare(questionnaire user) {
     printf("Fitness level: %d\n",user.fitness_level);
     printf("Time in week: %lf\n",user.time_available_week);
     int len = sizeof(user.available_equipment)/sizeof(user.available_equipment[0]);
-    printf("%d",len);
     printf("Available equipment: ");
-    /*if(len == 0) {
+    if(len == 0) {
         printf("Nothing");
     }else {
         for(int i = 0; i<len;i++) {
-            printf("%s, ",naming_equipment(user.available_equipment[i]));
+            if(user.available_equipment[i]==1) {
+                printf("%s, ",naming_equipment(i));
+            }
         }
-    }*/
+    }
 }
 

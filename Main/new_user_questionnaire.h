@@ -8,7 +8,7 @@ typedef struct {
     int pushups;
     int fitness_level;
     double time_available_week;
-    enum equipment available_equipment[5];
+    int available_equipment[5]; //Array for deciding what exercises they can do
 } questionnaire;
 
 
