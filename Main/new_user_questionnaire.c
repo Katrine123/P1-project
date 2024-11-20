@@ -3,7 +3,7 @@
 #include "new_user_questionnaire.h"
 #include <string.h>
 
-questionnaire create_and_answer_questionaire() {
+questionnaire create_and_answer_questionnaire() {
 
 
     questionnaire user;
@@ -11,8 +11,9 @@ questionnaire create_and_answer_questionaire() {
     printf("Welcome to your personalized fitness trainer, please answer this questionnaire to create your person workout routine");
     printf("\n");
     printf("What is your age in years?");
-    scanf("%d", &user.age);
 
+    homemade_scan(integer,&user.age);
+    //scanf("%d", &user.age);
     if(user.age > 100) {
         printf("You are too old to exercise!");
         exit(-1);
@@ -25,18 +26,17 @@ questionnaire create_and_answer_questionaire() {
 
     do{
         printf("Are you a male or female");
-        scanf("%s", &user.gender);
+        homemade_scan(string,&user.gender);
+        //scanf("%s", &user.gender);
     }while(strcmp(user.gender,"male")!=0&& strcmp(user.gender,"female")!=0);
 
 
 
     while(user.weight < 20 || user.weight > 300) {
         printf("What is your weight in kg");
-        scanf("%lf", &user.weight);
-       /* if (scanf("%lf", &user.weight)==0) {
-            printf("Please enter a number");
-            user.weight = 0;
-        } else*/ if(user.weight < 20 || user.weight > 300) {
+        homemade_scan(long_float,&user.weight);
+        //scanf("%lf", &user.weight);
+        if(user.weight < 20 || user.weight > 300) {
             printf("I don't think that is correct!");
             printf("\n");
         }
@@ -45,7 +45,8 @@ questionnaire create_and_answer_questionaire() {
 
     while(user.height < 50 || user.height > 300) {
         printf("What is your height in cm?");
-        scanf("%lf", &user.height);
+        homemade_scan(long_float,&user.height);
+        //scanf("%lf", &user.height);
         if(user.height < 50 || user.height > 300) {
             printf("I don't think that is correct!");
             printf("\n");
@@ -55,7 +56,8 @@ questionnaire create_and_answer_questionaire() {
 
     do {
         printf("How many push-ups, can you do?");
-        scanf("%d", &user.pushups);
+        homemade_scan(integer,&user.pushups);
+        //scanf("%d", &user.pushups);
         if(user.pushups < 0) {
             printf("Please enter 0 or more!");
             printf("\n");
@@ -74,7 +76,8 @@ questionnaire create_and_answer_questionaire() {
                "fitness level 5: expert experience with exercising\n");
 
 
-        scanf("%d", &user.fitness_level);
+        homemade_scan(integer,&user.fitness_level);
+        //scanf("%d", &user.fitness_level);
         if(user.fitness_level < 1 || user.fitness_level > 5) {
             printf("It has to be between 1-5!");
             printf("\n");
@@ -83,8 +86,9 @@ questionnaire create_and_answer_questionaire() {
 
 
     do {
-        printf("What is your weekly time available on a weekly basis in hours?");
-        scanf("%lf", &user.time_available_week);
+        printf("What is your weekly time available in hours?");
+        homemade_scan(long_float,&user.time_available_week);
+        //scanf("%lf", &user.time_available_week);
         if(user.time_available_week > 168) {
             printf("You do not have more hours than there is in a week!");
             printf("\n");
@@ -98,29 +102,31 @@ questionnaire create_and_answer_questionaire() {
     char gym[5];
 
     printf("Do you have access to a gym?");
-    scanf("%s", gym);
+    homemade_scan(string,gym);
+    //scanf("%s", gym);
 
     if(strcmp(gym,"Yes")==0) {
-        for(int i=0; i<6; i++) {
-            user.available_equipment[i]=i+1;
+        for(int i=0; i<EQUIP_LEN; i++) {
+            user.available_equipment[i]=i;
         }
     } else if(strcmp(gym, "No")==0) {
         printf("Of these options what equipment do you have? Please enter the number and when you are done press -1");
         printf("\n");
-        for(int i=0; i<6; i++) {
+        for(int i=0; i<EQUIP_LEN; i++) {
             printf("%d: %s \n", i, naming_equipment(i));
         }
-        int answer[6];
+        int answer[EQUIP_LEN];
         int i = 0;
         do {
-            scanf("%d", &answer[i]);
-            if(answer[i]> 5 || answer[i] < -1) {
+            homemade_scan(integer,&answer[i]);
+            //scanf("%d", &answer[i]);
+            if(answer[i]> EQUIP_LEN || answer[i] < -1) {
                 printf("please enter a number that is in the equipment list!");
             } else {
                 i++;
             }
 
-        }while(answer[i-1] != -1);
+        }while(answer[i-1] != -1);//Lav til liste af 1'er og 0'er
         for(int j = 0; answer[j]!=-1; j++) {
             user.available_equipment[j] = answer[j];
         }
@@ -128,5 +134,25 @@ questionnaire create_and_answer_questionaire() {
 
 
     return user;
+}
+
+void print_quiestionnare(questionnaire user) {
+    printf("Age:%d\n",user.age);
+    printf("Gender: %s\n",user.gender);
+    printf("Weight: %lf\n",user.weight);
+    printf("Height: %lf\n",user.height);
+    printf("Amount of pushups: %d\n",user.pushups);
+    printf("Fitness level: %d\n",user.fitness_level);
+    printf("Time in week: %lf\n",user.time_available_week);
+    int len = sizeof(user.available_equipment)/sizeof(user.available_equipment[0]);
+    printf("%d",len);
+    printf("Available equipment: ");
+    /*if(len == 0) {
+        printf("Nothing");
+    }else {
+        for(int i = 0; i<len;i++) {
+            printf("%s, ",naming_equipment(user.available_equipment[i]));
+        }
+    }*/
 }
 

@@ -36,11 +36,6 @@ int homemade_scan(datatype type, void* input) {//Uses a void for input, because 
         //Clears any extra inputs
         while ((getchar()) != '\n');//https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/
         //Return a true/false, of whether the datatype matches what we want
-        if(is_right == 1) {
-            printf("YAH");
-        }else {
-            printf("NAH");
-        }
     }while(is_right ==0);
     return is_right;
 }
