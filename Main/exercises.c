@@ -37,8 +37,11 @@ int main(void) {
     //  Potential lowest bound is 5 reps pr. set. The exercise is more suitable to an increase in additions, therefore 2 instead of 1.
     exercise burpees = {"Burpees", {0, 0, 0, 0, 0}, 2, body_weight, base_amount_burpees(MAX_REPS)};
 
+    //  find endnu en øvelse af HIIT der er mere aerobic
+    exercise jumping_jacks = {"Jumping jacks", {0, 0, 0, 0, 0}, 2, body_weight, base_amount_jumping_jacks(MAX_REPS)};
+
     //  Create array
-    exercise exercises_list[] = {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees};
+    exercise exercises_list[] = {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, jumping_jacks};
     print_exercise(exercises_list);
 }
 
@@ -106,6 +109,14 @@ int base_amount_pushups(double rep_max_pushup) {
 }
 
 double base_amount_burpees(double rep_max_squats) {
+    /*  We are taking into account that this exercise is more difficult than others
+     *  Level of exercise should be amplified by a factor of 2
+     */
+    int reps_amount_burpees = MAX_REPS - (stage_of_exercise*2);
+    return reps_amount_burpees;
+}
+
+double base_amount_jumping_jacks(double rep_max_squats) {
     /*  We are taking into account that this exercise is more difficult than others
      *  Level of exercise should be amplified by a factor of 2
      */

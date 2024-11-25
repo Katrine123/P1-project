@@ -6,6 +6,7 @@ int base_amount_elevated_pushups(double rep_max_pushup);
 double base_amount_own_exercise_lower_body(double rep_max_squats);
 double base_amount_own_exercise_upper_front_body(double rep_max_pushups);
 double base_amount_burpees(double rep_max_squats);
+double base_amount_jumping_jacks(double rep_max_squats);
 
 
 //  Stages from problem analysis
