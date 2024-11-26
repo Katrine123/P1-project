@@ -1,0 +1,101 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Project",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "bib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-bib-Debug-5855f98a66c7c964f79a.json",
+					"name" : "bib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "evaluation_questionnaire::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-evaluation_questionnaire-Debug-812675c5470182cb2791.json",
+					"name" : "evaluation_questionnaire",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "exercises::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercises-Debug-1d831aa4c6ad93e61e50.json",
+					"name" : "exercises",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-Debug-11dba3b04d52e16aca65.json",
+					"name" : "main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "new_user_questionnaire::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-new_user_questionnaire-Debug-77b6fd0bc270e611f393.json",
+					"name" : "new_user_questionnaire",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "routine::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-routine-Debug-591172ef163150073404.json",
+					"name" : "routine",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/nicolaischultz/Documents/GitHub/P1-project/Main/cmake-build-debug",
+		"source" : "/Users/nicolaischultz/Documents/GitHub/P1-project/Main"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

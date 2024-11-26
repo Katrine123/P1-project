@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libevaluation_questionnaire.a CMakeFiles/evaluation_questionnaire.dir/evaluation_questionnaire.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libevaluation_questionnaire.a
