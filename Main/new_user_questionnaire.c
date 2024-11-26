@@ -60,6 +60,8 @@ questionnaire create_and_answer_questionnaire() {
         }
     } while(user.pushups < 0);
 
+    //TILFØJ SQUATS 
+
 
     // Ask's user to enter there fitness level.
     do {

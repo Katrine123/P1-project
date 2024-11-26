@@ -1,6 +1,7 @@
 #include "exercises.h"
 #include <stdio.h>
 #include <math.h>
+#include "tools.h"
 
 #define MAX_REPS 15
 

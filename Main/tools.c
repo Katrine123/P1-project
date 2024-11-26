@@ -42,8 +42,9 @@ int homemade_scan(datatype type, void* input) {//Uses a void for input, because 
 
 
 
+//FIKS - FUNGERE IKKE NÅR ENUMS ER SAT TIL 0
 char* naming_equipment(enum equipment eq) {
-    switch(eq) {
+    /*switch(eq) {
         case barbell: return "Barbell";
         break;
         case bench: return "Bench";
@@ -54,5 +55,6 @@ char* naming_equipment(enum equipment eq) {
         break;
         case resistance_bands: return "Resistance bands";
         break;
-    }
+    }*/
+    return "test";
 }
