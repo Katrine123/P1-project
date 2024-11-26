@@ -60,6 +60,7 @@ double base_amount_own_exercise_lower_body(double rep_max_squats);
 double base_amount_own_exercise_upper_front_body(double rep_max_pushups);
 double base_amount_burpees(double rep_max_squats);
 double base_amount_jumping_jacks(double rep_max_squats);
+void exercises_list();
 
 exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);
