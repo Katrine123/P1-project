@@ -6,19 +6,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+// returns a int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
 int evaluation_questionnaire() {
     printf("Welcome back!\n"
             "Your save file has been successfully loaded\n"
             "How has you're workout been going?\n"
             "__________________________________________________________________________\n\n"
-            "Would you like to continue increasing your workout level?:    ***press 1***\n\n"
-            "Would you like to stay on your current workout level?:        ***press 2***\n\n"
-            "Would you like to decrease your workout level?:               ***press 3***\n\n"
-            "If you like to retake the questionnaire?                      ***press 4***\n\n"
-            "To exit program immediately :                                 ***press 5***\n"
+            "Would you like to continue increasing your workout level?:   ***press 1***\n\n"
+            "Would you like to stay on your current workout level?:       ***press 2***\n\n"
+            "Would you like to decrease your workout level?:              ***press 3***\n\n"
+            "If you like to retake the questionnaire?                     ***press 4***\n\n"
+            "To exit program immediately :                                ***press 5***\n"
             "__________________________________________________________________________\n");
 
-    int answer=0; //used to get
+    int answer=0;
 
     int has_answer=0; //used for while loop to define when 2 break.
 
