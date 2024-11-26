@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libroutine.a CMakeFiles/routine.dir/routine.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libroutine.a
