@@ -4,7 +4,7 @@
 #include "exercises.h"
 #include "new_user_questionnaire.h"
 #include "routine.h"
-#include "workout_session.h"
+#include "workouts.h"
 
 void main() {
     // exercise* all_exercises = create_all_exercises();
