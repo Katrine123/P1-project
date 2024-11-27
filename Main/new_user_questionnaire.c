@@ -14,7 +14,7 @@ questionnaire create_and_answer_questionnaire() {
 
     // Ask's about the users age.
     printf("What is your age in years?");
-    scanf("%d", &user.age);
+    homemade_scan(integer,&user.age);
 
     // Checks if the user is too old. If user is above 100 years program will exit.
     if(user.age > 100) {
@@ -29,14 +29,14 @@ questionnaire create_and_answer_questionnaire() {
     // Ask's user to enter there gender, and validate it to only accept input "male" or "female".
     do{
         printf("Are you a male or female");
-        scanf("%s", &user.gender);
+        homemade_scan(string, user.gender);
     }while(strcmp(user.gender,"male")!=0&& strcmp(user.gender,"female")!=0);
 
 
     // Ask's what users weight is, and loops through the input to make sure the weight is in a reasonable range (20-300 kg).
     while(user.weight < 20 || user.weight > 300) {
         printf("What is your weight in kg");
-        scanf("%lf", &user.weight);
+        homemade_scan(long_float, &user.weight);
         if(user.weight < 20 || user.weight > 300) {
             printf("I don't think that is correct!\n");
         }
@@ -45,7 +45,7 @@ questionnaire create_and_answer_questionnaire() {
     // Ask's what users height is and loops through the input, to make sure the height is in a reasonable range (50-300 cm).
     while(user.height < 50 || user.height > 300) {
         printf("What is your height in cm?");
-        scanf("%lf", &user.height);
+        homemade_scan(long_float, &user.height);
         if(user.height < 50 || user.height > 300) {
             printf("I don't think that is correct!\n");
         }
@@ -54,13 +54,13 @@ questionnaire create_and_answer_questionnaire() {
     // Ask's user to enter how many push-ups they can perform, ensuring only non-negative numbers.
     do {
         printf("How many push-ups, can you do?");
-        scanf("%d", &user.pushups);
+        homemade_scan(integer, &user.pushups);
         if(user.pushups < 0) {
             printf("Please enter 0 or more!\n");
         }
     } while(user.pushups < 0);
 
-    //TILFØJ SQUATS 
+    //TILFØJ SQUATS
 
 
     // Ask's user to enter there fitness level.
@@ -74,7 +74,7 @@ questionnaire create_and_answer_questionnaire() {
                "fitness level 5: expert experience with exercising\n");
 
         // Validates that fitness level is between 1-5.
-        scanf("%d", &user.fitness_level);
+        homemade_scan(integer, &user.fitness_level);
         if(user.fitness_level < 1 || user.fitness_level > 5) {
             printf("It has to be between 1-5!\n");
         }
@@ -83,7 +83,7 @@ questionnaire create_and_answer_questionnaire() {
     // Ask's user to enter their weekly time available is and loop through the input, to make sure the time is in a reasonable range (1-168 hours).
     do {
         printf("What is your weekly time available on a weekly basis in hours?");
-        scanf("%lf", &user.time_available_week);
+        homemade_scan(long_float, &user.time_available_week);
         if(user.time_available_week > 168) {
             printf("You do not have more hours than there is in a week!\n");
         }
@@ -97,7 +97,7 @@ questionnaire create_and_answer_questionnaire() {
 
     // ask's the user if they have access to a gym.
     printf("Do you have access to a gym?");
-    scanf("%s", gym);
+    homemade_scan(string, gym);
 
     // If user have access to a gym, they have access to all the equipment in the array.
     if(strcmp(gym,"Yes")==0) {
@@ -115,7 +115,7 @@ questionnaire create_and_answer_questionnaire() {
         int i = 0;
         // Loops to gather the equipment selected by the user, stopping at -1.
         do {
-            scanf("%d", &answer[i]);
+            homemade_scan(integer, &answer[i]);
             if(answer[i]> 5 || answer[i] < -1) {
                 printf("please enter a number that is in the equipment list!");
             } else {
