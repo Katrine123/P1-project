@@ -15,62 +15,99 @@ enum day_of_the_week {
 };
 
 typedef struct {
+    // TODO: Implement this struct:
     exercise exercises[32]; // Length of 32 simply because it is big enough.
-    // TODO: Implement this struct.
     double duration; // In minutes.
     enum day_of_the_week day;
 } workout;
 
 typedef struct {
     workout* workout;
+    // TODO: Implement this enum:
     muscle_group missing_muscle_groups[32]; // The muscle groups the workout is currently missing. Length of 32 simply because it is big enough.
-    // TODO: Implement this enum.
 } resistance_workout;
+
+typedef struct {
+    const int general_warmup_duration = 5; // In minutes.
+    const int resistance_daily_sets_limit = 6; // Any more sets are junk volume.
+    int resistance_weekly_sets_limit;
+    int resistance_recovery_time_in_days;
+    int max_hiit_sessions_per_week;
+    int aerobic_set_rest_multiplier;
+} workout_rules;
+
+workout_rules get_workout_rules(questionaire q) {
+    workout_rules rules;
+    enum fitness_level level = q.fitness_level;
+    if (level >= novice) { // novice = 5, advanced_beginner = 4, competent = 3, proficient = 2
+        rules.resistance_weekly_sets_limit = 10; // To make it easier to get into the habit of fitness.
+        rules.resistance_recovery_time_in_days = 3; // Recovery time ranges from 48-72 hours for 6-15 reps.
+        rules.max_hiit_sessions_per_week = 3; // Limited, because beginners are recommended 1-3 sessions per week.
+        rules.aerobic_set_rest_multiplier = 3; // 1:3 work-to-rest ratio.
+    } else if (level >= advanced_beginner) {
+        rules.resistance_weekly_sets_limit = 10; // To make it easier to get into the habit of fitness.
+        rules.resistance_recovery_time_in_days = 3; // Recovery time ranges from 48-72 hours for 6-15 reps.
+        rules.max_hiit_sessions_per_week = 7; // No limit, because recovery time is 24 hours.
+        rules.aerobic_set_rest_multiplier = 2; // 1:2 work-to-rest ratio.
+    } else {
+        rules.resistance_weekly_sets_limit = 20; // todo: add explanation (I should research what the max volume should be)
+        rules.resistance_recovery_time_in_days = 2; // Recovery time ranges from 48-72 hours for 6-15 reps.
+        rules.max_hiit_sessions_per_week = 7; // No limit, because recovery time is 24 hours.
+        rules.aerobic_set_rest_multiplier = 1; // 1:1 work-to-rest ratio.
+    }
+    return rules;
+}
+
+/// WARNING: Allocates memory using malloc(). Remember to dispose of the memory.
+workout* initialize_workouts(questionaire q, workout_rules rules) {
+    // TODO: I don't know if the workouts_per_week calculation will work because questionaire is a parameter.
+    int workouts_per_week = sizeof(q.available_workout_days) / sizeof(q.available_workout_days[0]);
+    workout* workouts = malloc(sizeof(workout) * workouts_per_week);
+    for (int i = 0; i < workouts_per_week; i++) {
+        workouts[i].day = q.available_workout_days[0];
+        // Add general warm-up to workout duration
+        workouts[i].duration = rules.general_warmup_duration;
+    }
+    return workouts;
+}
+
+resistance_workout* create_resistance_training_days() {
+
+}
+
+void add_resistance_exercises(resistance_workout* resistance_workouts) {
+
+}
+
+void add_aerobic_exercises(workout* workouts) {
+
+}
+
+void fill_workouts_with_sets(workout* workouts) {
+
+}
+
+void reverse_order_of_exercises(workout* workouts) {
+
+}
 
 
 /// WARNING: Allocates memory using malloc(). Remember to dispose of the memory.
 /// SUMMARY: Creates an array of workouts to be used as the final fitness routine.
-/// @param questionaire - the used questionaire.
+/// @param q - the used questionaire.
 /// @param resistance - array of resistance training exercises to be used.
 /// @param aerobic - array of aerobic training exercises to be used.
-workout *create_workouts(questionaire questionaire, exercise resistance[], int resistance_length, exercise aerobic[], int aerobic_length) {
+workout *create_workouts(questionaire q, exercise resistance[], int resistance_length, exercise aerobic[], int aerobic_length) {
+    workout_rules rules = get_workout_rules();
+    workout* workouts = initialize_workouts();
+    resistance_workout* resistance_workouts = create_resistance_training_days();
 
-    // Get workout rules (general)
-    int resistance_weekly_sets_limit;
-    int resistance_daily_sets_limit = 6; // Any more sets are junk volume.
-    int resistance_recovery_time_in_days;
-    int max_hiit_sessions_per_week;
-    int aerobic_set_rest_multiplier;
-    int general_warmup_duration = 5; // In minutes.
-    enum fitness_level level = questionaire.fitness_level;
+    add_resistance_exercises(resistance_workouts);
+    add_aerobic_exercises(workouts);
+    fill_workouts_with_sets(workouts);
+    reverse_order_of_exercises(workouts); // Makes aerobic exercises come before resistance exercises.
 
-    // Get workout rules (depending on fitness level)
-    if (level >= novice) { // novice = 5, advanced_beginner = 4, competent = 3, proficient = 2
-        resistance_weekly_sets_limit = 10; // To make it easier to get into the habit of fitness.
-        resistance_recovery_time_in_days = 3; // Recovery time ranges from 48-72 hours for 6-15 reps.
-        max_hiit_sessions_per_week = 3; // Limited, because beginners are recommended 1-3 sessions per week.
-        aerobic_set_rest_multiplier = 3; // 1:3 work-to-rest ratio.
-    } else if (level >= advanced_beginner) {
-        resistance_weekly_sets_limit = 10; // To make it easier to get into the habit of fitness.
-        resistance_recovery_time_in_days = 3; // Recovery time ranges from 48-72 hours for 6-15 reps.
-        max_hiit_sessions_per_week = 7; // No limit, because recovery time is 24 hours.
-        aerobic_set_rest_multiplier = 2; // 1:2 work-to-rest ratio.
-    } else {
-        resistance_weekly_sets_limit = 20; // todo: add explanation (I should research what the max volume should be)
-        resistance_recovery_time_in_days = 2; // Recovery time ranges from 48-72 hours for 6-15 reps.
-        max_hiit_sessions_per_week = 7; // No limit, because recovery time is 24 hours.
-        aerobic_set_rest_multiplier = 1; // 1:1 work-to-rest ratio.
-    }
-
-    // Allocate amount of workouts per week.
-    // TODO: I don't know if the workouts_per_week calculation will work because questionaire is a parameter.
-    int workouts_per_week = sizeof(questionaire.available_workout_days) / sizeof(questionaire.available_workout_days[0]);
-    workout* workouts = malloc(sizeof(workout) * workouts_per_week);
-    for (int i = 0; i < workouts_per_week; i++) {
-        workouts[i].day = questionaire.available_workout_days[0];
-        // Add general warm-up to workout duration
-        workouts[i].duration = general_warmup_duration;
-    }
+    return workouts;
 
     // Get resistance training days.
     resistance_workout resistance_workouts[3] = {NULL, NULL, NULL}; // Can max be 3 (48-72 hours of recovery).
@@ -119,19 +156,6 @@ workout *create_workouts(questionaire questionaire, exercise resistance[], int r
             continue_looping = 1;
         }
     } while (continue_looping == 1);
-
-    // Add aerobic training exercises
-
-
-    // Fill workouts with sets
-
-
-    // Reverse order of exercises (makes aerobic exercises come first)
-
-
-
-
-    return workouts;
 }
 
 
