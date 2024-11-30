@@ -540,15 +540,6 @@
         <mxCell id="rg_7Odb1sFGfNeGEuf-W-5" value="Return" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="2655" y="856.25" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="rg_7Odb1sFGfNeGEuf-W-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="rg_7Odb1sFGfNeGEuf-W-13" target="rg_7Odb1sFGfNeGEuf-W-15">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rg_7Odb1sFGfNeGEuf-W-13" value="Find missing muscle groups" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;shape=parallelogram;fixedSize=1;size=18.050000000000182;perimeter=parallelogramPerimeter;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="980" y="1460" width="170" height="62.5" as="geometry" />
-        </mxCell>
-        <mxCell id="rg_7Odb1sFGfNeGEuf-W-15" value="Foreach loop&lt;div&gt;(current workout exercises)&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1200" y="1460" width="220" height="62.5" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

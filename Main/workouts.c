@@ -1,5 +1,16 @@
 #include "workouts.h"
 #include <stdlib.h>
+#include "lists.h"
+
+//TODO:
+// Workouts use lists. Both workouts (and resistance_workouts) and lists are put on the heap.
+// Workouts are freed.
+// But does the freeing of workouts also free the lists?
+// fuck: https://stackoverflow.com/questions/71988582/freeing-a-struct-within-a-struct-in-c
+
+// TODO: Remember to always free any list that is created.
+
+// TODO: Maybe use lists everywhere instead of arrays? (E.g. in create_workouts).
 
 // TODO: Implement supersets (will decrease time spent + will need information about opposing muscle groups).
 
@@ -15,20 +26,19 @@ enum day_of_the_week {
 };
 
 typedef struct {
-    // TODO: Implement this struct:
-    exercise exercises[32]; // Length of 32 simply because it is big enough.
-    double duration; // In minutes.
+    list exercises;
+    double duration_in_minutes;
+    double max_duration_in_minutes;
     enum day_of_the_week day;
 } workout;
 
 typedef struct {
     workout* workout;
-    // TODO: Implement this enum:
-    muscle_group missing_muscle_groups[32]; // The muscle groups the workout is currently missing. Length of 32 simply because it is big enough.
+    list missing_muscle_groups; // The muscle groups that the workout is currently missing.
 } resistance_workout;
 
 typedef struct {
-    const int general_warmup_duration = 5; // In minutes.
+    const int general_warmup_duration_in_minutes = 5;
     const int resistance_daily_sets_limit = 6; // Any more sets are junk volume.
     int resistance_weekly_sets_limit;
     int resistance_recovery_time_in_days;
@@ -59,24 +69,88 @@ workout_rules get_workout_rules(questionaire q) {
 }
 
 /// WARNING: Allocates memory using malloc(). Remember to dispose of the memory.
-workout* initialize_workouts(questionaire q, workout_rules rules) {
+workout* initialize_workouts(questionaire q, workout_rules rules, int *output_workouts_per_week) {
+    // TODO: Use lists instead
+
     // TODO: I don't know if the workouts_per_week calculation will work because questionaire is a parameter.
-    int workouts_per_week = sizeof(q.available_workout_days) / sizeof(q.available_workout_days[0]);
-    workout* workouts = malloc(sizeof(workout) * workouts_per_week);
-    for (int i = 0; i < workouts_per_week; i++) {
-        workouts[i].day = q.available_workout_days[0];
+    *output_workouts_per_week = sizeof(q.available_workout_days) / sizeof(q.available_workout_days[0]);
+    workout* workouts = malloc(sizeof(workout) * *output_workouts_per_week);
+    // Assign stat variables for the workout structs
+    for (int i = 0; i < *output_workouts_per_week; i++) {
+        workouts[i].day = q.available_workout_days[i].week_day; //todo available_workout_days is a struct workout_day with an enum week_day and an int max_duration_in_minutes.
+        workouts[i].max_duration_in_minutes = q.available_workout_days[i].max_duration_in_minutes;
         // Add general warm-up to workout duration
-        workouts[i].duration = rules.general_warmup_duration;
+        workouts[i].duration_in_minutes = rules.general_warmup_duration_in_minutes;
     }
     return workouts;
 }
 
-resistance_workout* create_resistance_training_days() {
+resistance_workout* create_resistance_training_days(workout_rules rules, workout* workouts, int workouts_per_week) {
+    resistance_workout resistance_workouts[3] = {NULL, NULL, NULL}; // Can max be 3 (48-72 hours of recovery).
+    int last_resistance_workout_index = 0;
+    // Loop through workout days.
+    for (int i_workout = 0; i_workout < workouts_per_week; i_workout++ ) {
+        int is_valid = 1;
+        // In case no resistance training days exist, the day must be valid.
+        if (last_resistance_workout_index == 1) {
+            break;
+        }
+        // Loop through resistance training days.
+        for (int i_resistance = 0; i_resistance <= last_resistance_workout_index; i_resistance++) {
+            int days_between = workouts[i_workout].day - resistance_workouts[i_resistance].workout->day;
+            // Account for if the check day is in next week (e.g. the days between Sunday and Monday).
+            if (days_between < 0) {
+                days_between += 7;
+            }
+            // Mark day as invalid, if recovery rules are not met.
+            if (days_between < rules.resistance_recovery_time_in_days) {
+                is_valid = 0;
+                break;
+            }
+        }
+        // Add valid days to the list of resistance training workouts.
+        if (is_valid) {
+            resistance_workouts[last_resistance_workout_index].workout = &workouts[i_workout];
+            // Add muscle groups that must be targeted in the workout.
+            resistance_workouts[last_resistance_workout_index].missing_muscle_groups = get_required_muscle_groups(); // TODO: Implement this function (it should return a List with an enum muscle_group as the data type).
+            last_resistance_workout_index++;
+        }
+    }
+    return resistance_workouts;
+}
+
+exercise get_resistance_exercise_candidate() {
 
 }
 
-void add_resistance_exercises(resistance_workout* resistance_workouts) {
+void add_resistance_exercises(questionaire q, resistance_workout* resistance_workouts, int resistance_workouts_count) {
+    // Loop until no modifications are made to the workouts.
+    int modified_a_day_this_loop;
+    do {
+        modified_a_day_this_loop = 0;
+        // Loop through the resistance training days.
+        for (int i = 0; i < resistance_workouts_count; i++) {
+            resistance_workout *target_workout = &resistance_workouts[i];
+            list_node *missing_muscle_group = get_last_node(target_workout->missing_muscle_groups);
+            // Continue, if all muscle groups are already included in the workout.
+            if (missing_muscle_group == NULL) {
+                continue;
+            }
+            exercise exercise_candidate = get_resistance_exercise_candidate();
+            // Continue, if you cannot find a suiting exercise candidate.
+            if (exercise_candidate == NULL) {
+                continue;
+            }
+            // Add exercise and specific warm-up
+            //TODO Redo this to use lists
 
+            resistance_workouts->workout->exercises[resistance_workouts->workout->last_exercise_index] = exercise_candidate;
+            delete_node(missing_muscle_group); //
+            resistance_workouts->workout->last_exercise_index++;
+            resistance_workouts->workout->duration_in_minutes += exercise_candidate.duration;
+            modified_a_day_this_loop = 1;
+        }
+    } while (modified_a_day_this_loop == 1);
 }
 
 void add_aerobic_exercises(workout* workouts) {
@@ -99,63 +173,16 @@ void reverse_order_of_exercises(workout* workouts) {
 /// @param aerobic - array of aerobic training exercises to be used.
 workout *create_workouts(questionaire q, exercise resistance[], int resistance_length, exercise aerobic[], int aerobic_length) {
     workout_rules rules = get_workout_rules();
+    int workouts_per_week;
     workout* workouts = initialize_workouts();
     resistance_workout* resistance_workouts = create_resistance_training_days();
 
-    add_resistance_exercises(resistance_workouts);
-    add_aerobic_exercises(workouts);
-    fill_workouts_with_sets(workouts);
-    reverse_order_of_exercises(workouts); // Makes aerobic exercises come before resistance exercises.
+    add_resistance_exercises();
+    add_aerobic_exercises();
+    fill_workouts_with_sets();
+    reverse_order_of_exercises(); // Makes aerobic exercises come before resistance exercises.
 
     return workouts;
-
-    // Get resistance training days.
-    resistance_workout resistance_workouts[3] = {NULL, NULL, NULL}; // Can max be 3 (48-72 hours of recovery).
-    int last_res_workout_index = 0;
-    // Loop through the week of workouts.
-    for (int i_work = 0; i_work < workouts_per_week; i_work++ ) {
-        int is_valid = 1;
-        // In case no resistance training days exist, the day must be valid.
-        if (last_res_workout_index != 0) {
-            // Loop through resistance training days.
-            for (int i_res = 0; i_res <= last_res_workout_index; i_res++) {
-                int days_between = workouts[i_work].day - resistance_workouts[last_res_workout_index];
-                // Account for if the check day is in next week (e.g. the days between Sunday and Monday).
-                if (days_between < 0) {
-                    days_between += 7;
-                }
-                // Mark day as invalid, if recovery rules are not met.
-                if (days_between < resistance_recovery_time_in_days) {
-                    is_valid = 0;
-                    break;
-                }
-            }
-        }
-        // Add valid days to the list of resistance training workouts.
-        if (is_valid) {
-            resistance_workouts[last_res_workout_index].workout = workouts[i_work];
-            // Add muscle groups that must be targeted in the workout.
-            resistance_workouts[last_res_workout_index].missing_muscle_groups = get_required_muscle_groups(); // TODO: Implement this function.
-            last_res_workout_index++;
-        }
-    }
-
-    // Add resistance training exercises.
-    // TODO: This could be a recursive function instead of a while loop
-    int continue_looping;
-    do {
-        continue_looping = 0;
-        // Loop through all resistance training days.
-        for (int i = 0; i <= last_res_workout_index; i++ ) {
-            // Check if not all required muscle groups have been targeted that day.
-            // TODO
-            // Break, if workout duration limit is exceeded by adding an exercise.
-            // TODO
-            // Add an exercise for the missing muscle group
-            // TODO
-            continue_looping = 1;
-        }
-    } while (continue_looping == 1);
 }
 
 
