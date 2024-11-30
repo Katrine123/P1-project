@@ -1,6 +1,5 @@
 
 /// These are two-way, meaning that they both refer to their next (child) and their previous (parent) node.
-
 typedef struct list_node {
     void *data;
     struct list_node *next;
@@ -12,12 +11,10 @@ typedef struct list {
 } list;
 
 list *create_list();
-void delete_list(list *the_list);
+void delete_list(list *list_);
 
-list_node *insert_node(list_node *parent_node, void *data);
+list_node *insert_node(list_node *parent, void *data);
 void delete_node(list_node *node);
-void delete_node_and_children(list_node *node);
 
-int get_list_length(list the_list);
-list_node* g
-
+int get_list_length(list list_);
+list_node* get_last_node(list list_);
