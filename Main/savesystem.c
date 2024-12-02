@@ -71,14 +71,33 @@ user_save_data load_data() {
                 data_data[j] = '\0';
                 //printf("%s\n", data_data);
                 switch (count++) {
-                    case 0: strncpy(data.available_equipment, data_data,20); break;
-                    case 1: strncpy(data.age, data_data, 20); break;
-                    case 2: strncpy(data.gender, data_data,20); break;
-                    case 3: strncpy(data.weight, data_data, 20); break;
-                    case 4: strncpy(data.height, data_data, 20); break;
-                    case 5: strncpy(data.pushups, data_data, 20); break;
-                    case 6: strncpy(data.fitness_level, data_data, 20); break;
-                    case 7: strncpy(data.time_available_week, data_data,20); break;
+                    case 0:
+                        strncpy(data.available_equipment, data_data,20);
+                        break;
+                    case 1:
+                        strncpy(data.age, data_data, 20);
+                        break;
+                    case 2:
+                        strncpy(data.gender, data_data,20);
+                        break;
+                    case 3:
+                        strncpy(data.weight, data_data, 20);
+                        break;
+                    case 4:
+                        strncpy(data.height, data_data, 20);
+                        break;
+                    case 5:
+                        strncpy(data.pushups, data_data, 20);
+                        break;
+                    case 6:
+                        strncpy(data.fitness_level, data_data, 20);
+                        break;
+                    case 7:
+                        strncpy(data.time_available_week, data_data,20);
+                        break;
+                    case 8:
+                        strncpy(data.adjustmentfactor, data_data, 20);
+                        break;
                     default: printf("too much data will not be read\n");
                     // Switch copies the read data to the struct user data
                     // for now user data is all stored as chars for simplicity’s sake
