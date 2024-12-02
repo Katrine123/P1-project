@@ -6,6 +6,15 @@ typedef enum datatype datatype;
 enum stage_base_factor { novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1 };
 enum equipment { nothing, barbell = 0, bench = 0, pull_up_bar = 0, pull_down_machine = 0, resistance_bands = 0, length_of_equipment_enum };
 enum exercises {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, length_of_exercises_list};
+enum day_of_the_week {
+    monday = 1,
+    tuesday = 2,
+    wednesday = 3,
+    thursday = 4,
+    friday = 5,
+    saturday = 6,
+    sunday = 7
+};
 
 // nothing, barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
 typedef struct {
@@ -30,20 +39,25 @@ typedef struct {
 } exercise;
 
 typedef struct {
+    enum day_of_the_week day_week;
+    double available_time;
+}training_day;
+
+typedef struct {
     int age;
     char gender[20];
     double weight;
     double height;
     int pushups;
+    int squats;
     int fitness_level;
-    double time_available_week;
+    training_day training_days[7];
     int available_equipment[5]; //Array for deciding what exercises they can do
 } questionnaire;
 
-#define EQUIP_LEN 5
-
 int homemade_scan(datatype type, void* input);
 char* naming_equipment(enum equipment eq) ;
+char* naming_days(enum day_of_the_week day);
 
 exercise* create_available_exercises(exercise* all_exercises, questionnaire user_questionnaire);
 

@@ -58,3 +58,23 @@ char* naming_equipment(enum equipment eq) {
     }*/
     return "test";
 }
+
+char* naming_days(enum day_of_the_week day) {
+    switch(day) {
+        case monday: return "Monday";
+        break;
+        case tuesday: return "Tuesday";
+        break;
+        case wednesday: return "Wednesday";
+        break;
+        case thursday: return "Thursday";
+        break;
+        case friday: return "Friday";
+        break;
+        case saturday: return "Saturday";
+        break;
+        case sunday: return "Sunday";
+        break;
+    }
+    return "Error";
+}
