@@ -53,6 +53,13 @@ int evaluation_questionnaire() {
         }
 
     }
+    printf("How would you like to schedule this week's workouts?\n"
+        "____________________________________________________________________________________\n\n"
+        "If you want your workouts on the same days and the same times as last week   press 1\n\n"
+        "If you would like to change your workout schedule                            press 2\n"
+        "____________________________________________________________________________________\n");
+
+
     return answer;
 }
 
