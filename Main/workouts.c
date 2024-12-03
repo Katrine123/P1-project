@@ -2,20 +2,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-enum muscle_group_name {
+//TODO:
+// Check that you use pointer parameters everywhere
+// where you are changing the values of the parameter or its properties (if it's a struct).
+
+//TODO:
+// Implement supersets (will decrease time spent + will need information about opposing muscle groups).
+
+//TODO:
+// (ACTUALLY, THIS SHOULD BE DONE BY TEAM MISCHA AND LUNA)
+// Implement ignored exercises (user story: "I hate squats, please give me any leg exercise other than squats.")
+
+
+
+enum muscle_group_name_e {
     bicep, tricep, chest, quads
 }; //TODO: expand upon this
 
+// This is just a constant number to use as the size of arrays.
 static const int MUSCLE_GROUPS_ARRAY_MAX = 32;  // 32 simply because it's a big enough number.
 typedef struct {
-    enum muscle_group_name name;
+    enum muscle_group_name_e name;
     int sets;
-} muscle_group;
-muscle_group routine_muscle_groups[MUSCLE_GROUPS_ARRAY_MAX]; // This is for the whole week.
+} muscle_group_t;
+// This is the pool of muscle groups included in the whole weekly routine.
+muscle_group_t routine_muscle_groups[MUSCLE_GROUPS_ARRAY_MAX];
 int routine_muscle_groups_count = 0;
-
-// TODO: Implement supersets (will decrease time spent + will need information about opposing muscle groups).
-// TODO: (ACTUALLY, THIS SHOULD BE DONE BY TEAM MISCHA AND LUNA) Implement ignored exercises (user story: "I hate squats, please give me any leg exercise other than squats.")
+// This is the pool of muscle groups that the routine may include according to the user's preferences.
+enum muscle_group_name_e valid_muscle_groups[MUSCLE_GROUPS_ARRAY_MAX];
+int valid_muscle_groups_count = 0;
 
 // TODO: Place this inside the questionaire.c
 enum day_of_the_week {
@@ -23,6 +38,7 @@ enum day_of_the_week {
     friday = 5, saturday = 6, sunday = 7
 };
 
+// This is just a constant number to use as the size of arrays.
 static const int EXERCISES_ARRAY_MAX = 32; // 32 simply because it's a big enough number. //TODO: Relocate this where the exercise struct is defined.
 typedef struct {
     exercises exercises[EXERCISES_ARRAY_MAX];
@@ -30,13 +46,11 @@ typedef struct {
     double duration; // In minutes.
     double max_duration; // In minutes.
     enum day_of_the_week day;
-} workout;
+} workout_t;
 
 typedef struct {
-    workout* workout;
-    muscle_group valid_untargeted_muscle_groups[MUSCLE_GROUPS_ARRAY_MAX];
-    int valid_untargeted_groups_count;
-    muscle_group targeted_muscle_groups[MUSCLE_GROUPS_ARRAY_MAX];
+    workout_t* workout;
+    muscle_group_t targeted_muscle_groups[MUSCLE_GROUPS_ARRAY_MAX];
     int targeted_muscle_groups_count;
 } resistance_training_day;
 
@@ -76,10 +90,10 @@ static workout_rules get_workout_rules(
 /// @param workouts Output. Uses malloc().
 /// @param count Output.
 static void initialize_workouts(
-    workout *workouts, int *count, questionaire q, workout_rules rules)
+    workout_t *workouts, int *count, questionaire q, workout_rules rules)
 {
     *count = q.available_workout_days_count;
-    workouts = malloc(sizeof(workout) * *count);
+    workouts = malloc(sizeof(workout_t) * *count);
     // Assign stat variables for the workout structs.
     for (int i = 0; i < *count; i++) {
         //todo available_workout_days is an array of struct workout_day which has an enum week_day and an int max_duration_in_minutes.
@@ -91,36 +105,10 @@ static void initialize_workouts(
     }
 }
 
-/// @param valid_muscle_groups Output.
-/// @param count Output.
-static void set_valid_muscle_groups_to_target(
-    muscle_group valid_muscle_groups[MUSCLE_GROUPS_ARRAY_MAX], int *count, questionarie q)
-{
-    // TODO: all_muscle_groups is a global muscle group array containing all muscle groups
-    int all_muscle_groups_count = sizeof(all_muscle_groups) / sizeof(all_muscle_groups[0]);
-    // Loop through all muscle groups.
-    for (int i = 0; i < all_muscle_groups_count; i++) {
-        int is_valid = 1;
-        // Loop through all ignored muscle groups.
-        for (int j = 0; j < q.ignored_muscle_groups_count; j++) {
-            // Mark ignored groups as invalid.
-            if (all_muscle_groups[i].name == q.ignored_muscle_groups[j].name) {
-                is_valid = 0;
-                break;
-            }
-        }
-        // Add valid muscle groups to the output array.
-        if (is_valid) {
-            valid_muscle_groups[*count].name = all_muscle_groups[i].name;
-            valid_muscle_groups[*count].sets = 0;
-        }
-    }
-}
-
 /// @param resistance_days Output. Uses malloc().
 /// @param count Output.
 static void initialize_resistance_training_days(
-    resistance_training_day* resistance_days, int *count, workout_rules rules, workout* workouts, int workouts_per_week)
+    resistance_training_day* resistance_days, int *count, workout_rules rules, workout_t* workouts, int workouts_per_week)
 {
     resistance_days = malloc(sizeof(resistance_training_day) * 3); // Can max be 3 (because of minimum 48 hours of recovery).
     *count = 0;
@@ -147,26 +135,51 @@ static void initialize_resistance_training_days(
         if (is_valid) {
             resistance_training_day* addition = &resistance_days[*count];
             addition->workout = &workouts[i];
-            set_valid_muscle_groups_to_target(addition->valid_untargeted_muscle_groups, &addition->valid_untargeted_groups_count);
             *count++;
         }
     }
 }
 
-/// Returns NULL if no valid candidate is found.
-static exercise find_resistance_exercise_candidate(
-    muscle_group target_muscle_group, workout_rules rules, resistance_training_day *resistance_day)
+/// @param found_a_candidate Output.
+/// @param result Output.
+static void find_untargeted_muscle_group_candidates(
+    int *found_a_candidate, enum muscle_group_name_e *results, resistance_training_day* resistance_day)
 {
-    // TODO: possible_resistance_exercises is a global exercise array containing all possible resistance exercises (handled by team MISCHA AND LUNA).
+    for (int i = 0; i < valid_muscle_groups_count; i++) {
+        // Looping through valid muscle groups
+        for (int i = 0 )
+
+    }
+
+}
+
+static void pick_best_untargeted_muscle_group_candidate()
+{
+
+}
+
+/// @param found_a_candidate Output.
+/// @param result Output.
+static void find_resistance_exercise_candidates(
+    int *found_a_candidate, exercise *results, muscle_group_t target_muscle_group, workout_rules rules, resistance_training_day *resistance_day)
+{
+    //TODO:
+    // Needs to try to find a different resistance exercise
+    // for the same muscle group.
+    // So instead of doing squats both on resistance training day 1 and 2,
+    // you do squats the first day, and then do leg press the other
+    // for the 3rd day, it might then propose squats again, if there are no alternatives
+    // other than squats and leg press
+
+    // TODO: valid_resistance_exercises is a global exercise array containing all valid resistance exercises (handled by team MISCHA AND LUNA).
     // TODO: struct exercise has an array of muscle_group muscle_groups (for muscle groups that the exercise targets) and an int muscle_groups_count
     // Loop through all available exercises
-    for (int i = 0; i < possible_resistance_exercises_count; i++) {
-        exercise* candidate = &possible_resistance_exercises[i];
+    for (int i = 0; i < valid_resistance_exercises_count; i++) {
         // Does the exercise candidate include the target muscle group?
         int contains_target_muscle_group = 0;
-        for (int j = 0; j < candidate.muscle_groups_count; j++) {
+        for (int j = 0; j < valid_resistance_exercises[i].muscle_groups_count; j++) {
             // Looping through the candidate's targeted muscle groups
-            if (target_muscle_group.name == candidate.muscle_groups[j].name) {
+            if (target_muscle_group.name == valid_resistance_exercises[i].muscle_groups[j].name) {
                 contains_target_muscle_group = 1;
                 break;
             }
@@ -175,7 +188,7 @@ static exercise find_resistance_exercise_candidate(
             continue;
         }
         // Does adding the exercise candidate exceed workout duration limit?
-        if (resistance_day->workout->max_duration < (resistance_day->workout->duration + candidate.duration)) {
+        if (resistance_day->workout->max_duration < (resistance_day->workout->duration + valid_resistance_exercises[i].duration)) {
             continue;
         }
         // Does adding the exercise candidate exceed max weekly sets?
@@ -214,85 +227,106 @@ static exercise find_resistance_exercise_candidate(
             continue;
         }
         // If the exercise is a valid candidate, return it
-        return candidate;
+        *found_a_candidate = 1;
+        *result = valid_resistance_exercises[i];
     }
     // Return NULL if no valid candidate is found.
-    return NULL;
+    *found_a_candidate = 0;
 }
 
+static void pick_best_resistance_exercise_candidate()
+{
+
+}
+
+
 static void add_resistance_exercises(
-    questionnaire q, resistance_training_day* resistance_workouts, int resistance_workouts_count)
+    questionnaire q, resistance_training_day* resistance_days, int resistance_days_count)
 {
     // TODO: Implement this.
 
-    // Loop until no modifications are made to the workouts.
-    int modified_a_day_this_loop;
+    // Loop until we have tried to add an exercise for each muscle group.
     do {
         modified_a_day_this_loop = 0;
-        // Loop through the resistance training days.
-        for (int i = 0; i < resistance_workouts_count; i++) {
-            muscle_group a_missing_muscle_group = get_a_missing_muscle_group();
-            //todo temp
-            // resistance_workout *target_workout = &resistance_workouts[i];
-            // list_node *missing_muscle_group = get_last_node(target_workout->missing_muscle_groups);
+        for (int i = 0; i < resistance_days_count; i++) {
+            // Looping through the resistance training days.
+            // Get an untargeted muscle group candidate
 
-            // Continue, if all muscle groups are already included in the workout.
-            if (a_missing_muscle_group == NULL) {
-                continue;
-            }
-            exercise exercise_candidate = find_resistance_exercise_candidate();
-            // Continue, if you cannot find a suiting exercise candidate.
-            if (exercise_candidate == NULL) {
-                continue;
-            }
-            // Add exercise and specific warm-up
-            //TODO: Redo this
+            // Found a candidate?
 
-            //TODO: add set to workout muscle group (for looking at daily sets) and add set to routine muscle group (for looking at weekly sets)
+            // Get an exercise candidate
 
-            resistance_workouts->workout->exercises[resistance_workouts->workout->last_exercise_index] = exercise_candidate;
-            delete_node(missing_muscle_group); //
-            resistance_workouts->workout->last_exercise_index++;
-            resistance_workouts->workout->duration += exercise_candidate.duration;
-            modified_a_day_this_loop = 1;
+            // Found a candidate?
+
+            // Add exercise and specific warmup
         }
-    } while (modified_a_day_this_loop == 1);
+    } while ();
 }
 
-/// Returns NULL if no valid candidate is found.
-static exercise find_aerobic_exercise_candidate()
+/// @param found_a_candidate Output.
+/// @param result Output.
+static void find_aerobic_exercise_candidate(
+    int *found_a_candidate, exercise *results)
 {
 
 }
 
-static void add_aerobic_exercises(workout* workouts)
-{
-    // TODO: Implement this
-}
-
-static void fill_workouts_with_sets(workout* workouts)
+static void add_aerobic_exercises(workout_t* workouts)
 {
     // TODO: Implement this
 }
 
-static void reverse_order_of_exercises(workout* workouts)
+static void fill_workouts_with_sets(workout_t* workouts)
 {
     // TODO: Implement this
 }
 
+static void reverse_order_of_exercises(workout_t* workouts)
+{
+    // TODO: Implement this
+}
+
+
+/// @param valid_muscle_groups Output.
+/// @param count Output.
+static void get_valid_muscle_groups(questionarie q)
+{
+    // TODO: all_muscle_groups is a global muscle group array containing all muscle groups
+    int all_muscle_groups_count = sizeof(all_muscle_groups) / sizeof(all_muscle_groups[0]);
+    // Loop through all muscle groups.
+    for (int i = 0; i < all_muscle_groups_count; i++) {
+        muscle_group_t* the_group = &all_muscle_groups[i];
+        int is_valid = 1;
+        // Loop through all ignored muscle groups.
+        for (int j = 0; j < q.ignored_muscle_groups_count; j++) {
+            // Mark ignored groups as invalid.
+            if (the_group->name == q.ignored_muscle_groups[j].name) {
+                is_valid = 0;
+                break;
+            }
+        }
+        // Add valid muscle groups to the output array.
+        if (is_valid) {
+            valid_muscle_groups[valid_muscle_groups_count] = the_group->name;
+            valid_muscle_groups_count++;
+        }
+    }
+}
 
 /// Return value is allocated to the heap.
 /// SUMMARY: Creates an array of workouts to be used as the final fitness routine.
 /// @param q - the used questionnaire.
 /// @param resistance - array of resistance training exercises to be used.
 /// @param aerobic - array of aerobic training exercises to be used.
-workout *create_workouts(questionnaire q, exercise resistance[], int resistance_length, exercise aerobic[], int aerobic_length)
+workout_t *create_workouts(questionnaire q, exercise resistance[], int resistance_length, exercise aerobic[], int aerobic_length)
 {
     // todo: implement this.
 
+    get_valid_muscle_groups(q);
+
     workout_rules rules = get_workout_rules();
 
-    workout* workouts;
+    workout_t* workouts;
     int workouts_count;
     initialize_workouts();
 
