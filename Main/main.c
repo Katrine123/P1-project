@@ -5,14 +5,16 @@
 #include "new_user_questionnaire.h"
 //#include "routine.h"
 
-void main() {
+int main(void) {
     questionnaire test = create_and_answer_questionnaire();
     print_quiestionnare(test);
-
-    exercises_list();
+    exercises_list(test);
+    create_available_exercises(exercises_list, test);
+    print_exercise(create_available_exercises);
 
     /* exercise* all_exercises = create_all_exercises();
     questionnaire user_questionnaire = create_and_answer_questionaire();
     exercise* available_exercises = create_available_exercises(all_exercises, user_questionnaire);*/
+    return 0;
 }
 //hep
