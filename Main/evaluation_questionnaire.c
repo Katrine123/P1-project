@@ -1,9 +1,11 @@
 #include "evaluation_questionnaire.h"
-#include "new_user_questionnaire.h"
+#include "tools.h"
 #include <stdio.h>
 #include <stdlib.h>
 
+
 int get_user_days(void);
+questionnaire user;
 
 // returns a int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
 int evaluation_questionnaire() {
@@ -73,7 +75,10 @@ int evaluation_questionnaire() {
     return answer;
 }
 
+
+
 int get_user_days(void) {
+
 
     printf("What days a week do you have time? Please write numbers matching the days and type -1 when you're done\n");
     printf("1. Monday\n2. Tuesday\n3. Wednesday\n4.Thursday\n5.Friday\n6. Saturday\n7.Sunday");
@@ -109,6 +114,7 @@ int get_user_days(void) {
     i = 0;
 
     do {
+
         int add = 1;
         printf("How much time(in minutes) do you have %s?",naming_days(days[i]));
         user.training_days[i].day_week = days[i];
