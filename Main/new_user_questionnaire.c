@@ -5,7 +5,6 @@
 
 questionnaire create_and_answer_questionnaire() {
 
-
     questionnaire user;
 
     // Welcome message to new users.
