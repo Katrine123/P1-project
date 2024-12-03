@@ -162,8 +162,10 @@ questionnaire create_and_answer_questionnaire() {
 
     // If user have access to a gym, they have access to all the equipment in the array.
     if(strcmp(gym,"Yes")==0) {
+        printf("TEST");
         for(int i=0; i<5; i++) {
-            user.available_equipment[i]=i+1;
+            printf("test");
+            user.available_equipment[i]=1;
         }
         // If the user do not have access to a gym, they will be asked to enter the equipment available based on a defined list.
     } else if(strcmp(gym, "No")==0) {
