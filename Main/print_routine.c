@@ -30,6 +30,7 @@ void print_routine() {
         printf("Day %d: %s\n",i+1,naming_days(arr[i].day));
         for(int j = 0; j<arr[j].exercises_count;j++) {
             printf("Exercise %d: %s\n",j+1,arr[i].exercises[j].name);
+            //Tilføj reps og vægt
             //Print instructions
         }
         printf("______________________________\n");
