@@ -11,7 +11,7 @@ double rep_max_pushup = 90;
 double rep_max_squats = 40;
 int stage_of_exercise = novice;
 
-/*FEJL HER???*/int check_eq[length_of_equipment_enum - 1] = {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands};
+int check_eq[length_of_equipment_enum - 1] = {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands};
 
 
 //  All exercises funktion:
