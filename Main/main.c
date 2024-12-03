@@ -4,24 +4,25 @@
 #include "exercises.h"
 #include "new_user_questionnaire.h"
 #include "routine.h"
-#include "evaluation_questionnaire.h"
 #include "savesystem.h"
 
 
-void main() {
-    //questionnaire test = create_and_answer_questionnaire();
-    //print_quiestionnare(test);
-
+int main(void) {
     //exercises_list();
 
+    questionnaire user = create_and_answer_questionnaire();
+    //FOR TESTING THAT EVALUATION QUEST WORKS TOGETHER WITH USER QUEST
+    /*
+    print_quiestionnare(user);
+    evaluation_questionnaire(&user);
+    print_quiestionnare(user);*/
 
     //user start
     system("cls");
     if (check_for_save()==0) {
-        create_and_answer_questionnaire();
-
+        questionnaire user = create_and_answer_questionnaire();
     }else {
-        if (evaluation_questionnaire()==4) {
+        if (evaluation_questionnaire(&user)==4) {
             create_and_answer_questionnaire();
         }
     }
@@ -32,7 +33,7 @@ void main() {
 
 
 
-
+    return 0;
     /* exercise* all_exercises = create_all_exercises();
     questionnaire user_questionnaire = create_and_answer_questionaire();
     exercise* available_exercises = create_available_exercises(all_exercises, user_questionnaire);*/

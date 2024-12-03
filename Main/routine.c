@@ -3,7 +3,7 @@
 #include "routine.h"
 #include <stdlib.h>
 
-exercise* create_available_exercises(const exercise* all_exercises, questionnaire user_questionnaire) {
+exercise* create_available_exercises(exercise* all_exercises, questionnaire user_questionnaire) {
     // Sorter de exercises fra, som brugeren ikke kan udføre pga. udstyr
     exercise* sorted_exercise_list = (exercise *)malloc (sizeof(10*sizeof(exercise)));
     int count=0;

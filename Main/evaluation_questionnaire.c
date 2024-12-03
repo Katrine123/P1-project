@@ -4,11 +4,10 @@
 #include <stdlib.h>
 
 
-int get_user_days(void);
-questionnaire user;
+int get_user_days();
 
 // returns a int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
-int evaluation_questionnaire() {
+int evaluation_questionnaire(questionnaire* user) {
     printf("Welcome back!\n"
             "Your save file has been successfully loaded\n"
             "How has you're workout been going?\n"
@@ -64,11 +63,11 @@ int evaluation_questionnaire() {
         has_answer++;
         switch (answer) {
             case 1:
-                printf("Registered 1 pressed workout will intensify!");
+                printf("Registered 1 pressed: Workoutdays will remain the same");
             break;
             case 2:
-                printf("Registered 2 pressed workout wont change!");
-            get_user_days();
+                printf("Registered 2 pressed: ");
+                get_user_days(user);
             default: ;
         }
     }
@@ -77,9 +76,7 @@ int evaluation_questionnaire() {
 
 
 
-int get_user_days(void) {
-
-
+int get_user_days(questionnaire* user) {
     printf("What days a week do you have time? Please write numbers matching the days and type -1 when you're done\n");
     printf("1. Monday\n2. Tuesday\n3. Wednesday\n4.Thursday\n5.Friday\n6. Saturday\n7.Sunday");
     //Array to store users answer
@@ -117,12 +114,12 @@ int get_user_days(void) {
 
         int add = 1;
         printf("How much time(in minutes) do you have %s?",naming_days(days[i]));
-        user.training_days[i].day_week = days[i];
-        homemade_scan(long_float,&user.training_days[i].available_time);
-        if(user.training_days[i].available_time > 1440) {
+        user->training_days[i].day_week = days[i];
+        homemade_scan(long_float,&user->training_days[i].available_time);
+        if(user->training_days[i].available_time > 1440) {
             printf("That's more than there is in a day");
             add =0;
-        }else if(user.training_days[i].available_time < 0) {
+        }else if(user->training_days[i].available_time < 0) {
             printf("If you have no time this day then don't write that you have");
             //FJERN DAG FRA ARRAY EVT?
         }
