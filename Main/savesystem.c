@@ -15,7 +15,6 @@ int check_for_save() {
         return(0);
     }
 }
-
 ///saves data like this {[lorem] ipsum} returns 1 if successful
 int save_data(char* data, char* data_name) {
     FILE * file;
