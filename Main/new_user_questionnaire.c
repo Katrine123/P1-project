@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "new_user_questionnaire.h"
+#include "tools.h"
 #include <string.h>
 
 questionnaire create_and_answer_questionnaire() {
@@ -17,14 +17,11 @@ questionnaire create_and_answer_questionnaire() {
     printf("What is your age in years?");
     homemade_scan(integer,&user.age);
 
-    ////////////////////////////////////////////////////////////////////
-
     // Checks if the user is too old. If user is above 100 years program will exit.
     if(user.age > 100) {
         printf("You are too old to exercise!");
         exit(-1);
     }
-    ////////////////////////////////////////////////////////////////////
 
     // Checks if the user is too young. If user is below 14 years program will exit.
     if(user.age < 14) {
@@ -87,11 +84,11 @@ questionnaire create_and_answer_questionnaire() {
     do {
         printf("What is your fitness level/experience level in a scale of 1-5?\n");
 
-        printf("fitness level 1: No experience with exercising \n"
-               "fitness level 2: A little experience with exercising\n"
-               "fitness level 3: intermediate experience with exercising\n"
-               "fitness level 4: advanced experience with exercising\n"
-               "fitness level 5: expert experience with exercising\n");
+        printf("1. Novice: No experience with exercising \n"
+               "2. Advanced beginner: A little experience with exercising\n"
+               "3. Competent: Intermediate experience with exercising\n"
+               "4. Proficient: Advanced experience with exercising\n"
+               "5. Expert: Expert experience with exercising\n");
 
         // Validates that fitness level is between 1-5.
         homemade_scan(integer, &user.fitness_level);
@@ -212,7 +209,7 @@ void print_quiestionnare(questionnaire user) {
     int len = sizeof(user.available_equipment)/sizeof(user.available_equipment[0]);
     printf("Available equipment: ");
     if(len == 0) {
-        printf("Nothing"); 
+        printf("Nothing");
     }else {
         for(int i = 0; i<len;i++) {
             if(user.available_equipment[i]==1) {

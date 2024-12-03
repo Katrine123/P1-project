@@ -15,7 +15,6 @@ int check_eq[length_of_equipment_enum - 1] = {barbell, bench, pull_up_bar, pull_
 
 
 //  All exercises funktion:
-//  Ændr til en struct array hvor den returnerer en exercise i arrayet for hver gange der skabes en
 void exercises_list() {
     //  With equipment
     //  Bench press

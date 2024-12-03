@@ -1,7 +1,3 @@
-//
-// Created by mwsan on 11/14/2024.
-//
-
 #include "evaluation_questionnaire.h"
 #include <stdio.h>
 #include <stdlib.h>

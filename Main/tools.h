@@ -1,9 +1,8 @@
-
 enum datatype {integer, character, long_float, string};
 typedef enum datatype datatype;
 
 //  Stages from problem analysis
-enum stage_base_factor { novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1 };
+enum stage_base_factor {novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1 };
 enum equipment { nothing, barbell = 0, bench = 0, pull_up_bar = 0, pull_down_machine = 0, resistance_bands = 0, length_of_equipment_enum };
 enum exercises {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, length_of_exercises_list};
 enum day_of_the_week {
@@ -92,6 +91,8 @@ int check_for_save();
 int save_data();
 
 void load_data();
+
+void print_routine();
 
 #endif //SAVESYSTEM_H
 

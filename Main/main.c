@@ -2,14 +2,15 @@
 #include <stdlib.h>
 #include <math.h>
 //#include "exercises.h"
-#include "new_user_questionnaire.h"
+#include "tools.h"
 //#include "routine.h"
 
 void main() {
-    questionnaire test = create_and_answer_questionnaire();
-    print_quiestionnare(test);
+    print_routine();
+    //questionnaire test = create_and_answer_questionnaire();
+    //print_quiestionnare(test);
 
-    exercises_list();
+    //exercises_list();
 
     /* exercise* all_exercises = create_all_exercises();
     questionnaire user_questionnaire = create_and_answer_questionaire();
