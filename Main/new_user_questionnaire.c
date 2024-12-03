@@ -122,7 +122,7 @@ questionnaire create_and_answer_questionnaire() {
         }
 
         if(days[i]>7 || days[i]<-1||days[i]==0) {
-            printf("Please choose on of the numbers available");
+            printf("Please choose one of the numbers available");
             add = 0;
         }
         //If they have no days availabe then close program
