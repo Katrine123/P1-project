@@ -78,11 +78,6 @@ void exercises_list();
 exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);
 
-
-//
-// Created by mwsan on 11/14/2024.
-//
-
 #ifndef SAVESYSTEM_H
 #define SAVESYSTEM_H
 
@@ -95,6 +90,8 @@ void load_data();
 void print_routine();
 
 #endif //SAVESYSTEM_H
+
+int evaluation_questionnaire(questionnaire* user);
 
 
 
