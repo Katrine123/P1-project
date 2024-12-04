@@ -177,7 +177,7 @@ void print_exercise(exercise exercises_list[]) {
 
 
 // Print function to display the viable exercises
-void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user) {
+void print_exercises_2(exercise sorted_exercise_list[], exercise exercises_list[], int count, questionnaire user) {
     printf("Viable Exercises:\n");
     printf("SE HER: %d", count);
     for (int i = 0; i < count; i++) {
@@ -188,7 +188,7 @@ void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire
         if(sorted_exercise_list[i].base_weight != user.weight) {
             printf("Base weight: %lf\n", sorted_exercise_list[i].base_weight);
         }
-        printf("Reps: %d\n", sorted_exercise_list[i].amount_of_reps);
+        printf("Reps: %d\n", exercises_list[i].amount_of_reps);
         if (sorted_exercise_list[i].check_eq[0] == 1) {
             printf(" - Barbell\n");
         }

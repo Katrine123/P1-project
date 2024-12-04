@@ -87,7 +87,7 @@ questionnaire create_and_answer_questionnaire() {
     do {
         printf("What is your fitness level/experience level in a scale of 1-5?\n");
 
-        printf("fitness level 1: No experience with exercising \n"
+        printf("fitness level 1 (novice): No experience with exercising \n"
                "fitness level 2: A little experience with exercising\n"
                "fitness level 3: intermediate experience with exercising\n"
                "fitness level 4: advanced experience with exercising\n"

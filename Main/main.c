@@ -25,7 +25,7 @@ int main(void) {
     exercise* sorted_exercise_list = create_available_exercises(ex_test, test, &sorted_count);
 
     // Print the viable exercises
-    print_exercises_2(sorted_exercise_list, sorted_count, test);
+    print_exercises_2(sorted_exercise_list, ex_test,sorted_count, test);
 
     // Free the dynamically allocated memory for the sorted list
     free(sorted_exercise_list);
