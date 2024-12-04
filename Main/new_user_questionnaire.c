@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "tools.h"
+#include "new_user_questionnaire.h"
 #include <string.h>
 
 questionnaire create_and_answer_questionnaire() {
+
 
     questionnaire user;
 
@@ -83,11 +84,11 @@ questionnaire create_and_answer_questionnaire() {
     do {
         printf("What is your fitness level/experience level in a scale of 1-5?\n");
 
-        printf("1. Novice: No experience with exercising \n"
-               "2. Advanced beginner: A little experience with exercising\n"
-               "3. Competent: Intermediate experience with exercising\n"
-               "4. Proficient: Advanced experience with exercising\n"
-               "5. Expert: Expert experience with exercising\n");
+        printf("fitness level 1: No experience with exercising \n"
+               "fitness level 2: A little experience with exercising\n"
+               "fitness level 3: intermediate experience with exercising\n"
+               "fitness level 4: advanced experience with exercising\n"
+               "fitness level 5: expert experience with exercising\n");
 
         // Validates that fitness level is between 1-5.
         homemade_scan(integer, &user.fitness_level);
@@ -97,58 +98,11 @@ questionnaire create_and_answer_questionnaire() {
     }while(user.fitness_level < 1 || user.fitness_level > 5);
 
     ////////////////////////////////////////////////////////////////////
-
-    // Ask's user to enter the days they can train.
-    printf("What days a week do you have time? Please write numbers matching the days and type -1 when you're done\n");
-    printf("1. Monday\n2. Tuesday\n3. Wednesday\n4.Thursday\n5.Friday\n6. Saturday\n7.Sunday");
-    //Array to store users answer
-    int days[7];
-    int i = 0;
-    do {
-        int add = 1;
-        homemade_scan(integer, &days[i]);
-
-        //Check if the same day is chosen twice
-        for(int j = 0; j<i;j++) {
-            if(days[i]==days[j]) {
-                printf("This day has already been chosen");
-                add = 0;
-                break;
-            }
-        }
-
-        if(days[i]>7 || days[i]<-1||days[i]==0) {
-            printf("Please choose on of the numbers available");
-            add = 0;
-        }
-        //If they have no days availabe then close program
-        if(i == 0 && days[i]==-1) {
-            printf("If you have no time available we cannot help you!");
-            exit(-1);
-        }
-
-        i += add;
-    }while(i<7&&days[i-1]!=-1);
-
-    i = 0;
-
+    //Function for getting the days the user can train
+    get_user_days(&user);
     ////////////////////////////////////////////////////////////////////
-    do {
-        int add = 1;
-        printf("How much time(in minutes) do you have %s?",naming_days(days[i]));
-        user.training_days[i].day_week = days[i];
-        homemade_scan(long_float,&user.training_days[i].available_time);
-        if(user.training_days[i].available_time > 1440) {
-            printf("That's more than there is in a day");
-            add =0;
-        }else if(user.training_days[i].available_time < 0) {
-            printf("If you have no time this day then don't write that you have");
-            //FJERN DAG FRA ARRAY EVT?
-        }
-        i+=add;
-    }while(days[i]!=-1);
 
-    ////////////////////////////////////////////////////////////////////
+
 
     char gym[5];
 
@@ -158,8 +112,10 @@ questionnaire create_and_answer_questionnaire() {
 
     // If user have access to a gym, they have access to all the equipment in the array.
     if(strcmp(gym,"Yes")==0) {
+        printf("TEST");
         for(int i=0; i<5; i++) {
-            user.available_equipment[i]=i+1;
+            printf("test");
+            user.available_equipment[i]=1;
         }
         // If the user do not have access to a gym, they will be asked to enter the equipment available based on a defined list.
     } else if(strcmp(gym, "No")==0) {
@@ -208,7 +164,7 @@ void print_quiestionnare(questionnaire user) {
     int len = sizeof(user.available_equipment)/sizeof(user.available_equipment[0]);
     printf("Available equipment: ");
     if(len == 0) {
-        printf("Nothing");
+        printf("Nothing"); 
     }else {
         for(int i = 0; i<len;i++) {
             if(user.available_equipment[i]==1) {
@@ -218,4 +174,55 @@ void print_quiestionnare(questionnaire user) {
     }
 }
 
+
+int get_user_days(questionnaire* user) {
+    printf("What days a week do you have time? Please write numbers matching the days and type -1 when you're done\n");
+    printf("1. Monday\n2. Tuesday\n3. Wednesday\n4.Thursday\n5.Friday\n6. Saturday\n7.Sunday");
+    //Array to store users answer
+    int days[7];
+    int i = 0;
+    do {
+        int add = 1;
+        homemade_scan(integer, &days[i]);
+
+        //Check if the same day is chosen twice
+        for(int j = 0; j<i;j++) {
+            if(days[i]==days[j]) {
+                printf("This day has already been chosen");
+                add = 0;
+                break;
+            }
+        }
+
+        if(days[i]>7 || days[i]<-1||days[i]==0) {
+            printf("Please choose one of the numbers available");
+            add = 0;
+        }
+        //If they have no days availabe then close program
+        if(i == 0 && days[i]==-1) {
+            printf("If you have no time available we cannot help you!");
+            exit(-1);
+        }
+
+        i += add;
+    }while(i<7&&days[i-1]!=-1);
+
+    i = 0;
+
+    do {
+
+        int add = 1;
+        printf("How much time(in minutes) do you have %s?",naming_days(days[i]));
+        user->training_days[i].day_week = days[i];
+        homemade_scan(long_float,&user->training_days[i].available_time);
+        if(user->training_days[i].available_time > 1440) {
+            printf("That's more than there is in a day");
+            add =0;
+        }else if(user->training_days[i].available_time < 0) {
+            printf("If you have no time this day then don't write that you have");
+            //FJERN DAG FRA ARRAY EVT?
+        }
+        i+=add;
+    }while(days[i]!=-1);
+}
 
