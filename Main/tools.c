@@ -1,6 +1,7 @@
-#include "tools.h"
 #include <ctype.h> //https://www.w3schools.com/c/c_ref_ctype.php
 #include <stdio.h>
+
+#include "tools.h"
 
 int homemade_scan(datatype type, void* input) {//Uses a void for input, because we don't know what datatype we'll get - Inspiration from qsort
     int is_right = 0;
@@ -40,11 +41,8 @@ int homemade_scan(datatype type, void* input) {//Uses a void for input, because 
     return is_right;
 }
 
-
-
-//FIKS - FUNGERE IKKE NÅR ENUMS ER SAT TIL 0
 char* naming_equipment(enum equipment eq) {
-    /*switch(eq) {
+    switch(eq) {
         case barbell: return "Barbell";
         break;
         case bench: return "Bench";
@@ -55,8 +53,8 @@ char* naming_equipment(enum equipment eq) {
         break;
         case resistance_bands: return "Resistance bands";
         break;
-    }*/
-    return "test";
+    }
+    return "Error";
 }
 
 char* naming_days(enum day_of_the_week day) {

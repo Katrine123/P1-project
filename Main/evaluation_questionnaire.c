@@ -1,6 +1,7 @@
-#include "evaluation_questionnaire.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "evaluation_questionnaire.h"
 
 
 // returns a int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
@@ -30,7 +31,6 @@ int evaluation_questionnaire() {
             break;
             case 2:
                 printf("Registered 2 pressed workout wont change!");
-            //increasedifficulty();
             break;
             case 3:
                 printf("Registered 3 pressed workout will decrease!");
