@@ -72,7 +72,7 @@ int base_amount_pushups(questionnaire user);
 int base_amount_elevated_pushups(questionnaire user);
 double base_amount_burpees(questionnaire user);
 double base_amount_jumping_jacks(questionnaire user);
-exercise exercises_list(questionnaire user);
+void exercises_list(exercise* exercise_list, questionnaire user);
 
 exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);

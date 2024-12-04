@@ -1,6 +1,7 @@
 #include "tools.h"
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 #define MAX_REPS 15
 
@@ -14,37 +15,43 @@ int stage_of_exercise = novice;
 
 int check_eq[length_of_equipment_enum] = {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands};
 //  All exercises funktion:
-//  Ændr til en struct array hvor den returnerer en exercise i arrayet for hver gange der skabes en
-exercise exercises_list(questionnaire user) {
+
+void exercises_list(exercise* exercise_list, questionnaire user) {
     //  With equipment
     //  Bench press
     exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), 12};
+    exercise_list[0] = bench_press;
 
     //  Weighted squats
     exercise weighted_squats = {"Weighted squats", {1, 0, 0, 0, 0}, 2.5, base_weight_weighted_squats(user), 12};
+    exercise_list[1] = weighted_squats;
 
     //  Air squats
     exercise air_squats = {"Air squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_air_squats(user)};
+    exercise_list[2] = air_squats;
 
     //  Pushups
     exercise pushups = {"Pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_pushups(user)};
+    exercise_list[3] = pushups;
 
     //  Elevated Pushups
     exercise elevated_pushups = {"Elevated pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_elevated_pushups(user)};
+    exercise_list[4] = elevated_pushups;
 
     //  HIIT
     //  Burpees
     //  Potential lowest bound is 5 reps pr. set. The exercise is more suitable to an increase in additions, therefore 2 instead of 1.
     exercise burpees = {"Burpees", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_burpees(user)};
+    exercise_list[5] = burpees;
 
     //  find endnu en øvelse af HIIT der er mere aerobic
     exercise jumping_jacks = {"Jumping jacks", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_jumping_jacks(user)};
-
+    exercise_list[6] = jumping_jacks;
     //  Create array
     //  Return this array !
-    exercise exercises_list[length_of_exercises_list] = {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, jumping_jacks};
+    //exercise exercises_list[length_of_exercises_list] = {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, jumping_jacks};
     //print_exercise(exercises_list);
-    return exercises_list[length_of_exercises_list];
+    //return exercises_list[length_of_exercises_list];
 }
 
 ///function for rounding down to the nearest number divisbl by 2.5

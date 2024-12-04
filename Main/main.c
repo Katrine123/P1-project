@@ -8,9 +8,12 @@
 int main(void) {
     questionnaire test = create_and_answer_questionnaire();
     print_quiestionnare(test);
-    exercises_list(test);
-    create_available_exercises(exercises_list, test);
-    print_exercise(create_available_exercises);
+    exercise ex_test[length_of_exercises_list];
+    exercises_list(ex_test,test);
+    print_exercise(ex_test);
+    exercise* ex_test2 = create_available_exercises(ex_test, test);
+    printf("_____________________________________");
+    print_exercise(ex_test2);
 
     /* exercise* all_exercises = create_all_exercises();
     questionnaire user_questionnaire = create_and_answer_questionaire();
