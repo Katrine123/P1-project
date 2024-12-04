@@ -4,7 +4,7 @@ typedef enum datatype datatype;
 
 //  Stages from problem analysis
 enum stage_base_factor { novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1 };
-enum equipment { nothing, barbell = 0, bench = 0, pull_up_bar = 0, pull_down_machine = 0, resistance_bands = 0, length_of_equipment_enum };
+enum equipment {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands, length_of_equipment_enum };
 enum exercises {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, length_of_exercises_list};
 enum day_of_the_week {
     monday = 1,
@@ -55,16 +55,17 @@ typedef struct {
     int available_equipment[5]; //Array for deciding what exercises they can do
 } questionnaire;
 
-int homemade_scan(datatype type, void* input);
-char* naming_equipment(enum equipment eq) ;
-char* naming_days(enum day_of_the_week day);
+//// ALL FUNCTIONS HERE ////
 
-exercise* create_available_exercises(exercise* all_exercises, questionnaire user_questionnaire);
+//  In evaluation_questionnaire.c  //
 
-questionnaire create_and_answer_questionnaire();
+int evaluation_questionnaire(questionnaire* user);
 
-void print_quiestionnare(questionnaire user);
+//  In exercises.c  //
 
+void exercises_list();
+
+//Skal måske ikke være her?
 double base_weight_bench_press(double body_weight_pushups, double rep_max_pushup);
 double base_weight_weighted_squats(double body_weight, double rep_max_pushup);
 double base_amount_air_squats(double rep_max_squats);
@@ -74,10 +75,24 @@ double base_amount_own_exercise_lower_body(double rep_max_squats);
 double base_amount_own_exercise_upper_front_body(double rep_max_pushups);
 double base_amount_burpees(double rep_max_squats);
 double base_amount_jumping_jacks(double rep_max_squats);
-void exercises_list();
 
-exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);
+
+//  In list.c  //
+
+//  In new_user_questionnaire.c  //
+
+questionnaire create_and_answer_questionnaire();
+int get_user_days(questionnaire* user);
+void print_quiestionnare(questionnaire user);
+
+//  In print_routine.c  //
+void print_routine();
+
+//  In routine.c  //
+exercise* create_available_exercises(exercise* all_exercises, questionnaire user_questionnaire);
+
+//  In savesystem.c  //
 
 #ifndef SAVESYSTEM_H
 #define SAVESYSTEM_H
@@ -90,8 +105,19 @@ void load_data();
 
 #endif //SAVESYSTEM_H
 
-int evaluation_questionnaire(questionnaire* user);
-int get_user_days(questionnaire* user);
+//  In tools.c  //
+
+int homemade_scan(datatype type, void* input);
+char* naming_equipment(enum equipment eq) ;
+char* naming_days(enum day_of_the_week day);
+
+
+//Fjern?
+exercise* create_all_exercises();
+
+
+
+
 
 
 

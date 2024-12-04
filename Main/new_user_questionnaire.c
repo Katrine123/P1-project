@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "new_user_questionnaire.h"
 #include <string.h>
+
+#include "tools.h"
 
 questionnaire create_and_answer_questionnaire() {
 

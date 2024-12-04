@@ -10,6 +10,7 @@ add_library(routine routine)
 add_library(evaluation_questionnaire evaluation_questionnaire)
 add_library(tools tools)
 add_library(lists lists)
+add_library(print_routine print_routine)
 
 target_link_libraries(main
         bib
@@ -17,5 +18,6 @@ target_link_libraries(main
         new_user_questionnaire
         routine
         evaluation_questionnaire
-        tools
-        lists)
+        lists
+        print_routine
+        tools)

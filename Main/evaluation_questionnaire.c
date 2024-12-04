@@ -1,11 +1,11 @@
-#include "evaluation_questionnaire.h"
-#include "tools.h"
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "evaluation_questionnaire.h"
+
 
 // returns a int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
-int evaluation_questionnaire(questionnaire* user) {
+int evaluation_questionnaire() {
     printf("Welcome back!\n"
             "Your save file has been successfully loaded\n"
             "How has you're workout been going?\n"
@@ -31,7 +31,6 @@ int evaluation_questionnaire(questionnaire* user) {
             break;
             case 2:
                 printf("Registered 2 pressed workout wont change!");
-            //increasedifficulty();
             break;
             case 3:
                 printf("Registered 3 pressed workout will decrease!");
@@ -55,20 +54,8 @@ int evaluation_questionnaire(questionnaire* user) {
         "If you want your workouts on the same days and the same times as last week   press 1\n\n"
         "If you would like to change your workout schedule                            press 2\n"
         "____________________________________________________________________________________\n");
-    has_answer=0;
-    while(has_answer==0) {
-        scanf("%d", &answer);
-        has_answer++;
-        switch (answer) {
-            case 1:
-                printf("Registered 1 pressed: Workoutdays will remain the same");
-            break;
-            case 2:
-                printf("Registered 2 pressed: ");
-                get_user_days(user);
-            default: ;
-        }
-    }
+
+
     return answer;
 }
 
