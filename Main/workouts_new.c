@@ -1,6 +1,7 @@
 #include "workouts_new.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 //TODO: Merge this workouts_new.c with the old workouts.c
 
@@ -9,19 +10,35 @@ static const int ARRAY_MAX = 32; // 32 simply because it is big enough.
 
 // Enums
 typedef enum {
-    //TODO: Must be expanded to include biceps, triceps, chest, etc.
-} muscle_group_name_e;
+    //TODO: Not implemented yet. Should contain stuff like biceps, triceps, chest, etc.
+} muscle_group_name;
+typedef enum {
+    //TODO: Not implemented yet. Should contain stuff like, bench_press, squat, deadlift, etc.
+} exercise_name;
 
 // Structs
+typedef struct muscle_group {
+    muscle_group_name name;
+    struct muscle_group* parent; // Muscle groups in struct exercise refer to muscle groups in struct workout which refers to muscle groups in the global routine variable.
+    int sets; // Irrelevant for struct exercise, is daily sets for struct workout, and is weekly sets for the global routine variable.
+} muscle_group;
 typedef struct {
-    exercise_t a_exercises[ARRAY_MAX]; int exercises_count;
+    exercise_name name;
+    muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups targeted by the exercise. Aerobic exercises do not target any specific muscles.
+    int sets;
+    int is_aerobic; // Is boolean.
+    double duration; // In minutes.
+    double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
+} exercise;
+typedef struct {
+    exercise exercises[ARRAY_MAX]; int exercises_count;
     double duration; double max_duration;
-} workout_t;
-typedef struct muscle_group_t {
-    enum muscle_group_name_e name;
-    int sets; // Either daily or weekly sets depending on whether the muscle_group struct is past of the routine_muscle_groups array of muscle_groups (weekly sets) or the muscle_group struct is a property of a workout struct (daily sets).
-    struct muscle_group_t *p_routine_muscle_group; // The struct workout_t has properties of the struct exercise_t which has properties of struct muscle_group_t.
-} muscle_group_t;
+    muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups included in the workout.
+} workout;
+
+// For the whole fitness routine
+static muscle_group routine_muscles[ARRAY_MAX]; static int routine_muscles_count; // Muscle groups included in the routine.
+
 
 // Workout rules
 const int general_warmup_duration = 5; // In minutes.
@@ -31,17 +48,179 @@ int resistance_recovery;
 int max_weekly_aerobic_workouts;
 int aerobic_rest_multiplier; // For example, a multiplier of 2, means a work-to-rest ratio of 1:2.
 
-// For the whole routine
-muscle_group_t a_routine_included_muscle_groups[ARRAY_MAX];
-int routine_included_muscle_groups_count;
+// ----------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------
 
+// Helper functions
+static int does_adding_a_set_exceed_daily_or_weekly_set_max(exercise *_exercise) {
 
+    // Foreach muscle group the exercise targets
+    for (int i = 0; _exercise->muscles_count; i++) {
 
+        // Declare variables
+        muscle_group *exercise_muscle = &_exercise->muscles[i];
+        muscle_group *workout_muscle = exercise_muscle->parent;
+        muscle_group *routine_muscle = workout_muscle->parent;
 
-// Functions
+        // Exceeds daily set max?
+        int new_daily_sets = workout_muscle->sets + 1;
+        if (new_daily_sets > max_daily_sets) {
+            return 1;
+        }
+
+        // Exceeds daily set max?
+        int new_weekly_sets = routine_muscle->sets + 1;
+        if (new_weekly_sets > max_weekly_sets) {
+            return 1;
+        }
+    }
+
+    // Return false if the checks pass
+    return 0;
+}
+static int does_adding_a_set_exceed_workout_duration_max(exercise *_exercise, workout* _workout) {
+
+    // Does it exceed workout duration max?
+    double new_duration = _workout->duration + _exercise->duration;
+    if (new_duration > _workout->max_duration) {
+        return 1;
+    }
+
+    // Return false if the check passes
+    return 0;
+}
+static int does_routine_already_contain_exercise(exercise *_exercise, workout* workouts, int workouts_count) {
+
+    // Foreach workout in the routine
+    for (int i = 0; i < workouts_count; i++) {
+
+        // Declare variables
+        workout* _workout = &workouts[i];
+
+        // Foreach exercise in the workouts
+        for (int j = 0; j < _workout->exercises_count; j++) {
+
+            // Declare variables
+            exercise* workout_exercise = &_workout->exercises[j];
+
+            // Is the exercise a duplicate?
+            if (workout_exercise->name == _exercise->name) {
+                return 1;
+            }
+        }
+    }
+
+    // Return false if the checks passes
+    return 0;
+}
+static void add_set_to_exercise(exercise *_exercise, workout* _workout) {
+
+    // Is exercise aerobic?
+    if (!_exercise->is_aerobic) {
+
+        // Add sets to parent muscle groups
+        // Foreach muscle group the exercise targets
+        for (int i = 0; _exercise->muscles_count; i++) {
+
+            // Declare variables
+            muscle_group *exercise_muscle = &_exercise->muscles[i];
+            muscle_group *workout_muscle = exercise_muscle->parent;
+            muscle_group *routine_muscle = workout_muscle->parent;
+
+            // Add sets to muscle groups
+            workout_muscle->sets++;
+            routine_muscle->sets++;
+        }
+
+        // If sets = 0, then add specific warmup to workout duration
+        if (_exercise->sets == 0) {
+            _workout->duration += _exercise->specific_warmup_duration;
+        }
+    }
+
+    // Add to workout duration
+    _workout->duration += _exercise->duration;
+
+    // Add set to exercise
+    _exercise->sets++;
+}
+/// @param candidate Output. It is set to NULL if no candidate is found.
+static void try_to_find_resistance_exercise_candidate(exercise* candidate, muscle_group* target_muscle, workout _workout, workout* workouts, int workouts_count) {
+
+    // Declare variables
+    exercise* last_valid_exercise = NULL;
+
+    // Get a random start index of the valid resistance exercises
+    srand(time(NULL));
+    int exercises_count = valid_resistance_exercises_count;
+    int start_index = rand() % exercises_count;
+
+    // Foreach valid resistance exercise
+    for (int old_i = 0; old_i < exercises_count; old_i++) {
+
+        // Get new index
+        int i = start_index + old_i;
+        if (i >= exercises_count) {
+            i -= exercises_count;
+        }
+
+        // Declare variables
+        exercise* _exercise = &valid_resistance_exercises[i];
+
+        // Includes target muscle group?
+        int includes_target_muscle = 0;
+        // Foreach muscle group that the exercise targets
+        for (int j = 0; j < _exercise->muscles_count; j++) {
+            // Does the muscle group name match the muscle group name of the exercise?
+            if (_exercise->muscles[j].name == target_muscle->name) {
+                includes_target_muscle = 1;
+                break;
+            }
+        }
+        if (!includes_target_muscle) {
+            continue;
+        }
+
+        // Exceeds workout duration max?
+        if (does_adding_a_set_exceed_workout_duration_max(_exercise, _workout)) {
+            continue;
+        }
+
+        // Exceeds either weekly sets max or daily sets max?
+        if (does_adding_a_set_exceed_daily_or_weekly_set_max(_exercise)) {
+            continue;
+        }
+
+        // Store valid exercise
+        last_valid_exercise = _exercise;
+
+        // We will now try to get a unique exercise (an exercise that has not yet been included in the routine).
+        // Routine already contains the exercise?
+        if (does_routine_already_contain_exercise(_exercise, workouts, workouts_count)) {
+            continue;
+        }
+
+        // Clone the exercise to the output, if all checks pass
+        *candidate = *_exercise;
+        return;
+    }
+
+    // Since we could not find a unique exercise, we will settle for a duplicate,
+    // provided that we actually have found a valid duplicate.
+    if (last_valid_exercise != NULL) {
+        *candidate = *last_valid_exercise;
+        return;
+    }
+
+    // If no checks pass, no candidate is found
+    candidate = NULL;
+}
+
+// Main functions
 static void set_workout_rules() {
 
-    fitness_level_e level = questionnaire.fitnessLevel;
+    enum fitness_level level = questionnaire.fitnessLevel;
 
     if (level >= novice) { // (novice = 5, advanced_beginner = 4, competent = 3, proficient = 2)
         max_weekly_sets = 10; // To make it easier to get into the habit of fitness.
@@ -60,133 +239,131 @@ static void set_workout_rules() {
         aerobic_rest_multiplier = 1; // 1:1 work-to-rest ratio.
     }
 }
-int adding_a_set_exceeds_daily_set_max(exercise_t *p_exercise) {
+static void add_resistance_exercises(workout *workouts, int workouts_count) {
 
-    // Todo: Implement this.
+    // TODO: Implement this.
 
-    //TODO:
-    // What is fucking me up is that
-    // each workout_t has muscle_group[] which contains sets (daily sets)
-    // furthermore, there is a global muscle_group[] for the whole routine which contains sets (weekly sets)
+    // Get a random start index of the valid muscle groups
+    srand(time(NULL));
+    int muscles_count = valid_muscles_count; // TODO: Implement this
+    int start_index = rand() % muscles_count;
 
-    // Foreach targeted muscle group
-    for (int i = 0; p_exercise->muscle_groups_count; i++) {
+    // Foreach valid muscle group
+    for (int old_i = 0; old_i < muscles_count; old_i++) {
 
-        //TODO:
-        // Each exercise_muscle_group has a pointer to a global variable muscle_group inside the routine's muscle_groups,
-        // so that you may find the routine's total amount of sets through that.
-
-        // Declare variables
-        muscle_group_t *p_muscle_group = &p_exercise->muscle_groups[i];
-        muscle_group_t *p_routine_muscle_group = p_muscle_group->p_routine_muscle_group;
-
-        //
-        int new_sets = p_routine_muscle_group->sets + 1;
-        if (max_daily_sets) {
-
+        // Get new index
+        int i = start_index + old_i;
+        if (i >= muscles_count) {
+            i -= muscles_count;
         }
 
+        // Declare variables
+        muscle_group* target_muscle = &valid_muscles[i];
+
+        // Foreach resistance training day
+        for (int j = 0; j < resistance_days_count; j++) {
+
+            // Declare variables
+            workout *_workout = &resistance_days[j];
+
+            // Try to find exercise candidate
+            exercise* exercise_candidate = NULL;
+            try_to_find_resistance_exercise_candidate(exercise_candidate, target_muscle, _workout, workouts, workouts_count);
+
+            // Found a candidate?
+            if (exercise_candidate == NULL) {
+                continue;
+            }
+
+            // Add exercise to the training day
+            // TODO: Implement this.
+        }
     }
 
-    // Return false if the checks pass
-    return 0;
 }
-static void fill_workouts_with_sets(workout_t *a_workouts, int workouts_count) {
-
-    // Todo: Implement this (after you've implemented "adding_a_set_exceeds_daily_set_max()").
+static void fill_workouts_with_sets(workout *workouts, int workouts_count) {
 
     // Do while sets are being added
     int loop_added_a_set;
     do {
+
         loop_added_a_set = 0;
 
         // Foreach workout
         for (int i = 0; i < workouts_count; i++) {
 
             // Declare variables
-            workout_t* p_workout = &a_workouts[i];
-            int exercise_count = p_workout->exercises_count;
+            workout* _workout = &workouts[i];
 
             // Foreach exercise
-            for (int j = 0; j < exercise_count; j++) {
+            for (int j = 0; j < _workout->exercises_count; j++) {
 
                 // Declare variables
-                exercise_t* p_exercise = &p_workout->a_exercises[j];
+                exercise* _exercise = &_workout->exercises[j];
 
                 // Workout duration max exceeded?
-                double new_duration = p_workout->duration + p_exercise->duration;
-                if (new_duration > p_workout->max_duration) {
+                if (does_adding_a_set_exceed_workout_duration_max(_exercise, _workout)) {
                     continue;
                 }
 
                 // Resistance exercise?
-                if (!p_exercise->is_aerobic) {
-
-                    // Daily set max exceeded?
-                    if (adding_a_set_exceeds_daily_set_max()) {
-                        continue;
-                    }
-
-                    // Weekly set max exceeded?
-                    if (has_exceeded_weekly_set_max()) {
-                        continue;
-                    }
+                // If so, will daily set max or weekly set max be exceeded when adding a set?
+                if (!_exercise->is_aerobic && does_adding_a_set_exceed_daily_or_weekly_set_max(_exercise)) {
+                    continue;
                 }
 
                 // Add a set
-                p_exercise->sets++;
-                p_workout->duration += p_exercise->duration;
+                add_set_to_exercise(_exercise, _workout);
             }
-
         }
-
     } while (loop_added_a_set);
 }
-static void reverse_order_of_exercises(workout_t* a_workouts, int workouts_count) {
+static void reverse_order_of_exercises(workout* workouts, int workouts_count) {
 
     // Foreach workout
     for (int i = 0; i < workouts_count; i++) {
 
         // Declare variables
-        exercise_t* p_exercises = a_workouts[i].a_exercises;
-        int count = a_workouts[i].exercises_count;
-        exercise_t a_reversed[ARRAY_MAX];
+        exercise* exercises = workouts[i].exercises;
+        int count = workouts[i].exercises_count;
+        exercise reversed[ARRAY_MAX];
 
         // Create reversed array
         for (int j = 0; j < count; j++) {
-            a_reversed[j] = p_exercises[count - j - 1];
+            reversed[j] = exercises[count - j - 1];
         }
 
         // Clone reversed array
-        for (int j = 0; j < a_workouts[i].exercises_count; j++) {
-            p_exercises[j] = a_reversed[j];
+        for (int j = 0; j < workouts[i].exercises_count; j++) {
+            exercises[j] = reversed[j];
         }
     }
 }
-workout_t *create_workouts ()
+workout *create_workouts ()
 {
     // Get workout rules
     set_workout_rules();
 
     // Initialize workouts
-    workout_t* a_workouts;
+    workout* workouts;
     int workouts_count;
     initialize_workouts();
 
-    // Initialize resistance training days
-    resistance_training_day* p_resistance_workouts;
-    int resistance_workouts_count;
-    initialize_resistance_training_days();
+    // Find which days are resistance training days
+    // TODO: Implement this
+
+    // Find which days are aerobic training days
+    // TODO: Implement this
 
     // Add exercises and fill with sets
     add_resistance_exercises();
     add_aerobic_exercises();
     fill_workouts_with_sets();
 
-    // Make aerobic exercises come before resistance exercises
-    reverse_order_of_exercises(a_workouts, workouts_count);
+    // Make aerobic exercises come before resistance exercises in the workouts
+    reverse_order_of_exercises(workouts, workouts_count);
 
-    return a_workouts;
+    return workouts;
 }
 
 
