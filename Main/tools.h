@@ -91,6 +91,7 @@ void load_data();
 #endif //SAVESYSTEM_H
 
 int evaluation_questionnaire(questionnaire* user);
+int get_user_days(questionnaire* user);
 
 
 
