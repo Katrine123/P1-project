@@ -16,7 +16,8 @@ int stage_of_exercise = novice;
 int check_eq[length_of_equipment_enum] = {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands};
 //  All exercises funktion:
 
-void exercises_list(exercise* exercise_list, questionnaire user) {
+void resistance_exercises_list(exercise* exercise_list, questionnaire user)
+{
     //  With equipment
     //  Bench press
     exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), 12};
@@ -37,7 +38,10 @@ void exercises_list(exercise* exercise_list, questionnaire user) {
     //  Elevated Pushups
     exercise elevated_pushups = {"Elevated pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_elevated_pushups(user)};
     exercise_list[4] = elevated_pushups;
+}
 
+
+void aerobic_exercises_list(exercise* exercise_list, questionnaire user){
     //  HIIT
     //  Burpees
     //  Potential lowest bound is 5 reps pr. set. The exercise is more suitable to an increase in additions, therefore 2 instead of 1.
@@ -172,9 +176,12 @@ void print_exercise(exercise exercises_list[]) {
 }
 
 
-/*
-*
-exercise* create_all_exercises(){
-    //  Creating exercise for bench press.
+// Print function to display the viable exercises
+void print_exercises_2(exercise sorted_exercise_list[], int count) {
+    printf("Viable Exercises:\n");
+    printf("SE HER: %d", count);
+    for (int i = 0; i < count; i++) {
+        printf("Exercise %d: %s\n", i + 1, sorted_exercise_list[i].name);
+        // Add more details as needed, e.g., equipment, difficulty, etc.
+    }
 }
- */

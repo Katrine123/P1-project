@@ -59,7 +59,7 @@ int homemade_scan(datatype type, void* input);
 char* naming_equipment(enum equipment eq) ;
 char* naming_days(enum day_of_the_week day);
 
-exercise* create_available_exercises(exercise exercises_list[], questionnaire user_questionnaire);
+exercise* create_available_exercises(exercise exercises_list[], questionnaire user_questionnaire, int *count);
 
 questionnaire create_and_answer_questionnaire();
 
@@ -72,10 +72,12 @@ int base_amount_pushups(questionnaire user);
 int base_amount_elevated_pushups(questionnaire user);
 double base_amount_burpees(questionnaire user);
 double base_amount_jumping_jacks(questionnaire user);
-void exercises_list(exercise* exercise_list, questionnaire user);
+void resistance_exercises_list(exercise* exercise_list, questionnaire user);
+void aerobic_exercises_list(exercise* exercise_list, questionnaire user);
 
 exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);
+void print_exercises_2(exercise sorted_exercise_list[], int count);
 
 
 //

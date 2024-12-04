@@ -5,15 +5,32 @@
 #include "new_user_questionnaire.h"
 //#include "routine.h"
 
+
+
 int main(void) {
     questionnaire test = create_and_answer_questionnaire();
     print_quiestionnare(test);
+
+    //initializing the exercise list
     exercise ex_test[length_of_exercises_list];
-    exercises_list(ex_test,test);
+    resistance_exercises_list(ex_test, test);
+    aerobic_exercises_list(ex_test,test);
+
+
+    printf("\n_______________ALL EXERCISES______________\n");
     print_exercise(ex_test);
-    exercise* ex_test2 = create_available_exercises(ex_test, test);
-    printf("_____________________________________");
-    print_exercise(ex_test2);
+
+    printf("\n_______________SORTED LIST______________\n");
+    int sorted_count = 0;
+    exercise* sorted_exercise_list = create_available_exercises(ex_test, test, &sorted_count);
+
+    // Print the viable exercises
+    print_exercises_2(sorted_exercise_list, sorted_count);
+
+    // Free the dynamically allocated memory for the sorted list
+    free(sorted_exercise_list);
+
+    return 0;
 
     /* exercise* all_exercises = create_all_exercises();
     questionnaire user_questionnaire = create_and_answer_questionaire();

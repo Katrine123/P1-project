@@ -5,10 +5,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-exercise* create_available_exercises(exercise exercises_list[], questionnaire user_questionnaire) {
+exercise* create_available_exercises(exercise exercises_list[], questionnaire user_questionnaire, int *count) {
     // Sorter de exercises fra, som brugeren ikke kan udføre pga. udstyr
-    exercise* sorted_exercise_list = (exercise *)malloc (sizeof(length_of_exercises_list*sizeof(exercise)));
-    int count=0;
+    exercise* sorted_exercise_list = (exercise *)malloc(sizeof(exercise) * length_of_exercises_list);
+
+    *count = 0;
 
     for (int n=0; n<(length_of_exercises_list); n++) { // loop to cycle through exercise list
         int fail_switch = 0;
@@ -19,8 +20,8 @@ exercise* create_available_exercises(exercise exercises_list[], questionnaire us
             }
         }
         if (fail_switch==0) { // checks if fail_switch fails if not exercise is added to new list of viable exercises
-            sorted_exercise_list[count] = exercises_list[n]; // creates new list of sorted_exercise list
-            count++;
+            sorted_exercise_list[*count] = exercises_list[n]; // creates new list of sorted_exercise list
+            (*count)++;
         }
     }
     return sorted_exercise_list;
