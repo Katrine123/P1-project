@@ -10,7 +10,8 @@
 int main(void) {
     //exercises_list();
 
-    questionnaire user = create_and_answer_questionnaire();
+    //questionnaire user = create_and_answer_questionnaire();
+    print_routine();
     //FOR TESTING THAT EVALUATION QUEST WORKS TOGETHER WITH USER QUEST
     /*
     print_quiestionnare(user);
