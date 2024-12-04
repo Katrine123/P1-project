@@ -77,7 +77,7 @@ void aerobic_exercises_list(exercise* exercise_list, questionnaire user);
 
 exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);
-void print_exercises_2(exercise sorted_exercise_list[], int count);
+void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user);
 
 
 //

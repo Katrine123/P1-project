@@ -177,11 +177,35 @@ void print_exercise(exercise exercises_list[]) {
 
 
 // Print function to display the viable exercises
-void print_exercises_2(exercise sorted_exercise_list[], int count) {
+void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user) {
     printf("Viable Exercises:\n");
     printf("SE HER: %d", count);
     for (int i = 0; i < count; i++) {
-        printf("Exercise %d: %s\n", i + 1, sorted_exercise_list[i].name);
+        printf("\n_____________________________\n");
+        printf("Exercise %d:\n", i + 1);
+        printf("Name: %s\n", sorted_exercise_list[i].name);
+        printf("Addition: %lf\n", sorted_exercise_list[i].addition);
+        if(sorted_exercise_list[i].base_weight != user.weight) {
+            printf("Base weight: %lf\n", sorted_exercise_list[i].base_weight);
+        }
+        printf("Reps: %d\n", sorted_exercise_list[i].amount_of_reps);
+        if (sorted_exercise_list[i].check_eq[0] == 1) {
+            printf(" - Barbell\n");
+        }
+        if (sorted_exercise_list[i].check_eq[1] == 1) {
+            printf(" - Bench\n");
+        }
+        if (sorted_exercise_list[i].check_eq[2] == 1) {
+            printf(" - Pull up bar\n");
+        }
+        if (sorted_exercise_list[i].check_eq[3] == 1) {
+            printf(" - Pull down machine\n");
+        }
+        if (sorted_exercise_list[i].check_eq[4] == 1) {
+            printf(" - Resistance bands\n");
+        }
+
+
         // Add more details as needed, e.g., equipment, difficulty, etc.
     }
 }
