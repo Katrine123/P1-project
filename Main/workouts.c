@@ -1,6 +1,10 @@
 #include "workouts.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "routine.h"
+#include "exercises.h"
+#include "new_user_questionnaire.h"
+
 
 //TODO:
 // Check that you use pointer parameters everywhere
@@ -41,7 +45,7 @@ enum day_of_the_week {
 // This is just a constant number to use as the size of arrays.
 static const int EXERCISES_ARRAY_MAX = 32; // 32 simply because it's a big enough number. //TODO: Relocate this where the exercise struct is defined.
 typedef struct {
-    exercises exercises[EXERCISES_ARRAY_MAX];
+    exercise exercises[EXERCISES_ARRAY_MAX];
     int exercises_count;
     double duration; // In minutes.
     double max_duration; // In minutes.
@@ -64,7 +68,7 @@ typedef struct {
 } workout_rules;
 
 static workout_rules get_workout_rules(
-    questionaire q)
+    questionnaire q)
 {
     workout_rules rules;
     enum fitness_level level = q.fitness_level;
@@ -90,7 +94,7 @@ static workout_rules get_workout_rules(
 /// @param workouts Output. Uses malloc().
 /// @param count Output.
 static void initialize_workouts(
-    workout_t *workouts, int *count, questionaire q, workout_rules rules)
+    workout_t *workouts, int *count, questionnaire q, workout_rules rules)
 {
     *count = q.available_workout_days_count;
     workouts = malloc(sizeof(workout_t) * *count);
@@ -106,20 +110,26 @@ static void initialize_workouts(
 }
 
 /// @param resistance_days Output. Uses malloc().
-/// @param count Output.
+/// @param rcount Output.
+/// @param acount Output
 static void initialize_resistance_training_days(
-    resistance_training_day* resistance_days, int *count, workout_rules rules, workout_t* workouts, int workouts_per_week)
+    resistance_training_day** resistance_days, int *rcount, int *acount, workout_rules rules,
+    workout_t* workouts, int workouts_per_week, int** aerobic_days)
 {
-    resistance_days = malloc(sizeof(resistance_training_day) * 3); // Can max be 3 (because of minimum 48 hours of recovery).
-    *count = 0;
+    *resistance_days = malloc(sizeof(resistance_training_day) * 3); // Can max be 3 (because of minimum 48 hours of recovery). //todo kig dobbelt pointer på resistance og fjernet "&" i
+    *rcount = 0;
+
+    *aerobic_days = malloc(sizeof(resistance_training_day) * 4); //todo Check mængden af aerobic days.
+    *acount = 0;
+
     // Loop through workout days.
     for (int i = 0; i < workouts_per_week; i++ ) {
         int is_valid = 1;
         // In case no resistance training days exist, the day must be valid.
-        if (*count != 0) {
+        if (*rcount != 0) {
             // Loop through resistance training days.
-            for (int j = 0; j <= *count + 1; j++) {
-                int days_between = workouts[i].day - resistance_days[j].workout->day;
+            for (int j = 0; j <= *rcount + 1; j++) {
+                int days_between = workouts[i].day - (*resistance_days)[j].workout->day;
                 // Account for if the check day is in next week (e.g. the days between Sunday and Monday).
                 if (days_between < 0) {
                     days_between += 7;
@@ -129,13 +139,20 @@ static void initialize_resistance_training_days(
                     is_valid = 0;
                     break;
                 }
+
             }
         }
         // Add valid days to the list of resistance training days.
-        if (is_valid) {
-            resistance_training_day* addition = &resistance_days[*count];
+        if (is_valid == 1) {
+            resistance_training_day* addition = resistance_days[*rcount];
             addition->workout = &workouts[i];
-            *count++;
+            (*rcount)++;
+        }
+        // ved ikke helt hvad du ville med dette men lavede et for arobic days aswell thank me later
+        else {
+            resistance_training_day* addition = aerobic_days[*acount];
+            addition->workout = &workouts[i];
+            (*acount)++;
         }
     }
 }
@@ -236,7 +253,7 @@ static void find_resistance_exercise_candidates(
 
 static void pick_best_resistance_exercise_candidate()
 {
-
+    initialize_resistance_training_days();
 }
 
 
@@ -265,81 +282,108 @@ static void add_resistance_exercises(
 
 /// @param found_a_candidate Output.
 /// @param result Output.
-static void find_aerobic_exercise_candidate(
-    int *found_a_candidate, exercise *results)
+
+
+    // Start of Lunas lovely hiding spot
+
+exercise find_aerobic_exercise_candidate(exercise available_aerobic_exercises_list) //i assume this is what it
 {
 
+
+
+
+    return ;
 }
 
-static void add_aerobic_exercises(workout_t* workouts)
-{
-    // TODO: Implement this
-}
+static void add_aerobic_exercises(workout_t workouts, resistance_training_day aerobic_days, int aerobic_days_count, //add pointers forstår ikke dit system
+                                  int number_of_aerobic_exercises, exercise aerobic_candidates[], int count_of_workouts ) {
+    int array[number_of_aerobic_exercises]; // initializes an array with numbers from 0 too num of exercises
 
-static void fill_workouts_with_sets(workout_t* workouts)
-{
-    // TODO: Implement this
-}
-
-static void reverse_order_of_exercises(workout_t* workouts)
-{
-    // TODO: Implement this
-}
+    for (int i = 0; i < number_of_aerobic_exercises; i++) {
+        array[i] = i;
+    }
+    for (int i = 0; i < number_of_aerobic_exercises; i++) { //shuffles array
+        array[i]           = array[rand() % number_of_aerobic_exercises]; //todo fix potential issu with reoccuring workouts.
+    }
 
 
-/// @param valid_muscle_groups Output.
-/// @param count Output.
-static void get_valid_muscle_groups(questionarie q)
-{
-    // TODO: all_muscle_groups is a global muscle group array containing all muscle groups
-    int all_muscle_groups_count = sizeof(all_muscle_groups) / sizeof(all_muscle_groups[0]);
-    // Loop through all muscle groups.
-    for (int i = 0; i < all_muscle_groups_count; i++) {
-        muscle_group_t* the_group = &all_muscle_groups[i];
-        int is_valid = 1;
-        // Loop through all ignored muscle groups.
-        for (int j = 0; j < q.ignored_muscle_groups_count; j++) {
-            // Mark ignored groups as invalid.
-            if (the_group->name == q.ignored_muscle_groups[j].name) {
-                is_valid = 0;
-                break;
-            }
-        }
-        // Add valid muscle groups to the output array.
-        if (is_valid) {
-            valid_muscle_groups[valid_muscle_groups_count] = the_group->name;
-            valid_muscle_groups_count++;
+    // inputs exercises randomly into workout.exercises
+    for (int i = 0; i <= aerobic_days_count; i++) {
+        for (int j = 0; j <3; j++) {
+            workouts[count_of_workouts].exercises[j] = aerobic_candidates[array[i]];
+            count_of_workouts++;
         }
     }
+
+
+
+    // End of Lunas Lovely hiding spot. :3
+
+
+    static void fill_workouts_with_sets(workout_t* workouts)
+    {
+        // TODO: Implement this
+    }
+
+    static void reverse_order_of_exercises(workout_t* workouts)
+    {
+        // TODO: Implement this
+    }
+
+
+    /// @param valid_muscle_groups Output.
+    /// @param count Output.
+    static void get_valid_muscle_groups(questionnaire q)
+    {
+        // TODO: all_muscle_groups is a global muscle group array containing all muscle groups
+        int all_muscle_groups_count = sizeof(all_muscle_groups) / sizeof(all_muscle_groups[0]);
+        // Loop through all muscle groups.
+        for (int i = 0; i < all_muscle_groups_count; i++) {
+            muscle_group_t* the_group = &all_muscle_groups[i];
+            int is_valid = 1;
+            // Loop through all ignored muscle groups.
+            for (int j = 0; j < q.ignored_muscle_groups_count; j++) {
+                // Mark ignored groups as invalid.
+                if (the_group->name == q.ignored_muscle_groups[j].name) {
+                    is_valid = 0;
+                    break;
+                }
+            }
+            // Add valid muscle groups to the output array.
+            if (is_valid) {
+                valid_muscle_groups[valid_muscle_groups_count] = the_group->name;
+                valid_muscle_groups_count++;
+            }
+        }
+    }
+
+    /// Return value is allocated to the heap.
+    /// SUMMARY: Creates an array of workouts to be used as the final fitness routine.
+    /// @param q - the used questionnaire.
+    /// @param resistance - array of resistance training exercises to be used.
+    /// @param aerobic - array of aerobic training exercises to be used.
+    workout_t *create_workouts(questionnaire q, exercise resistance[], int resistance_length, exercise aerobic[], int aerobic_length)
+    {
+        // todo: implement this.
+
+        get_valid_muscle_groups(q);
+
+        workout_rules rules = get_workout_rules();
+
+        workout_t* workouts;
+        int workouts_count;
+        initialize_workouts();
+
+        resistance_training_day* resistance_workouts;
+        int resistance_workouts_count;
+        initialize_resistance_training_days();
+
+        add_resistance_exercises();
+        add_aerobic_exercises();
+        fill_workouts_with_sets();
+        reverse_order_of_exercises(); // Makes aerobic exercises come before resistance exercises.
+
+        return workouts;
+    }
 }
-
-/// Return value is allocated to the heap.
-/// SUMMARY: Creates an array of workouts to be used as the final fitness routine.
-/// @param q - the used questionnaire.
-/// @param resistance - array of resistance training exercises to be used.
-/// @param aerobic - array of aerobic training exercises to be used.
-workout_t *create_workouts(questionnaire q, exercise resistance[], int resistance_length, exercise aerobic[], int aerobic_length)
-{
-    // todo: implement this.
-
-    get_valid_muscle_groups(q);
-
-    workout_rules rules = get_workout_rules();
-
-    workout_t* workouts;
-    int workouts_count;
-    initialize_workouts();
-
-    resistance_training_day* resistance_workouts;
-    int resistance_workouts_count;
-    initialize_resistance_training_days();
-
-    add_resistance_exercises();
-    add_aerobic_exercises();
-    fill_workouts_with_sets();
-    reverse_order_of_exercises(); // Makes aerobic exercises come before resistance exercises.
-
-    return workouts;
-}
-
 
