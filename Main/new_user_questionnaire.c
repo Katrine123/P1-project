@@ -112,14 +112,14 @@ questionnaire create_and_answer_questionnaire() {
     homemade_scan(string, gym);
 
     // If user have access to a gym, they have access to all the equipment in the array.
-    if(strcmp(gym,"Yes")==0) {
+    if(strcmp(gym,"Yes")==0||strcmp(gym,"yes")==0) {
         printf("TEST");
         for(int i=0; i<5; i++) {
             printf("test");
             user.available_equipment[i]=1;
         }
         // If the user do not have access to a gym, they will be asked to enter the equipment available based on a defined list.
-    } else if(strcmp(gym, "No")==0) {
+    } else if(strcmp(gym, "No")==0||strcmp(gym, "no")==0) {
         printf("Of these options what equipment do you have? Please enter the number and when you are done press -1\n");
         for(int i=0; i<5; i++) {
             printf("%d: %s \n", i, naming_equipment(i));

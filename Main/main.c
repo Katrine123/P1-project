@@ -10,23 +10,23 @@
 int main(void) {
     //exercises_list();
 
-    //questionnaire user = create_and_answer_questionnaire();
-    print_routine();
+    questionnaire user;
     //FOR TESTING THAT EVALUATION QUEST WORKS TOGETHER WITH USER QUEST
     /*
-    print_quiestionnare(user);
     evaluation_questionnaire(&user);
     print_quiestionnare(user);*/
 
     //user start
-    /*system("cls");
+    system("cls");
     if (check_for_save()==0) {
         questionnaire user = create_and_answer_questionnaire();
+        print_quiestionnare(user);
+        print_routine();
     }else {
         if (evaluation_questionnaire(&user)==4) {
             create_and_answer_questionnaire();
         }
-    }*/
+    }
 
 
 
