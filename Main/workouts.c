@@ -1,10 +1,19 @@
 #include "workouts.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 //TODO:
-// Check that you use pointer parameters everywhere
-// where you are changing the values of the parameter or its properties (if it's a struct).
+// For resistance training: compound movements should be given priority (for people with only little time).
+
+//TODO:
+// Make specific exercise warmup optional (if people don't feel like they need it, they can save a lot of time/
+// do a lot more exercises if they do not do the specific warmup).
+
+//TODO:
+// In the report: add that there is an edge case where if you have only little time, you might not get a full-body resistance workout.
+// Then you could actually have more than 3 resistance training days a week, because you would have muscle groups that
+// are not used in one workout. This is something our design does not take into account.
 
 //TODO:
 // Implement supersets (will decrease time spent + will need information about opposing muscle groups).
@@ -13,311 +22,533 @@
 // (ACTUALLY, THIS SHOULD BE DONE BY TEAM MISCHA AND LUNA)
 // Implement ignored exercises (user story: "I hate squats, please give me any leg exercise other than squats.")
 
+// General constants
+static const int ARRAY_MAX = 32; // 32 simply because it is big enough.
 
-
-enum muscle_group_name_e {
-    bicep, tricep, chest, quads
-}; //TODO: expand upon this
-
-// This is just a constant number to use as the size of arrays.
-static const int MUSCLE_GROUPS_ARRAY_MAX = 32;  // 32 simply because it's a big enough number.
-typedef struct {
-    enum muscle_group_name_e name;
-    int sets;
-} muscle_group;
-// This is the pool of muscle groups included in the whole weekly routine.
-muscle_group routine_muscle_groups[MUSCLE_GROUPS_ARRAY_MAX];
-int routine_muscle_groups_count = 0;
-// This is the pool of muscle groups that the routine may include according to the user's preferences.
-enum muscle_group_name_e valid_muscle_groups[MUSCLE_GROUPS_ARRAY_MAX];
-int valid_muscle_groups_count = 0;
-
-// TODO: Place this inside the questionaire.c
-enum day_of_the_week {
+// Enums
+typedef enum {
+    //TODO: Not implemented yet. Should contain stuff like biceps, triceps, chest, etc.
+} muscle_group_name;
+typedef enum {
+    //TODO: Not implemented yet. Should contain stuff like, bench_press, squat, deadlift, etc.
+} exercise_name;
+typedef enum {
     monday = 1, tuesday = 2, wednesday = 3, thursday = 4,
     friday = 5, saturday = 6, sunday = 7
-};
+} day_of_the_week;
 
-// This is just a constant number to use as the size of arrays.
-static const int EXERCISES_ARRAY_MAX = 32; // 32 simply because it's a big enough number. //TODO: Relocate this where the exercise struct is defined.
+// Structs
+typedef struct muscle_group {
+    muscle_group_name name;
+    struct muscle_group* parent; // Muscle groups in struct exercise refer to muscle groups in struct workout which refers to muscle groups in the global routine variable.
+    int sets; // Irrelevant for struct exercise, is daily sets for struct workout, and is weekly sets for the global routine variable.
+} muscle_group;
 typedef struct {
-    exercises exercises[EXERCISES_ARRAY_MAX];
-    int exercises_count;
-    double duration; // In minutes.
-    double max_duration; // In minutes.
-    enum day_of_the_week day;
+    exercise_name name;
+    muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups targeted by the exercise. Aerobic exercises do not target any specific muscles.
+    int sets;
+    double set_duration; // In minutes. How long it takes to perform 1 set of the exercise.
+    int is_aerobic; // Is boolean.
+    double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
+} exercise;
+typedef struct {
+    exercise exercises[ARRAY_MAX]; int exercises_count;
+    double duration; double max_duration;
+    muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups included in the workout.
+    day_of_the_week day;
 } workout;
-typedef struct {
-    workout* workout;
-    muscle_group targeted_muscle_groups[MUSCLE_GROUPS_ARRAY_MAX];
-    int targeted_muscle_groups_count;
-} resistance_training_day;
-typedef struct {
-    const int general_warmup_duration = 5;
-    const int max_daily_sets = 6; //  For resistance training. Any more sets are junk volume.
-    int max_weekly_sets; // For resistance training.
-    int resistance_recovery; // For resistance training.
-    int max_weekly_aerobic_workouts; //todo implement this
-    int aerobic_rest_multiplier; // For example, a multiplier of 2, means a work-to-rest ratio of 1:2.
-} workout_rules;
 
-static workout_rules get_workout_rules(
-    questionaire q)
-{
-    workout_rules rules;
-    enum fitness_level level = q.fitness_level;
-    if (level >= novice) { // novice = 5, advanced_beginner = 4, competent = 3, proficient = 2
-        rules.max_weekly_sets = 10; // To make it easier to get into the habit of fitness.
-        rules.resistance_recovery = 3; // Recovery time ranges from 48-72 hours for 6-15 reps.
-        rules.max_weekly_aerobic_workouts = 3; // Limited, because beginners are recommended 1-3 sessions per week.
-        rules.aerobic_rest_multiplier = 3; // 1:3 work-to-rest ratio.
-    } else if (level >= advanced_beginner) {
-        rules.max_weekly_sets = 10; // To make it easier to get into the habit of fitness.
-        rules.resistance_recovery = 3; // Recovery time ranges from 48-72 hours for 6-15 reps.
-        rules.max_weekly_aerobic_workouts = 7; // No limit, because recovery time is 24 hours.
-        rules.aerobic_rest_multiplier = 2; // 1:2 work-to-rest ratio.
-    } else {
-        rules.max_weekly_sets = 20; // todo: add explanation (I should research what the max volume should be)
-        rules.resistance_recovery = 2; // Recovery time ranges from 48-72 hours for 6-15 reps.
-        rules.max_weekly_aerobic_workouts = 7; // No limit, because recovery time is 24 hours.
-        rules.aerobic_rest_multiplier = 1; // 1:1 work-to-rest ratio.
+// For the whole fitness routine
+workout routine_workouts[7]; // At most 7 workouts in a week (1 per day).
+int routine_workouts_count = 0;
+static muscle_group routine_muscles[ARRAY_MAX]; static int routine_muscles_count; // Muscle groups included in the routine.
+static int resistance_workout_indexes[3]; static int resistance_workout_indexes_count; // Max 3 per week because of 48-72 hour recovery time and doing full-body exercises.
+
+// Workout rules
+static const int general_warmup_duration = 5; // In minutes.
+static const int max_daily_sets = 6; // For resistance training.
+static int max_weekly_sets; // For resistance training.
+static int resistance_recovery;
+static int max_weekly_aerobic_workouts;
+static int aerobic_rest_multiplier; // For example, a multiplier of 2, means a work-to-rest ratio of 1:2.
+
+// Miscellaneous
+static muscle_group valid_muscle_groups[]; static int valid_muscle_groups_count;
+
+// ----------------------------------------------------------------------------------------------
+
+// Helper functions
+static int does_adding_a_set_exceed_daily_or_weekly_set_max(exercise *_exercise) {
+
+    // Foreach muscle group the exercise targets
+    for (int i = 0; _exercise->muscles_count; i++) {
+
+        // Declare variables
+        muscle_group *exercise_muscle = &_exercise->muscles[i];
+        muscle_group *workout_muscle = exercise_muscle->parent;
+        muscle_group *routine_muscle = workout_muscle->parent;
+
+        // Exceeds daily set max?
+        int new_daily_sets = workout_muscle->sets + 1;
+        if (new_daily_sets > max_daily_sets) {
+            return 1;
+        }
+
+        // Exceeds daily set max?
+        int new_weekly_sets = routine_muscle->sets + 1;
+        if (new_weekly_sets > max_weekly_sets) {
+            return 1;
+        }
     }
-    return rules;
+
+    // Return false if the checks pass
+    return 0;
 }
-/// @param workouts Output. Uses malloc().
-/// @param count Output.
-static void initialize_workouts(
-    workout *workouts, int *count, questionaire q, workout_rules rules)
-{
-    *count = q.available_workout_days_count;
-    workouts = malloc(sizeof(workout) * *count);
-    // Assign stat variables for the workout structs.
-    for (int i = 0; i < *count; i++) {
-        //todo available_workout_days is an array of struct workout_day which has an enum week_day and an int max_duration_in_minutes.
-        workouts[i].day = q.available_workout_days[i].week_day;
-        workouts[i].max_duration = q.available_workout_days[i].max_duration_in_minutes;
-        workouts[i].exercises_count = 0;
-        // Add general warmup to workout duration.
-        workouts[i].duration = rules.general_warmup_duration;
+static int does_adding_a_set_exceed_workout_duration_max(exercise *_exercise, workout* _workout) {
+
+    // Does it exceed workout duration max?
+    double new_duration = _workout->duration + _exercise->set_duration;
+    // Also factor in specific warmup for resistance exercise?
+    if (!_exercise->is_aerobic && _exercise->sets == 0) {
+        new_duration += _exercise->specific_warmup_duration;
     }
+    if (new_duration > _workout->max_duration) {
+        return 1;
+    }
+
+    // Return false if the check passes
+    return 0;
 }
-/// @param resistance_days Output. Uses malloc().
-/// @param count Output.
-static void initialize_resistance_training_days(resistance_training_day* resistance_days, int *count, workout_rules rules, workout* workouts, int workouts_per_week)
-{
-    resistance_days = malloc(sizeof(resistance_training_day) * 3); // Can max be 3 (because of minimum 48 hours of recovery).
-    *count = 0;
-    // Loop through workout days.
-    for (int i = 0; i < workouts_per_week; i++ ) {
-        int is_valid = 1;
-        // In case no resistance training days exist, the day must be valid.
-        if (*count != 0) {
-            // Loop through resistance training days.
-            for (int j = 0; j <= *count + 1; j++) {
-                int days_between = workouts[i].day - resistance_days[j].workout->day;
-                // Account for if the check day is in next week (e.g. the days between Sunday and Monday).
-                if (days_between < 0) {
-                    days_between += 7;
-                }
-                // Mark day as invalid, if recovery rules are not met.
-                if (days_between < rules.resistance_recovery) {
-                    is_valid = 0;
+static int does_routine_already_contain_exercise(exercise *_exercise) {
+
+    // Foreach workout in the routine
+    for (int i = 0; i < routine_workouts_count; i++) {
+
+        // Declare variables
+        workout* _workout = &routine_workouts[i];
+
+        // Foreach exercise in the workouts
+        for (int j = 0; j < _workout->exercises_count; j++) {
+
+            // Declare variables
+            exercise* workout_exercise = &_workout->exercises[j];
+
+            // Is the exercise a duplicate?
+            if (workout_exercise->name == _exercise->name) {
+                return 1;
+            }
+        }
+    }
+
+    // Return false if the checks passes
+    return 0;
+}
+static void add_set_to_exercise(exercise *_exercise, workout* _workout) {
+
+    /// NOTE: Also adds specific warmup for resistance exercises, if sets = 0.
+
+    // Is exercise aerobic?
+    if (!_exercise->is_aerobic) {
+
+        // Add sets to parent muscle groups
+        // Foreach muscle group the exercise targets
+        for (int i = 0; _exercise->muscles_count; i++) {
+
+            // Declare variables
+            muscle_group *exercise_muscle = &_exercise->muscles[i];
+            muscle_group *workout_muscle = exercise_muscle->parent;
+            muscle_group *routine_muscle = workout_muscle->parent;
+
+            // Add sets to muscle groups
+            workout_muscle->sets++;
+            routine_muscle->sets++;
+        }
+
+        // If sets = 0, then add specific warmup to workout duration
+        if (_exercise->sets == 0) {
+            _workout->duration += _exercise->specific_warmup_duration;
+        }
+    }
+
+    // Add to workout duration
+    _workout->duration += _exercise->set_duration;
+
+    // Add set to exercise
+    _exercise->sets++;
+}
+static void add_exercise_to_resistance_training_workout(exercise *exercise_candidate, exercise* workout_exercise, workout* _workout) {
+
+    // NOTE: Added exercises start with 0 sets. This does not add sets.
+
+    // Add exercise to workout by cloning exercise candidate
+    workout_exercise = &_workout->exercises[_workout->exercises_count];
+    *workout_exercise = *exercise_candidate;
+    workout_exercise->sets = 0;
+    _workout->exercises_count++;
+
+    // Update the muscle groups of the exercise, workout, and routine
+    // Foreach muscle group that the exercise targets
+    for (int i = 0; i < exercise_candidate->muscles_count; i++) {
+
+        // Declare variables
+        muscle_group *exercise_muscle = &exercise_candidate->muscles[i];
+        muscle_group *workout_muscle = NULL;
+        muscle_group *routine_muscle = NULL;
+
+        // Find whether the muscle group is already included in either the workout or the routine.
+        // Foreach muscle group included the workout
+        for (int j = 0; j < _workout->muscles_count; j++) {
+            if (_workout->muscles[j].name == exercise_muscle->name) {
+                workout_muscle = &_workout->muscles[j];
+                routine_muscle = workout_muscle->parent;
+                break;
+            }
+        }
+        // If the workout includes the muscle group, the routine will always also include the muscle group
+        if (workout_muscle == NULL) {
+            // Foreach muscle group included the routine
+            for (int j = 0; j < routine_muscles_count; j++) {
+                if (routine_muscles[j].name == exercise_muscle->name) {
+                    routine_muscle = &routine_muscles[j];
                     break;
                 }
             }
         }
-        // Add valid days to the list of resistance training days.
-        if (is_valid) {
-            resistance_training_day* addition = &resistance_days[*count];
-            addition->workout = &workouts[i];
-            *count++;
+
+        // Add muscle group to workout, if it is not included ye
+        if (workout_muscle == NULL) {
+            workout_muscle = &_workout->muscles[_workout->muscles_count];
+            *workout_muscle = *exercise_muscle;
+            _workout->muscles_count++;
+        }
+
+        // Add muscle group to routine, if it is not included yet
+        if (routine_muscle != NULL) {
+            routine_muscle = &routine_muscles[routine_muscles_count];
+            *routine_muscle = *exercise_muscle;
+            routine_muscles_count++;
+        }
+
+        // Set up muscle group references
+        exercise_muscle->parent = workout_muscle;
+        if (workout_muscle->parent == NULL) {
+            workout_muscle->parent = routine_muscle;
         }
     }
 }
-/// @param found_a_candidate Output.
-/// @param result Output.
-static void find_untargeted_muscle_group_candidates(int *found_a_candidate, enum muscle_group_name_e *results, resistance_training_day* resistance_day)
-{
-    for (int i = 0; i < valid_muscle_groups_count; i++) {
-        // Looping through valid muscle groups
-        for (int i = 0 )
+static void try_to_find_resistance_exercise_candidate(exercise* candidate, muscle_group* target_muscle, workout* _workout) {
 
+    // NOTE: 'candidate' is the output. It is set to NULL in this function if no candidate is found.
+
+    // Declare variables
+    exercise* last_valid_exercise = NULL;
+
+    // Get a random start index of the valid resistance exercises
+    srand(time(NULL));
+    int exercises_count = valid_resistance_exercises_count;
+    int start_index = rand() % exercises_count;
+
+    // Foreach valid resistance exercise
+    for (int old_i = 0; old_i < exercises_count; old_i++) {
+
+        // Get new index
+        int i = start_index + old_i;
+        if (i >= exercises_count) {
+            i -= exercises_count;
+        }
+
+        // Declare variables
+        exercise* _exercise = &valid_resistance_exercises[i];
+
+        // Includes target muscle group?
+        int includes_target_muscle = 0;
+        // Foreach muscle group that the exercise targets
+        for (int j = 0; j < _exercise->muscles_count; j++) {
+            // Does the muscle group name match the muscle group name of the exercise?
+            if (_exercise->muscles[j].name == target_muscle->name) {
+                includes_target_muscle = 1;
+                break;
+            }
+        }
+        if (!includes_target_muscle) {
+            continue;
+        }
+
+        // Exceeds workout duration max?
+        if (does_adding_a_set_exceed_workout_duration_max(_exercise, _workout)) {
+            continue;
+        }
+
+        // Exceeds either weekly sets max or daily sets max?
+        if (does_adding_a_set_exceed_daily_or_weekly_set_max(_exercise)) {
+            continue;
+        }
+
+        // Store valid exercise
+        last_valid_exercise = _exercise;
+
+        // We will now try to get a unique exercise (an exercise that has not yet been included in the routine).
+        // Routine already contains the exercise?
+        if (does_routine_already_contain_exercise(_exercise, routine_workouts, routine_workouts_count)) {
+            continue;
+        }
+
+        // Clone the exercise to the output, if all checks pass
+        candidate = _exercise;
+        return;
     }
 
-}
-static void pick_best_untargeted_muscle_group_candidate()
-{
-
-}
-/// @param found_a_candidate Output.
-/// @param result Output.
-static void find_resistance_exercise_candidates(int *found_a_candidate, exercise *results, muscle_group target_muscle_group, workout_rules rules, resistance_training_day *resistance_day)
-{
-    //TODO:
-    // Needs to try to find a different resistance exercise
-    // for the same muscle group.
-    // So instead of doing squats both on resistance training day 1 and 2,
-    // you do squats the first day, and then do leg press the other
-    // for the 3rd day, it might then propose squats again, if there are no alternatives
-    // other than squats and leg press
-
-    // TODO: valid_resistance_exercises is a global exercise array containing all valid resistance exercises (handled by team MISCHA AND LUNA).
-    // TODO: struct exercise has an array of muscle_group muscle_groups (for muscle groups that the exercise targets) and an int muscle_groups_count
-    // Loop through all available exercises
-    for (int i = 0; i < valid_resistance_exercises_count; i++) {
-        // Does the exercise candidate include the target muscle group?
-        int contains_target_muscle_group = 0;
-        for (int j = 0; j < valid_resistance_exercises[i].muscle_groups_count; j++) {
-            // Looping through the candidate's targeted muscle groups
-            if (target_muscle_group.name == valid_resistance_exercises[i].muscle_groups[j].name) {
-                contains_target_muscle_group = 1;
-                break;
-            }
-        }
-        if (!contains_target_muscle_group) {
-            continue;
-        }
-        // Does adding the exercise candidate exceed workout duration limit?
-        if (resistance_day->workout->max_duration < (resistance_day->workout->duration + valid_resistance_exercises[i].duration)) {
-            continue;
-        }
-        // Does adding the exercise candidate exceed max weekly sets?
-        int exceeds_max_weekly_sets = 0;
-        int routine_contains_target_muscle_group = 0;
-        for (int j = 0; j < routine_muscle_groups_count; j++) {
-            // Looping through all muscle groups in the routine
-            if (target_muscle_group.name == routine_muscle_groups[j].name) {
-                routine_contains_target_muscle_group = 1;
-                if (rules.max_weekly_sets < (routine_muscle_groups[j].sets + 1)) {
-                    exceeds_max_weekly_sets = 1;
-                }
-                break;
-            }
-        }
-        if (!routine_contains_target_muscle_group) {
-            printf("ERROR: Tried to find an exercise candidate for a muscle group, "
-                   "but the muscle group does not exist in the fitness routine's array of muscle groups.");
-            exit(EXIT_FAILURE);
-        }
-        if (exceeds_max_weekly_sets) {
-            continue;
-        }
-        // Does adding it exceed max daily sets?
-        int exceeds_max_daily_sets = 0;
-        for (int j = 0; j < resistance_day->targeted_muscle_groups_count; j++) {
-            // Looping through already targeted muscle groups that day
-            if (target_muscle_group.name == resistance_day->targeted_muscle_groups[j].name) {
-                if (rules.max_daily_sets < (resistance_day->targeted_muscle_groups[j].sets + 1)) {
-                    exceeds_max_daily_sets = 1;
-                }
-                break;
-            }
-        }
-        if (exceeds_max_daily_sets) {
-            continue;
-        }
-        // If the exercise is a valid candidate, return it
-        *found_a_candidate = 1;
-        *result = valid_resistance_exercises[i];
+    // Since we could not find a unique exercise, we will settle for a duplicate,
+    // provided that we actually have found a valid duplicate.
+    if (last_valid_exercise != NULL) {
+        *candidate = *last_valid_exercise;
+        return;
     }
-    // Return NULL if no valid candidate is found.
-    *found_a_candidate = 0;
+
+    // If no checks pass, no candidate is found
+    candidate = NULL;
 }
-static void pick_best_resistance_exercise_candidate()
+
+// Primary functions
+static void update_valid_muscle_groups()
 {
 
-}
-static void add_resistance_exercises(questionnaire q, resistance_training_day* resistance_days, int resistance_days_count)
-{
-    // TODO: Implement this.
+    // Reset array count
+    valid_muscle_groups_count = 0;
 
-    // Loop until we have tried to add an exercise for each muscle group.
-    do {
-        modified_a_day_this_loop = 0;
-        for (int i = 0; i < resistance_days_count; i++) {
-            // Looping through the resistance training days.
-            // Get an untargeted muscle group candidate
-
-            // Found a candidate?
-
-            // Get an exercise candidate
-
-            // Found a candidate?
-
-            // Add exercise and specific warmup
-        }
-    } while ();
-}
-/// @param found_a_candidate Output.
-/// @param result Output.
-static void find_aerobic_exercise_candidate(int *found_a_candidate, exercise *results)
-{
-
-}
-static void add_aerobic_exercises(workout* workouts)
-{
-    // TODO: Implement this
-}
-static void fill_workouts_with_sets(workout* workouts)
-{
-    // TODO: Implement this
-}
-static void reverse_order_of_exercises(workout* workouts)
-{
-    // TODO: Implement this
-}
-/// @param valid_muscle_groups Output.
-/// @param count Output.
-static void get_valid_muscle_groups(questionarie q)
-{
+    // Foreach of all muscle groups
     // TODO: all_muscle_groups is a global muscle group array containing all muscle groups
-    int all_muscle_groups_count = sizeof(all_muscle_groups) / sizeof(all_muscle_groups[0]);
-    // Loop through all muscle groups.
     for (int i = 0; i < all_muscle_groups_count; i++) {
-        muscle_group* the_group = &all_muscle_groups[i];
+
+        // Declare variables
+        muscle_group* _muscle = &all_muscle_groups[i];
         int is_valid = 1;
-        // Loop through all ignored muscle groups.
-        for (int j = 0; j < q.ignored_muscle_groups_count; j++) {
-            // Mark ignored groups as invalid.
-            if (the_group->name == q.ignored_muscle_groups[j].name) {
+
+        // Foreach ignored muscle group
+        for (int j = 0; j < questionnaire.ignored_muscle_groups_count; j++) {
+
+            // Mark ignored groups as invalid
+            if (_muscle->name == questionnaire.ignored_muscle_groups[j].name) {
                 is_valid = 0;
                 break;
             }
         }
-        // Add valid muscle groups to the output array.
+
+        // Add valid muscle groups
         if (is_valid) {
-            valid_muscle_groups[valid_muscle_groups_count] = the_group->name;
+            valid_muscle_groups[valid_muscle_groups_count] = *_muscle;
             valid_muscle_groups_count++;
         }
     }
 }
-/// Return value is allocated to the heap.
-/// SUMMARY: Creates an array of workouts to be used as the final fitness routine.
-/// @param q - the used questionnaire.
-/// @param resistance - array of resistance training exercises to be used.
-/// @param aerobic - array of aerobic training exercises to be used.
-workout *create_workouts(questionnaire q, exercise resistance[], int resistance_length, exercise aerobic[], int aerobic_length)
-{
-    // todo: implement this.
+static void update_workout_rules() {
 
-    get_valid_muscle_groups(q);
+    enum fitness_level level = questionnaire.fitnessLevel;
 
-    workout_rules rules = get_workout_rules();
-
-    workout* workouts;
-    int workouts_count;
-    initialize_workouts();
-
-    resistance_training_day* resistance_workouts;
-    int resistance_workouts_count;
-    initialize_resistance_training_days();
-
-    add_resistance_exercises();
-    add_aerobic_exercises();
-    fill_workouts_with_sets();
-    reverse_order_of_exercises(); // Makes aerobic exercises come before resistance exercises.
-
-    return workouts;
+    if (level >= novice) { // (novice = 5, advanced_beginner = 4, competent = 3, proficient = 2)
+        max_weekly_sets = 10; // To make it easier to get into the habit of fitness.
+        resistance_recovery = 3; // Recovery time ranges from 48-72 hours for 6-15 reps.
+        max_weekly_aerobic_workouts = 3; // Limited, because beginners are recommended 1-3 sessions per week.
+        aerobic_rest_multiplier = 3; // 1:3 work-to-rest ratio.
+    } else if (level >= advanced_beginner) {
+        max_weekly_sets = 10; // To make it easier to get into the habit of fitness.
+        resistance_recovery = 3; // Recovery time ranges from 48-72 hours for 6-15 reps.
+        max_weekly_aerobic_workouts = 7; // No limit, because recovery time is 24 hours.
+        aerobic_rest_multiplier = 2; // 1:2 work-to-rest ratio.
+    } else {
+        max_weekly_sets = 20; // todo: add explanation (I should research what the max volume should be)
+        resistance_recovery = 2; // Recovery time ranges from 48-72 hours for 6-15 reps.
+        max_weekly_aerobic_workouts = 7; // No limit, because recovery time is 24 hours.
+        aerobic_rest_multiplier = 1; // 1:1 work-to-rest ratio.
+    }
 }
+static void reset_routine_workouts() {
+
+    // Reset array count
+    routine_workouts_count = questionnaire.available_workout_days_count;
+
+    // Foreach new workout
+    for (int i = 0; i < routine_workouts_count; i++) {
+
+        // Reset properties to defaults
+        routine_workouts[i].day = questionnaire.available_workout_days[i].week_day;
+        routine_workouts[i].max_duration = questionnaire.available_workout_days[i].max_duration_in_minutes;
+        routine_workouts[i].duration = 0;
+        routine_workouts[i].exercises_count = 0;
+        routine_workouts[i].muscles_count = 0;
+
+        // Add general warmup to workout duration.
+        routine_workouts[i].duration = general_warmup_duration;
+    }
+
+}
+static void update_resistance_days() {
+
+    // Reset array count
+    resistance_workout_indexes_count = 0;
+
+    // Foreach workout in routine
+    for (int i = 0; i < routine_workouts_count; i++ ) {
+
+        // Declare variables
+        workout *_workout = &routine_workouts[i];
+        int day_is_valid = 1;
+
+        // Valid recovery time?
+        // Foreach resistance training day
+        for (int j = 0; j < resistance_workout_indexes_count; j++) {
+
+            // Declare variables
+            workout *resistance_workout = &routine_workouts[resistance_workout_indexes[j]];
+
+            // Get days in-between
+            int days_between = _workout->day - resistance_workout->day;
+            // Account for if the check day is in next week (e.g. the days between Sunday and Monday).
+            if (days_between < 0) {
+                days_between += 7;
+            }
+
+            // Mark day as invalid, if recovery rules are not met.
+            if (days_between < resistance_recovery) {
+                day_is_valid = 0;
+                break;
+            }
+        }
+
+        // Add to resistance days, if day is valid
+        if (day_is_valid) {
+            resistance_workout_indexes[resistance_workout_indexes_count] = i;
+            resistance_workout_indexes_count++;
+        }
+    }
+}
+static void add_resistance_exercises() {
+
+    // NOTE: Adds 1 set of exercises.
+
+    // Get a random start index of the valid muscle groups
+    srand(time(NULL));
+    int muscles_count = valid_muscle_groups_count;
+    int start_index = rand() % muscles_count;
+
+    // Foreach valid muscle group
+    for (int old_i = 0; old_i < muscles_count; old_i++) {
+
+        // Get new index
+        int i = start_index + old_i;
+        if (i >= muscles_count) {
+            i -= muscles_count;
+        }
+
+        // Declare variables
+        muscle_group* target_muscle = &valid_muscle_groups[i];
+
+        // Foreach resistance training day
+        for (int j = 0; j < resistance_workout_indexes_count; j++) {
+
+            // Declare variables
+            workout *_workout = &routine_workouts[resistance_workout_indexes[j]];
+
+            // Try to find exercise candidate
+            exercise* exercise_candidate = NULL;
+            try_to_find_resistance_exercise_candidate(exercise_candidate, target_muscle, _workout);
+
+            // Found a candidate?
+            if (exercise_candidate == NULL) {
+                continue;
+            }
+
+            // Add exercise to the training day and add a set
+            exercise* new_exercise_in_workout;
+            add_exercise_to_resistance_training_workout(exercise_candidate, _workout, new_exercise_in_workout);
+            add_set_to_exercise(new_exercise_in_workout, _workout);
+        }
+    }
+
+}
+static void fill_workouts_with_sets() {
+
+    // Do while sets are being added
+    int loop_added_a_set;
+    do {
+
+        loop_added_a_set = 0;
+
+        // Foreach workout
+        for (int i = 0; i < routine_workouts_count; i++) {
+
+            // Declare variables
+            workout* _workout = &routine_workouts[i];
+
+            // Foreach exercise
+            for (int j = 0; j < _workout->exercises_count; j++) {
+
+                // Declare variables
+                exercise* _exercise = &_workout->exercises[j];
+
+                // Workout duration max exceeded?
+                if (does_adding_a_set_exceed_workout_duration_max(_exercise, _workout)) {
+                    continue;
+                }
+
+                // Resistance exercise?
+                // If so, will daily set max or weekly set max be exceeded when adding a set?
+                if (!_exercise->is_aerobic && does_adding_a_set_exceed_daily_or_weekly_set_max(_exercise)) {
+                    continue;
+                }
+
+                // Add a set
+                add_set_to_exercise(_exercise, _workout);
+            }
+        }
+    } while (loop_added_a_set);
+}
+static void reverse_order_of_exercises() {
+
+    // Foreach workout
+    for (int i = 0; i < routine_workouts_count; i++) {
+
+        // Declare variables
+        exercise* exercises = routine_workouts[i].exercises;
+        int count = routine_workouts[i].exercises_count;
+        exercise reversed[ARRAY_MAX];
+
+        // Create reversed array
+        for (int j = 0; j < count; j++) {
+            reversed[j] = exercises[count - j - 1];
+        }
+
+        // Clone reversed array
+        for (int j = 0; j < routine_workouts[i].exercises_count; j++) {
+            exercises[j] = reversed[j];
+        }
+    }
+}
+void update_workouts ()
+{
+    // Get workout rules (for example max weekly sets)
+    update_workout_rules();
+
+    // Get valid muscle groups to target
+    update_valid_muscle_groups();
+
+    // Reset routine
+    reset_routine_workouts();
+
+    // Find which days are resistance training days
+    update_resistance_days();
+
+    // Find which days are aerobic training days
+    update_aerobic_days(); // TODO: Implement this
+
+    // Add exercises and fill with sets
+    add_resistance_exercises();
+    add_aerobic_exercises(); // TODO: Implement this
+    fill_workouts_with_sets();
+
+    // Make aerobic exercises come before resistance exercises in the workouts
+    reverse_order_of_exercises(routine_workouts, routine_workouts_count);
+}
+
 
 

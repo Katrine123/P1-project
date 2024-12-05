@@ -7,7 +7,6 @@ add_library(routine routine)
 add_library(evaluation_questionnaire evaluation_questionnaire)
 add_library(workouts workouts)
 add_library(lists lists)
-add_library(workouts_new workouts_new) #maybe remove this
 
 target_link_libraries(main
         exercises
@@ -15,5 +14,4 @@ target_link_libraries(main
         routine
         evaluation_questionnaire
         workouts
-        lists
-        workouts_new) #maybe remove this
+        lists)
