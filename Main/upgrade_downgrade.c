@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 #include "tools.h"
-void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]);
 
-void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int *input) {
+
+void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *input) {
     for (int i = 0; i < sorted_count; i++) {
         input[i] = 0;
     }
@@ -31,11 +31,13 @@ void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int s
             input[input_temp] = 1;
             i++;
         } while(i < sorted_count && input_temp != -1);
-        upgrade_function(exercise_list_sorted, user, sorted_count, input);
+
     }
 }
 
-void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]) {
+exercise* upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]) {
+    exercise* sorted_exercise_list_upgrade = (exercise *)malloc(sizeof(exercise) * length_of_exercises_list);
+
     for (int i = 0; i < sorted_count; i++) {
         if (input[i] == 1) {
             if(user.weight == exercise_list_sorted[i].base_weight) {
@@ -45,4 +47,5 @@ void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int so
             }
         }
     }
+    return sorted_exercise_list_upgrade;
 }

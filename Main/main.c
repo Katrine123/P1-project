@@ -29,7 +29,10 @@ int main(void) {
 
     //  Call upgrade_downgrade function with sorted_exercise_list
     int input[sorted_count];
-    upgrade_downgrade(sorted_exercise_list, test, sorted_count, input);
+    upgrade_downgrade(sorted_exercise_list, sorted_count, input);
+
+    //Call the upgrade function that updates the exercises that need to be upgraded
+    upgrade_function(sorted_exercise_list, test, sorted_count, input);
 
     //  Print exercises again after user has upgraded, or done nothing.
     print_exercises_2(sorted_exercise_list, sorted_count, test, ex_test);
