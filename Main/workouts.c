@@ -115,22 +115,22 @@ static void initialize_workouts(
 /// @param rcount Output.
 /// @param acount Output
 static void initialize_resistance_training_days(
-    resistance_training_day** resistance_days, int *rcount, int *acount, workout_rules rules,
+    resistance_training_day** resistance_days, int rcount, int acount, workout_rules rules,
     workout_t* workouts, int workouts_per_week, int** aerobic_days)
 {
     *resistance_days = malloc(sizeof(resistance_training_day) * 3); // Can max be 3 (because of minimum 48 hours of recovery). //todo kig dobbelt pointer på resistance og fjernet "&" i
-    *rcount = 0;
+    rcount = 0;
 
     *aerobic_days = malloc(sizeof(resistance_training_day) * 4); //todo Check mængden af aerobic days.
-    *acount = 0;
+    acount = 0;
 
     // Loop through workout days.
     for (int i = 0; i < workouts_per_week; i++ ) {
         int is_valid = 1;
         // In case no resistance training days exist, the day must be valid.
-        if (*rcount != 0) {
+        if (rcount != 0) {
             // Loop through resistance training days.
-            for (int j = 0; j <= *rcount + 1; j++) {
+            for (int j = 0; j <= rcount + 1; j++) {
                 int days_between = workouts[i].day - (*resistance_days)[j].workout->day;
                 // Account for if the check day is in next week (e.g. the days between Sunday and Monday).
                 if (days_between < 0) {
@@ -148,13 +148,14 @@ static void initialize_resistance_training_days(
         if (is_valid == 1) {
             resistance_training_day* addition = resistance_days[*rcount];
             addition->workout = &workouts[i];
-            (*rcount)++;
+            (rcount)++;
         }
         // ved ikke helt hvad du ville med dette men lavede et for arobic days aswell thank me later
-        else {
+
+        else if (acount < aerobic_days[5]) {
             resistance_training_day* addition = aerobic_days[*acount];
             addition->workout = &workouts[i];
-            (*acount)++;
+            acount++;
         }
     }
 }
