@@ -98,25 +98,25 @@ double base_weight_weighted_squats(questionnaire user) {
 
 // Air squats should be the exercise if the perosn can take less than 15 consecutive air squats
 double base_amount_air_squats(questionnaire user) {
-    int reps_amount_squats = user.squats - user.fitness_level;
+    int reps_amount_squats = MAX_REPS - user.fitness_level;
     return reps_amount_squats;
 }
 
 //Split squats should be the printed exercise if the person can take more than 15 consecutive air squats
 double base_amount_split_squats(questionnaire user) {
-    int reps_amount_split_squats = user.squats - user.fitness_level;
+    int reps_amount_split_squats = MAX_REPS - user.fitness_level;
     return reps_amount_split_squats;
 }
 
 //Elevated pushups should be the printed exercise if the person can take more than 15 consecutive pushups
 int base_amount_elevated_pushups(questionnaire user) {
-        int reps_amount_elevated_pushups = user.pushups - user.fitness_level;
+        int reps_amount_elevated_pushups = MAX_REPS - user.fitness_level;
         return reps_amount_elevated_pushups;
 }
 
 //Pushups should be the printed exercise if the person can tak less than 15 consecutive pushups
 int base_amount_pushups(questionnaire user) {
-        int reps_amount_pushups = user.pushups - user.fitness_level;
+        int reps_amount_pushups = MAX_REPS - user.fitness_level;
         return reps_amount_pushups;
 }
 
@@ -129,10 +129,7 @@ double base_amount_burpees(questionnaire user) {
 }
 
 double base_amount_jumping_jacks(questionnaire user) {
-    /*  We are taking into account that this exercise is more difficult than others
-     *  Level of exercise should be amplified by a factor of 2
-     */
-    int reps_amount_burpees = MAX_REPS - (user.fitness_level*2);
+    int reps_amount_burpees = MAX_REPS - (user.fitness_level);
     return reps_amount_burpees;
 }
 
@@ -177,18 +174,18 @@ void print_exercise(exercise exercises_list[]) {
 
 
 // Print function to display the viable exercises
-void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user) {
+void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]) {
     printf("Viable Exercises:\n");
     printf("SE HER: %d", count);
     for (int i = 0; i < count; i++) {
         printf("\n_____________________________\n");
         printf("Exercise %d:\n", i + 1);
         printf("Name: %s\n", sorted_exercise_list[i].name);
-        printf("Addition: %lf\n", sorted_exercise_list[i].addition);
+        printf("Addition: %.0lf\n", sorted_exercise_list[i].addition);
         if(sorted_exercise_list[i].base_weight != user.weight) {
             printf("Base weight: %lf\n", sorted_exercise_list[i].base_weight);
         }
-        printf("Reps: %d\n", sorted_exercise_list[i].amount_of_reps);
+        printf("Reps: %d\n", exercises_list[i].amount_of_reps);
         if (sorted_exercise_list[i].check_eq[0] == 1) {
             printf(" - Barbell\n");
         }
