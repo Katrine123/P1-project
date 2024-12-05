@@ -1,6 +1,8 @@
 #include "workouts.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 #include "routine.h"
 #include "exercises.h"
 #include "new_user_questionnaire.h"
@@ -298,14 +300,17 @@ exercise find_aerobic_exercise_candidate(exercise available_aerobic_exercises_li
 static void add_aerobic_exercises(workout_t workouts, resistance_training_day aerobic_days, int aerobic_days_count, //add pointers forstår ikke dit system
                                   int number_of_aerobic_exercises, exercise aerobic_candidates[], int count_of_workouts ) {
     int array[number_of_aerobic_exercises]; // initializes an array with numbers from 0 too num of exercises
-
+    srand(time(NULL));
     for (int i = 0; i < number_of_aerobic_exercises; i++) {
         array[i] = i;
     }
-    for (int i = 0; i < number_of_aerobic_exercises; i++) { //shuffles array
-        array[i]           = array[rand() % number_of_aerobic_exercises]; //todo fix potential issu with reoccuring workouts.
+    for (int i = 0; i < number_of_aerobic_exercises - 1; i++)
+    {
+        int j = i + rand() / (RAND_MAX / (number_of_aerobic_exercises - i) + 1);
+        int t = array[j];
+        array[j] = array[i];
+        array[i] = t;
     }
-
 
     // inputs exercises randomly into workout.exercises
     for (int i = 0; i <= aerobic_days_count; i++) {
