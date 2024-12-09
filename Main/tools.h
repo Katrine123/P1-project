@@ -55,16 +55,15 @@ typedef struct {
     int is_body_weight_exercise;
 } exercise;
 
+//// ALL FUNCTIONS HERE ////
 
-int homemade_scan(datatype type, void* input);
-char* naming_equipment(enum equipment eq) ;
-char* naming_days(enum day_of_the_week day);
+//  In evaluation_questionnaire.c  //
+
+int evaluation_questionnaire();
+
+//  In exercises.c  //
 
 exercise* create_available_exercises(exercise exercises_list[], questionnaire user_questionnaire, int *count);
-
-questionnaire create_and_answer_questionnaire();
-
-void print_quiestionnare(questionnaire user);
 
 double base_weight_bench_press(questionnaire user);
 double base_weight_weighted_squats(questionnaire user);
@@ -79,11 +78,20 @@ void aerobic_exercises_list(exercise* exercise_list, questionnaire user);
 exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);
 void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]);
-void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *input);
-void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]);
-//
-// Created by mwsan on 11/14/2024.
-//
+
+//  In list.c  //
+
+//  In new_user_questionnaire.c  //
+questionnaire create_and_answer_questionnaire();
+void print_quiestionnare(questionnaire user);
+int get_user_days(questionnaire* user);
+
+//  In print_routine.c  //
+void print_routine();
+
+//  In routine.c  //
+
+//  In savesystem.c  //
 
 #ifndef SAVESYSTEM_H
 #define SAVESYSTEM_H
@@ -95,6 +103,20 @@ int save_data();
 void load_data();
 
 #endif //SAVESYSTEM_H
+
+
+//  In tools.c  //
+
+int homemade_scan(datatype type, void* input);
+char* naming_equipment(enum equipment eq) ;
+char* naming_days(enum day_of_the_week day);
+
+//  In upgrade_downgrade.c  //
+
+void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *input);
+void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]);
+
+
 
 
 

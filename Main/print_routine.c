@@ -55,8 +55,3 @@ void creating_test(workout* test_example) {
     test_example->exercises_count = 2;
 }
 
-
-/*Print routine example:
- * Monday:
- * Bench press 10 min
- * Air squats 5 min*/
