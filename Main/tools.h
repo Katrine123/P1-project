@@ -60,7 +60,7 @@ int homemade_scan(datatype type, void* input);
 char* naming_equipment(enum equipment eq) ;
 char* naming_days(enum day_of_the_week day);
 
-exercise* create_available_exercises(exercise* all_exercises, questionnaire user_questionnaire);
+exercise* create_available_exercises(exercise exercises_list[], questionnaire user_questionnaire, int *count);
 
 questionnaire create_and_answer_questionnaire();
 
