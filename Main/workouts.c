@@ -63,10 +63,12 @@ workout routine_workouts[7]; // At most 7 workouts in a week (1 per day).
 int routine_workouts_count = 0;
 static muscle_group routine_muscles[ARRAY_MAX]; static int routine_muscles_count; // Muscle groups included in the routine.
 static int resistance_workout_indexes[3]; static int resistance_workout_indexes_count; // Max 3 per week because of 48-72 hour recovery time and doing full-body exercises.
+static int aerobic_workout_indexes[7]; static int aerobic_workout_indexes_count; //Max 7 per week (1 per day).
 
 // Workout rules
 static const int general_warmup_duration = 5; // In minutes.
 static const int max_daily_sets = 6; // For resistance training.
+static const int max_daily_aerobic_exercises = 3; // 3 brings a good amount of variety without becoming overly complex.
 static int max_weekly_sets; // For resistance training.
 static int resistance_recovery;
 static int max_weekly_aerobic_workouts;
@@ -176,22 +178,26 @@ static void add_set_to_exercise(exercise *_exercise, workout* _workout) {
     // Add set to exercise
     _exercise->sets++;
 }
-static void add_exercise_to_resistance_training_workout(exercise *exercise_candidate, exercise* workout_exercise, workout* _workout) {
+static void add_exercise_candidate_to_workout(exercise *exercise_candidate, exercise* workout_exercise, workout* _workout) {
 
     // NOTE: Added exercises start with 0 sets. This does not add sets.
+
+    // NOTE: workout_exercise is the output.
 
     // Add exercise to workout by cloning exercise candidate
     workout_exercise = &_workout->exercises[_workout->exercises_count];
     *workout_exercise = *exercise_candidate;
     workout_exercise->sets = 0;
     _workout->exercises_count++;
+}
+static void update_resistance_exercise_muscle_groups(exercise *_exercise, workout* _workout) {
 
     // Update the muscle groups of the exercise, workout, and routine
     // Foreach muscle group that the exercise targets
-    for (int i = 0; i < exercise_candidate->muscles_count; i++) {
+    for (int i = 0; i < _exercise->muscles_count; i++) {
 
         // Declare variables
-        muscle_group *exercise_muscle = &exercise_candidate->muscles[i];
+        muscle_group *exercise_muscle = &_exercise->muscles[i];
         muscle_group *workout_muscle = NULL;
         muscle_group *routine_muscle = NULL;
 
@@ -215,7 +221,7 @@ static void add_exercise_to_resistance_training_workout(exercise *exercise_candi
             }
         }
 
-        // Add muscle group to workout, if it is not included ye
+        // Add muscle group to workout, if it is not included yet
         if (workout_muscle == NULL) {
             workout_muscle = &_workout->muscles[_workout->muscles_count];
             *workout_muscle = *exercise_muscle;
@@ -293,7 +299,7 @@ static void try_to_find_resistance_exercise_candidate(exercise* candidate, muscl
             continue;
         }
 
-        // Clone the exercise to the output, if all checks pass
+        // Make the output point to the exercise, if all checks pass
         candidate = _exercise;
         return;
     }
@@ -307,6 +313,62 @@ static void try_to_find_resistance_exercise_candidate(exercise* candidate, muscl
 
     // If no checks pass, no candidate is found
     candidate = NULL;
+}
+static void try_to_find_aerobic_exercise_candidate(exercise* candidate, workout* _workout) {
+
+    // TODO: Implement this.
+
+     // NOTE: 'candidate' is the output. It is set to NULL in this function if no candidate is found.
+
+    // Declare variables
+    exercise* last_valid_exercise = NULL;
+
+    // Get a random start index of the valid aerobic exercises
+    srand(time(NULL));
+    int exercises_count = valid_aerobic_exercises_count;
+    int start_index = rand() % exercises_count;
+
+    // Foreach valid resistance exercise
+    for (int old_i = 0; old_i < exercises_count; old_i++) {
+
+        // Get new index
+        int i = start_index + old_i;
+        if (i >= exercises_count) {
+            i -= exercises_count;
+        }
+
+        // Declare variables
+        exercise* _exercise = &valid_aerobic_exercises[i];
+
+        // Exceeds workout duration max?
+        if (does_adding_a_set_exceed_workout_duration_max(_exercise, _workout)) {
+            continue;
+        }
+
+        // Store valid exercise
+        last_valid_exercise = _exercise;
+
+        // We will now try to get a unique exercise (an exercise that has not yet been included in the routine).
+        // Routine already contains the exercise?
+        if (does_routine_already_contain_exercise(_exercise, routine_workouts, routine_workouts_count)) {
+            continue;
+        }
+
+        // Make the output point to the exercise, if all checks pass
+        candidate = _exercise;
+        return;
+    }
+
+    // Since we could not find a unique exercise, we will settle for a duplicate,
+    // provided that we actually have found a valid duplicate.
+    if (last_valid_exercise != NULL) {
+        *candidate = *last_valid_exercise;
+        return;
+    }
+
+    // If no checks pass, no candidate is found
+    candidate = NULL;
+
 }
 
 // Primary functions
@@ -422,6 +484,47 @@ static void update_resistance_days() {
         }
     }
 }
+static void update_aerobic_days() {
+
+    // Reset array count
+    aerobic_workout_indexes_count = 0;
+
+    // Do 2 loops
+    for (int loop = 0; loop < 2; loop++) {
+        // Foreach workout in routine
+        for (int i = 0; i < routine_workouts_count; i++ ) {
+
+            // Assume day is valid
+            int day_is_valid = 1;
+
+            // On 1st loop
+            if (loop == 0) {
+                // Is workout day also a resistance training day?
+                for (int j = 0; j < resistance_workout_indexes_count; j++) {
+                    // Ignore this day
+                    if (resistance_workout_indexes[j] == i) {
+                        day_is_valid = 0;
+                        break;
+                    }
+                }
+            }
+
+            // On both loops
+            // Weekly aerobic workout max exceeded?
+            if (aerobic_workout_indexes_count >= max_weekly_aerobic_workouts) {
+                day_is_valid = 0;
+            }
+
+            // Add to aerobic days, if all checks pass
+            if (day_is_valid) {
+                aerobic_workout_indexes[aerobic_workout_indexes_count] = i;
+                aerobic_workout_indexes_count++;
+            }
+        }
+    }
+
+
+}
 static void add_resistance_exercises() {
 
     // NOTE: Adds 1 set of exercises.
@@ -460,10 +563,45 @@ static void add_resistance_exercises() {
 
             // Add exercise to the training day and add a set
             exercise* new_exercise_in_workout;
-            add_exercise_to_resistance_training_workout(exercise_candidate, _workout, new_exercise_in_workout);
+            add_exercise_candidate_to_workout(exercise_candidate, _workout, new_exercise_in_workout);
+            update_resistance_exercise_muscle_groups(new_exercise_in_workout, _workout);
             add_set_to_exercise(new_exercise_in_workout, _workout);
         }
     }
+
+}
+static void add_aerobic_exercises() {
+
+    // TODO: Implement this.
+
+    // Foreach aerobic exercise day
+    for (int i = 0; i < aerobic_workout_indexes_count; i++) {
+
+        // Declare variables
+        int new_index = aerobic_workout_indexes[i];
+        workout* _workout = &routine_workouts[new_index];
+
+        // Loop x times (x = max amount of aerobic exercises per day)
+        for (int j = 0; j < max_daily_aerobic_exercises; j++) {
+
+            // Find exercise candidate
+            exercise* exercise_candidate = NULL;
+            try_to_find_aerobic_exercise_candidate(exercise_candidate, _workout);
+
+            // Candidate found?
+            if (exercise_candidate == NULL) {
+                continue;
+            }
+
+            // Add exercise
+            exercise* new_exercise_in_workout;
+            add_exercise_candidate_to_resistance_training_workout(exercise_candidate, _workout, new_exercise_in_workout);
+            add_set_to_exercise(new_exercise_in_workout, _workout);
+        }
+    }
+
+
+
 
 }
 static void fill_workouts_with_sets() {
@@ -524,7 +662,9 @@ static void reverse_order_of_exercises() {
         }
     }
 }
-void update_workouts ()
+
+// Global functions
+void update_workouts()
 {
     // Get workout rules (for example max weekly sets)
     update_workout_rules();
@@ -539,11 +679,11 @@ void update_workouts ()
     update_resistance_days();
 
     // Find which days are aerobic training days
-    update_aerobic_days(); // TODO: Implement this
+    update_aerobic_days();
 
     // Add exercises and fill with sets
     add_resistance_exercises();
-    add_aerobic_exercises(); // TODO: Implement this
+    add_aerobic_exercises();
     fill_workouts_with_sets();
 
     // Make aerobic exercises come before resistance exercises in the workouts
