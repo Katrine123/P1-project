@@ -12,8 +12,9 @@ int main(void) {
 
     questionnaire user;
     //FOR TESTING THAT EVALUATION QUEST WORKS TOGETHER WITH USER QUEST
-    /*
-    evaluation_questionnaire(&user);
+    /*user = create_and_answer_questionnaire(stdin);
+    print_quiestionnare(user);
+    evaluation_questionnaire(&user,stdin);
     print_quiestionnare(user);*/
 
     //user start
@@ -22,7 +23,7 @@ int main(void) {
         questionnaire user = create_and_answer_questionnaire(stdin);
         print_quiestionnare(user);
     }else {
-        if (evaluation_questionnaire(&user)==4) {
+        if (evaluation_questionnaire(&user,stdin)==4) {
             create_and_answer_questionnaire(stdin);
         }
     }

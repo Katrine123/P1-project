@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 enum datatype {integer, character, long_float, string};
 typedef enum datatype datatype;
@@ -59,7 +60,7 @@ typedef struct {
 
 //  In evaluation_questionnaire.c  //
 
-int evaluation_questionnaire(questionnaire* user);
+int evaluation_questionnaire(questionnaire* user,FILE *file);
 
 //  In exercises.c  //
 
@@ -86,7 +87,7 @@ void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire
 questionnaire create_and_answer_questionnaire(FILE *file);
 int get_user_days(questionnaire* user,FILE *file);
 void print_quiestionnare(questionnaire user);
-int get_user_days(questionnaire* user);
+int get_user_days(questionnaire* user,FILE *file);
 
 //  In print_routine.c  //
 void print_routine();
