@@ -1,5 +1,3 @@
-#include "exercises.h"
-#include "new_user_questionnaire.h"
 #include "tools.h"
 
 #include <stdio.h>

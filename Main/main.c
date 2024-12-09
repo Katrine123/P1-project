@@ -21,7 +21,6 @@ int main(void) {
     if (check_for_save()==0) {
         questionnaire user = create_and_answer_questionnaire();
         print_quiestionnare(user);
-        print_routine();
     }else {
         if (evaluation_questionnaire(&user)==4) {
             create_and_answer_questionnaire();
