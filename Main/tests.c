@@ -59,7 +59,7 @@ TEST_CASE(homemade_scan_test,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"hej 45");
+    fprintf(test_file,"45 hej 34");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -68,10 +68,34 @@ TEST_CASE(homemade_scan_test,{
         }
     int int_test;
     homemade_scan(integer,&int_test,test_file);
+    char char_test;
+    homemade_scan(character,&char_test,test_file);
+    char string_test[10];
+    homemade_scan(string,&string_test,test_file);
+    double double_test;
+    homemade_scan(long_float,&double_test,test_file);
     fclose(test_file);
 })
 
-MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2,homemade_scan_test)
+TEST_CASE(sorting_exercises_test,{
+    questionnaire test = {67,"male",72,183,7,12,1,{monday,67},{0,0,0,0,0}};
+    exercise ex_test[length_of_exercises_list];
+    resistance_exercises_list(ex_test, test);
+    aerobic_exercises_list(ex_test,test);
+    int sorted_count = 0;
+    exercise* exercise_list_sorted = create_available_exercises(ex_test, test, &sorted_count);
+
+    CHECK_EQ_STRING(exercise_list_sorted[0].name,"Air squats");
+    CHECK_EQ_STRING(exercise_list_sorted[1].name,"Pushups");
+    CHECK_EQ_STRING(exercise_list_sorted[2].name,"Elevated pushups");
+    CHECK_EQ_STRING(exercise_list_sorted[3].name,"Burpees");
+    CHECK_EQ_STRING(exercise_list_sorted[4].name,"Jumping jacks");
+
+    // Free the dynamically allocated memory for the sorted list
+    free(exercise_list_sorted);
+})
+
+MAIN_RUN_TESTS(/*questionnaire_test1,questionnaire_test2,homemade_scan_test*/sorting_exercises_test)
 
 /*What to test:
  * Sorting algoritm

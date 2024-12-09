@@ -43,5 +43,5 @@ FetchContent_Declare(mtest
 FetchContent_MakeAvailable(mtest)
 
 add_executable(tests tests.c)
-target_link_libraries(tests new_user_questionnaire tools mtest)
+target_link_libraries(tests new_user_questionnaire exercises routine tools mtest)
 

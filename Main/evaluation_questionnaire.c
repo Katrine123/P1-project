@@ -71,6 +71,5 @@ int evaluation_questionnaire(questionnaire* user,FILE *file) {
     }
     return answer;
 
-    return answer;
 }
 
