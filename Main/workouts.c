@@ -23,9 +23,11 @@
 // Implement ignored exercises (user story: "I hate squats, please give me any leg exercise other than squats.")
 
 // General constants
+
 static const int ARRAY_MAX = 32; // 32 simply because it is big enough.
 
 // Enums
+
 typedef enum {
     //TODO: Not implemented yet. Should contain stuff like biceps, triceps, chest, etc.
 } muscle_group_name;
@@ -38,6 +40,7 @@ typedef enum {
 } day_of_the_week;
 
 // Structs
+
 typedef struct muscle_group {
     muscle_group_name name;
     struct muscle_group* parent; // Muscle groups in struct exercise refer to muscle groups in struct workout which refers to muscle groups in the global routine variable.
@@ -59,6 +62,7 @@ typedef struct {
 } workout;
 
 // For the whole fitness routine
+
 workout routine_workouts[7]; // At most 7 workouts in a week (1 per day).
 int routine_workouts_count = 0;
 static muscle_group routine_muscles[ARRAY_MAX]; static int routine_muscles_count; // Muscle groups included in the routine.
@@ -66,6 +70,7 @@ static int resistance_workout_indexes[3]; static int resistance_workout_indexes_
 static int aerobic_workout_indexes[7]; static int aerobic_workout_indexes_count; //Max 7 per week (1 per day).
 
 // Workout rules
+
 static const int general_warmup_duration = 5; // In minutes.
 static const int max_daily_sets = 6; // For resistance training.
 static const int max_daily_aerobic_exercises = 3; // 3 brings a good amount of variety without becoming overly complex.
@@ -75,14 +80,16 @@ static int max_weekly_aerobic_workouts;
 static int aerobic_rest_multiplier; // For example, a multiplier of 2, means a work-to-rest ratio of 1:2.
 
 // Miscellaneous
-static muscle_group valid_muscle_groups[]; static int valid_muscle_groups_count;
 
-// ----------------------------------------------------------------------------------------------
+static muscle_group valid_muscle_groups[ARRAY_MAX]; static int valid_muscle_groups_count;
+
+// -----------------------------------------------------------------------------
 
 // Helper functions
+
 static int does_adding_a_set_exceed_daily_or_weekly_set_max(exercise *_exercise) {
 
-    // Foreach muscle group the exercise targets
+    // Foreach muscle group that the exercise targets
     for (int i = 0; _exercise->muscles_count; i++) {
 
         // Declare variables
@@ -372,6 +379,7 @@ static void try_to_find_aerobic_exercise_candidate(exercise* candidate, workout*
 }
 
 // Primary functions
+
 static void update_valid_muscle_groups()
 {
 
@@ -664,6 +672,7 @@ static void reverse_order_of_exercises() {
 }
 
 // Global functions
+
 void update_workouts()
 {
     // Get workout rules (for example max weekly sets)
