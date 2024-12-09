@@ -5,17 +5,9 @@
 
 #define MAX_REPS 15
 
-//  Test placeholders - dette kommer fra questionnaire
-/*
-double body_weight = 74;
-double rep_max_pushup = 90;
-double rep_max_squats = 40;
-int stage_of_exercise = novice;
-*/
-
 int check_eq[length_of_equipment_enum] = {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands};
-//  All exercises funktion:
 
+//  All exercises funktion:
 void resistance_exercises_list(exercise* exercise_list, questionnaire user)
 {
     //  With equipment

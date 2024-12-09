@@ -22,13 +22,15 @@ void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *in
         printf("Which exercises did you complete?\n");
         // print all the exercises available to the user
         for (int i = 0; i < sorted_count; i++) {
-            printf("Exercise %d: %s\n", i + 1, exercise_list_sorted[i].name);
+            //  Exercises are listed as 0-6, if they were listed from 1-7 it would provide issues..
+            printf("Exercise %d: %s\n", i, exercise_list_sorted[i].name);
         }
         int i = 0;
         int input_temp;
         do{
             scanf("%d", &input_temp);
-            input[input_temp - 1] = 1;
+            //  input_temp - 1
+            input[input_temp] = 1;
             i++;
         } while(i < sorted_count && input_temp != -1);
     }
