@@ -24,15 +24,17 @@
 
 // General constants
 
-const int ARRAY_MAX = 32; // 32 simply because it is big enough.
+#define ARRAY_MAX 32 // 32 simply because it is big enough.
 
 // Enums
 
+//TODO: Not implemented yet. Should contain stuff like biceps, triceps, chest, etc.
 typedef enum {
-    //TODO: Not implemented yet. Should contain stuff like biceps, triceps, chest, etc.
+    chest, triceps, biceps, quads, hamstrings, shoulders
 } muscle_group_name;
+//TODO: Not implemented yet. Should contain stuff like, bench_press, squat, deadlift, etc.
 typedef enum {
-    //TODO: Not implemented yet. Should contain stuff like, bench_press, squat, deadlift, etc.
+    bench_press, push_up, tricep_extension, squat, weighted_squat, sprint, burpee
 } exercise_name;
 typedef enum {
     monday = 1, tuesday = 2, wednesday = 3, thursday = 4,
@@ -40,6 +42,8 @@ typedef enum {
 } day_of_the_week;
 
 // Structs
+
+int fuck[ARRAY_MAX];
 
 typedef struct muscle_group {
     muscle_group_name name;
@@ -707,6 +711,7 @@ void update_workouts()
     reverse_order_of_exercises(routine_workouts, routine_workouts_count);
 }
 
+// TODO: Remove. Only for testing purposes.
 
 void main() {
 
@@ -714,3 +719,5 @@ void main() {
 
     printf("Test");
 }
+
+// TODO: Remove. Only for testing purposes.
