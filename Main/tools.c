@@ -28,7 +28,7 @@ int homemade_scan(datatype type, void* input) {//Uses a void for input, because 
                 printf("Please type a double");
             }
         }else if(type == string) {
-            if(scanf("%s",input)==1&&isalpha(*(char**)input)!=0) {
+            if(scanf("%s",input)==1&&isalpha(*(char*)input)!=0) {
                 is_right = 1;
             }else{
                 printf("Please type a string");

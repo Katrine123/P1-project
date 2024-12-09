@@ -85,18 +85,18 @@ questionnaire create_and_answer_questionnaire() {
     do {
         printf("What is your fitness level/experience level in a scale of 1-5?\n");
 
-        printf("fitness level 1: No experience with exercising \n"
-               "fitness level 2: A little experience with exercising\n"
-               "fitness level 3: intermediate experience with exercising\n"
-               "fitness level 4: advanced experience with exercising\n"
-               "fitness level 5: expert experience with exercising\n");
+        printf("fitness rank 1 (expert): expert experience with exercising \n"
+               "fitness rank 2 (proficient): advanced experience with exercising\n"
+               "fitness rank 3 (competent): intermediate experience with exercising\n"
+               "fitness rank 4 (advanced beginner): A little experience with exercising\n"
+               "fitness rank 5 (novice): No experience with exercising\n");
 
         // Validates that fitness level is between 1-5.
         homemade_scan(integer, &user.fitness_level);
-        if(user.fitness_level < 1 || user.fitness_level > 5) {
+        if(user.fitness_level < expert || user.fitness_level > novice) {
             printf("It has to be between 1-5!\n");
         }
-    }while(user.fitness_level < 1 || user.fitness_level > 5);
+    }while(user.fitness_level < expert || user.fitness_level > novice);
 
     ////////////////////////////////////////////////////////////////////
     //Function for getting the days the user can train
