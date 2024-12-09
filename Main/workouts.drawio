@@ -105,7 +105,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="ZoYlsJ3A6WbkT4gptY1H" name="Jesp&#39;s Corner">
-    <mxGraphModel dx="5207" dy="3087" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="2083" dy="1235" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1014,6 +1014,9 @@
         </mxCell>
         <mxCell id="xYM6nVvvVIorrd3MNa9f-90" value="Next day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
           <mxGeometry x="2191.6399999999994" y="3077" width="72.18" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Trgc4tAlKWPQs9idjocC-1" value="&lt;div&gt;Maybe make exercise struct only have pointers to muscle groups? And then also have an array of muscle_group_NAMES?&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="470" y="949.06" width="360.26" height="170" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
