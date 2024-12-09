@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 enum datatype {integer, character, long_float, string};
 typedef enum datatype datatype;
@@ -82,8 +83,8 @@ void print_exercise(exercise exercises_list[]);
 
 //  In new_user_questionnaire.c  //
 
-questionnaire create_and_answer_questionnaire();
-int get_user_days(questionnaire* user);
+questionnaire create_and_answer_questionnaire(FILE *file);
+int get_user_days(questionnaire* user,FILE *file);
 void print_quiestionnare(questionnaire user);
 
 //  In print_routine.c  //
@@ -107,7 +108,7 @@ void load_data();
 
 //  In tools.c  //
 
-int homemade_scan(datatype type, void* input);
+int homemade_scan(datatype type, void* input,FILE *file);
 char* naming_equipment(enum equipment eq) ;
 char* naming_days(enum day_of_the_week day);
 

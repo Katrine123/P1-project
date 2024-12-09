@@ -19,12 +19,12 @@ int main(void) {
     //user start
     system("cls");
     if (check_for_save()==0) {
-        questionnaire user = create_and_answer_questionnaire();
+        questionnaire user = create_and_answer_questionnaire(stdin);
         print_quiestionnare(user);
         print_routine();
     }else {
         if (evaluation_questionnaire(&user)==4) {
-            create_and_answer_questionnaire();
+            create_and_answer_questionnaire(stdin);
         }
     }
 
