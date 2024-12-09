@@ -1,12 +1,11 @@
-#include <stdio.h>
 
 enum datatype {integer, character, long_float, string};
 typedef enum datatype datatype;
 
 //  Stages from problem analysis
 enum stage_base_factor { novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1 };
-enum equipment {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands, length_of_equipment_enum };
-enum exercises {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, length_of_exercises_list};
+enum equipment { barbell, bench, pull_up_bar, pull_down_machine, resistance_bands, length_of_equipment_enum };
+enum exercises {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, jumping_jacks, length_of_exercises_list};
 enum day_of_the_week {
     monday = 1,
     tuesday = 2,
@@ -17,27 +16,6 @@ enum day_of_the_week {
     sunday = 7
 };
 
-// nothing, barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
-typedef struct {
-    int nothing;
-    int barbell;
-    int bench;
-    int pull_up_bar;
-    int pull_down_machine;
-    int resistance_bands;
-} check_equipment;
-
-//  Exercise platform
-typedef struct {
-    char name[20];
-    //  When calling necessary_equipment.x it searches in the check_equipment struct
-    //  Kald på array her, ændr type
-    int check_eq[length_of_exercises_list - 1];
-    //  We assume that weight only increases by 2.5, argue for this in implementation/design
-    double addition;
-    double base_weight;
-    int amount_of_reps;
-} exercise;
 
 typedef struct {
     enum day_of_the_week day_week;
@@ -56,6 +34,27 @@ typedef struct {
     int available_equipment[5]; //Array for deciding what exercises they can do
 } questionnaire;
 
+//  Check equipment struct
+typedef struct {
+    int barbell;
+    int bench;
+    int pull_up_bar;
+    int pull_down_machine;
+    int resistance_bands;
+} check_equipment;
+
+//  Exercise platform for resistance exercises
+typedef struct {
+    char name[20];
+    //  When calling necessary_equipment.x it searches in the check_equipment struct
+    int check_eq[length_of_exercises_list];
+    //  We assume that weight only increases by 2.5, argue for this in implementation/design
+    double addition;
+    double base_weight;
+    double amount_of_reps;
+    int is_body_weight_exercise;
+} exercise;
+
 //// ALL FUNCTIONS HERE ////
 
 //  In evaluation_questionnaire.c  //
@@ -64,20 +63,21 @@ int evaluation_questionnaire(questionnaire* user);
 
 //  In exercises.c  //
 
-void exercises_list();
+exercise* create_available_exercises(exercise exercises_list[], questionnaire user_questionnaire, int *count);
 
-//Skal måske ikke være her?
-double base_weight_bench_press(double body_weight_pushups, double rep_max_pushup);
-double base_weight_weighted_squats(double body_weight, double rep_max_pushup);
-double base_amount_air_squats(double rep_max_squats);
-int base_amount_pushups(double rep_max_pushup);
-int base_amount_elevated_pushups(double rep_max_pushup);
-double base_amount_own_exercise_lower_body(double rep_max_squats);
-double base_amount_own_exercise_upper_front_body(double rep_max_pushups);
-double base_amount_burpees(double rep_max_squats);
-double base_amount_jumping_jacks(double rep_max_squats);
+double base_weight_bench_press(questionnaire user);
+double base_weight_weighted_squats(questionnaire user);
+int base_amount_air_squats(questionnaire user);
+int base_amount_pushups(questionnaire user);
+int base_amount_elevated_pushups(questionnaire user);
+int base_amount_burpees(questionnaire user);
+int base_amount_jumping_jacks(questionnaire user);
+void resistance_exercises_list(exercise* exercise_list, questionnaire user);
+void aerobic_exercises_list(exercise* exercise_list, questionnaire user);
 
+exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);
+void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]);
 
 //  In list.c  //
 
@@ -86,12 +86,12 @@ void print_exercise(exercise exercises_list[]);
 questionnaire create_and_answer_questionnaire(FILE *file);
 int get_user_days(questionnaire* user,FILE *file);
 void print_quiestionnare(questionnaire user);
+int get_user_days(questionnaire* user);
 
 //  In print_routine.c  //
 void print_routine();
 
 //  In routine.c  //
-exercise* create_available_exercises(exercise* all_exercises, questionnaire user_questionnaire);
 
 //  In savesystem.c  //
 
@@ -112,11 +112,10 @@ int homemade_scan(datatype type, void* input,FILE *file);
 char* naming_equipment(enum equipment eq) ;
 char* naming_days(enum day_of_the_week day);
 
+//  In upgrade_downgrade.c  //
 
-//Fjern?
-exercise* create_all_exercises();
-
-
+void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *input);
+void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]);
 
 
 
