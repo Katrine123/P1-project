@@ -22,23 +22,23 @@ int main(void) {
 
     printf("\n_______________SORTED LIST______________\n");
     int sorted_count = 0;
-    exercise* sorted_exercise_list = create_available_exercises(ex_test, test, &sorted_count);
+    exercise* exercise_list_sorted = create_available_exercises(ex_test, test, &sorted_count);
 
     // Print the viable exercises
-    print_exercises_2(sorted_exercise_list, sorted_count, test, ex_test);
+    print_exercises_2(exercise_list_sorted, sorted_count, test, ex_test);
 
     //  Call upgrade_downgrade function with sorted_exercise_list
     int input[sorted_count];
-    upgrade_downgrade(sorted_exercise_list, sorted_count, input);
+    upgrade_downgrade(exercise_list_sorted, sorted_count, input);
 
     //Call the upgrade function that updates the exercises that need to be upgraded
-    upgrade_function(sorted_exercise_list, test, sorted_count, input);
+    upgrade_function(exercise_list_sorted, test, sorted_count, input);
 
     //  Print exercises again after user has upgraded, or done nothing.
-    print_exercises_2(sorted_exercise_list, sorted_count, test, ex_test);
+    print_exercises_2(exercise_list_sorted, sorted_count, test, ex_test);
 
     // Free the dynamically allocated memory for the sorted list
-    free(sorted_exercise_list);
+    free(exercise_list_sorted);
 
     return 0;
 
@@ -48,4 +48,3 @@ int main(void) {
 
     return 0;
 }
-//hep

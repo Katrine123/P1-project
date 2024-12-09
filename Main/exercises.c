@@ -20,23 +20,23 @@ void resistance_exercises_list(exercise* exercise_list, questionnaire user)
 {
     //  With equipment
     //  Bench press
-    exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), 12};
+    exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), 12, 0};
     exercise_list[0] = bench_press;
 
     //  Weighted squats
-    exercise weighted_squats = {"Weighted squats", {1, 0, 0, 0, 0}, 2.5, base_weight_weighted_squats(user), 12};
+    exercise weighted_squats = {"Weighted squats", {1, 0, 0, 0, 0}, 2.5, base_weight_weighted_squats(user), 12, 0};
     exercise_list[1] = weighted_squats;
 
     //  Air squats
-    exercise air_squats = {"Air squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_air_squats(user)};
+    exercise air_squats = {"Air squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_air_squats(user), 1};
     exercise_list[2] = air_squats;
 
     //  Pushups
-    exercise pushups = {"Pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_pushups(user)};
+    exercise pushups = {"Pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_pushups(user), 1};
     exercise_list[3] = pushups;
 
     //  Elevated Pushups
-    exercise elevated_pushups = {"Elevated pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_elevated_pushups(user)};
+    exercise elevated_pushups = {"Elevated pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_elevated_pushups(user), 1};
     exercise_list[4] = elevated_pushups;
 }
 
@@ -45,11 +45,11 @@ void aerobic_exercises_list(exercise* exercise_list, questionnaire user){
     //  HIIT
     //  Burpees
     //  Potential lowest bound is 5 reps pr. set. The exercise is more suitable to an increase in additions, therefore 2 instead of 1.
-    exercise burpees = {"Burpees", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_burpees(user)};
+    exercise burpees = {"Burpees", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_burpees(user), 1};
     exercise_list[5] = burpees;
 
     //  find endnu en øvelse af HIIT der er mere aerobic
-    exercise jumping_jacks = {"Jumping jacks", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_jumping_jacks(user)};
+    exercise jumping_jacks = {"Jumping jacks", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_jumping_jacks(user), 1};
     exercise_list[6] = jumping_jacks;
     //  Create array
     //  Return this array !
@@ -97,13 +97,13 @@ double base_weight_weighted_squats(questionnaire user) {
 }
 
 // Air squats should be the exercise if the perosn can take less than 15 consecutive air squats
-double base_amount_air_squats(questionnaire user) {
+int base_amount_air_squats(questionnaire user) {
     int reps_amount_squats = MAX_REPS - user.fitness_level;
     return reps_amount_squats;
 }
 
 //Split squats should be the printed exercise if the person can take more than 15 consecutive air squats
-double base_amount_split_squats(questionnaire user) {
+int base_amount_split_squats(questionnaire user) {
     int reps_amount_split_squats = MAX_REPS - user.fitness_level;
     return reps_amount_split_squats;
 }
@@ -120,7 +120,7 @@ int base_amount_pushups(questionnaire user) {
         return reps_amount_pushups;
 }
 
-double base_amount_burpees(questionnaire user) {
+int base_amount_burpees(questionnaire user) {
     /*  We are taking into account that this exercise is more difficult than others
      *  Level of exercise should be amplified by a factor of 2
      */
@@ -128,50 +128,10 @@ double base_amount_burpees(questionnaire user) {
     return reps_amount_burpees;
 }
 
-double base_amount_jumping_jacks(questionnaire user) {
-    int reps_amount_burpees = MAX_REPS - (user.fitness_level);
-    return reps_amount_burpees;
+int base_amount_jumping_jacks(questionnaire user) {
+    int reps_amount_jumping_jacks = MAX_REPS - (user.fitness_level);
+    return reps_amount_jumping_jacks;
 }
-
-
-void print_exercise(exercise exercises_list[]) {
-    for(int i = 0; i < length_of_exercises_list; i++) {
-        //få værdierne i struct ud
-        char *name = exercises_list[i].name;
-        //int equipment_required = exercise.necessary_equipment;
-        double addition = exercises_list[i].addition;
-        double base_weight = exercises_list[i].base_weight;
-        int amount_of_reps = exercises_list[i].amount_of_reps;
-
-        //print værdierne
-        printf("Name: %s\n", name);
-        printf("Needed equipment: \n");
-        if (exercises_list[i].check_eq[0] == 1) {
-            printf(" - Barbell\n");
-        }
-        if (exercises_list[i].check_eq[1] == 1) {
-            printf(" - Bench\n");
-        }
-        if (exercises_list[i].check_eq[2] == 1) {
-            printf(" - Pull up bar\n");
-        }
-        if (exercises_list[i].check_eq[3] == 1) {
-            printf(" - Pull down machine\n");
-        }
-        if (exercises_list[i].check_eq[4] == 1) {
-            printf(" - Resistance bands\n");
-        }
-        printf("Addition: %.2lf\n", addition);
-        if(base_weight == 0) {
-            // do nothing
-        } else {
-            printf("Base weight: %.2lf\n", base_weight);
-        }
-        printf("Amount of Repititions: %d\n", amount_of_reps);
-        printf("\n");
-    }
-}
-
 
 // Print function to display the viable exercises
 void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]) {
@@ -181,11 +141,11 @@ void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire
         printf("\n_____________________________\n");
         printf("Exercise %d:\n", i + 1);
         printf("Name: %s\n", sorted_exercise_list[i].name);
-        printf("Addition: %.0lf\n", sorted_exercise_list[i].addition);
+        printf("Addition: %.2lf\n", sorted_exercise_list[i].addition);
         if(sorted_exercise_list[i].base_weight != user.weight) {
-            printf("Base weight: %lf\n", sorted_exercise_list[i].base_weight);
+            printf("Base weight: %.2lf\n", sorted_exercise_list[i].base_weight);
         }
-        printf("Reps: %d\n", exercises_list[i].amount_of_reps);
+        printf("Reps: %.2lf\n", sorted_exercise_list[i].amount_of_reps);
         if (sorted_exercise_list[i].check_eq[0] == 1) {
             printf(" - Barbell\n");
         }

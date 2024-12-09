@@ -15,8 +15,8 @@ void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *in
     if (answer == 'y') {
         for (int i = 0; i < sorted_count; i++) {
             input[i] = 1;
+            //  Call upgrade function
         }
-        //upgrade(exercise_list_sorted, input);
 
     } else if (answer == 'n') {
         printf("Which exercises did you complete?\n");
@@ -28,24 +28,22 @@ void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *in
         int input_temp;
         do{
             scanf("%d", &input_temp);
-            input[input_temp] = 1;
+            input[input_temp - 1] = 1;
             i++;
         } while(i < sorted_count && input_temp != -1);
-
     }
 }
 
-exercise* upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]) {
-    exercise* sorted_exercise_list_upgrade = (exercise *)malloc(sizeof(exercise) * length_of_exercises_list);
-
+void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]) {
     for (int i = 0; i < sorted_count; i++) {
         if (input[i] == 1) {
-            if(user.weight == exercise_list_sorted[i].base_weight) {
+            //  What if the user weight is equal to bench press weight?
+                //  This has to be for body_weight_exercises
+            if(exercise_list_sorted[i].is_body_weight_exercise == 1) {
                 exercise_list_sorted[i].amount_of_reps += exercise_list_sorted[i].addition;
             } else {
                 exercise_list_sorted[i].base_weight += exercise_list_sorted[i].addition;
             }
         }
     }
-    return sorted_exercise_list_upgrade;
 }
