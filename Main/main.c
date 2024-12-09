@@ -13,10 +13,6 @@ void main() {
     // exercise* used_exercises = create_used_exercises(available_exercises, user_questionaire);
     // workout* workouts = create_workouts(used_exercises, user_questionaire);
     // print_routine(workout);
-
-    // Tests for workout_session.c
-
-
 }
 
 

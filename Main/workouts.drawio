@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.1 Chrome/128.0.6613.186 Electron/32.2.6 Safari/537.36" version="25.0.1" pages="2">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Overview">
-    <mxGraphModel dx="5207" dy="3087" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="2" pageWidth="1000" pageHeight="1000" math="0" shadow="0">
+    <mxGraphModel dx="2083" dy="1235" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="2" pageWidth="1000" pageHeight="1000" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -98,11 +98,14 @@
         <mxCell id="aVkhwRdwpBsDJl1G8z6D-26" value="Add aerobic exercises" style="shape=parallelogram;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;align=center;verticalAlign=middle;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;perimeter=parallelogramPerimeter;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="185.5" y="651.7" width="137" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="INRdYJu2fYHKdTwNfTuV-1" value="&lt;div&gt;Add to report: the use of global variables can lead to stack overflow errors, but we deem that will not be a problem for out program because of its simplicity.&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1140" y="560" width="300" height="138.3" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="ZoYlsJ3A6WbkT4gptY1H" name="Jesp&#39;s Corner">
-    <mxGraphModel dx="2403" dy="1425" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="5207" dy="3087" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
