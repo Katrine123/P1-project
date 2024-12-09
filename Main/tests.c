@@ -5,6 +5,7 @@
 #include "tools.h"
 
 TEST_CASE(questionnaire_test1,{
+    //Making "User inputs"
     FILE *test_file = fopen("user_input.txt","w");
         if (test_file == NULL) {
             printf("The file couldn't be opened");
@@ -33,6 +34,7 @@ TEST_CASE(questionnaire_test1,{
     }
 })
 
+//CHANGE SO THAT USER INPUT IS DIFFERENT
 TEST_CASE(questionnaire_test2,{
     FILE *test_file = fopen("user_input.txt","w");
         if (test_file == NULL) {
@@ -50,7 +52,26 @@ TEST_CASE(questionnaire_test2,{
     fclose(test_file);
 })
 
-MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)
+
+TEST_CASE(homemade_scan_test,{
+    FILE *test_file = fopen("user_input.txt","w");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    fprintf(test_file,"hej 45");
+    fclose(test_file);
+    test_file = fopen("user_input.txt","r");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    int int_test;
+    homemade_scan(integer,&int_test,test_file);
+    fclose(test_file);
+})
+
+MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2,homemade_scan_test)
 
 /*What to test:
  * Sorting algoritm
