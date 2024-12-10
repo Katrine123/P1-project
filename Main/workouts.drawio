@@ -105,7 +105,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="ZoYlsJ3A6WbkT4gptY1H" name="Jesp&#39;s Corner">
-    <mxGraphModel dx="1250" dy="741" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="651" dy="386" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -551,9 +551,9 @@
         <mxCell id="tY5H8uWJdQBPKQoihqLW-121" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="tY5H8uWJdQBPKQoihqLW-124" target="tY5H8uWJdQBPKQoihqLW-102" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tY5H8uWJdQBPKQoihqLW-122" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="tY5H8uWJdQBPKQoihqLW-137" target="tY5H8uWJdQBPKQoihqLW-140" edge="1">
+        <mxCell id="tY5H8uWJdQBPKQoihqLW-122" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="tY5H8uWJdQBPKQoihqLW-137" target="Pch4KKdDaGOP-ZuLO_6L-14" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2475.2449999999994" y="1876.25" as="targetPoint" />
+            <mxPoint x="2472.819999999999" y="1980.44" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="tY5H8uWJdQBPKQoihqLW-123" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#001DBC;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;fillColor=#0050ef;" parent="tY5H8uWJdQBPKQoihqLW-122" vertex="1" connectable="0">
@@ -599,29 +599,11 @@
         <mxCell id="tY5H8uWJdQBPKQoihqLW-134" value="&lt;div&gt;Remember to start at a random index&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;when looking through muscle&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;groups.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;This ensures that there is an equal chance&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;for all muscle groups to be considered first&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;instead of just the the ones that come&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;first in the array of possible resistance&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;exercises.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
           <mxGeometry x="2953.68" y="836.25" width="390" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="tY5H8uWJdQBPKQoihqLW-135" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="tY5H8uWJdQBPKQoihqLW-139" target="tY5H8uWJdQBPKQoihqLW-137" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2475.68" y="1678.25" as="sourcePoint" />
-            <mxPoint x="2475.68" y="1767.25" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="tY5H8uWJdQBPKQoihqLW-136" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="tY5H8uWJdQBPKQoihqLW-137" target="tY5H8uWJdQBPKQoihqLW-102" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tY5H8uWJdQBPKQoihqLW-137" value="Routine already includes the candidate?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="2396.85" y="1811.250000000001" width="153.13" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="tY5H8uWJdQBPKQoihqLW-138" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="tY5H8uWJdQBPKQoihqLW-124" target="tY5H8uWJdQBPKQoihqLW-139" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2475.68" y="1678.25" as="sourcePoint" />
-            <mxPoint x="2475.68" y="1766.25" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="tY5H8uWJdQBPKQoihqLW-139" value="Store as the last checked valid exercise" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="2386.8199999999997" y="1706.25" width="176.86" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="tY5H8uWJdQBPKQoihqLW-140" value="Return candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="2433.419999999999" y="1916.25" width="80" height="80" as="geometry" />
+        <mxCell id="tY5H8uWJdQBPKQoihqLW-137" value="&lt;b&gt;Routine &lt;/b&gt;already includes the candidate?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="2396.25" y="1875.440000000001" width="153.13" height="60" as="geometry" />
         </mxCell>
         <mxCell id="tY5H8uWJdQBPKQoihqLW-141" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="tY5H8uWJdQBPKQoihqLW-102" target="tY5H8uWJdQBPKQoihqLW-145" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -634,8 +616,10 @@
             <mxPoint x="3" y="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="tY5H8uWJdQBPKQoihqLW-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="tY5H8uWJdQBPKQoihqLW-145" target="tY5H8uWJdQBPKQoihqLW-146" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="tY5H8uWJdQBPKQoihqLW-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="tY5H8uWJdQBPKQoihqLW-145" target="Pch4KKdDaGOP-ZuLO_6L-15" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2670.2499999999995" y="1252.4400000000005" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="tY5H8uWJdQBPKQoihqLW-144" value="TRUE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#001DBC;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;fillColor=#0050ef;" parent="tY5H8uWJdQBPKQoihqLW-143" vertex="1" connectable="0">
           <mxGeometry x="-0.2541" relative="1" as="geometry">
@@ -645,17 +629,14 @@
         <mxCell id="tY5H8uWJdQBPKQoihqLW-145" value="Have you been able to store a valid exercise?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="2593.6800000000007" y="1139.1900000000005" width="153.13" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="tY5H8uWJdQBPKQoihqLW-146" value="Return candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="2630.2499999999995" y="1252.4400000000005" width="80" height="80" as="geometry" />
-        </mxCell>
         <mxCell id="tY5H8uWJdQBPKQoihqLW-147" value="&lt;div&gt;Remember to start at a random index&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;when looking through&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;exercises.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;This ensures that there is an equal chance&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;for all exercises to be considered&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;instead of just the the ones that come&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;first in the array of possible resistance&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;exercises.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
           <mxGeometry x="1900" y="946.56" width="360.26" height="170" as="geometry" />
         </mxCell>
         <mxCell id="tY5H8uWJdQBPKQoihqLW-148" value="&lt;div&gt;First, we want to try to find unique&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;resistance exercises for each workout.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
           <mxGeometry x="2303.24" y="1026.25" width="210" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="tY5H8uWJdQBPKQoihqLW-149" value="&lt;div&gt;If we cannot find any unique exercises&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;we must settle for an already used one, provided that&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;there is a valid one to be found.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
-          <mxGeometry x="2573.68" y="1016.25" width="210" height="102.81" as="geometry" />
+        <mxCell id="tY5H8uWJdQBPKQoihqLW-149" value="&lt;div&gt;If we cannot find any exercise unique to the routine,&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;we must settle for an already used one,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;provided that there is a valid one to be found.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
+          <mxGeometry x="2562.98" y="1004.71" width="236.32" height="119.06" as="geometry" />
         </mxCell>
         <mxCell id="tY5H8uWJdQBPKQoihqLW-150" value="There is a flaw to choosing resistance days like this, where we just start by checking the first workouts. Doing it like this means that we might pick days where the trainee has not got much workout time, which isn&#39;t ideal for full body resistance training, as it takes a bit of time to perform enough exercises to target all muscle groups. Then it would be better to do resistance training on days where you have more time.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;It would, however, become much more complicated if we were to check for the days with the most available work out time, as it brings compleities of it&#39;s own. For example, if you can train all week except Saturday, and your biggest available times are on first on Tuesday and second on Thursday, and you&#39;re an advanced beginner who can train 3 times a week, you would (by using this method) be recommended a routine with only 2 workout days, whereas just our method of just taking the first workout in the array first would provide 2 workout days.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;All in all, our method is best for getting the most amount of resistance workout days, but it does not necessarily give the best time-efficieny / workout quality. If that makes sense?&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
           <mxGeometry x="380" y="1996.25" width="737.64" height="308.77" as="geometry" />
@@ -706,12 +687,14 @@
             <mxPoint y="11" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xYM6nVvvVIorrd3MNa9f-4" target="xYM6nVvvVIorrd3MNa9f-59" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="xYM6nVvvVIorrd3MNa9f-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xYM6nVvvVIorrd3MNa9f-4" target="JFIJulLuLk_jv9lRJK0T-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3283.66" y="2981.01" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="JFIJulLuLk_jv9lRJK0T-15" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="xYM6nVvvVIorrd3MNa9f-3">
           <mxGeometry x="-0.5019" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
+            <mxPoint x="13" y="-1" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xYM6nVvvVIorrd3MNa9f-4" value="FOR EACH&lt;div&gt;valid&amp;nbsp;&lt;b&gt;aerobic &lt;/b&gt;exercise&lt;/div&gt;&lt;div&gt;(start at a random index)&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
@@ -730,6 +713,14 @@
         <mxCell id="xYM6nVvvVIorrd3MNa9f-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xYM6nVvvVIorrd3MNa9f-8" target="xYM6nVvvVIorrd3MNa9f-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="xYM6nVvvVIorrd3MNa9f-8" target="xYM6nVvvVIorrd3MNa9f-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-6" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="Pch4KKdDaGOP-ZuLO_6L-5">
+          <mxGeometry x="-0.1588" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="xYM6nVvvVIorrd3MNa9f-8" value="Workout duration limit exceeded?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="3107.0100000000007" y="3165.5100000000007" width="153.13" height="60" as="geometry" />
         </mxCell>
@@ -739,8 +730,8 @@
         <mxCell id="xYM6nVvvVIorrd3MNa9f-10" value="Next exercise" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="3141.7500000000005" y="3075.5100000000007" width="83.66" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-11" value="Return candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="3140.23" y="3627.4800000000005" width="80" height="80" as="geometry" />
+        <mxCell id="xYM6nVvvVIorrd3MNa9f-11" value="Return routine &lt;b&gt;unique &lt;/b&gt;candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="3119.7200000000003" y="3559.97" width="127.68" height="120.03" as="geometry" />
         </mxCell>
         <mxCell id="xYM6nVvvVIorrd3MNa9f-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xYM6nVvvVIorrd3MNa9f-13" target="xYM6nVvvVIorrd3MNa9f-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -870,29 +861,17 @@
         <mxCell id="xYM6nVvvVIorrd3MNa9f-49" value="Remember to start at a random index&lt;div&gt;when looking through exercises.&lt;/div&gt;&lt;div&gt;This ensures that there is an equal chance&lt;/div&gt;&lt;div&gt;for all exercises to be considered&lt;/div&gt;&lt;div&gt;instead of the the ones that come&lt;/div&gt;&lt;div&gt;first in the array of possible aerobic&lt;/div&gt;&lt;div&gt;exercises.&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="2793.899999999999" y="2811.01" width="260" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xYM6nVvvVIorrd3MNa9f-63" target="xYM6nVvvVIorrd3MNa9f-52" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3183.82" y="3225.3300000000004" as="sourcePoint" />
-            <mxPoint x="3184.82" y="3406.3300000000004" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="xYM6nVvvVIorrd3MNa9f-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xYM6nVvvVIorrd3MNa9f-52" target="xYM6nVvvVIorrd3MNa9f-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-52" value="&lt;b&gt;Routine &lt;/b&gt;already includes the candidate?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="3103.6600000000003" y="3344.170000000001" width="153.13" height="60" as="geometry" />
+        <mxCell id="xYM6nVvvVIorrd3MNa9f-52" value="&lt;b&gt;Workout&amp;nbsp;&lt;/b&gt;already includes the candidate?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="3107.01" y="3261.390000000001" width="153.13" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xYM6nVvvVIorrd3MNa9f-54" value="First, we want to try to find unique&amp;nbsp;&lt;div&gt;aerobic&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;exercises for each workout.&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="3044.8199999999993" y="2899.76" width="220" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-55" value="If we cannot find any unique exercises&lt;div&gt;we must settle for an already used one,&lt;/div&gt;&lt;div&gt;provided that there is a valid one to be found.&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" vertex="1">
-          <mxGeometry x="3333.679999999999" y="2870" width="320" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-56" value="Return &quot;better&quot; candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="3340.27" y="3077.0000000000005" width="80" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xYM6nVvvVIorrd3MNa9f-59" target="xYM6nVvvVIorrd3MNa9f-56" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="xYM6nVvvVIorrd3MNa9f-55" value="If we cannot find any exercise unique to the routine,&lt;div&gt;we must settle for an already used one,&lt;/div&gt;&lt;div&gt;provided that there is a valid one to be found.&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="3308.679999999999" y="2870" width="370" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xYM6nVvvVIorrd3MNa9f-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="JFIJulLuLk_jv9lRJK0T-11" target="xYM6nVvvVIorrd3MNa9f-64" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -902,30 +881,8 @@
             <mxPoint x="4" y="-5" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-59" value="Have you been able to store a valid &quot;better&quot; exercise?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="3283.66" y="2951.01" width="193.23" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xYM6nVvvVIorrd3MNa9f-8" target="xYM6nVvvVIorrd3MNa9f-63" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3183.82" y="3225.3300000000004" as="sourcePoint" />
-            <mxPoint x="3183.82" y="3365.3300000000004" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-61" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="xYM6nVvvVIorrd3MNa9f-60" vertex="1" connectable="0">
-          <mxGeometry x="-0.2318" relative="1" as="geometry">
-            <mxPoint y="60" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-62" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="xYM6nVvvVIorrd3MNa9f-60" vertex="1" connectable="0">
-          <mxGeometry x="0.1215" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="xYM6nVvvVIorrd3MNa9f-63" value="Store as an &quot;okay&quot; last checked valid exercise" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="3093.6600000000003" y="3259.8600000000006" width="176.16" height="60" as="geometry" />
-        </mxCell>
         <mxCell id="xYM6nVvvVIorrd3MNa9f-64" value="Return nothing" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="3796" y="2941.0000000000005" width="80" height="80" as="geometry" />
+          <mxGeometry x="3540.77" y="2940.0000000000005" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="xYM6nVvvVIorrd3MNa9f-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xYM6nVvvVIorrd3MNa9f-66" target="xYM6nVvvVIorrd3MNa9f-87" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -1028,51 +985,67 @@
         <mxCell id="Trgc4tAlKWPQs9idjocC-1" value="&lt;div&gt;Maybe make exercise struct only have pointers to muscle groups? And then also have an array of muscle_group_NAMES?&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="1" vertex="1">
           <mxGeometry x="470" y="949.06" width="360.26" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="JFIJulLuLk_jv9lRJK0T-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="JFIJulLuLk_jv9lRJK0T-4" target="JFIJulLuLk_jv9lRJK0T-1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3180" y="3566" as="targetPoint" />
-            <mxPoint x="3180" y="3404" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="JFIJulLuLk_jv9lRJK0T-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="JFIJulLuLk_jv9lRJK0T-1" target="xYM6nVvvVIorrd3MNa9f-4">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="JFIJulLuLk_jv9lRJK0T-1" value="&lt;b&gt;Workout &lt;/b&gt;already includes the candidate?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
-          <mxGeometry x="3103.6600000000003" y="3526.000000000001" width="153.13" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JFIJulLuLk_jv9lRJK0T-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="xYM6nVvvVIorrd3MNa9f-52" target="JFIJulLuLk_jv9lRJK0T-4">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3180" y="3544" as="targetPoint" />
-            <mxPoint x="3180" y="3404" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JFIJulLuLk_jv9lRJK0T-6" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="JFIJulLuLk_jv9lRJK0T-5">
-          <mxGeometry x="-0.2966" y="-2" relative="1" as="geometry">
-            <mxPoint x="2" y="3" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JFIJulLuLk_jv9lRJK0T-4" value="Store as a &quot;better&quot; last checked valid exercise" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
-          <mxGeometry x="3092.0000000000005" y="3447.0000000000005" width="176.16" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JFIJulLuLk_jv9lRJK0T-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="xYM6nVvvVIorrd3MNa9f-59" target="JFIJulLuLk_jv9lRJK0T-11">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3475.23" y="2982" as="sourcePoint" />
-            <mxPoint x="3685.23" y="2983" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JFIJulLuLk_jv9lRJK0T-17" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="JFIJulLuLk_jv9lRJK0T-12">
-          <mxGeometry x="-0.5362" y="-2" relative="1" as="geometry">
-            <mxPoint x="7" y="-2" as="offset" />
-          </mxGeometry>
+        <mxCell id="JFIJulLuLk_jv9lRJK0T-1" value="&lt;b&gt;Routine&amp;nbsp;&lt;/b&gt;already includes the candidate?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="3107" y="3452.480000000001" width="153.13" height="60" as="geometry" />
         </mxCell>
         <mxCell id="JFIJulLuLk_jv9lRJK0T-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="JFIJulLuLk_jv9lRJK0T-11" target="JFIJulLuLk_jv9lRJK0T-13">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="JFIJulLuLk_jv9lRJK0T-11" value="Have you been able to store a valid &quot;okay&quot; exercise?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
-          <mxGeometry x="3543.23" y="2952" width="186.77" height="60" as="geometry" />
+        <mxCell id="JFIJulLuLk_jv9lRJK0T-11" value="Have you been able to store a valid exercise?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="3288" y="2951" width="186.77" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="JFIJulLuLk_jv9lRJK0T-13" value="Return &quot;okay&quot; candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
-          <mxGeometry x="3597" y="3080.0000000000005" width="80" height="80" as="geometry" />
+        <mxCell id="JFIJulLuLk_jv9lRJK0T-13" value="Return routine &lt;b&gt;non-unique&lt;/b&gt; candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="3315.14" y="3056.4" width="132.48" height="123.6" as="geometry" />
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="xYM6nVvvVIorrd3MNa9f-52" target="xYM6nVvvVIorrd3MNa9f-63">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3184" y="3520" as="targetPoint" />
+            <mxPoint x="3184" y="3339" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-3" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="Pch4KKdDaGOP-ZuLO_6L-2">
+          <mxGeometry x="-0.2966" y="-2" relative="1" as="geometry">
+            <mxPoint x="2" y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="xYM6nVvvVIorrd3MNa9f-63" target="JFIJulLuLk_jv9lRJK0T-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xYM6nVvvVIorrd3MNa9f-63" value="Store as the last checked valid exercise" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="3095.4999999999995" y="3365.73" width="176.16" height="65.42" as="geometry" />
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="tY5H8uWJdQBPKQoihqLW-124" target="Pch4KKdDaGOP-ZuLO_6L-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2475" y="1678" as="sourcePoint" />
+            <mxPoint x="2475" y="1940" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="Pch4KKdDaGOP-ZuLO_6L-7" target="tY5H8uWJdQBPKQoihqLW-102">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-7" value="&lt;b&gt;Workout&amp;nbsp;&lt;/b&gt;already includes the candidate?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="2398.6800000000003" y="1701.3000000000006" width="153.13" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="Pch4KKdDaGOP-ZuLO_6L-7" target="Pch4KKdDaGOP-ZuLO_6L-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2475" y="1761" as="sourcePoint" />
+            <mxPoint x="2475" y="1940" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="Pch4KKdDaGOP-ZuLO_6L-9" target="tY5H8uWJdQBPKQoihqLW-137">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-9" value="Store as the last checked valid exercise" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="2386.8199999999993" y="1782.6299999999999" width="176.16" height="65.42" as="geometry" />
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-14" value="Return routine &lt;b&gt;unique &lt;/b&gt;candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="2411.06" y="1985.9499999999998" width="127.68" height="120.03" as="geometry" />
+        </mxCell>
+        <mxCell id="Pch4KKdDaGOP-ZuLO_6L-15" value="Return routine &lt;b&gt;non-unique&lt;/b&gt; candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="2604.0099999999998" y="1250" width="132.48" height="123.6" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -30,11 +30,11 @@
 
 //TODO: Not implemented yet. Should contain stuff like biceps, triceps, chest, etc.
 typedef enum {
-    biceps, chest, triceps, quads
+    calves = 1, biceps, chest, triceps, quads
 } muscle_group_name;
 //TODO: Not implemented yet. Should contain stuff like, bench_press, squat, deadlift, etc.
 typedef enum {
-    sprint, burpees, bench_press, push_up, bicep_curl, squat
+    sprint = 1, burpees, bench_press, push_up, bicep_curl, squat
 } exercise_name;
 typedef enum {
     monday = 1, tuesday = 2, wednesday = 3, thursday = 4,
@@ -112,29 +112,29 @@ exercise valid_aerobic_exercises[ARRAY_MAX]; int valid_aerobic_exercises_count;
 
 // Helper functions
 
-muscle_group* get_muscle_group_in_workout(muscle_group muscle, workout _workout) {
+muscle_group* get_muscle_group_in_workout(muscle_group *muscle, workout *_workout) {
 
     muscle_group *muscle_in_workout = NULL;
 
     // Find whether the muscle group is already included in the workout.
     // Foreach muscle group included the workout
-    for (int j = 0; j < _workout.muscles_count; j++) {
-        if (_workout.muscles[j].name == muscle.name) {
-            muscle_in_workout = &_workout.muscles[j];
+    for (int j = 0; j < _workout->muscles_count; j++) {
+        if (_workout->muscles[j].name == muscle->name) {
+            muscle_in_workout = &_workout->muscles[j];
             break;
         }
     }
 
     return muscle_in_workout;
 }
-muscle_group* get_muscle_group_in_routine(muscle_group muscle) {
+muscle_group* get_muscle_group_in_routine(muscle_group *muscle) {
 
     muscle_group *muscle_in_routine = NULL;
 
     // Find whether the muscle group is already included in the routine.
     // Foreach muscle group included the routine
     for (int j = 0; j < routine_muscles_count; j++) {
-        if (routine_muscles[j].name == muscle.name) {
+        if (routine_muscles[j].name == muscle->name) {
             muscle_in_routine = &routine_muscles[j];
             break;
         }
@@ -159,13 +159,13 @@ double new_workout_duration_when_adding_a_set(exercise _exercise, workout _worko
 
     return new_duration;
 }
-int does_adding_a_set_exceed_daily_or_weekly_set_max(exercise _exercise, workout _workout) {
+int does_adding_a_set_exceed_daily_or_weekly_set_max(exercise _exercise, workout* _workout) {
 
     // Foreach muscle group that the exercise targets
     for (int i = 0; i <_exercise.muscles_count; i++) {
 
         // Declare variables
-        muscle_group exercise_muscle = _exercise.muscles[i];
+        muscle_group* exercise_muscle = &_exercise.muscles[i];
 
         // Find whether the muscle group is already included in the workout and/or the routine.
         muscle_group* workout_muscle = get_muscle_group_in_workout(exercise_muscle, _workout);;
@@ -271,15 +271,6 @@ void add_set_to_exercise(exercise *_exercise, workout* _workout) {
             muscle_group *workout_muscle = exercise_muscle->parent;
             muscle_group *routine_muscle = workout_muscle->parent;
 
-            printf("\n          ---------"); // TODO: Test. Remove.
-            printf("\n          _exercise.name: %d", _exercise->name); // TODO: Test. Remove.
-            printf("\n          exercise_muscle.name: %d", exercise_muscle->name); // TODO: Test. Remove.
-            printf("\n          workout_muscle.name: %d", workout_muscle->name); // TODO: Test. Remove.
-            printf("\n          routine_muscle.name: %d", routine_muscle->name); // TODO: Test. Remove.
-            printf("\n          exercise_muscle == NULL: %d", exercise_muscle == NULL); // TODO: Test. Remove.
-            printf("\n          workout_muscle == NULL: %d", workout_muscle == NULL); // TODO: Test. Remove.
-            printf("\n          routine_muscle == NULL: %d", routine_muscle == NULL); // TODO: Test. Remove.
-
             // Add sets to muscle groups
             workout_muscle->sets++;
             routine_muscle->sets++;
@@ -314,14 +305,8 @@ void update_resistance_exercise_muscle_groups(exercise *_exercise, workout* _wor
         muscle_group *exercise_muscle = &_exercise->muscles[i];
 
         // Find whether the muscle group is already included in the workout and/or the routine.
-        muscle_group *workout_muscle = get_muscle_group_in_workout(*exercise_muscle, *_workout);;
-        muscle_group *routine_muscle = get_muscle_group_in_routine(*exercise_muscle);;
-
-        // printf("\n      --- BEFORE creating unincluded muscle groups:"); // TODO: Test. Remove.
-        // printf("\n      _exercise.name: %d", _exercise->name); // TODO: Test. Remove.
-        // printf("\n      exercise_muscle == NULL: %d", exercise_muscle == NULL); // TODO: Test. Remove.
-        // printf("\n      workout_muscle == NULL: %d", workout_muscle == NULL); // TODO: Test. Remove.
-        // printf("\n      routine_muscle == NULL: %d", routine_muscle == NULL); // TODO: Test. Remove.
+        muscle_group *workout_muscle = get_muscle_group_in_workout(exercise_muscle, _workout);
+        muscle_group *routine_muscle = get_muscle_group_in_routine(exercise_muscle);
 
         // Add muscle group to workout, if it is not included yet
         if (workout_muscle == NULL) {
@@ -342,15 +327,9 @@ void update_resistance_exercise_muscle_groups(exercise *_exercise, workout* _wor
         if (workout_muscle->parent == NULL) {
             workout_muscle->parent = routine_muscle;
         }
-
-        // printf("\n      --- AFTER creating unincluded muscle groups:"); // TODO: Test. Remove.
-        printf("\n          _exercise.name: %d", _exercise->name); // TODO: Test. Remove.
-        // printf("\n      exercise_muscle == NULL: %d", exercise_muscle == NULL); // TODO: Test. Remove.
-        // printf("\n      workout_muscle == NULL: %d", workout_muscle == NULL); // TODO: Test. Remove.
-        // printf("\n      routine_muscle == NULL: %d", routine_muscle == NULL); // TODO: Test. Remove.
     }
 }
-void try_to_find_resistance_exercise_candidate(int *found_valid_candidate, exercise *candidate, muscle_group_name target_muscle_name, workout _workout) {
+void try_to_find_resistance_exercise_candidate(int *found_valid_candidate, exercise *candidate, muscle_group_name target_muscle_name, workout *_workout) {
 
     // Declare variables
     exercise last_valid_exercise;
@@ -370,8 +349,6 @@ void try_to_find_resistance_exercise_candidate(int *found_valid_candidate, exerc
             i -= exercises_count;
         }
 
-        printf("\n          --- exercise candidate i: %d", i); // TODO: Test. Remove.
-
         // Declare variables
         exercise _exercise = valid_resistance_exercises[i];
 
@@ -390,14 +367,17 @@ void try_to_find_resistance_exercise_candidate(int *found_valid_candidate, exerc
         }
 
         // Exceeds workout duration max?
-        printf("\n      COMMENCING: does_adding_a_set_exceed_workout_duration_max()."); // TODO: Test. Remove.
-        if (does_adding_a_set_exceed_workout_duration_max(_exercise, _workout)) {
+        if (does_adding_a_set_exceed_workout_duration_max(_exercise, *_workout)) {
             continue;
         }
 
         // Exceeds either weekly sets max or daily sets max?
-        printf("\n      COMMENCING: does_adding_a_set_exceed_daily_or_weekly_set_max()."); // TODO: Test. Remove.
         if (does_adding_a_set_exceed_daily_or_weekly_set_max(_exercise, _workout)) {
+            continue;
+        }
+
+        // Workout already contains the exercise?
+        if (does_workout_already_contain_exercise(_exercise, *_workout)) {
             continue;
         }
 
@@ -405,13 +385,12 @@ void try_to_find_resistance_exercise_candidate(int *found_valid_candidate, exerc
         last_valid_exercise = _exercise;
         *found_valid_candidate = 1;
 
-        // We will now try to get a unique exercise (an exercise that has not yet been included in the routine).
+        // Though we now have a valid exercise, we will try to find
+        // an exercise that is not yet included in the routine.
         // Routine already contains the exercise?
-        printf("\n      COMMENCING: does_routine_already_contain_exercise()."); // TODO: Test. Remove.
         if (does_routine_already_contain_exercise(_exercise)) {
             continue;
         }
-
 
         // Make the output point to the exercise, if all checks pass
         *candidate = _exercise;
@@ -428,9 +407,7 @@ void try_to_find_aerobic_exercise_candidate(int *found_valid_candidate, exercise
 
     // Declare variables
     *found_valid_candidate = 0;
-    int found_candidate_that_is_unique_in_workout = 0;
     exercise last_valid_exercise;
-    exercise last_valid_exercise_that_is_unique_in_workout;
 
     // Get a random start index of the valid aerobic exercises
     srand(time(NULL));
@@ -454,20 +431,17 @@ void try_to_find_aerobic_exercise_candidate(int *found_valid_candidate, exercise
             continue;
         }
 
-        // Store valid exercise
-        last_valid_exercise = _exercise;
-        *found_valid_candidate = 1;
-
-        // We will now try to find a unique exercise (an exercise that
-        // has not yet been included in the workout or (ideally) the routine).
-
         // Workout already contains the exercise?
         if (does_workout_already_contain_exercise(_exercise, _workout)) {
             continue;
         }
-        last_valid_exercise_that_is_unique_in_workout = _exercise;
-        found_candidate_that_is_unique_in_workout = 1;
 
+        // Store valid exercise
+        last_valid_exercise = _exercise;
+        *found_valid_candidate = 1;
+
+        // Though we now have a valid exercise, we will try to find
+        // an exercise that is not yet included in the routine.
         // Routine already contains the exercise?
         if (does_routine_already_contain_exercise(_exercise)) {
             continue;
@@ -482,9 +456,7 @@ void try_to_find_aerobic_exercise_candidate(int *found_valid_candidate, exercise
 
     // Since we could not find a unique exercise, we will settle for a duplicate,
     // provided that we actually have found a valid duplicate.
-    if (found_candidate_that_is_unique_in_workout) {
-        *candidate = last_valid_exercise_that_is_unique_in_workout;
-    } else if (*found_valid_candidate) {
+    if (*found_valid_candidate) {
         *candidate = last_valid_exercise;
     }
 }
@@ -662,15 +634,11 @@ void add_resistance_exercises() {
             i -= muscles_count;
         }
 
-        printf("\n      --- muscle group i: %d", i); // TODO: Test. Remove.
-
         // Declare variables
         muscle_group_name target_muscle_name = valid_muscle_names_names[i];
 
         // Foreach resistance training day
         for (int j = 0; j < resistance_workout_indexes_count; j++) {
-
-            printf("\n      /// Training day index: %d", j); // TODO: Test. Remove.
 
             // Declare variables
             workout* _workout = &routine_workouts[resistance_workout_indexes[j]];
@@ -678,8 +646,7 @@ void add_resistance_exercises() {
             // Try to find exercise candidate
             exercise exercise_candidate;
             int found_valid_candidate;
-            printf("\n      COMMENCING: try_to_find_resistance_exercise_candidate()."); // TODO: Test. Remove.
-            try_to_find_resistance_exercise_candidate(&found_valid_candidate, &exercise_candidate, target_muscle_name, *_workout);
+            try_to_find_resistance_exercise_candidate(&found_valid_candidate, &exercise_candidate, target_muscle_name, _workout);
 
             // Found a candidate?
             if (!found_valid_candidate) {
@@ -687,14 +654,9 @@ void add_resistance_exercises() {
             }
 
             // Add exercise to the training day and add a set
-            printf("\n      COMMENCING: add_exercise_candidate_to_workout()."); // TODO: Test. Remove.
             exercise* new_exercise_in_workout = add_exercise_candidate_to_workout(exercise_candidate, _workout);
-            printf("\n      new_exercise_in_workout.name: %d",new_exercise_in_workout->name); // TODO: Test. Remove.
-            printf("\n      COMMENCING: update_resistance_exercise_muscle_groups()."); // TODO: Test. Remove.
             update_resistance_exercise_muscle_groups(new_exercise_in_workout, _workout);
-            printf("\n      COMMENCING: add_set_to_exercise()."); // TODO: Test. Remove.
             add_set_to_exercise(new_exercise_in_workout, _workout);
-            printf("\n      +++ FINISHED: add_set_to_exercise()."); // TODO: Test. Remove.
         }
     }
 
@@ -744,31 +706,22 @@ void fill_workouts_with_sets() {
             // Foreach exercise
             for (int j = 0; j < _workout->exercises_count; j++) {
 
-
-
                 // Declare variables
                 exercise* _exercise = &_workout->exercises[j];
 
-                printf("\n      --- workout day: %d", _workout->day); // TODO: Test. Remove.
-                printf("\n      --- Exercise name: %d", _exercise->name); // TODO: Test. Remove.
-
                 // Workout duration max exceeded?
-                printf("\n      COMMENCING: does_adding_a_set_exceed_workout_duration_max()."); // TODO: Test. Remove.
                 if (does_adding_a_set_exceed_workout_duration_max(*_exercise, *_workout)) {
                     continue;
                 }
 
                 // Resistance exercise?
                 // If so, will daily set max or weekly set max be exceeded when adding a set?
-                printf("\n      COMMENCING: does_adding_a_set_exceed_daily_or_weekly_set_max()."); // TODO: Test. Remove.
-                if (!_exercise->is_aerobic && does_adding_a_set_exceed_daily_or_weekly_set_max(*_exercise, *_workout)) {
+                if (!_exercise->is_aerobic && does_adding_a_set_exceed_daily_or_weekly_set_max(*_exercise, _workout)) {
                     continue;
                 }
 
                 // Add a set
-                printf("\n      COMMENCING: add_set_to_exercise()."); // TODO: Test. Remove.
                 add_set_to_exercise(_exercise, _workout);
-                printf("\n      FINISHED: add_set_to_exercise()."); // TODO: Test. Remove.
                 loop_added_a_set = 1;
             }
         }
@@ -801,57 +754,29 @@ void reverse_order_of_exercises() {
 void update_workouts()
 {
     // Get workout rules based on fitness level (for example max weekly sets).
-    printf("\nCOMMENCING: update_workout_rules()."); // TODO: Test. Remove.
     update_workout_rules();
 
     // Get valid muscle groups to target (those that the user does not specify to ignore).
-    printf("\nCOMMENCING: update_valid_muscle_groups()."); // TODO: Test. Remove.
     update_valid_muscle_groups();
 
     // Reset routine (it's a global variable) and add general warmups.
-    printf("\nCOMMENCING: reset_routine_workouts()."); // TODO: Test. Remove.
     reset_routine_workouts();
 
     // Find which days must be resistance training days, aerobic training days, or both.
-    printf("\nCOMMENCING: update_resistance_days()."); // TODO: Test. Remove.
     update_resistance_days();
-    for (int i_test = 0; i_test < resistance_workout_indexes_count; i_test++) { // TODO: Test. Remove.
-        printf("\nResistance day '%d' at workout index '%d'.", i_test, resistance_workout_indexes[i_test]); // TODO: Test. Remove.'
-    } // TODO: Test. Remove.
-    printf("\nCOMMENCING: update_aerobic_days()."); // TODO: Test. Remove.'
     update_aerobic_days();
-    for (int i_test = 0; i_test < aerobic_workout_indexes_count; i_test++) { // TODO: Test. Remove.
-        printf("\nAerobic day '%d' at workout index '%d'.", i_test, aerobic_workout_indexes[i_test]); // TODO: Test. Remove.'
-    } // TODO: Test. Remove.
 
     // Add exercises (and specific warmups), and fill with sets.
     // (Resistance training is given priority over aerobic training
     // because resistance training is less flexible to schedule due to
     // greater recovery times.)
-    printf("\nCOMMENCING: add_resistance_exercises()."); // TODO: Test. Remove.
     add_resistance_exercises();
-    printf("\nCOMMENCING: add_aerobic_exercises()."); // TODO: Test. Remove.
     add_aerobic_exercises();
-    for (int i_test = 0; i_test < routine_workouts_count; i_test++) { // TODO: Test. Remove.
-        printf("\n----------------------"); // TODO: Test. Remove
-        printf("\n  Routine day: %d", routine_workouts[i_test].day); // TODO: Test. Remove
-        printf("\n  Duration: %lf", routine_workouts[i_test].duration); // TODO: Test. Remove
-        printf("\n  Max duration: %lf", routine_workouts[i_test].max_duration); // TODO: Test. Remove
-        for (int j_test = 0; j_test < routine_workouts[i_test].muscles_count; j_test++) { // TODO: Test. Remove.
-            printf("\n      Included muscle %d name: %d", j_test, routine_workouts[i_test].muscles[j_test].name);
-        } // TODO: Test. Remove.
-        printf("\n      ----------"); // TODO: Test. Remove
-        for (int j_test = 0; j_test < routine_workouts[i_test].exercises_count; j_test++) { // TODO: Test. Remove.
-            printf("\n      Included exercise %d name: %d, sets: %d", j_test, routine_workouts[i_test].exercises[j_test].name, routine_workouts[i_test].exercises[j_test].sets);
-        } // TODO: Test. Remove.
-    } // TODO: Test. Remove.
-    printf("\nCOMMENCING: fill_workouts_with_sets()."); // TODO: Test. Remove.
     fill_workouts_with_sets();
 
     // Make aerobic exercises come before resistance exercises in the workouts.
     // (This ensures that the trainee is always warmed up for HIIT-exercises
     // since doing resistance training first could risk cooling the trainee down.)
-    printf("\nCOMMENCING: reverse_order_of_exercises()."); // TODO: Test. Remove.
     reverse_order_of_exercises(routine_workouts, routine_workouts_count);
 
     for (int i_test = 0; i_test < routine_workouts_count; i_test++) { // TODO: Test. Remove.
@@ -860,11 +785,25 @@ void update_workouts()
         printf("\n  Duration: %lf", routine_workouts[i_test].duration); // TODO: Test. Remove
         printf("\n  Max duration: %lf", routine_workouts[i_test].max_duration); // TODO: Test. Remove
         for (int j_test = 0; j_test < routine_workouts[i_test].muscles_count; j_test++) { // TODO: Test. Remove.
-            printf("\n      Included muscle %d name: %d", j_test, routine_workouts[i_test].muscles[j_test].name);
+            printf("\n      Included muscle [%d], name: %d, parent.name: %d",
+                j_test,
+                routine_workouts[i_test].muscles[j_test].name,
+                routine_workouts[i_test].muscles[j_test].parent->name); // TODO: Test. Remove.
         } // TODO: Test. Remove.
         printf("\n      ----------"); // TODO: Test. Remove
         for (int j_test = 0; j_test < routine_workouts[i_test].exercises_count; j_test++) { // TODO: Test. Remove.
-            printf("\n      Included exercise %d name: %d, sets: %d", j_test, routine_workouts[i_test].exercises[j_test].name, routine_workouts[i_test].exercises[j_test].sets);
+            printf("\n      Included exercise [%d], name: %d, sets: %d",
+                j_test,
+                routine_workouts[i_test].exercises[j_test].name,
+                routine_workouts[i_test].exercises[j_test].sets); // TODO: Test. Remove.
+            for (int k_test = 0; k_test < routine_workouts[i_test].exercises[j_test].muscles_count; k_test++) { // TODO: Test. Remove.
+                printf("\n          Included muscle [%d], name: %d, parent.name: %d, parent.sets: %d, parent != NULL: %d",
+                    k_test,
+                    routine_workouts[i_test].exercises[j_test].muscles[k_test].name,
+                    routine_workouts[i_test].exercises[j_test].muscles[k_test].parent->name,
+                    routine_workouts[i_test].exercises[j_test].muscles[k_test].parent->sets,
+                    routine_workouts[i_test].exercises[j_test].muscles[k_test].parent != NULL); // TODO: Test. Remove.
+            } // TODO: Test. Remove.
         } // TODO: Test. Remove.
     } // TODO: Test. Remove.
 }
@@ -872,8 +811,6 @@ void update_workouts()
 // TODO: Remove. Only for testing purposes.
 
 void main() {
-
-    printf("\nCOMMENCING: Answer questionaire."); // TODO: Test. Remove.
 
     // Answer questionnaire
     questionnaire.fitness_level = 5; // novice = 5, advanced_beginner = 4, competent = 3, proficient = 2
@@ -967,8 +904,6 @@ void main() {
         };
     valid_aerobic_exercises[1] = aerobic_2;
     valid_aerobic_exercises_count = 2;
-
-    printf("\nCOMMENCING: Update workouts."); // TODO: Test. Remove.
 
     update_workouts();
 
