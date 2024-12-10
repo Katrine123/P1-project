@@ -22,40 +22,51 @@
 // (ACTUALLY, THIS SHOULD BE DONE BY TEAM MISCHA AND LUNA)
 // Implement ignored exercises (user story: "I hate squats, please give me any leg exercise other than squats.")
 
+//TODO: Place somewhere else.
 // General constants
+// #define ARRAY_MAX 32 // 32 simply because it is big enough.
 
-#define ARRAY_MAX 32 // 32 simply because it is big enough.
-
+//TODO: Place somewhere else.
 // Enums
-
-//TODO: Not implemented yet. Should contain stuff like biceps, triceps, chest, etc.
-typedef enum {
-    calves = 1, biceps, chest, triceps, quads
-} muscle_group_name;
-//TODO: Not implemented yet. Should contain stuff like, bench_press, squat, deadlift, etc.
-typedef enum {
-    sprint = 1, burpees, bench_press, push_up, bicep_curl, squat
-} exercise_name;
-typedef enum {
-    monday = 1, tuesday = 2, wednesday = 3, thursday = 4,
-    friday = 5, saturday = 6, sunday = 7
-} day_of_the_week;
+// typedef enum {
+//     calves = 1, biceps, chest, triceps, quads
+// } muscle_group_name;
+// typedef enum {
+//     sprint = 1, burpees, bench_press, push_up, bicep_curl, squat
+// } exercise_name;
+// typedef enum {
+//     monday = 1, tuesday = 2, wednesday = 3, thursday = 4,
+//     friday = 5, saturday = 6, sunday = 7
+// } day_of_the_week;
+// enum fitness_level {
+//     novice = 5, advanced_beginner = 4, competent = 3, proficient = 2
+// };
 
 // Structs
 
-typedef struct muscle_group {
-    muscle_group_name name;
-    struct muscle_group* parent; // Muscle groups in struct exercise refer to muscle groups in struct workout which refers to muscle groups in the global routine variable.
-    int sets; // Irrelevant for struct exercise, is daily sets for struct workout, and is weekly sets for the global routine variable.
-} muscle_group;
-typedef struct {
-    exercise_name name;
-    muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups targeted by the exercise. Aerobic exercises do not target any specific muscles.
-    int sets;
-    double set_duration; // In minutes. How long it takes to perform 1 set of the exercise.
-    int is_aerobic; // Is boolean.
-    double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
-} exercise;
+//TODO: Place somewhere else.
+// typedef struct muscle_group {
+//     muscle_group_name name;
+//     struct muscle_group* parent; // Muscle groups in struct exercise refer to muscle groups in struct workout which refers to muscle groups in the global routine variable.
+//     int sets; // Irrelevant for struct exercise, is daily sets for struct workout, and is weekly sets for the global routine variable.
+// } muscle_group;
+// typedef struct {
+//     exercise_name name;
+//     muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups targeted by the exercise. Aerobic exercises do not target any specific muscles.
+//     int sets;
+//     double set_duration; // In minutes. How long it takes to perform 1 set of the exercise.
+//     int is_aerobic; // Is boolean.
+//     double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
+// } exercise;
+// typedef struct {
+//     day_of_the_week _day_of_the_week;
+//     double max_duration; // In minutes.
+// } workout_day;
+// typedef struct  {
+//     enum fitness_level fitness_level;
+//     muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
+//     workout_day available_workout_days[7]; int available_workout_days_count;
+// } _questionnaire;
 typedef struct {
     exercise exercises[ARRAY_MAX]; int exercises_count;
     double duration; double max_duration;
@@ -86,26 +97,11 @@ int max_weekly_aerobic_workouts;
 
 static muscle_group_name valid_muscle_names_names[ARRAY_MAX]; static int valid_muscle_names_count;
 
-// TODO: Remove. Only for testing purposes.
-
-enum fitness_level {
-    novice = 5, advanced_beginner = 4, competent = 3, proficient = 2
-};
-typedef struct {
-    day_of_the_week _day_of_the_week;
-    double max_duration; // In minutes.
-} workout_day;
-typedef struct  {
-    enum fitness_level fitness_level;
-    muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
-    workout_day available_workout_days[7]; int available_workout_days_count;
-} _questionnaire;
-_questionnaire questionnaire;
-muscle_group_name all_muscle_names[ARRAY_MAX]; int all_muscle_names_count;
-exercise valid_resistance_exercises[ARRAY_MAX]; int valid_resistance_exercises_count;
-exercise valid_aerobic_exercises[ARRAY_MAX]; int valid_aerobic_exercises_count;
-
-// TODO: Remove. Only for testing purposes.
+//TODO: Place somewhere else.
+// _questionnaire questionnaire;
+// muscle_group_name all_muscle_names[ARRAY_MAX]; int all_muscle_names_count;
+// exercise valid_resistance_exercises[ARRAY_MAX]; int valid_resistance_exercises_count;
+// exercise valid_aerobic_exercises[ARRAY_MAX]; int valid_aerobic_exercises_count;
 
 // -----------------------------------------------------------------------------
 
@@ -764,135 +760,128 @@ void update_workouts()
     // since doing resistance training first could risk cooling the trainee down.)
     reverse_order_of_exercises(routine_workouts, routine_workouts_count);
 
-    for (int i_test = 0; i_test < routine_workouts_count; i_test++) { // TODO: Test. Remove.
-        printf("\n----------------------"); // TODO: Test. Remove
-        printf("\n  Routine day: %d", routine_workouts[i_test].day); // TODO: Test. Remove
-        printf("\n  Duration: %lf", routine_workouts[i_test].duration); // TODO: Test. Remove
-        printf("\n  Max duration: %lf", routine_workouts[i_test].max_duration); // TODO: Test. Remove
-        for (int j_test = 0; j_test < routine_workouts[i_test].muscles_count; j_test++) { // TODO: Test. Remove.
+    // TODO: Remove. Only for testing purposes.
+    for (int i_test = 0; i_test < routine_workouts_count; i_test++) {
+        printf("\n----------------------");
+        printf("\n  Routine day: %d", routine_workouts[i_test].day);
+        printf("\n  Duration: %lf", routine_workouts[i_test].duration);
+        printf("\n  Max duration: %lf", routine_workouts[i_test].max_duration);
+        for (int j_test = 0; j_test < routine_workouts[i_test].muscles_count; j_test++) {
             printf("\n      Included muscle [%d], name: %d, parent.name: %d",
                 j_test,
                 routine_workouts[i_test].muscles[j_test].name,
-                routine_workouts[i_test].muscles[j_test].parent->name); // TODO: Test. Remove.
-        } // TODO: Test. Remove.
-        printf("\n      ----------"); // TODO: Test. Remove
-        for (int j_test = 0; j_test < routine_workouts[i_test].exercises_count; j_test++) { // TODO: Test. Remove.
+                routine_workouts[i_test].muscles[j_test].parent->name);
+        }
+        printf("\n      ----------");
+        for (int j_test = 0; j_test < routine_workouts[i_test].exercises_count; j_test++) {
             printf("\n      Included exercise [%d], name: %d, sets: %d",
                 j_test,
                 routine_workouts[i_test].exercises[j_test].name,
-                routine_workouts[i_test].exercises[j_test].sets); // TODO: Test. Remove.
-            for (int k_test = 0; k_test < routine_workouts[i_test].exercises[j_test].muscles_count; k_test++) { // TODO: Test. Remove.
+                routine_workouts[i_test].exercises[j_test].sets);
+            for (int k_test = 0; k_test < routine_workouts[i_test].exercises[j_test].muscles_count; k_test++) {
                 printf("\n          Included muscle [%d], name: %d, parent.name: %d, parent.sets: %d, parent != NULL: %d",
                     k_test,
                     routine_workouts[i_test].exercises[j_test].muscles[k_test].name,
                     routine_workouts[i_test].exercises[j_test].muscles[k_test].parent->name,
                     routine_workouts[i_test].exercises[j_test].muscles[k_test].parent->sets,
-                    routine_workouts[i_test].exercises[j_test].muscles[k_test].parent != NULL); // TODO: Test. Remove.
-            } // TODO: Test. Remove.
-        } // TODO: Test. Remove.
-    } // TODO: Test. Remove.
+                    routine_workouts[i_test].exercises[j_test].muscles[k_test].parent != NULL);
+            }
+        }
+    }
+    // TODO: Remove. Only for testing purposes.
 }
 
-// TODO: Remove. Only for testing purposes.
-
-void main() {
-
-    // Answer questionnaire
-    questionnaire.fitness_level = 5; // novice = 5, advanced_beginner = 4, competent = 3, proficient = 2
-    questionnaire.ignored_muscle_group_names[0] = biceps;
-    questionnaire.ignored_muscle_group_names_count = 1;
-    questionnaire.available_workout_days[0]._day_of_the_week = monday;
-    questionnaire.available_workout_days[0].max_duration = 50;
-    questionnaire.available_workout_days[1]._day_of_the_week = tuesday;
-    questionnaire.available_workout_days[1].max_duration = 30;
-    questionnaire.available_workout_days[2]._day_of_the_week = wednesday;
-    questionnaire.available_workout_days[2].max_duration = 20;
-    questionnaire.available_workout_days[3]._day_of_the_week = friday;
-    questionnaire.available_workout_days[3].max_duration = 20;
-    questionnaire.available_workout_days[4]._day_of_the_week = saturday;
-    questionnaire.available_workout_days[4].max_duration = 10;
-    questionnaire.available_workout_days[5]._day_of_the_week = sunday;
-    questionnaire.available_workout_days[5].max_duration = 30;
-    questionnaire.available_workout_days_count = 5;
-
-    // All muscle groups
-    all_muscle_names[0] = chest;
-    all_muscle_names[1] = triceps;
-    all_muscle_names[2] = biceps;
-    all_muscle_names[3] = quads;
-    all_muscle_names_count = 4;
-
-    // Valid resistance exercises
-    exercise resistance_1 = {
-        .is_aerobic = 0,
-        .sets = 0,
-        .specific_warmup_duration = 1,
-        .set_duration = 1,
-        .name = bench_press,
-        .muscles_count = 2
-        };
-    muscle_group group_1_1 = {chest, NULL, 0};
-    resistance_1.muscles[0] = group_1_1;
-    muscle_group group_1_2 = {triceps, NULL, 0};
-    resistance_1.muscles[1] = group_1_2;
-    valid_resistance_exercises[0] = resistance_1;
-    exercise resistance_2 = {
-        .is_aerobic = 0,
-        .sets = 0,
-        .specific_warmup_duration = 1,
-        .set_duration = 1,
-        .name = push_up,
-        .muscles_count = 2
-        };
-    muscle_group group_2_1 = {chest, NULL, 0};
-    resistance_2.muscles[0] = group_2_1;
-    muscle_group group_2_2 = {triceps, NULL, 0};
-    resistance_2.muscles[1] = group_2_2;
-    valid_resistance_exercises[1] = resistance_2;
-    exercise resistance_3 = {
-        .is_aerobic = 0,
-        .sets = 0,
-        .specific_warmup_duration = 1,
-        .set_duration = 1,
-        .name = bicep_curl,
-        .muscles_count = 1
-        };
-    muscle_group group_3_1 = {biceps, NULL, 0};
-    resistance_3.muscles[0] = group_3_1;
-    valid_resistance_exercises[2] = resistance_3;
-    exercise resistance_4 = {
-        .is_aerobic = 0,
-        .sets = 0,
-        .specific_warmup_duration = 1,
-        .set_duration = 1,
-        .name = squat,
-        .muscles_count = 1
-        };
-    muscle_group group_4_1 = {quads, NULL, 0};
-    resistance_4.muscles[0] = group_4_1;
-    valid_resistance_exercises[3] = resistance_4;
-    valid_resistance_exercises_count = 4;
-
-    // Valid aerobic exercises
-    exercise aerobic_1 = {
-        .is_aerobic = 1,
-        .sets = 0,
-        .set_duration = 0.5,
-        .name = sprint,
-        };
-    valid_aerobic_exercises[0] = aerobic_1;
-    exercise aerobic_2 = {
-        .is_aerobic = 1,
-        .sets = 0,
-        .set_duration = 2,
-        .name = burpees,
-        };
-    valid_aerobic_exercises[1] = aerobic_2;
-    valid_aerobic_exercises_count = 2;
-
-    update_workouts();
-
-
-}
-
+//TODO: Remove. Only for testing purposes.
+// void main() {
+//     // Answer questionnaire
+//     questionnaire.fitness_level = 5; // novice = 5, advanced_beginner = 4, competent = 3, proficient = 2
+//     questionnaire.ignored_muscle_group_names[0] = biceps;
+//     questionnaire.ignored_muscle_group_names_count = 1;
+//     questionnaire.available_workout_days[0]._day_of_the_week = monday;
+//     questionnaire.available_workout_days[0].max_duration = 50;
+//     questionnaire.available_workout_days[1]._day_of_the_week = tuesday;
+//     questionnaire.available_workout_days[1].max_duration = 30;
+//     questionnaire.available_workout_days[2]._day_of_the_week = wednesday;
+//     questionnaire.available_workout_days[2].max_duration = 20;
+//     questionnaire.available_workout_days[3]._day_of_the_week = friday;
+//     questionnaire.available_workout_days[3].max_duration = 20;
+//     questionnaire.available_workout_days[4]._day_of_the_week = saturday;
+//     questionnaire.available_workout_days[4].max_duration = 10;
+//     questionnaire.available_workout_days[5]._day_of_the_week = sunday;
+//     questionnaire.available_workout_days[5].max_duration = 30;
+//     questionnaire.available_workout_days_count = 5;
+//     // All muscle groups
+//     all_muscle_names[0] = chest;
+//     all_muscle_names[1] = triceps;
+//     all_muscle_names[2] = biceps;
+//     all_muscle_names[3] = quads;
+//     all_muscle_names_count = 4;
+//     // Valid resistance exercises
+//     exercise resistance_1 = {
+//         .is_aerobic = 0,
+//         .sets = 0,
+//         .specific_warmup_duration = 1,
+//         .set_duration = 1,
+//         .name = bench_press,
+//         .muscles_count = 2
+//         };
+//     muscle_group group_1_1 = {chest, NULL, 0};
+//     resistance_1.muscles[0] = group_1_1;
+//     muscle_group group_1_2 = {triceps, NULL, 0};
+//     resistance_1.muscles[1] = group_1_2;
+//     valid_resistance_exercises[0] = resistance_1;
+//     exercise resistance_2 = {
+//         .is_aerobic = 0,
+//         .sets = 0,
+//         .specific_warmup_duration = 1,
+//         .set_duration = 1,
+//         .name = push_up,
+//         .muscles_count = 2
+//         };
+//     muscle_group group_2_1 = {chest, NULL, 0};
+//     resistance_2.muscles[0] = group_2_1;
+//     muscle_group group_2_2 = {triceps, NULL, 0};
+//     resistance_2.muscles[1] = group_2_2;
+//     valid_resistance_exercises[1] = resistance_2;
+//     exercise resistance_3 = {
+//         .is_aerobic = 0,
+//         .sets = 0,
+//         .specific_warmup_duration = 1,
+//         .set_duration = 1,
+//         .name = bicep_curl,
+//         .muscles_count = 1
+//         };
+//     muscle_group group_3_1 = {biceps, NULL, 0};
+//     resistance_3.muscles[0] = group_3_1;
+//     valid_resistance_exercises[2] = resistance_3;
+//     exercise resistance_4 = {
+//         .is_aerobic = 0,
+//         .sets = 0,
+//         .specific_warmup_duration = 1,
+//         .set_duration = 1,
+//         .name = squat,
+//         .muscles_count = 1
+//         };
+//     muscle_group group_4_1 = {quads, NULL, 0};
+//     resistance_4.muscles[0] = group_4_1;
+//     valid_resistance_exercises[3] = resistance_4;
+//     valid_resistance_exercises_count = 4;
+//     // Valid aerobic exercises
+//     exercise aerobic_1 = {
+//         .is_aerobic = 1,
+//         .sets = 0,
+//         .set_duration = 0.5,
+//         .name = sprint,
+//         };
+//     valid_aerobic_exercises[0] = aerobic_1;
+//     exercise aerobic_2 = {
+//         .is_aerobic = 1,
+//         .sets = 0,
+//         .set_duration = 2,
+//         .name = burpees,
+//         };
+//     valid_aerobic_exercises[1] = aerobic_2;
+//     valid_aerobic_exercises_count = 2;
+//     update_workouts();
+// }
 // TODO: Remove. Only for testing purposes.
