@@ -1,7 +1,7 @@
-#include "workouts.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "references.h"
 
 //TODO:
 // For resistance training: compound movements should be given priority (for people with only little time).
@@ -22,51 +22,8 @@
 // (ACTUALLY, THIS SHOULD BE DONE BY TEAM MISCHA AND LUNA)
 // Implement ignored exercises (user story: "I hate squats, please give me any leg exercise other than squats.")
 
-//TODO: Place somewhere else.
-// General constants
-// #define ARRAY_MAX 32 // 32 simply because it is big enough.
-
-//TODO: Place somewhere else.
-// Enums
-// typedef enum {
-//     calves = 1, biceps, chest, triceps, quads
-// } muscle_group_name;
-// typedef enum {
-//     sprint = 1, burpees, bench_press, push_up, bicep_curl, squat
-// } exercise_name;
-// typedef enum {
-//     monday = 1, tuesday = 2, wednesday = 3, thursday = 4,
-//     friday = 5, saturday = 6, sunday = 7
-// } day_of_the_week;
-// enum fitness_level {
-//     novice = 5, advanced_beginner = 4, competent = 3, proficient = 2
-// };
-
 // Structs
 
-//TODO: Place somewhere else.
-// typedef struct muscle_group {
-//     muscle_group_name name;
-//     struct muscle_group* parent; // Muscle groups in struct exercise refer to muscle groups in struct workout which refers to muscle groups in the global routine variable.
-//     int sets; // Irrelevant for struct exercise, is daily sets for struct workout, and is weekly sets for the global routine variable.
-// } muscle_group;
-// typedef struct {
-//     exercise_name name;
-//     muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups targeted by the exercise. Aerobic exercises do not target any specific muscles.
-//     int sets;
-//     double set_duration; // In minutes. How long it takes to perform 1 set of the exercise.
-//     int is_aerobic; // Is boolean.
-//     double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
-// } exercise;
-// typedef struct {
-//     day_of_the_week _day_of_the_week;
-//     double max_duration; // In minutes.
-// } workout_day;
-// typedef struct  {
-//     enum fitness_level fitness_level;
-//     muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
-//     workout_day available_workout_days[7]; int available_workout_days_count;
-// } _questionnaire;
 typedef struct {
     exercise exercises[ARRAY_MAX]; int exercises_count;
     double duration; double max_duration;
@@ -96,12 +53,6 @@ int max_weekly_aerobic_workouts;
 // Miscellaneous
 
 static muscle_group_name valid_muscle_names_names[ARRAY_MAX]; static int valid_muscle_names_count;
-
-//TODO: Place somewhere else.
-// _questionnaire questionnaire;
-// muscle_group_name all_muscle_names[ARRAY_MAX]; int all_muscle_names_count;
-// exercise valid_resistance_exercises[ARRAY_MAX]; int valid_resistance_exercises_count;
-// exercise valid_aerobic_exercises[ARRAY_MAX]; int valid_aerobic_exercises_count;
 
 // -----------------------------------------------------------------------------
 
@@ -446,7 +397,7 @@ void try_to_find_aerobic_exercise_candidate(int *found_valid_candidate, exercise
 
 void update_workout_rules() {
 
-    enum fitness_level level = questionnaire.fitness_level;
+    enum stage_base_factor level = _questionnaire.fitness_level;
 
     if (level >= novice) { // (novice = 5, advanced_beginner = 4, competent = 3, proficient = 2)
         max_weekly_sets = 10; // To make it easier to get into the habit of fitness.
@@ -732,7 +683,7 @@ void reverse_order_of_exercises() {
 
 // Global functions
 
-void update_workouts()
+void update_routine_workouts()
 {
     // Get workout rules based on fitness level (for example max weekly sets).
     update_workout_rules();

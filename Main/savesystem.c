@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "savesystem.h"
+#include "references.h"
 
 typedef struct {
     char available_equipment[20];

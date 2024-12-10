@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "evaluation_questionnaire.h"
+#include "references.h"
 
 
 // returns a int depending on answer from 1 to 5, can easily be changed with enum if thy want :3

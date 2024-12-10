@@ -1,7 +1,6 @@
-#include "tools.h"
-
 #include <stdio.h>
 #include <stdlib.h>
+#include "references.h"
 
 exercise* create_available_exercises(exercise exercises_list[], questionnaire user_questionnaire, int *count) {
     // Sorter de exercises fra, som brugeren ikke kan udføre pga. udstyr

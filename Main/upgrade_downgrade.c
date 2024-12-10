@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "tools.h"
-
+#include "references.h"
 
 void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *input) {
     for (int i = 0; i < sorted_count; i++) {
