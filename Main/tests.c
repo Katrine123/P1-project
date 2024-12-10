@@ -68,12 +68,16 @@ TEST_CASE(homemade_scan_test,{
         }
     int int_test;
     homemade_scan(integer,&int_test,test_file);
+    CHECK_EQ_INT(int_test,45);
     char char_test;
     homemade_scan(character,&char_test,test_file);
+    CHECK_EQ_CHAR(char_test,'h');
     char string_test[10];
     homemade_scan(string,&string_test,test_file);
+    CHECK_EQ_STRING(string_test,"ej");
     double double_test;
     homemade_scan(long_float,&double_test,test_file);
+    CHECK_EQ_DOUBLE(double_test,34,0.001);
     fclose(test_file);
 })
 
@@ -95,13 +99,21 @@ TEST_CASE(sorting_exercises_test,{
     free(exercise_list_sorted);
 })
 
-MAIN_RUN_TESTS(/*questionnaire_test1,questionnaire_test2,homemade_scan_test*/sorting_exercises_test)
+TEST_CASE(calculations,{
+    questionnaire test = {67,"male",65,183,5,12,1,{monday,67},{0,0,0,0,0}};
+    double test_value = base_weight_bench_press(test);
+    CHECK_EQ_DOUBLE(test_value,35,0.001);
+})
+//EDGECASES!
+
+TEST_CASE(upgrade_test,{
+    questionnaire test = {67,"male",65,183,5,12,1,{monday,67},{0,0,0,0,0}};
+})
+
+MAIN_RUN_TESTS(/*questionnaire_test1,questionnaire_test2,*/homemade_scan_test/*, sorting_exercises_test, calculations*/)
 
 /*What to test:
- * Sorting algoritm
  * Upgrade/Downgrade
- * Calculations for exercises?
- * Print questionnaire?
  */
 
 
