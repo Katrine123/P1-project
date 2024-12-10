@@ -82,7 +82,6 @@ int max_weekly_sets; // For resistance training.
 int resistance_recovery;
 int max_weekly_aerobic_workouts;
 
-
 // Miscellaneous
 
 static muscle_group_name valid_muscle_names_names[ARRAY_MAX]; static int valid_muscle_names_count;
@@ -242,20 +241,6 @@ int does_workout_already_contain_exercise(exercise _exercise, workout _workout) 
     return 0;
 }
 void add_set_to_exercise(exercise *_exercise, workout* _workout) {
-
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
-    // TODO: DET HER ER HVOR JEG ER KOMMET TIL!!!!
 
     /// NOTE: Also adds specific warmup for resistance exercises, if sets = 0.
 
