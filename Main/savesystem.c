@@ -1,9 +1,20 @@
 #include <stdio.h>
 #include <string.h>
-
 #include "savesystem.h"
 
+typedef struct {
+    char available_equipment[20];
+    char age[20];
+    char gender[20];
+    char weight[20];
+    char height[20];
+    char pushups[20];
+    char fitness_level[20];
+    char time_available_week[20];
+    char adjustmentfactor[20];
+} user_save_data;
 
+questionnaire convert_data (user_save_data data);
 ///simply checks if save is available returns 1 if data was found and 0 if not
 int check_for_save() {
     FILE * file;
@@ -46,7 +57,7 @@ void print_user_data(user_save_data data) {
 
 ///returns a struct with values harvested from user_data_savefile.txt.
 ///is pretty resilient and can be used like this to print "print_user_data(load_data());"
-user_save_data load_data() {
+questionnaire load_data() {
     user_save_data data;
     FILE *file;
     int count=0;
@@ -55,13 +66,13 @@ user_save_data load_data() {
         fgets(str, sizeof(str), file);
         for (int i = 0; i<strlen(str); i++) {
             if (str[i-1] == '[') {
-                char data_name[20]; //dont remove "data_name" yet will break function because of bad while loop
+                char data_type[20]; //dont remove "data_name" yet will break function because of bad while loop
                 char data_data[20]; //also need it for inserting data at a later point
                 int j=0;
                 while (str[i] != ']') {
-                    data_name[j++] = str[i++]; //this is terrible but also temporary :3
+                    data_type[j++] = str[i++]; //this is terrible but also temporary :3
                 }
-                data_name[j] = '\0';
+                data_type[j] = '\0';
                 //printf("%s\n", data_name);
 
                 j=0;
@@ -108,7 +119,25 @@ user_save_data load_data() {
         }
     } else {printf("file opening error\n");}
     fclose(file); //will at the moment prolly always close the file but am not 100% sure
-    return (data);
+    questionnaire user = convert_data(data);
+    return (user);
+}
+
+
+
+
+questionnaire convert_data (user_save_data data) {
+    questionnaire user;
+    user.age = str_to_int(data.age);
+    user.gender = data.gender;
+    user.weight = str_to_double(data.weight);
+    user.height = str_to_double(data.height);
+    user.pushups = str_to_int(data.pushups);
+    user.squats = str_to_int(data.squats);
+    user.fitness_level = str_to_int(data.fitness_level);
+    user.training_days = str_to_train (data.training_days);
+    user.available_equipment = str_to_int(data.available_equipment);
+    return (user);
 }
 
 
