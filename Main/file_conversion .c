@@ -13,7 +13,7 @@ int str_to_int(char *str);
 
 char double_to_str(double d);
 double str_to_double(char *str);
-
+int total_days = 1;
 
 char train_to_str(training_day d);
 training_day str_to_train(char);
@@ -40,8 +40,21 @@ double str_to_double(char *str) {
     sscanf(str, "%lf", &d);
     return d;
 }
-char train_to_str(training_day d) {
-    char str[10];
-    sprintf(str, "%d, %lf", d.day_week, d.available_time);
-    return (str);
-}
+
+//char train_to_str(training_day user) {
+//    char str[20];
+//    for (int i = 1; i <= total_days; i++) {
+//        sprintf(str, "%d, %lf", user[i].day_week, user[i].available_time);
+//    }
+//
+//    return (str);
+//}
+
+
+//training_day* str_to_train(const char* str) {
+//    training_day *user = malloc(total_days * sizeof(training_day));
+//    for (int i = 0; i <= total_days; i++) {
+//
+//    }
+//    return user;
+//}
