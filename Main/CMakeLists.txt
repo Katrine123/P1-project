@@ -21,11 +21,12 @@ add_library(print_routine print_routine)
 target_link_libraries(main
         bib
         exercises
+        evaluation_questionnaire
         new_user_questionnaire
         routine
-        evaluation_questionnaire
         lists
         print_routine
+        upgrade_downgrade
         tools)
 
 ### STUF FOR TESTING IS HERE  ###

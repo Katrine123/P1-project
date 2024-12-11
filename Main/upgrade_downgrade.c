@@ -4,7 +4,8 @@
 #include "tools.h"
 
 
-void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int *input) {
+void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count) {
+    int input[];
     for (int i = 0; i < sorted_count; i++) {
         input[i] = 0;
     }

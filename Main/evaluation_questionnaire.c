@@ -27,15 +27,15 @@ int evaluation_questionnaire(questionnaire* user,FILE *file) {
         has_answer++;
         switch (answer) {
             case 1:
-                printf("Registered 1 pressed workout will intensify!");
-            //increasedifficulty();
+                printf("Registered 1 pressed workout will intensify!\n");
+            //INSÆT UPGRADE FUNKTION HER!!!
             break;
             case 2:
                 printf("Registered 2 pressed workout wont change!");
             break;
             case 3:
                 printf("Registered 3 pressed workout will decrease!");
-            //increasedifficulty();
+            //EVT DOWNGRADAE FUNKTION? ER UBESTEMT CURRENTLY
             break;
             case 4:
                 printf("Registered 4 pressed questionnaire will appear!");
@@ -50,23 +50,25 @@ int evaluation_questionnaire(questionnaire* user,FILE *file) {
         }
 
     }
-    printf("How would you like to schedule this week's workouts?\n"
-        "____________________________________________________________________________________\n\n"
-        "If you want your workouts on the same days and the same times as last week   press 1\n\n"
-        "If you would like to change your workout schedule                            press 2\n"
-        "____________________________________________________________________________________\n");
-    has_answer=0;
-    while(has_answer==0) {
-        scanf("%d", &answer);
-        has_answer++;
-        switch (answer) {
-            case 1:
-                printf("Registered 1 pressed: Workoutdays will remain the same");
-            break;
-            case 2:
-                printf("Registered 2 pressed: ");
-            get_user_days(user,file);
-            default: ;
+    if(answer != 4) {
+        printf("How would you like to schedule this week's workouts?\n"
+            "____________________________________________________________________________________\n\n"
+            "If you want your workouts on the same days and the same times as last week   press 1\n\n"
+            "If you would like to change your workout schedule                            press 2\n"
+            "____________________________________________________________________________________\n");
+        has_answer=0;
+        while(has_answer==0) {
+            scanf("%d", &answer);
+            has_answer++;
+            switch (answer) {
+                case 1:
+                    printf("Registered 1 pressed: Workoutdays will remain the same");
+                break;
+                case 2:
+                    printf("Registered 2 pressed: ");
+                get_user_days(user,file);
+                default: ;
+            }
         }
     }
     return answer;

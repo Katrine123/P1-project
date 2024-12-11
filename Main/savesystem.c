@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "savesystem.h"
-/*
-typedef struct {
+
+/*typedef struct {
     char available_equipment[20];
     char age[20];
     char gender[20];
@@ -148,6 +148,4 @@ questionnaire convert_data (user_save_data data) {
 /// printf("Delete operation successful\n");
 /// }
 /// }
-
 */
-
