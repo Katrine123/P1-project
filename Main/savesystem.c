@@ -39,7 +39,6 @@ void print_user_data(user_save_data data) {
     printf("Height: %s\n", data.height);
     printf("Push ups: %s\n", data.pushups);
     printf("Fitness Level: %s\n", data.fitness_level);
-    printf("Time Available per Week: %s\n", data.time_available_week);
 }
 
 ///returns a struct with values harvested from user_data_savefile.txt.
@@ -89,10 +88,10 @@ questionnaire load_data() {
                         strncpy(data.pushups, data_data, 20);
                         break;
                     case 6:
-                        strncpy(data.fitness_level, data_data, 20);
+                        strncpy(data.squats, data_data, 20);
                         break;
                     case 7:
-                        strncpy(data.time_available_week, data_data,20);
+                        strncpy(data.fitness_level, data_data, 20);
                         break;
                     case 8:
                         strncpy(data.adjustmentfactor, data_data, 20);
@@ -106,10 +105,8 @@ questionnaire load_data() {
         }
     } else {printf("file opening error\n");}
     fclose(file); //will at the moment prolly always close the file but am not 100% sure
-    questionnaire user = convert_data(data);
-    return (user);
+    return (convert_data(data));
 }
-
 
 questionnaire convert_data (user_save_data data) {
     questionnaire user;
@@ -119,7 +116,15 @@ questionnaire convert_data (user_save_data data) {
     user.pushups = str_to_int(data.pushups);
     user.squats = str_to_int(data.squats);
     user.fitness_level = str_to_int(data.fitness_level);
-    for (int i = 0 ; i < 6 ; i++) {
+    strcpy(user.gender, data.gender);
+    user.training_days[0] = (training_day){0, 4.0};  // Sunday: 4.0 hours
+    user.training_days[1] = (training_day){1, 2.5};  // Monday: 2.5 hours
+    user.training_days[2] = (training_day){2, 3.0};  // Tuesday: 3.0 hours
+    user.training_days[3] = (training_day){3, 2.0};  // Wednesday: 2.0 hours
+    user.training_days[4] = (training_day){4, 1.0};  // Thursday: 1.0 hours
+    user.training_days[5] = (training_day){5, 1.5};  // Friday: 1.5 hours
+    user.training_days[6] = (training_day){6, 0.5};  // Saturday: 0.5 hours
+    for (int i = 0 ; i < 5; i++) {
         user.available_equipment[i] = data.available_equipment[i];
     }
     return (user);

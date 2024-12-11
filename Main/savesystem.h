@@ -11,7 +11,6 @@ typedef struct {
     char pushups[20];
     char squats[20];
     char fitness_level[20];
-    char time_available_week[20];
     char adjustmentfactor[20];
 } user_save_data;
 
