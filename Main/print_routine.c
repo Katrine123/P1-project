@@ -5,6 +5,13 @@
 
 #define EXERCISES_ARRAY_MAX 32
 
+/*Warmup er altid general warmup - Er i starten af hver warmup
+ * Til excercises - Reps, sets og vægt, og navn
+ */
+
+
+
+
 typedef struct {
     exercise exercises[EXERCISES_ARRAY_MAX]; //struct array of exercises for 1 day
     int exercises_count; //How many exercises in a day

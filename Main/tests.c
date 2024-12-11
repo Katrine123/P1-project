@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "mtest.h" //HUSK KILDE
+#include "mtest.h"
 #include "tools.h"
 
 TEST_CASE(questionnaire_test1,{
@@ -107,13 +107,26 @@ TEST_CASE(calculations,{
 //EDGECASES!
 
 TEST_CASE(upgrade_test,{
-    questionnaire test = {67,"male",65,183,5,12,1,{monday,67},{0,0,0,0,0}};
+    questionnaire user_test = {67,"male",65,183,5,12,1,{monday,67},{1,1,1,1,1}};
+    exercise ex_test[length_of_exercises_list];
+    resistance_exercises_list(ex_test, user_test);
+    aerobic_exercises_list(ex_test,user_test);
+    print_exercises_2(ex_test,7,user_test,ex_test);
+    int input[] = {1,1,0,0,1,0,1};
+    /*ex_test[0].base_weight
+    ex_test[1].base_weight
+    ex_test[2].base_weight
+    ex_test[3].base_weight
+    ex_test[4].base_weight
+    ex_test[5].amount_of_reps
+    ex_test[6].amount_of_reps*/
+
+    //upgrade_function(ex_test,user_test,7,input);
+
 })
 
-MAIN_RUN_TESTS(/*questionnaire_test1,questionnaire_test2,*/homemade_scan_test/*, sorting_exercises_test, calculations*/)
+MAIN_RUN_TESTS(/*questionnaire_test1,questionnaire_test2,homemade_scan_test, sorting_exercises_test, calculations*/upgrade_test)
 
-/*What to test:
- * Upgrade/Downgrade
- */
-
+/*Testing af Jespers ting*/
+/*Update routine workout*/
 
