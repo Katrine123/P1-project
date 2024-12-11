@@ -44,6 +44,11 @@ add_library(
 target_link_libraries(main
         tools)
 add_library(
+        upgrade_downgrade
+        upgrade_downgrade)
+target_link_libraries(main
+        upgrade_downgrade)
+add_library(
         workouts
         workouts)
 target_link_libraries(main

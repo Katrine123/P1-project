@@ -40,7 +40,7 @@ void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int so
             //  What if the user weight is equal to bench press weight?
                 //  This has to be for body_weight_exercises
             if(exercise_list_sorted[i].is_body_weight_exercise == 1) {
-                exercise_list_sorted[i].amount_of_reps += exercise_list_sorted[i].addition;
+                exercise_list_sorted[i].reps += exercise_list_sorted[i].addition;
             } else {
                 exercise_list_sorted[i].base_weight += exercise_list_sorted[i].addition;
             }

@@ -92,11 +92,11 @@ questionnaire create_and_answer_questionnaire() {
                "fitness rank 5 (novice): No experience with exercising\n");
 
         // Validates that fitness level is between 1-5.
-        homemade_scan(integer, &user.fitness_level);
-        if(user.fitness_level < expert || user.fitness_level > novice) {
+        homemade_scan(integer, &user._fitness_level);
+        if(user._fitness_level < expert || user._fitness_level > novice) {
             printf("It has to be between 1-5!\n");
         }
-    }while(user.fitness_level < expert || user.fitness_level > novice);
+    }while(user._fitness_level < expert || user._fitness_level > novice);
 
     ////////////////////////////////////////////////////////////////////
     //Function for getting the days the user can train
@@ -157,10 +157,10 @@ void print_quiestionnare(questionnaire user) {
     printf("Weight: %lf\n",user.weight);
     printf("Height: %lf\n",user.height);
     printf("Amount of pushups: %d\n",user.pushups);
-    printf("Fitness level: %d\n",user.fitness_level);
+    printf("Fitness level: %d\n",user._fitness_level);
     printf("Time a week:\n");
-    for(int i = 0;strcmp(naming_days(user.training_days[i].day_week),"Error")!=0;i++) {
-        printf("%s: %lf minutes\n",naming_days(user.training_days[i].day_week),user.training_days[i].available_time);
+    for(int i = 0;strcmp(naming_days(user.available_training_days[i]._day_of_the_week),"Error")!=0;i++) {
+        printf("%s: %lf minutes\n",naming_days(user.available_training_days[i]._day_of_the_week),user.available_training_days[i].max_duration);
     }
     int len = sizeof(user.available_equipment)/sizeof(user.available_equipment[0]);
     printf("Available equipment: ");
@@ -214,12 +214,12 @@ int get_user_days(questionnaire* user) {
 
         int add = 1;
         printf("How much time(in minutes) do you have %s?",naming_days(days[i]));
-        user->training_days[i].day_week = days[i];
-        homemade_scan(long_float,&user->training_days[i].available_time);
-        if(user->training_days[i].available_time > 1440) {
+        user->available_training_days[i]._day_of_the_week = days[i];
+        homemade_scan(long_float,&user->available_training_days[i].max_duration);
+        if(user->available_training_days[i].max_duration > 1440) {
             printf("That's more than there is in a day");
             add =0;
-        }else if(user->training_days[i].available_time < 0) {
+        }else if(user->available_training_days[i].max_duration < 0) {
             printf("If you have no time this day then don't write that you have");
             //FJERN DAG FRA ARRAY EVT?
         }

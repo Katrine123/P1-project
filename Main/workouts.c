@@ -22,18 +22,8 @@
 // (ACTUALLY, THIS SHOULD BE DONE BY TEAM MISCHA AND LUNA)
 // Implement ignored exercises (user story: "I hate squats, please give me any leg exercise other than squats.")
 
-// Structs
-
-typedef struct {
-    exercise exercises[ARRAY_MAX]; int exercises_count;
-    double duration; double max_duration;
-    muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups included in the workout.
-    day_of_the_week day;
-} workout;
-
 // For the whole fitness routine
 
-workout routine_workouts[7]; int routine_workouts_count = 0; // Max 7 workouts per week (1 per day).
 muscle_group routine_muscles[ARRAY_MAX]; int routine_muscles_count; // Muscle groups included in the routine.
 int resistance_workout_indexes[3]; int resistance_workout_indexes_count; // Max 3 per week because of 48-72 hour recovery time and doing full-body exercises.
 int aerobic_workout_indexes[7]; int aerobic_workout_indexes_count; // Max 7 per week (1 per day).
@@ -269,7 +259,7 @@ void try_to_find_resistance_exercise_candidate(int *found_valid_candidate, exerc
 
     // Get a random start index of the valid resistance exercises
     srand(time(NULL));
-    int exercises_count = valid_resistance_exercises_count;
+    int exercises_count = possible_resistance_exercises_count;
     int start_index = rand() % exercises_count;
 
     // Foreach valid resistance exercise
@@ -282,7 +272,7 @@ void try_to_find_resistance_exercise_candidate(int *found_valid_candidate, exerc
         }
 
         // Declare variables
-        exercise _exercise = valid_resistance_exercises[i];
+        exercise _exercise = possible_resistance_exercises[i];
 
         // Includes target muscle group?
         int includes_target_muscle = 0;
@@ -343,7 +333,7 @@ void try_to_find_aerobic_exercise_candidate(int *found_valid_candidate, exercise
 
     // Get a random start index of the valid aerobic exercises
     srand(time(NULL));
-    int exercises_count = valid_aerobic_exercises_count;
+    int exercises_count = possible_aerobic_exercises_count;
     int start_index = rand() % exercises_count;
 
     // Foreach valid resistance exercise
@@ -356,7 +346,7 @@ void try_to_find_aerobic_exercise_candidate(int *found_valid_candidate, exercise
         }
 
         // Declare variables
-        exercise _exercise = valid_aerobic_exercises[i];
+        exercise _exercise = possible_aerobic_exercises[i];
 
         // Exceeds workout duration max?
         if (does_adding_a_set_exceed_workout_duration_max(_exercise, _workout)) {
@@ -397,7 +387,7 @@ void try_to_find_aerobic_exercise_candidate(int *found_valid_candidate, exercise
 
 void update_workout_rules() {
 
-    enum stage_base_factor level = _questionnaire.fitness_level;
+    enum fitness_level level = _questionnaire._fitness_level;
 
     if (level >= novice) { // (novice = 5, advanced_beginner = 4, competent = 3, proficient = 2)
         max_weekly_sets = 10; // To make it easier to get into the habit of fitness.
@@ -431,10 +421,10 @@ void update_valid_muscle_groups()
         int is_valid = 1;
 
         // Foreach ignored muscle group
-        for (int j = 0; j < questionnaire.ignored_muscle_group_names_count; j++) {
+        for (int j = 0; j < _questionnaire.ignored_muscle_group_names_count; j++) {
 
             // Mark ignored groups as invalid
-            if (muscle_name == questionnaire.ignored_muscle_group_names[j]) {
+            if (muscle_name == _questionnaire.ignored_muscle_group_names[j]) {
                 is_valid = 0;
                 break;
             }
@@ -450,14 +440,14 @@ void update_valid_muscle_groups()
 void reset_routine_workouts() {
 
     // Reset array count
-    routine_workouts_count = questionnaire.available_workout_days_count;
+    routine_workouts_count = _questionnaire.available_training_days_count;
 
     // Foreach new workout
     for (int i = 0; i < routine_workouts_count; i++) {
 
         // Reset properties to defaults
-        routine_workouts[i].day = questionnaire.available_workout_days[i]._day_of_the_week;
-        routine_workouts[i].max_duration = questionnaire.available_workout_days[i].max_duration;
+        routine_workouts[i].day = _questionnaire.available_training_days[i].day;
+        routine_workouts[i].max_duration = _questionnaire.available_training_days[i].max_duration;
         routine_workouts[i].duration = 0;
         routine_workouts[i].exercises_count = 0;
         routine_workouts[i].muscles_count = 0;

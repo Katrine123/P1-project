@@ -11,33 +11,34 @@
 
 typedef enum {
     integer, character, long_float, string
-} datatype;
+} data_type;
 
-//TODO: Rename to fitness level
-enum stage_base_factor {
+enum fitness_level {
     novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1
 };
 enum equipment {
     barbell, bench, pull_up_bar, pull_down_machine, resistance_bands, length_of_equipment_enum
 };
-// TODO: Rename to exercise_name
-enum exercises {
-    bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, jumping_jacks, length_of_exercises_list
+// TODO: Add in design that the software is proof-of-concept and that's why we do not include that many exercises.
+enum exercise_name {
+    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpee, jumping_jack, length_of_exercises_list
 };
 enum day_of_the_week {
     monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
 };
 // TODO: Not implemented yet.
+// TODO: Add in implementation that we define muscle groups in very broad terms (overly simplified).
+// TODO: Add in design that our program does not take into consideration how much an exercise targets each muscle (some muscles are worked harder than others in some exercises).
 typedef enum {
-    calves, biceps, chest, triceps, quads
+    chest, triceps, shoulders, hamstrings, quads
 } muscle_group_name;
 
 #pragma endregion
 #pragma region structs
 
 typedef struct {
-    enum day_of_the_week day_week;
-    double available_time;
+    enum day_of_the_week day;
+    double max_duration;
 }training_day;
 
 typedef struct {
@@ -47,9 +48,13 @@ typedef struct {
     double height;
     int pushups;
     int squats;
-    enum stage_base_factor fitness_level;
-    training_day training_days[7];
-    int available_equipment[5]; //Array for deciding what exercises they can do
+    enum fitness_level _fitness_level;
+    // TODO: Count not implemented yet.
+    training_day available_training_days[7]; int available_training_days_count;
+    // TODO: Not implemented yet.
+    enum equipment available_equipment[length_of_equipment_enum]; // Array for deciding what exercises they can do
+    // TODO: Not implemented yet.
+    muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
 } questionnaire;
 
 //  Check equipment struct
@@ -61,56 +66,48 @@ typedef struct {
     int resistance_bands;
 } check_equipment;
 
+typedef struct muscle_group {
+    muscle_group_name name;
+    struct muscle_group* parent; // Muscle groups in struct exercise refer to muscle groups in struct workout which refers to muscle groups in the global routine variable.
+    int sets; // Irrelevant for struct exercise, is daily sets for struct workout, and is weekly sets for the global routine variable.
+} muscle_group;
+
 //  Exercise platform for resistance exercises
 typedef struct {
-    char name[20];
+    enum exercise_name name;
     //  When calling necessary_equipment.x it searches in the check_equipment struct
     int check_eq[length_of_exercises_list];
     //  We assume that weight only increases by 2.5, argue for this in implementation/design
     double addition;
     double base_weight;
-    double amount_of_reps;
+    double reps;
     int is_body_weight_exercise;
+    muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups targeted by the exercise. Aerobic exercises do not target any specific muscles.
+    int sets;
+    double set_duration; // In minutes. How long it takes to perform 1 set of the exercise.
+    int is_aerobic; // Is boolean.
+    double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
 } exercise;
-
-// TODO: Not implemented yet.
- typedef struct muscle_group {
-     muscle_group_name name;
-     struct muscle_group* parent; // Muscle groups in struct exercise refer to muscle groups in struct workout which refers to muscle groups in the global routine variable.
-     int sets; // Irrelevant for struct exercise, is daily sets for struct workout, and is weekly sets for the global routine variable.
- } muscle_group;
-// TODO: Not implemented yet.
- typedef struct {
-     exercise_name name;
-     muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups targeted by the exercise. Aerobic exercises do not target any specific muscles.
-     int sets;
-     double set_duration; // In minutes. How long it takes to perform 1 set of the exercise.
-     int is_aerobic; // Is boolean.
-     double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
- } exercise;
-// TODO: Not implemented yet.
- typedef struct {
-     day_of_the_week _day_of_the_week;
-     double max_duration; // In minutes.
- } workout_day;
-// TODO: Not implemented yet.
- typedef struct  {
-     enum stage_base_factor fitness_level;
-     muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
-     workout_day available_workout_days[7]; int available_workout_days_count;
- } _questionnaire;
+typedef struct {
+    exercise exercises[ARRAY_MAX]; int exercises_count;
+    double duration; double max_duration;
+    muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups included in the workout.
+    enum day_of_the_week day;
+} workout;
 
 #pragma endregion
 #pragma region global variables
 
 // TODO: Not implemented yet.
 questionnaire _questionnaire;
-// TODO: Not implemented yet.
-muscle_group_name all_muscle_names[ARRAY_MAX]; int all_muscle_names_count;
-// TODO: Not implemented yet.
-exercise valid_resistance_exercises[ARRAY_MAX]; int valid_resistance_exercises_count;
-// TODO: Not implemented yet.
-exercise valid_aerobic_exercises[ARRAY_MAX]; int valid_aerobic_exercises_count;
+muscle_group_name all_muscle_names[ARRAY_MAX] = {
+    chest, triceps, shoulders, hamstrings, quads
+}; int all_muscle_names_count = 5;
+// TODO: Only implemented in exercises.c.
+exercise possible_resistance_exercises[ARRAY_MAX]; int possible_resistance_exercises_count;
+// TODO: Only implemented in exercises.c.
+exercise possible_aerobic_exercises[ARRAY_MAX]; int possible_aerobic_exercises_count;
+workout routine_workouts[7]; int routine_workouts_count = 0; // Max 7 workouts per week (1 per day).
 
 #pragma endregion
 
@@ -123,21 +120,8 @@ int evaluation_questionnaire();
 #pragma endregion
 #pragma region exercises.c
 
-exercise* create_available_exercises(exercise exercises_list[], questionnaire user_questionnaire, int *count);
-
-double base_weight_bench_press(questionnaire user);
-double base_weight_weighted_squats(questionnaire user);
-int base_amount_air_squats(questionnaire user);
-int base_amount_pushups(questionnaire user);
-int base_amount_elevated_pushups(questionnaire user);
-int base_amount_burpees(questionnaire user);
-int base_amount_jumping_jacks(questionnaire user);
-void resistance_exercises_list(exercise* exercise_list, questionnaire user);
-void aerobic_exercises_list(exercise* exercise_list, questionnaire user);
-
-exercise* create_all_exercises();
-void print_exercise(exercise exercises_list[]);
-void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]);
+void update_array_of_possible_resistance_exercises();
+void update_array_of_possible_aerobic_exercises();
 
 #pragma endregion
 #pragma region new_user_questionnaire.c
@@ -163,7 +147,7 @@ questionnaire load_data();
 #pragma endregion
 #pragma region tools.c
 
-int homemade_scan(datatype type, void* input);
+int homemade_scan(data_type type, void* input);
 char* naming_equipment(enum equipment eq) ;
 char* naming_days(enum day_of_the_week day);
 

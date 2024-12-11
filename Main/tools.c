@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "references.h"
 
-int homemade_scan(datatype type, void* input) {//Uses a void for input, because we don't know what datatype we'll get - Inspiration from qsort
+int homemade_scan(data_type type, void* input) {//Uses a void for input, because we don't know what datatype we'll get - Inspiration from qsort
     int is_right = 0;
     do {
         //Checks what datatype we want - ex if i then int
