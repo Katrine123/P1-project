@@ -114,7 +114,7 @@ char* naming_days(enum day_of_the_week day);
 
 //  In upgrade_downgrade.c  //
 
-void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *input);
+void upgrade_downgrade(exercise *exercise_list_sorted,questionnaire user, int sorted_count, int *input);
 void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]);
 
 

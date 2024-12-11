@@ -8,10 +8,8 @@ add_executable(main main.c)
 
 add_library(bib bib
         savesystem.c
-        savesystem.h
-        upgrade_downgrade.c
-        upgrade_downgrade.c
-        upgrade_downgrade.c)
+        savesystem.h)
+add_library(upgrade_downgrade upgrade_downgrade)
 add_library(exercises exercises)
 add_library(new_user_questionnaire new_user_questionnaire)
 add_library(routine routine)
@@ -43,5 +41,5 @@ FetchContent_Declare(mtest
 FetchContent_MakeAvailable(mtest)
 
 add_executable(tests tests.c)
-target_link_libraries(tests new_user_questionnaire exercises routine tools mtest)
+target_link_libraries(tests upgrade_downgrade new_user_questionnaire exercises routine tools mtest)
 

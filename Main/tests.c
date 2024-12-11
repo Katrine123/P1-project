@@ -53,7 +53,7 @@ TEST_CASE(questionnaire_test2,{
 })
 
 
-TEST_CASE(homemade_scan_test,{
+TEST_CASE(homemade_scan_test,{//OPLEVER FEJL HVIS ANDEN COMPUTER. DONT KNOW WHY :]
     FILE *test_file = fopen("user_input.txt","w");
         if (test_file == NULL) {
             printf("The file couldn't be opened");
@@ -113,19 +113,26 @@ TEST_CASE(upgrade_test,{
     aerobic_exercises_list(ex_test,user_test);
     print_exercises_2(ex_test,7,user_test,ex_test);
     int input[] = {1,1,0,0,1,0,1};
-    /*ex_test[0].base_weight
-    ex_test[1].base_weight
-    ex_test[2].base_weight
-    ex_test[3].base_weight
-    ex_test[4].base_weight
-    ex_test[5].amount_of_reps
-    ex_test[6].amount_of_reps*/
+    CHECK_EQ_DOUBLE(ex_test[0].base_weight,35,0.001);
+    CHECK_EQ_DOUBLE(ex_test[1].base_weight,40,0.001);
+    CHECK_EQ_DOUBLE(ex_test[2].amount_of_reps,14,0.001);
+    CHECK_EQ_DOUBLE(ex_test[3].amount_of_reps,14,0.001);
+    CHECK_EQ_DOUBLE(ex_test[4].amount_of_reps,14,0.001);
+    CHECK_EQ_DOUBLE(ex_test[5].amount_of_reps,13,0.001);
+    CHECK_EQ_DOUBLE(ex_test[6].amount_of_reps,14,0.001);
 
-    //upgrade_function(ex_test,user_test,7,input);
+    upgrade_function(ex_test,user_test,length_of_exercises_list,input);
 
+    CHECK_EQ_DOUBLE(ex_test[0].base_weight,37.5,0.001);
+    CHECK_EQ_DOUBLE(ex_test[1].base_weight,42.5,0.001);
+    CHECK_EQ_DOUBLE(ex_test[2].amount_of_reps,14,0.001);
+    CHECK_EQ_DOUBLE(ex_test[3].amount_of_reps,14,0.001);
+    CHECK_EQ_DOUBLE(ex_test[4].amount_of_reps,15,0.001);
+    CHECK_EQ_DOUBLE(ex_test[5].amount_of_reps,13,0.001);
+    CHECK_EQ_DOUBLE(ex_test[6].amount_of_reps,16,0.001);
 })
 
-MAIN_RUN_TESTS(/*questionnaire_test1,questionnaire_test2,homemade_scan_test, sorting_exercises_test, calculations*/upgrade_test)
+MAIN_RUN_TESTS(/*questionnaire_test1,questionnaire_test2,homemade_scan_test, sorting_exercises_test, calculations,upgrade_test*/)
 
 /*Testing af Jespers ting*/
 /*Update routine workout*/
