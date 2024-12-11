@@ -1,24 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include "savesystem.h"
-
-typedef struct {
-    char available_equipment[20];
-    char age[20];
-    char gender[20];
-    char weight[20];
-    char height[20];
-    char pushups[20];
-    char fitness_level[20];
-    char time_available_week[20];
-    char adjustmentfactor[20];
-} user_save_data;
+#include "File_conversition.h"
 
 questionnaire convert_data (user_save_data data);
 ///simply checks if save is available returns 1 if data was found and 0 if not
 int check_for_save() {
     FILE * file;
-    if ((file = fopen("user_data_savefile.txt", "r"))) {   // attempts to open file
+    if ((file = fopen("user_save_file", "r"))) {   // attempts to open file
         printf("read operation successful\n");
         fclose(file);
         return(1);
@@ -29,17 +18,15 @@ int check_for_save() {
 }
 
 ///saves data like this {[lorem] ipsum} returns 1 if successful
-int save_data(char* data, char* data_name) {
+int save_data(const char *data, const char *data_name) {
     FILE * file;
-    if ((file = fopen("user_data_savefile.txt", "a"))) {
+    if ((file = fopen("user_save_file", "a"))) {
         fprintf(file, "{[%s] %s}, ", data_name, data);
         fclose(file);
         return (1);
     }
-    else{
-        printf("file opening error\n");
-        return (0);
-    }
+    printf("file opening error\n");
+    return (0);
 }
 
 
@@ -61,7 +48,7 @@ questionnaire load_data() {
     user_save_data data;
     FILE *file;
     int count=0;
-    if ((file = fopen("user_data_savefile.txt", "r"))) {
+    if ((file = fopen("user_save_file", "r"))) {
         char str[500];
         fgets(str, sizeof(str), file);
         for (int i = 0; i<strlen(str); i++) {
@@ -124,19 +111,17 @@ questionnaire load_data() {
 }
 
 
-
-
 questionnaire convert_data (user_save_data data) {
     questionnaire user;
     user.age = str_to_int(data.age);
-    user.gender = data.gender;
     user.weight = str_to_double(data.weight);
     user.height = str_to_double(data.height);
     user.pushups = str_to_int(data.pushups);
     user.squats = str_to_int(data.squats);
     user.fitness_level = str_to_int(data.fitness_level);
-    user.training_days = str_to_train (data.training_days);
-    user.available_equipment = str_to_int(data.available_equipment);
+    for (int i = 0 ; i < 6 ; i++) {
+        user.available_equipment[i] = data.available_equipment[i];
+    }
     return (user);
 }
 
