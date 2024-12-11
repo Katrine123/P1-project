@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 enum datatype {integer, character, long_float, string};
 typedef enum datatype datatype;
@@ -59,7 +60,7 @@ typedef struct {
 
 //  In evaluation_questionnaire.c  //
 
-int evaluation_questionnaire();
+int evaluation_questionnaire(questionnaire* user,FILE *file);
 
 //  In exercises.c  //
 
@@ -76,15 +77,16 @@ void resistance_exercises_list(exercise* exercise_list, questionnaire user);
 void aerobic_exercises_list(exercise* exercise_list, questionnaire user);
 
 exercise* create_all_exercises();
-void print_exercise(exercise exercises_list[]);
 void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]);
 
 //  In list.c  //
 
 //  In new_user_questionnaire.c  //
-questionnaire create_and_answer_questionnaire();
+
+questionnaire create_and_answer_questionnaire(FILE *file);
+int get_user_days(questionnaire* user,FILE *file);
 void print_quiestionnare(questionnaire user);
-int get_user_days(questionnaire* user);
+int get_user_days(questionnaire* user,FILE *file);
 
 //  In print_routine.c  //
 void print_routine();
@@ -104,16 +106,15 @@ void load_data();
 
 #endif //SAVESYSTEM_H
 
-
 //  In tools.c  //
 
-int homemade_scan(datatype type, void* input);
+int homemade_scan(datatype type, void* input,FILE *file);
 char* naming_equipment(enum equipment eq) ;
 char* naming_days(enum day_of_the_week day);
 
 //  In upgrade_downgrade.c  //
 
-void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *input);
+void upgrade_downgrade(exercise *exercise_list_sorted,questionnaire user, int sorted_count);
 void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]);
 
 

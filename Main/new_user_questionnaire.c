@@ -4,7 +4,7 @@
 
 #include "tools.h"
 
-questionnaire create_and_answer_questionnaire() {
+questionnaire create_and_answer_questionnaire(FILE *file) {
 
 
     questionnaire user;
@@ -16,7 +16,7 @@ questionnaire create_and_answer_questionnaire() {
 
     // Ask's about the users age.
     printf("What is your age in years?");
-    homemade_scan(integer,&user.age);
+    homemade_scan(integer,&user.age,file);
 
     // Checks if the user is too old. If user is above 100 years program will exit.
     if(user.age > 100) {
@@ -34,7 +34,7 @@ questionnaire create_and_answer_questionnaire() {
     // Ask's user to enter there gender, and validate it to only accept input "male" or "female".
     do{
         printf("Are you a male or female");
-        homemade_scan(string, user.gender);
+        homemade_scan(string, user.gender,file);
     }while(strcmp(user.gender,"male")!=0&& strcmp(user.gender,"female")!=0);
 
     ////////////////////////////////////////////////////////////////////
@@ -42,7 +42,7 @@ questionnaire create_and_answer_questionnaire() {
     // Ask's what users weight is, and loops through the input to make sure the weight is in a reasonable range (20-300 kg).
     while(user.weight < 20 || user.weight > 300) {
         printf("What is your weight in kg");
-        homemade_scan(long_float, &user.weight);
+        homemade_scan(long_float, &user.weight,file);
         if(user.weight < 20 || user.weight > 300) {
             printf("I don't think that is correct!\n");
         }
@@ -52,7 +52,7 @@ questionnaire create_and_answer_questionnaire() {
     // Ask's what users height is and loops through the input, to make sure the height is in a reasonable range (50-300 cm).
     while(user.height < 50 || user.height > 300) {
         printf("What is your height in cm?");
-        homemade_scan(long_float, &user.height);
+        homemade_scan(long_float, &user.height,file);
         if(user.height < 50 || user.height > 300) {
             printf("I don't think that is correct!\n");
         }
@@ -62,7 +62,7 @@ questionnaire create_and_answer_questionnaire() {
     // Ask's user to enter how many push-ups they can perform, ensuring only non-negative numbers.
     do {
         printf("How many push-ups, can you do?");
-        homemade_scan(integer, &user.pushups);
+        homemade_scan(integer, &user.pushups,file);
         if(user.pushups < 0) {
             printf("Please enter 0 or more!\n");
         }
@@ -73,7 +73,7 @@ questionnaire create_and_answer_questionnaire() {
     // Ask's user to enter how many squats they can perform, ensuring only non-negative numbers.
     do {
         printf("How many squats, can you do?");
-        homemade_scan(integer, &user.squats);
+        homemade_scan(integer, &user.squats,file);
         if(user.squats < 0) {
             printf("Please enter 0 or more!\n");
         }
@@ -92,15 +92,15 @@ questionnaire create_and_answer_questionnaire() {
                "fitness rank 5 (novice): No experience with exercising\n");
 
         // Validates that fitness level is between 1-5.
-        homemade_scan(integer, &user.fitness_level);
+        homemade_scan(integer, &user.fitness_level,file);
         if(user.fitness_level < expert || user.fitness_level > novice) {
             printf("It has to be between 1-5!\n");
         }
-    }while(user.fitness_level < expert || user.fitness_level > novice);
+    }while(user.fitness_level < 1 || user.fitness_level > 5);
 
     ////////////////////////////////////////////////////////////////////
     //Function for getting the days the user can train
-    get_user_days(&user);
+    get_user_days(&user,file);
     ////////////////////////////////////////////////////////////////////
 
 
@@ -109,13 +109,11 @@ questionnaire create_and_answer_questionnaire() {
 
     // ask's the user if they have access to a gym.
     printf("Do you have access to a gym?");
-    homemade_scan(string, gym);
+    homemade_scan(string, gym, file);
 
     // If user have access to a gym, they have access to all the equipment in the array.
     if(strcmp(gym,"Yes")==0||strcmp(gym,"yes")==0) {
-        printf("TEST");
         for(int i=0; i<5; i++) {
-            printf("test");
             user.available_equipment[i]=1;
         }
         // If the user do not have access to a gym, they will be asked to enter the equipment available based on a defined list.
@@ -129,7 +127,7 @@ questionnaire create_and_answer_questionnaire() {
         int i = 0;
         // Loops to gather the equipment selected by the user, stopping at -1.
         do {
-            homemade_scan(integer, &answer[i]);
+            homemade_scan(integer, &answer[i],file);
             if(answer[i]> 5 || answer[i] < -1) {
                 printf("please enter a number that is in the equipment list!");
             } else {
@@ -176,7 +174,7 @@ void print_quiestionnare(questionnaire user) {
 }
 
 
-int get_user_days(questionnaire* user) {
+int get_user_days(questionnaire* user,FILE *file) {
     printf("What days a week do you have time? Please write numbers matching the days and type -1 when you're done\n");
     printf("1. Monday\n2. Tuesday\n3. Wednesday\n4.Thursday\n5.Friday\n6. Saturday\n7.Sunday");
     //Array to store users answer
@@ -184,7 +182,7 @@ int get_user_days(questionnaire* user) {
     int i = 0;
     do {
         int add = 1;
-        homemade_scan(integer, &days[i]);
+        homemade_scan(integer, &days[i],file);
 
         //Check if the same day is chosen twice
         for(int j = 0; j<i;j++) {
@@ -215,7 +213,7 @@ int get_user_days(questionnaire* user) {
         int add = 1;
         printf("How much time(in minutes) do you have %s?",naming_days(days[i]));
         user->training_days[i].day_week = days[i];
-        homemade_scan(long_float,&user->training_days[i].available_time);
+        homemade_scan(long_float,&user->training_days[i].available_time,file);
         if(user->training_days[i].available_time > 1440) {
             printf("That's more than there is in a day");
             add =0;

@@ -4,7 +4,8 @@
 #include "tools.h"
 
 
-void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int *input) {
+void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count) {
+    int input[length_of_exercises_list];
     for (int i = 0; i < sorted_count; i++) {
         input[i] = 0;
     }
@@ -38,13 +39,11 @@ void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int s
                 i++;
             }
         } while(i < sorted_count && input_temp != -1);
-        printf("TEST");
         upgrade_function(exercise_list_sorted,user,sorted_count,input);
     }
 }
 
 void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]) {
-    printf("TEST3");
     for (int i = 0; i < sorted_count; i++) {
         if (input[i] == 1) {
             //  What if the user weight is equal to bench press weight?
