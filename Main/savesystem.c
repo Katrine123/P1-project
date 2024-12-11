@@ -2,6 +2,8 @@
 #include <string.h>
 #include "savesystem.h"
 
+#include "File_conversition.h"
+
 questionnaire convert_data (user_save_data data);
 ///simply checks if save is available returns 1 if data was found and 0 if not
 int check_for_save() {
