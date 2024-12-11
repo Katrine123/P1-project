@@ -5,7 +5,7 @@
 
 
 void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count) {
-    int input[];
+    int input[length_of_exercises_list];
     for (int i = 0; i < sorted_count; i++) {
         input[i] = 0;
     }
