@@ -11,13 +11,14 @@ int main(void) {
     //exercises_list();
 
     questionnaire user;
+    print_routine();
     //FOR TESTING THAT EVALUATION QUEST WORKS TOGETHER WITH USER QUEST
     /*
     evaluation_questionnaire(&user);
     print_quiestionnare(user);*/
 
     //user start
-    system("cls");
+    /*system("cls");
     if (check_for_save()==0) {
         questionnaire user = create_and_answer_questionnaire();
         print_quiestionnare(user);
@@ -25,13 +26,6 @@ int main(void) {
         if (evaluation_questionnaire(&user)==4) {
             create_and_answer_questionnaire();
         }
-    }
-
-    return 0;
-
-    /* exercise* all_exercises = create_all_exercises();
-    questionnaire user_questionnaire = create_and_answer_questionaire();
-    exercise* available_exercises = create_available_exercises(all_exercises, user_questionnaire);*/
-
+    }*/
     return 0;
 }
