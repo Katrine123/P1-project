@@ -261,6 +261,7 @@ TEST_CASE(upgrade_test,{
 TEST_CASE(workouts_test,{
     //update_routine_workouts(exercises, user_questionnaire);
 })
+#pragma endregion
 
 // X SUPPOSED TO FAIL - X SUPPOSED TO SUCCEED
 MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)

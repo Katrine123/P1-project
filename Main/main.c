@@ -9,7 +9,8 @@
 
 
 int main(void) {
-    create_and_answer_questionnaire(stdin);
+    questionnaire test = create_and_answer_questionnaire(stdin);
+    print_quiestionnare(test);
     /*//OUTLINE FOR PROGRAM:
     questionnaire user_data;
     system("cls");

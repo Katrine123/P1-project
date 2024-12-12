@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define ARRAY_MAX 32
+
 enum datatype {integer, character, long_float, string};
 typedef enum datatype datatype;
 
@@ -17,6 +19,9 @@ enum day_of_the_week {
     sunday = 7
 };
 
+typedef enum {
+    chest, triceps, shoulders, hamstrings, quads
+} muscle_group_name;
 
 typedef struct {
     enum day_of_the_week day_week;
@@ -33,6 +38,7 @@ typedef struct {
     int fitness_level;
     training_day training_days[7];
     int available_equipment[5]; //Array for deciding what exercises they can do
+    muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
 } questionnaire;
 
 //  Check equipment struct
@@ -111,6 +117,7 @@ void load_data();
 int homemade_scan(datatype type, void* input,FILE *file);
 char* naming_equipment(enum equipment eq) ;
 char* naming_days(enum day_of_the_week day);
+char* naming_muscles(muscle_group_name muscle);
 
 //  In upgrade_downgrade.c  //
 

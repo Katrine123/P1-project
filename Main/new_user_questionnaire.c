@@ -146,6 +146,46 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
 
     ////////////////////////////////////////////////////////////////////
 
+    printf("Of these options, do you have any muscles to avoid training. Please enter the number and when you are done press -1\n");
+    printf("1: Chest\n"
+               "2: Triceps\n"
+               "3: Shoulders\n"
+               "4: Hamstring\n"
+               "5: Quads\n");
+    int i = 0;
+    int muscles[5];
+    do {
+        int add = 1;
+        homemade_scan(integer, &muscles[i],file);
+
+        //Check if the same day is chosen twice
+        for(int j = 0; j<i;j++) {
+            if(muscles[i]==muscles[j]) {
+                printf("This muscle has already been chosen");
+                add = 0;
+                break;
+            }
+        }
+
+        if(muscles[i]>5 || muscles[i]<-1||muscles[i]==0) {
+            printf("Please choose one of the numbers available");
+            add = 0;
+        }
+        //If they have no days availabe then close program
+        if(i == 0 && muscles[i]==-1) {
+            printf("If you have no time available we cannot help you!");
+            exit(-1);
+        }
+
+        i += add;
+    }while(i<5&&muscles[i-1]!=-1);
+    int len = sizeof(user.ignored_muscle_group_names)/sizeof(user.ignored_muscle_group_names[0]);
+    for(int j = 0; j<len; j++) {
+        user.ignored_muscle_group_names[j] = muscles[j]-1;
+    }
+
+    ////////////////////////////////////////////////////////////////////
+
     return user;
 }
 
@@ -169,8 +209,13 @@ void print_quiestionnare(questionnaire user) {
             nothing = 1;
         }
     }
+    printf("\n");
     if(nothing == 0) {
         printf("Nothing");
+    }
+    printf("Muscles to ignore: ");
+    for(int i = 0; strcmp(naming_muscles(user.ignored_muscle_group_names[i]),"Error");i++) {
+        printf("%s ",naming_muscles(user.ignored_muscle_group_names[i]));
     }
 }
 

@@ -77,3 +77,19 @@ char* naming_days(enum day_of_the_week day) {
     }
     return "Error";
 }
+
+char* naming_muscles(muscle_group_name muscle) {
+    switch(muscle) {
+        case chest: return "Chest";
+        break;
+        case triceps: return "Triceps";
+        break;
+        case shoulders: return "Shoulders";
+        break;
+        case hamstrings: return "Hamstrings";
+        break;
+        case quads: return "Quads";
+        break;
+    }
+    return "Error";
+}
