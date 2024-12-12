@@ -162,14 +162,15 @@ void print_quiestionnare(questionnaire user) {
     }
     int len = sizeof(user.available_equipment)/sizeof(user.available_equipment[0]);
     printf("Available equipment: ");
-    if(len == 0) {
-        printf("Nothing"); 
-    }else {
-        for(int i = 0; i<len;i++) {
-            if(user.available_equipment[i]==1) {
-                printf("%s, ",naming_equipment(i));
-            }
+    int nothing = 0;
+    for(int i = 0; i<len;i++) {
+        if(user.available_equipment[i]==1) {
+            printf("%s, ",naming_equipment(i));
+            nothing = 1;
         }
+    }
+    if(nothing == 0) {
+        printf("Nothing");
     }
 }
 

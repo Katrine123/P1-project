@@ -85,7 +85,6 @@ TEST_CASE(homemade_scan_test,{//OPLEVER FEJL HVIS ANDEN COMPUTER. DONT KNOW WHY 
 })
 #pragma endregion
 
-
 #pragma region sorting_exercises
 //TEST THAT YOU ONLY GET THE EXERCISES NEEDING NO EQUIPMENT - IS SUPPOSED TO SUCCEED
 TEST_CASE(sorting_exercises_test,{
