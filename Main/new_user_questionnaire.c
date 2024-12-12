@@ -81,6 +81,24 @@ questionnaire create_and_answer_questionnaire() {
         }
     } while(user.squats < 0);
 
+    // ask about fitness goal.
+    do {
+        printf("What goal would you like to accomplish with your training?\n");
+
+        printf("fitness goal 1 (Muscular endurance): Building stamina and the ability to perform a large number of repetitions. \n"
+               "fitness rank 2 (Hypertrophy): Building muscle size\n"
+               "fitness rank 3 (Strength): Increasing the amount of weight you can lift.\n"
+               "fitness goal 4: I have not thought about this. I just want to get started! \n");
+
+        // Validates that fitness level is between 1-5.
+        homemade_scan(long_float, &user.training_goal);
+        //  Defining bounds based on print statement. Not variable so could create issues!
+        if(user.training_goal < 1 || user.training_goal > 4) {
+            printf("It has to be between 1-4!\n");
+        }
+    }while(user.training_goal < 1 || user.training_goal > 4);
+
+
     ////////////////////////////////////////////////////////////////////
 
     // Ask's user to enter there fitness level.
@@ -95,10 +113,12 @@ questionnaire create_and_answer_questionnaire() {
 
         // Validates that fitness level is between 1-5.
         homemade_scan(integer, &user.fitness_level);
-        if(user.fitness_level < expert || user.fitness_level > novice) {
+        if(user.fitness_level < 1 || user.fitness_level > 5) {
             printf("It has to be between 1-5!\n");
         }
-    }while(user.fitness_level < expert || user.fitness_level > novice);
+    }while(user.fitness_level < 1 || user.fitness_level > 5);
+
+
 
     ////////////////////////////////////////////////////////////////////
 

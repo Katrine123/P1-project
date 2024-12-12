@@ -32,12 +32,18 @@ void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int s
             //TAGER IKKE HØJDE FOR -1 ELLER MIN MAX
 
             scanf("%d", &input_temp);
+            if(input_temp < -1 || input_temp > sorted_count) {
+                printf("Please type values between 0 and %d. Unless you are done, then type -1. Enter values again! \n", sorted_count);
+                //  If condition is met restart the loop:
+                continue;
+            }
             if(input_temp!=-1) {
                 //  input_temp - 1
                 input[input_temp] = 1;
                 i++;
             }
-        } while(i < sorted_count && input_temp != -1);
+
+        } while (input_temp != -1);
         printf("TEST");
         upgrade_function(exercise_list_sorted,user,sorted_count,input);
     }

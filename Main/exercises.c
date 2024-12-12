@@ -5,31 +5,46 @@
 
 #define MAX_REPS 15
 
+enum training_goal { MUSCULAR_ENDURANCE = 1, HYPERTROPHY = 2, STRENGTH = 3, I_DONT_KNOW = 4 };
 int check_eq[length_of_equipment_enum] = {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands};
 
-//  All exercises funktion:
-void resistance_exercises_list(exercise* exercise_list, questionnaire user)
-{
-    //  With equipment
+int amount_of_reps_weighted_exercises(questionnaire user) {
+    int amount_of_reps_weighted_exercises = 0;
+    if(user.training_goal == MUSCULAR_ENDURANCE) {
+        amount_of_reps_weighted_exercises = 15;
+    } else if(user.training_goal == HYPERTROPHY) {
+        amount_of_reps_weighted_exercises = 12;
+    } else {
+        amount_of_reps_weighted_exercises = 5;
+    }
+    return amount_of_reps_weighted_exercises;
+}
+
+void resistance_exercises_list(exercise* exercise_list, questionnaire user) {
     //  Bench press
-    exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), 12, 0};
+    exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), amount_of_reps_weighted_exercises(user), 0, NULL};
     exercise_list[0] = bench_press;
 
     //  Weighted squats
-    exercise weighted_squats = {"Weighted squats", {1, 0, 0, 0, 0}, 2.5, base_weight_weighted_squats(user), 12, 0};
+    exercise weighted_squats = {"Weighted squats", {1, 0, 0, 0, 0}, 2.5, base_weight_weighted_squats(user), amount_of_reps_weighted_exercises(user), 0, NULL};
     exercise_list[1] = weighted_squats;
 
-    //  Air squats
-    exercise air_squats = {"Air squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_air_squats(user), 1};
-    exercise_list[2] = air_squats;
+    // Split squats (harder version of squats)
+    exercise split_squats = {"Split squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_split_squats(user), 1, NULL};
+    exercise_list[2] = split_squats;
 
-    //  Pushups
-    exercise pushups = {"Pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_pushups(user), 1};
-    exercise_list[3] = pushups;
+    // Air squats
+    exercise air_squats = {"Air squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_air_squats(user), 1, &exercise_list[2]};
+    exercise_list[3] = air_squats;
 
-    //  Elevated Pushups
-    exercise elevated_pushups = {"Elevated pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_elevated_pushups(user), 1};
+    // Elevated pushups (harder version of pushups)
+    exercise elevated_pushups = {"Elevated pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_elevated_pushups(user), 1, NULL};
     exercise_list[4] = elevated_pushups;
+
+    // Pushups
+    exercise pushups = {"Pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_pushups(user), 1, &exercise_list[4]};
+    exercise_list[5] = pushups;
+
 }
 
 
@@ -37,12 +52,12 @@ void aerobic_exercises_list(exercise* exercise_list, questionnaire user){
     //  HIIT
     //  Burpees
     //  Potential lowest bound is 5 reps pr. set. The exercise is more suitable to an increase in additions, therefore 2 instead of 1.
-    exercise burpees = {"Burpees", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_burpees(user), 1};
-    exercise_list[5] = burpees;
+    exercise burpees = {"Burpees", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_burpees(user), 1, NULL};
+    exercise_list[6] = burpees;
 
     //  find endnu en øvelse af HIIT der er mere aerobic
-    exercise jumping_jacks = {"Jumping jacks", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_jumping_jacks(user), 1};
-    exercise_list[6] = jumping_jacks;
+    exercise jumping_jacks = {"Jumping jacks", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_jumping_jacks(user), 1, NULL};
+    exercise_list[7] = jumping_jacks;
     //  Create array
     //  Return this array !
     //exercise exercises_list[length_of_exercises_list] = {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, jumping_jacks};
@@ -90,25 +105,33 @@ double base_weight_weighted_squats(questionnaire user) {
 
 // Air squats should be the exercise if the perosn can take less than 15 consecutive air squats
 int base_amount_air_squats(questionnaire user) {
-    int reps_amount_squats = MAX_REPS - user.fitness_level;
+    //  Ide til udregning
+        //  Vi ved at for at bygge muscular endurance skal man procentvis bruge mellem 60-80% af 1rm
+        //  Vi kan tage deres fitness level i account med at omdanne til procentbaseret:
+        //  Beginner = 0.5, novice = 0.6 osv..
+        //  Udregning kan være: user.squats * user.fitness_level * 1rm_percentage (0.6)
+        //  Eks: 40 reps, 3 (competent), effort 0.7 = 20 reps
+        //  I upgrade_downgrade kan man tjekke om mængde af reps overstiger 15, dernæst
+        //  gå videre til .harder_exercise
+    int reps_amount_squats = user.squats * user.fitness_level * user.training_goal;
     return reps_amount_squats;
 }
 
 //Split squats should be the printed exercise if the person can take more than 15 consecutive air squats
 int base_amount_split_squats(questionnaire user) {
-    int reps_amount_split_squats = MAX_REPS - user.fitness_level;
+    int reps_amount_split_squats = user.squats * user.fitness_level * user.training_goal;
     return reps_amount_split_squats;
 }
 
 //Elevated pushups should be the printed exercise if the person can take more than 15 consecutive pushups
 int base_amount_elevated_pushups(questionnaire user) {
-        int reps_amount_elevated_pushups = MAX_REPS - user.fitness_level;
+        int reps_amount_elevated_pushups = user.pushups * user.fitness_level * user.training_goal;
         return reps_amount_elevated_pushups;
 }
 
 //Pushups should be the printed exercise if the person can tak less than 15 consecutive pushups
 int base_amount_pushups(questionnaire user) {
-        int reps_amount_pushups = MAX_REPS - user.fitness_level;
+        int reps_amount_pushups = user.pushups * user.fitness_level * user.training_goal;
         return reps_amount_pushups;
 }
 
@@ -116,12 +139,12 @@ int base_amount_burpees(questionnaire user) {
     /*  We are taking into account that this exercise is more difficult than others
      *  Level of exercise should be amplified by a factor of 2
      */
-    int reps_amount_burpees = MAX_REPS - (user.fitness_level*2);
+    int reps_amount_burpees = (user.squats+user.pushups) * user.fitness_level * user.training_goal;
     return reps_amount_burpees;
 }
 
 int base_amount_jumping_jacks(questionnaire user) {
-    int reps_amount_jumping_jacks = MAX_REPS - (user.fitness_level);
+    int reps_amount_jumping_jacks = user.squats * user.fitness_level * user.training_goal;
     return reps_amount_jumping_jacks;
 }
 
@@ -131,9 +154,10 @@ void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire
     printf("SE HER: %d", count);
     for (int i = 0; i < count; i++) {
         printf("\n_____________________________\n");
-        printf("Exercise %d:\n", i + 1);
+        printf("Exercise %d:\n", i);
         printf("Name: %s\n", sorted_exercise_list[i].name);
         printf("Addition: %.2lf\n", sorted_exercise_list[i].addition);
+        printf("Harder exercise: %s\n", sorted_exercise_list[i].harder_version->name);
         if(sorted_exercise_list[i].base_weight != user.weight) {
             printf("Base weight: %.2lf\n", sorted_exercise_list[i].base_weight);
         }
