@@ -17,7 +17,6 @@ int check_for_save() {
         return(0);
     }
 }
-
 ///saves data like this {[lorem] ipsum} returns 1 if successful
 int save_data(const char *data, const char *data_name) {
     FILE * file;
@@ -44,7 +43,7 @@ void print_user_data(user_save_data data) {
 
 ///returns a struct with values harvested from user_data_savefile.txt.
 ///is pretty resilient and can be used like this to print "print_user_data(load_data());"
-questionnaire load_data() {
+user_save_data load_data() {
     user_save_data data;
     FILE *file;
     int count=0;
@@ -69,44 +68,53 @@ questionnaire load_data() {
                 }
                 data_data[j] = '\0';
                 //printf("%s\n", data_data);
-                switch (count++) {
-                    case 0:
+                switch (data_type[0]) {
+                    case 'e':
                         strncpy(data.available_equipment, data_data,20);
                         break;
-                    case 1:
-                        strncpy(data.age, data_data, 20);
+
+                    case 'a':
+                        strncpy(data.age, data_data,20);
                         break;
-                    case 2:
+
+                    case 'g':
                         strncpy(data.gender, data_data,20);
                         break;
-                    case 3:
+
+                    case 'w':
                         strncpy(data.weight, data_data, 20);
                         break;
-                    case 4:
+
+                    case 'h':
                         strncpy(data.height, data_data, 20);
                         break;
-                    case 5:
+
+                    case 'p':
                         strncpy(data.pushups, data_data, 20);
                         break;
-                    case 6:
-                        strncpy(data.squats, data_data, 20);
+
+                    case 's':
+                            strncpy(data.squats, data_data, 20);
                         break;
-                    case 7:
+
+                    case 'f':
                         strncpy(data.fitness_level, data_data, 20);
                         break;
-                    case 8:
+
+                    case 'l':
                         strncpy(data.adjustmentfactor, data_data, 20);
                         break;
-                    default: printf("too much data will not be read\n");
-                    // Switch copies the read data to the struct user data
-                    // for now user data is all stored as chars for simplicity’s sake
+
+                    default: printf("unknown data type\n");
+                        // Switch copies the read data to the struct user data
+                        // for now user data is all stored as chars for simplicity’s sake
 
                 }
             }
         }
     } else {printf("file opening error\n");}
     fclose(file); //will at the moment prolly always close the file but am not 100% sure
-    return (convert_data(data));
+    return (data);
 }
 
 questionnaire convert_data (user_save_data data) {
@@ -126,7 +134,7 @@ questionnaire convert_data (user_save_data data) {
     user.training_days[5] = (training_day){5, 1.5};  // Friday: 1.5 hours
     user.training_days[6] = (training_day){6, 0.5};  // Saturday: 0.5 hours
     for (int i = 0 ; i < 5; i++) {
-        user.available_equipment[i] = data.available_equipment[i];
+        user.available_equipment[i] = data.available_equipment[i]-'0';
     }
     return (user);
 }

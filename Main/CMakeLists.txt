@@ -8,7 +8,9 @@ add_executable(main main.c)
 
 add_library(bib bib
         savesystem.c
-        savesystem.h)
+        savesystem.h
+        File_conversition.h
+        File_conversition.c)
 add_library(upgrade_downgrade upgrade_downgrade)
 add_library(exercises exercises)
 add_library(new_user_questionnaire new_user_questionnaire)

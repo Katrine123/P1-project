@@ -2,6 +2,9 @@
 #define SAVESYSTEM_H
 #include "tools.h"
 
+typedef enum {typeint, typedouble, typestring
+} c_data_types;
+
 typedef struct {
     char available_equipment[20];
     char age[20];
@@ -22,6 +25,8 @@ char* readFileContent(const char* filename);
 
 void print_user_data(user_save_data data);
 
-questionnaire load_data();
+user_save_data load_data();
+
+questionnaire convert_data(user_save_data data);
 
 #endif //SAVESYSTEM_H

@@ -4,11 +4,11 @@
 
 #ifndef FILE_CONVERSION_H
 #define FILE_CONVERSION_H
-char* int_to_str(int n);
-int str_to_int(char *str);
+static char* int_to_str(const int n);
+int str_to_int(const char *str);
 
-char* double_to_str(double d);
-double str_to_double(char *str);
+static char* double_to_str(const double d);
+double str_to_double(const char *str);
 #endif //FILE_CONVERSION_H
 
 

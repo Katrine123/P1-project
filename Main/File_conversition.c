@@ -10,7 +10,7 @@
 
 
 
-char* int_to_str(int n) {
+char* int_to_str(const int n) {
     static char str[2];
     sprintf(str, "%d", n);
     return (str);
@@ -18,7 +18,7 @@ char* int_to_str(int n) {
 int str_to_int(const char *str) {
     return atoi(str);
 }
-char* double_to_str(double d) {
+static char* double_to_str(const double d) {
     static char str[10];
     sprintf(str, "%lf", d);
     return (str);
