@@ -217,7 +217,7 @@ TEST_CASE(calculations3,{
      CHECK_EQ_DOUBLE(test_value,162.5,0.001);
 })
 
-//TESTS FOR THE HIGHEST POSSIBLE WEIGHT - SHOULD SUCCEED
+//TESTS FOR A LOT OF PUSHUPS - SHOULD SUCCEED
 TEST_CASE(calculations4,{
      questionnaire test;
      test.weight = 65;
@@ -225,7 +225,6 @@ TEST_CASE(calculations4,{
      double test_value = base_weight_bench_press(test);
      CHECK_EQ_DOUBLE(test_value,55,0.001);
 })
-//EDGECASES!
 
 #pragma endregion
 
@@ -258,8 +257,15 @@ TEST_CASE(upgrade_test,{
 
 #pragma endregion
 
+#pragma region workouts
+TEST_CASE(workouts_test,{
+    //update_routine_workouts(exercises, user_questionnaire);
+})
+
 // X SUPPOSED TO FAIL - X SUPPOSED TO SUCCEED
 MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)
 //MAIN_RUN_TESTS(homemade_scan_test,homemade_scan_test2);
-
+//MAIN_RUN_TESTS(sorting_exercises_test,sorting_exercises_test2,sorting_exercises_test3)
+//MAIN_RUN_TESTS(calculations,calculations2,calculations3,calculations4)
+//MAIN_RUN_TESTS(upgrade_test)
 
