@@ -12,7 +12,7 @@ TEST_CASE(questionnaire_test1,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67 male 72 183 6 8 1 4 -1 120 Yes");
+    fprintf(test_file,"67\nmale \n72 \n183 \n6 \n8 \n1 \n4 \n-1 \n120 \nYes\n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -35,14 +35,14 @@ TEST_CASE(questionnaire_test1,{
     }
 })
 
-//CHANGE SO THAT USER INPUT IS DIFFERENT
+//IS SUPPOSED TO SUCCEED
 TEST_CASE(questionnaire_test2,{
     FILE *test_file = fopen("user_input.txt","w");
         if (test_file == NULL) {
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67 male 72 183 6 8 1 4 -1 120 Yes");
+    fprintf(test_file,"67 \nhej \nfemale \n72 \n183 \n6 \n8 \n1 \n4 \n-1 \n120 \nNo \n4 \n8 \n2 \n-1\n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -51,18 +51,32 @@ TEST_CASE(questionnaire_test2,{
         }
     questionnaire user_test = create_and_answer_questionnaire(test_file);
     fclose(test_file);
+    CHECK_EQ_INT(user_test.age,67);
+    CHECK_EQ_STRING(user_test.gender,"female");
+    CHECK_EQ_DOUBLE(user_test.weight,72,0.001);
+    CHECK_EQ_DOUBLE(user_test.height,183,0.001);
+    CHECK_EQ_INT(user_test.pushups,6);
+    CHECK_EQ_INT(user_test.squats,8);
+    CHECK_EQ_INT(user_test.fitness_level,1);
+    CHECK_EQ_INT(user_test.training_days[0].day_week,thursday);
+    CHECK_EQ_DOUBLE(user_test.training_days[0].available_time,120,0.001);
+    CHECK_EQ_INT(user_test.available_equipment[2],1);
+    CHECK_EQ_INT(user_test.available_equipment[0],0);
+    CHECK_EQ_INT(user_test.available_equipment[1],0);
+    CHECK_EQ_INT(user_test.available_equipment[3],0);
+    CHECK_EQ_INT(user_test.available_equipment[4],1);
 })
 
 #pragma endregion
 
 #pragma region homemade_scan
-TEST_CASE(homemade_scan_test,{//OPLEVER FEJL HVIS ANDEN COMPUTER. DONT KNOW WHY :]
+TEST_CASE(homemade_scan_test,{
     FILE *test_file = fopen("user_input.txt","w");
         if (test_file == NULL) {
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"45 hej 34");
+    fprintf(test_file,"\n45 \nh \nhej \n34 \n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -77,11 +91,40 @@ TEST_CASE(homemade_scan_test,{//OPLEVER FEJL HVIS ANDEN COMPUTER. DONT KNOW WHY 
     CHECK_EQ_CHAR(char_test,'h');
     char string_test[10];
     homemade_scan(string,&string_test,test_file);
-    CHECK_EQ_STRING(string_test,"ej");
+    CHECK_EQ_STRING(string_test,"hej");
     double double_test;
     homemade_scan(long_float,&double_test,test_file);
     CHECK_EQ_DOUBLE(double_test,34,0.001);
     fclose(test_file);
+})
+
+//THIS TEST WHAT HAPPENS IF YOU INPUT THE WRONG DATATYPE
+//IT SHOULD SUCCEED BUT SHOULD ALSO PRINT SOME THINGS
+TEST_CASE(homemade_scan_test2,{
+    FILE *test_file = fopen("user_input.txt","w");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    fprintf(test_file,"\nhej \n45 \n45 \nh \n45 \nhej \nhej \n87.5 \n");
+    fclose(test_file);
+    test_file = fopen("user_input.txt","r");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    int int_test;
+    homemade_scan(integer,&int_test,test_file);
+    CHECK_EQ_INT(int_test,45);
+    char char_test;
+    homemade_scan(character,&char_test,test_file);
+    CHECK_EQ_CHAR(char_test,'h');
+    char string_test[10];
+    homemade_scan(string,&string_test,test_file);
+    CHECK_EQ_STRING(string_test,"hej");
+    double double_test;
+    homemade_scan(long_float,&double_test,test_file);
+    CHECK_EQ_DOUBLE(double_test,87.5,0.001);
 })
 #pragma endregion
 
@@ -186,6 +229,7 @@ TEST_CASE(calculations4,{
 
 #pragma endregion
 
+#pragma region upgrade
 TEST_CASE(upgrade_test,{
     questionnaire user_test = {67,"male",65,183,5,12,1,{monday,67},{1,1,1,1,1}};
     exercise ex_test[length_of_exercises_list];
@@ -212,8 +256,10 @@ TEST_CASE(upgrade_test,{
     CHECK_EQ_DOUBLE(ex_test[6].amount_of_reps,16,0.001);
 })
 
-MAIN_RUN_TESTS(calculations,calculations2,calculations3,calculations4)
+#pragma endregion
 
-/*Testing af Jespers ting*/
-/*Update routine workout*/
+// X SUPPOSED TO FAIL - X SUPPOSED TO SUCCEED
+MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)
+//MAIN_RUN_TESTS(homemade_scan_test,homemade_scan_test2);
+
 

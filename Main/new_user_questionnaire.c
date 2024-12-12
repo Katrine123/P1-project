@@ -119,7 +119,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
         // If the user do not have access to a gym, they will be asked to enter the equipment available based on a defined list.
     } else if(strcmp(gym, "No")==0||strcmp(gym, "no")==0) {
         printf("Of these options what equipment do you have? Please enter the number and when you are done press -1\n");
-        for(int i=0; i<5; i++) {
+        for(int i=0; i<length_of_equipment_enum; i++) {
             printf("%d: %s \n", i, naming_equipment(i));
         }
         // Array to store equipment option selected by user.
@@ -128,14 +128,14 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
         // Loops to gather the equipment selected by the user, stopping at -1.
         do {
             homemade_scan(integer, &answer[i],file);
-            if(answer[i]> 5 || answer[i] < -1) {
+            if(answer[i]> length_of_equipment_enum-1 || answer[i] < -1) {
                 printf("please enter a number that is in the equipment list!");
             } else {
                 i++;
             }
         }while(answer[i-1] != -1);
 
-        for(int n = 0; n < 5; n++) {
+        for(int n = 0; n < length_of_equipment_enum; n++) {
             user.available_equipment[n] = 0;
         }
         // Transfer selected equipment to the user struct "questionnaire".

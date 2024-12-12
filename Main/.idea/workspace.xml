@@ -37,8 +37,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new_user_questionnaire.c" beforeDir="false" afterPath="$PROJECT_DIR$/new_user_questionnaire.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/print_routine.c" beforeDir="false" afterPath="$PROJECT_DIR$/print_routine.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests.c" beforeDir="false" afterPath="$PROJECT_DIR$/tests.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools.c" beforeDir="false" afterPath="$PROJECT_DIR$/tools.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +103,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="CMake Application.main">
+  <component name="RunManager" selected="CMake Application.tests">
     <configuration name="bib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="bib" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -186,7 +186,8 @@
       <workItem from="1733833307818" duration="152000" />
       <workItem from="1733920844699" duration="286000" />
       <workItem from="1733926206360" duration="3076000" />
-      <workItem from="1733987544542" duration="2184000" />
+      <workItem from="1733987544542" duration="2773000" />
+      <workItem from="1733990645760" duration="3445000" />
     </task>
     <servers />
   </component>

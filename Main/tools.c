@@ -36,7 +36,7 @@ int homemade_scan(datatype type, void* input, FILE *file) {//Uses a void for inp
             }
         }
         //Clears any extra inputs
-        //while ((getchar()) != '\n');//https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/ (HVIS TESTING SÅ UDDKOMMENTER DEN HER LINJE)
+        while ((fgetc(file)) != '\n');
         //Return a true/false, of whether the datatype matches what we want
     }while(is_right == 0);
     return is_right;
