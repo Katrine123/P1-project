@@ -1,6 +1,9 @@
+#pragma once
 #include <stdio.h>
 
 enum datatype {integer, character, long_float, string};
+
+
 typedef enum datatype datatype;
 
 //  Stages from problem analysis

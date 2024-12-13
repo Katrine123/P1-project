@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "savesystem.h"
 #include "tools.h"
+#include "file_conversion.h"
 
 questionnaire create_and_answer_questionnaire(FILE *file) {
-
-
     questionnaire user;
 
     // Welcome message to new users.
@@ -29,6 +29,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
         printf("You are too young for this fitness trainer!");
         exit(-1);
     }
+    save_data(int_to_str(user.age),"age");
     ////////////////////////////////////////////////////////////////////
 
     // Ask's user to enter there gender, and validate it to only accept input "male" or "female".
@@ -36,6 +37,8 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
         printf("Are you a male or female");
         homemade_scan(string, user.gender,file);
     }while(strcmp(user.gender,"male")!=0&& strcmp(user.gender,"female")!=0);
+    save_data(user.gender,"gen");
+
 
     ////////////////////////////////////////////////////////////////////
 
@@ -47,6 +50,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
             printf("I don't think that is correct!\n");
         }
     }
+    save_data(double_to_str(user.weight),"wei");
     ////////////////////////////////////////////////////////////////////
 
     // Ask's what users height is and loops through the input, to make sure the height is in a reasonable range (50-300 cm).
@@ -57,6 +61,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
             printf("I don't think that is correct!\n");
         }
     }
+    save_data(double_to_str(user.height),"hei");
     ////////////////////////////////////////////////////////////////////
 
     // Ask's user to enter how many push-ups they can perform, ensuring only non-negative numbers.
@@ -67,6 +72,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
             printf("Please enter 0 or more!\n");
         }
     } while(user.pushups < 0);
+    save_data(int_to_str(user.pushups),"pus");
 
     ////////////////////////////////////////////////////////////////////
 
@@ -78,6 +84,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
             printf("Please enter 0 or more!\n");
         }
     } while(user.squats < 0);
+    save_data(int_to_str(user.squats),"squ");
 
     ////////////////////////////////////////////////////////////////////
 
@@ -97,6 +104,8 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
             printf("It has to be between 1-5!\n");
         }
     }while(user.fitness_level < 1 || user.fitness_level > 5);
+    save_data(int_to_str(user.fitness_level),"fit");
+
 
     ////////////////////////////////////////////////////////////////////
     //Function for getting the days the user can train
@@ -143,7 +152,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
             user.available_equipment[answer[j]] = 1;
         }
     }
-
+    save_data(arr_to_str(user.available_equipment, 5),"equ");
     ////////////////////////////////////////////////////////////////////
 
     return user;

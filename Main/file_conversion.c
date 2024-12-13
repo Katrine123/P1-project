@@ -1,30 +1,40 @@
 // #include "tools.h"
-#include "File_conversition.h"
+#include "file_conversion.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // int total_days = 1;
 
 // char train_to_str(training_day d);
 // training_day str_to_train(char);
 
+char* arr_to_str(const int *arr, int len) {
+    char *str = malloc(len+1);
+    str[0] = '\0';
+    for (int i = 0; i < len; i++) {
+        char num_str[12];
+        snprintf(num_str, sizeof(num_str), "%d", arr[i]);
+        strcat(str, num_str);
+    }
+    return str;
+}
 
-
-char* int_to_str(const int n) {
+char* int_to_str(int n) {
     static char str[2];
     sprintf(str, "%d", n);
     return (str);
 }
-int str_to_int(const char *str) {
+int str_to_int(char *str) {
     return atoi(str);
 }
-static char* double_to_str(const double d) {
+char* double_to_str(double d) {
     static char str[10];
     sprintf(str, "%lf", d);
     return (str);
 }
 
-double str_to_double(const char* str) {
+double str_to_double(char* str) {
     return atof(str);
 }
 //int str_to_seq_int(int n, char str[n]) {

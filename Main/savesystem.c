@@ -2,7 +2,7 @@
 #include <string.h>
 #include "savesystem.h"
 
-#include "File_conversition.h"
+#include "file_conversion.h"
 
 questionnaire convert_data (user_save_data data);
 ///simply checks if save is available returns 1 if data was found and 0 if not
@@ -43,7 +43,7 @@ void print_user_data(user_save_data data) {
 
 ///returns a struct with values harvested from user_data_savefile.txt.
 ///is pretty resilient and can be used like this to print "print_user_data(load_data());"
-user_save_data load_data() {
+questionnaire load_data() {
     user_save_data data;
     FILE *file;
     int count=0;
@@ -94,27 +94,27 @@ user_save_data load_data() {
                         break;
 
                     case 's':
-                            strncpy(data.squats, data_data, 20);
+                        strncpy(data.squats, data_data, 20);
                         break;
 
                     case 'f':
                         strncpy(data.fitness_level, data_data, 20);
                         break;
 
-                    case 'l':
-                        strncpy(data.adjustmentfactor, data_data, 20);
+                    case 'u':
+                        strncpy(data.adjustment_factor, data_data, 20);
                         break;
 
                     default: printf("unknown data type\n");
                         // Switch copies the read data to the struct user data
-                        // for now user data is all stored as chars for simplicity’s sake
+                        // for now user data is all stored in strings and type is read as chars for simplicity’s sake
 
                 }
             }
         }
     } else {printf("file opening error\n");}
     fclose(file); //will at the moment prolly always close the file but am not 100% sure
-    return (data);
+    return (convert_data(data));
 }
 
 questionnaire convert_data (user_save_data data) {
