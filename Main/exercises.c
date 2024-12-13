@@ -100,7 +100,7 @@ double round_down_to_nearest (double number, double divisor) {
 }
 
 int base_amount_calculation(questionnaire user, int user_1rm_exercise) {
-    return (int)user_1rm_exercise * fitness_level(user) * training_goal_converter(user);
+    return (int)user_1rm_exercise * fitness_level(user);
 }
 
 //  Base_weight functions:
