@@ -17,11 +17,16 @@ enum fitness_level {
     novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1
 };
 enum equipment {
-    barbell, bench, pull_up_bar, pull_down_machine, resistance_bands, length_of_equipment_enum
+    barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
+};
+int all_equipment_count = 5;
+enum equipment all_equipment[all_equipment_count] = {
+    barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
 };
 // TODO: Add in design that the software is proof-of-concept and that's why we do not include that many exercises.
+// TODO: Is length_of_exercises_list a good idea?
 enum exercise_name {
-    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpee, jumping_jack, length_of_exercises_list
+    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpee, jumping_jacks, length_of_exercises_list
 };
 enum day_of_the_week {
     monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
@@ -32,6 +37,10 @@ enum day_of_the_week {
 typedef enum {
     chest, triceps, shoulders, hamstrings, quads
 } muscle_group_name;
+int all_muscle_names_count = 5;
+muscle_group_name all_muscle_names[all_muscle_names_count] = {
+    chest, triceps, shoulders, hamstrings, quads
+};
 
 #pragma endregion
 #pragma region structs
@@ -49,22 +58,11 @@ typedef struct {
     int pushups;
     int squats;
     enum fitness_level _fitness_level;
-    // TODO: Count not implemented yet.
     training_day available_training_days[7]; int available_training_days_count;
-    // TODO: Not implemented yet.
-    enum equipment available_equipment[length_of_equipment_enum]; // Array for deciding what exercises they can do
+    enum equipment available_equipment[ARRAY_MAX]; int available_equipment_count;
     // TODO: Not implemented yet.
     muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
 } questionnaire;
-
-//  Check equipment struct
-typedef struct {
-    int barbell;
-    int bench;
-    int pull_up_bar;
-    int pull_down_machine;
-    int resistance_bands;
-} check_equipment;
 
 typedef struct muscle_group {
     muscle_group_name name;
@@ -75,9 +73,7 @@ typedef struct muscle_group {
 //  Exercise platform for resistance exercises
 typedef struct {
     enum exercise_name name;
-    //  When calling necessary_equipment.x it searches in the check_equipment struct
-    int check_eq[length_of_exercises_list];
-    //  We assume that weight only increases by 2.5, argue for this in implementation/design
+   //  We assume that weight only increases by 2.5, argue for this in implementation/design
     double addition;
     double base_weight;
     double reps;
@@ -100,9 +96,6 @@ typedef struct {
 
 // TODO: Not implemented yet.
 questionnaire _questionnaire;
-muscle_group_name all_muscle_names[ARRAY_MAX] = {
-    chest, triceps, shoulders, hamstrings, quads
-}; int all_muscle_names_count = 5;
 // TODO: Only implemented in exercises.c.
 exercise possible_resistance_exercises[ARRAY_MAX]; int possible_resistance_exercises_count;
 // TODO: Only implemented in exercises.c.
@@ -126,9 +119,7 @@ void update_array_of_possible_aerobic_exercises();
 #pragma endregion
 #pragma region new_user_questionnaire.c
 
-questionnaire create_and_answer_questionnaire();
-void print_quiestionnare(questionnaire user);
-int get_user_days(questionnaire* user);
+void update_questionnaire();
 
 #pragma endregion
 #pragma region print_routine.c

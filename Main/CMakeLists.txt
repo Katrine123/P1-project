@@ -28,11 +28,6 @@ add_library(
         print_routine)
 target_link_libraries(main
         print_routine)
-add_library(
-        routine
-        routine)
-target_link_libraries(main
-        routine)
 #add_library(
 #        savesystem
 #        savesystem)

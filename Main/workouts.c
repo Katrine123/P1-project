@@ -35,7 +35,7 @@ const int general_warmup_duration = 5; // In minutes.
 const int max_daily_sets = 6; // For resistance training.
 const int max_daily_aerobic_exercises = 3; // 3 brings a good amount of variety without becoming overly complex.
 const double rest_between_sets_resistance = 1.5; // In minutes. Equivalent to 90 seconds.
-int aerobic_rest_multiplier; // For example, a multiplier of 2, means a work-to-rest ratio of 1:2.
+double aerobic_rest_multiplier; // For example, a multiplier of 2, means a work-to-rest ratio of 1:2.
 int max_weekly_sets; // For resistance training.
 int resistance_recovery;
 int max_weekly_aerobic_workouts;
@@ -400,11 +400,19 @@ void update_workout_rules() {
         max_weekly_aerobic_workouts = 7; // No limit, because recovery time is 24 hours.
         aerobic_rest_multiplier = 2; // 1:2 work-to-rest ratio.
     } else {
-        max_weekly_sets = 99; // We have not researched any max for experienced trainees.
+        max_weekly_sets = 20; // We have not found any scientifically-backed max, so we assume it to 20.
         resistance_recovery = 2; // Recovery time ranges from 48-72 hours for 6-15 reps.
         max_weekly_aerobic_workouts = 7; // No limit, because recovery time is 24 hours.
-        aerobic_rest_multiplier = 1; // 1:1 work-to-rest ratio.
+        if (level >= competent) {
+            aerobic_rest_multiplier = 1; // 1:1 work-to-rest ratio.
+        } else if (level >= proficient) {
+            aerobic_rest_multiplier = 1 / 2; // 2:1 work-to-rest ratio.
+        } else { // Else, it's an expert
+            aerobic_rest_multiplier = 1 / 3; // 3:1 work-to-rest ratio.
+        }
     }
+
+
 }
 void update_valid_muscle_groups()
 {
@@ -432,8 +440,7 @@ void update_valid_muscle_groups()
 
         // Add valid muscle groups
         if (is_valid) {
-            valid_muscle_names_names[valid_muscle_names_count] = muscle_name;
-            valid_muscle_names_count++;
+            valid_muscle_names_names[valid_muscle_names_count++] = muscle_name;
         }
     }
 }
@@ -492,8 +499,7 @@ void update_resistance_days() {
 
         // Add to resistance days, if day is valid
         if (day_is_valid) {
-            resistance_workout_indexes[resistance_workout_indexes_count] = i;
-            resistance_workout_indexes_count++;
+            resistance_workout_indexes[resistance_workout_indexes_count++] = i;
         }
     }
 }
