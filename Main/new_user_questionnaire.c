@@ -148,8 +148,9 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
             user.available_equipment[n] = 0;
         }
         // Transfer selected equipment to the user struct "questionnaire".
-        for(int j = 0; answer[j]!=-1; j++)
+        for(int j = 0; answer[j]!=-1; j++) {
             user.available_equipment[answer[j]] = 1;
+        }
     }
     save_data(arr_to_str(user.available_equipment, 5),"equ");
     ////////////////////////////////////////////////////////////////////
