@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-
 #include "tools.h"
 
 
@@ -14,7 +12,6 @@ void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int s
         printf("Would you like to upgrade or downgrade? (u/d) \n");
         scanf(" %c", &answer);
         //  Go to, initial call. Happens if the user types a wrong char.
-        start:
         if(answer == 'u') {
             do {
                 upgrade_function(exercise_list_sorted, *input);
@@ -28,7 +25,6 @@ void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int s
             while(second_answer == 'n');
         } else if (answer == 'd') {
             // Repeated code except it downgrades!
-            int fail = 0;
             do {
                 if(exercise_list_sorted[i].base_weight < 1 || exercise_list_sorted[i].amount_of_reps < 1) {
                     printf("Not possible");
@@ -45,7 +41,6 @@ void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int s
             while(second_answer == 'n');
         } else {
             printf("Type either 'u' or 'd' !");
-            goto start;
         }
     }
 }
@@ -61,9 +56,21 @@ void upgrade_function(exercise *exercise_list_sorted, int input) {
 }
 
 void downgrade_function(exercise *exercise_list_sorted, int input) {
-    if(exercise_list_sorted[input].is_body_weight_exercise == 1) {
-        exercise_list_sorted[input].amount_of_reps -= exercise_list_sorted[input].addition;
+    if (exercise_list_sorted[input].is_body_weight_exercise == 1) {
+        // Ensure reps cannot go below 0
+        if (exercise_list_sorted[input].amount_of_reps > exercise_list_sorted[input].addition) {
+            exercise_list_sorted[input].amount_of_reps -= exercise_list_sorted[input].addition;
+        } else {
+            exercise_list_sorted[input].amount_of_reps = 0;
+            printf("Repetitions cannot be reduced further!\n");
+        }
     } else {
-        exercise_list_sorted[input].base_weight -= exercise_list_sorted[input].addition;
+        // Ensure weight cannot go below 0
+        if (exercise_list_sorted[input].base_weight > exercise_list_sorted[input].addition) {
+            exercise_list_sorted[input].base_weight -= exercise_list_sorted[input].addition;
+        } else {
+            exercise_list_sorted[input].base_weight = 0;
+            printf("Weight cannot be reduced further!\n");
+        }
     }
 }
