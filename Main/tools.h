@@ -98,8 +98,8 @@ exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);
 void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]);
 void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int *input);
-void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]);
-//
+void upgrade_function(exercise *exercise_list_sorted, int input);
+void downgrade_function(exercise *exercise_list_sorted, int input);
 // Created by mwsan on 11/14/2024.
 //
 

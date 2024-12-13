@@ -1,0 +1,25 @@
+Index: ../.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"BackendCodeEditorMiscSettings\">\n    <option name=\"/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue\" value=\"false\" type=\"bool\" />\n    <option name=\"/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue\" value=\"true\" type=\"bool\" />\n    <option name=\"/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue\" value=\"true\" type=\"bool\" />\n    <option name=\"/Default/Housekeeping/OptionsDialog/SelectedPageId/@EntryValue\" value=\"CppIncludesOrderOptions\" type=\"string\" />\n    <option name=\"/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved\" />\n  </component>\n  <component name=\"CMakePythonSetting\">\n    <option name=\"pythonIntegrationState\" value=\"YES\" />\n  </component>\n  <component name=\"CMakeWorkspace\" PROJECT_DIR=\"$PROJECT_DIR$/Main\">\n    <contentRoot DIR=\"$PROJECT_DIR$\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.idea/misc.xml b/../.idea/misc.xml
+--- a/../.idea/misc.xml	(revision 79b8230047330217e49ea39b475f174fd0a1e012)
++++ b/../.idea/misc.xml	(date 1733740381923)
+@@ -5,12 +5,9 @@
+     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+     <option name="/Default/Housekeeping/OptionsDialog/SelectedPageId/@EntryValue" value="CppIncludesOrderOptions" type="string" />
+-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
+   </component>
+   <component name="CMakePythonSetting">
+     <option name="pythonIntegrationState" value="YES" />
+   </component>
+-  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/Main">
+-    <contentRoot DIR="$PROJECT_DIR$" />
+-  </component>
++  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/Main" />
+ </project>
+\ No newline at end of file
