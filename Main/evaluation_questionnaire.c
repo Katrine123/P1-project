@@ -28,7 +28,6 @@ int evaluation_questionnaire(questionnaire* user,FILE *file) {
         switch (answer) {
             case 1:
                 printf("Registered 1 pressed workout will intensify!\n");
-            //INSÆT UPGRADE FUNKTION HER!!!
             break;
             case 2:
                 printf("Registered 2 pressed workout wont change!");

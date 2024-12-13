@@ -5,8 +5,6 @@
 #include "tools.h"
 
 questionnaire create_and_answer_questionnaire(FILE *file) {
-
-
     questionnaire user;
 
     // Welcome message to new users.
@@ -120,7 +118,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
     } else if(strcmp(gym, "No")==0||strcmp(gym, "no")==0) {
         printf("Of these options what equipment do you have? Please enter the number and when you are done press -1\n");
         for(int i=0; i<length_of_equipment_enum; i++) {
-            printf("%d: %s \n", i, naming_equipment(i));
+            printf("%d: %s \n", i+1, naming_equipment(i));
         }
         // Array to store equipment option selected by user.
         int answer[5];
@@ -128,7 +126,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
         // Loops to gather the equipment selected by the user, stopping at -1.
         do {
             homemade_scan(integer, &answer[i],file);
-            if(answer[i]> length_of_equipment_enum-1 || answer[i] < -1) {
+            if(answer[i]> length_of_equipment_enum || answer[i] < -1||answer[i]==0) {
                 printf("please enter a number that is in the equipment list!");
             } else {
                 i++;
@@ -140,7 +138,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
         }
         // Transfer selected equipment to the user struct "questionnaire".
         for(int j = 0; answer[j]!=-1; j++) {
-            user.available_equipment[answer[j]] = 1;
+            user.available_equipment[answer[j]-1] = 1;
         }
     }
 
@@ -171,12 +169,6 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
             printf("Please choose one of the numbers available");
             add = 0;
         }
-        //If they have no days availabe then close program
-        if(i == 0 && muscles[i]==-1) {
-            printf("If you have no time available we cannot help you!");
-            exit(-1);
-        }
-
         i += add;
     }while(i<5&&muscles[i-1]!=-1);
     int len = sizeof(user.ignored_muscle_group_names)/sizeof(user.ignored_muscle_group_names[0]);
@@ -188,37 +180,6 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
 
     return user;
 }
-
-void print_quiestionnare(questionnaire user) {
-    printf("Age:%d\n",user.age);
-    printf("Gender: %s\n",user.gender);
-    printf("Weight: %lf\n",user.weight);
-    printf("Height: %lf\n",user.height);
-    printf("Amount of pushups: %d\n",user.pushups);
-    printf("Fitness level: %d\n",user.fitness_level);
-    printf("Time a week:\n");
-    for(int i = 0;strcmp(naming_days(user.training_days[i].day_week),"Error")!=0;i++) {
-        printf("%s: %lf minutes\n",naming_days(user.training_days[i].day_week),user.training_days[i].available_time);
-    }
-    int len = sizeof(user.available_equipment)/sizeof(user.available_equipment[0]);
-    printf("Available equipment: ");
-    int nothing = 0;
-    for(int i = 0; i<len;i++) {
-        if(user.available_equipment[i]==1) {
-            printf("%s, ",naming_equipment(i));
-            nothing = 1;
-        }
-    }
-    printf("\n");
-    if(nothing == 0) {
-        printf("Nothing");
-    }
-    printf("Muscles to ignore: ");
-    for(int i = 0; strcmp(naming_muscles(user.ignored_muscle_group_names[i]),"Error");i++) {
-        printf("%s ",naming_muscles(user.ignored_muscle_group_names[i]));
-    }
-}
-
 
 int get_user_days(questionnaire* user,FILE *file) {
     printf("What days a week do you have time? Please write numbers matching the days and type -1 when you're done\n");
@@ -270,4 +231,40 @@ int get_user_days(questionnaire* user,FILE *file) {
         i+=add;
     }while(days[i]!=-1);
 }
+
+void print_quiestionnare(questionnaire user) {
+    printf("Age:%d\n",user.age);
+    printf("Gender: %s\n",user.gender);
+    printf("Weight: %lf\n",user.weight);
+    printf("Height: %lf\n",user.height);
+    printf("Amount of pushups: %d\n",user.pushups);
+    printf("Fitness level: %d\n",user.fitness_level);
+    printf("Time a week:\n");
+    for(int i = 0;strcmp(naming_days(user.training_days[i].day_week),"Error")!=0;i++) {
+        printf("%s: %lf minutes\n",naming_days(user.training_days[i].day_week),user.training_days[i].available_time);
+    }
+    int len = sizeof(user.available_equipment)/sizeof(user.available_equipment[0]);
+    printf("Available equipment: ");
+    int nothing = 0;
+    for(int i = 0; i<len;i++) {
+        if(user.available_equipment[i]==1) {
+            printf("%s, ",naming_equipment(i));
+            nothing = 1;
+        }
+    }
+    printf("\n");
+    if(nothing == 0) {
+        printf("Nothing");
+    }
+    printf("Muscles to ignore: ");
+    for(int i = 0; strcmp(naming_muscles(user.ignored_muscle_group_names[i]),"Error");i++) {
+        printf("%s ",naming_muscles(user.ignored_muscle_group_names[i]));
+    }
+    /*if(strcmp(naming_muscles(user.ignored_muscle_group_names[0]),"Error")) {
+        printf("Nothing\n");
+    }*/
+}
+
+
+
 
