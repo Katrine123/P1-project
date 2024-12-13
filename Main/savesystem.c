@@ -126,13 +126,13 @@ questionnaire convert_data (user_save_data data) {
     user.squats = str_to_int(data.squats);
     user.fitness_level = str_to_int(data.fitness_level);
     strcpy(user.gender, data.gender);
-    user.training_days[0] = (training_day){0, 4.0};  // Sunday: 4.0 hours
-    user.training_days[1] = (training_day){1, 2.5};  // Monday: 2.5 hours
-    user.training_days[2] = (training_day){2, 3.0};  // Tuesday: 3.0 hours
-    user.training_days[3] = (training_day){3, 2.0};  // Wednesday: 2.0 hours
-    user.training_days[4] = (training_day){4, 1.0};  // Thursday: 1.0 hours
-    user.training_days[5] = (training_day){5, 1.5};  // Friday: 1.5 hours
-    user.training_days[6] = (training_day){6, 0.5};  // Saturday: 0.5 hours
+    user.training_days[0] = (training_day){0, 4.0};
+    user.training_days[1] = (training_day){1, 2.5};
+    user.training_days[2] = (training_day){2, 3.0};
+    user.training_days[3] = (training_day){3, 2.0};
+    user.training_days[4] = (training_day){4, 1.0};
+    user.training_days[5] = (training_day){5, 1.5};
+    user.training_days[6] = (training_day){6, 0.5};
     for (int i = 0 ; i < 5; i++) {
         user.available_equipment[i] = data.available_equipment[i]-'0';
     }
