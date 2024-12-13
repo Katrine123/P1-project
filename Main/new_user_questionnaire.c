@@ -105,11 +105,11 @@ questionnaire create_and_answer_questionnaire() {
     do {
         printf("What is your fitness level/experience level in a scale of 1-5?\n");
 
-        printf("fitness rank 1 (expert): expert experience with exercising \n"
-               "fitness rank 2 (proficient): advanced experience with exercising\n"
-               "fitness rank 3 (competent): intermediate experience with exercising\n"
-               "fitness rank 4 (advanced beginner): A little experience with exercising\n"
-               "fitness rank 5 (novice): No experience with exercising\n");
+        printf("Fitness rank 1 (novice): No experience with exercising\n"
+               "Fitness rank 2 (advanced beginner): A little experience with exercising\n"
+               "Fitness rank 3 (competent): intermediate experience with exercising\n"
+               "Fitness rank 4 (proficient): Advanced experience with exercising\n"
+               "Fitness rank 5 (expert): Expert experience with exercising\n");
 
         // Validates that fitness level is between 1-5.
         homemade_scan(long_float, &user.fitness_level);

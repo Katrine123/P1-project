@@ -5,40 +5,56 @@
 
 #define MAX_REPS 15
 
-enum training_goal { MUSCULAR_ENDURANCE = 1, HYPERTROPHY = 2, STRENGTH = 3, I_DONT_KNOW = 4 };
+enum training_goal_e { MUSCULAR_ENDURANCE = 1, HYPERTROPHY = 2, STRENGTH = 3, I_DONT_KNOW = 4 };
 int check_eq[length_of_equipment_enum] = {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands};
 
-int amount_of_reps_weighted_exercises(questionnaire user) {
-    int amount_of_reps_weighted_exercises = 0;
+int training_goal_reps(questionnaire user) {
+    int training_goal_reps = 0;
     if(user.training_goal == MUSCULAR_ENDURANCE) {
-        amount_of_reps_weighted_exercises = 15;
+        training_goal_reps = 15;
     } else if(user.training_goal == HYPERTROPHY || user.training_goal == I_DONT_KNOW) {
-        amount_of_reps_weighted_exercises = 12;
+        training_goal_reps = 12;
     } else {
-        amount_of_reps_weighted_exercises = 5;
+        training_goal_reps = 5;
     }
-    return amount_of_reps_weighted_exercises;
+    return training_goal_reps;
 }
 
-double multiplier_weightet_exercises(questionnaire user) {
-    double amount_of_reps_weighted_exercises = 0;
+double training_goal_converter(questionnaire user) {
+    double training_goal_converter = 0;
     if(user.training_goal == MUSCULAR_ENDURANCE) {
-        amount_of_reps_weighted_exercises = 0.65;
+        training_goal_converter = 0.65;
     } else if(user.training_goal == HYPERTROPHY || user.training_goal == I_DONT_KNOW) {
-        amount_of_reps_weighted_exercises = 0.75;
+        training_goal_converter = 0.75;
     } else {
-        amount_of_reps_weighted_exercises = 0.85;
+        training_goal_converter = 0.85;
     }
-    return amount_of_reps_weighted_exercises;
+    return training_goal_converter;
+}
+
+double fitness_level(questionnaire user) {
+    double fitness_level = 0;
+    if (user.fitness_level == novice) {
+        fitness_level = 0.5;
+    } else if (user.fitness_level == advanced_beginner) {
+        fitness_level = 0.6;
+    } else if (user.fitness_level == competent) {
+        fitness_level = 0.7;
+    } else if (user.fitness_level == proficient) {
+        fitness_level = 0.8;
+    } else {
+        fitness_level = 0.9;
+    }
+    return fitness_level;
 }
 
 void resistance_exercises_list(exercise* exercise_list, questionnaire user) {
     //  Bench press
-    exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), amount_of_reps_weighted_exercises(user), 0, NULL};
+    exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), training_goal_reps(user), 0, NULL};
     exercise_list[0] = bench_press;
 
     //  Weighted squats
-    exercise weighted_squats = {"Weighted squats", {1, 0, 0, 0, 0}, 2.5, base_weight_weighted_squats(user), amount_of_reps_weighted_exercises(user), 0, NULL};
+    exercise weighted_squats = {"Weighted squats", {1, 0, 0, 0, 0}, 2.5, base_weight_weighted_squats(user), training_goal_reps(user), 0, NULL};
     exercise_list[1] = weighted_squats;
 
     // Split squats (harder version of squats)
@@ -82,6 +98,10 @@ double round_down_to_nearest (double number, double divisor) {
     return floor(number / divisor) * divisor;
 }
 
+int base_amount_calculation(questionnaire user, int user_1rm_exercise) {
+    return (int)user_1rm_exercise * fitness_level(user) * training_goal_converter(user);
+}
+
 //  Base_weight functions:
 ///  Calculating base weight for bench press from pushups
 double base_weight_bench_press(questionnaire user) {
@@ -90,7 +110,7 @@ double base_weight_bench_press(questionnaire user) {
     //  Mayhews calculation for 1rm:
     double calculation_1rm_bench_press = (100 * body_weight_pushup)/(52.2+41.9*pow(M_E,(-0.055*user.pushups)));
     //  Calculating the height the person can lift in sets of 12
-    double weight_to_lift_unrounded = calculation_1rm_bench_press * multiplier_weightet_exercises(user);
+    double weight_to_lift_unrounded = calculation_1rm_bench_press * training_goal_converter(user);
     //rounding the number down to a number that is divisble by 2.5 because thats the minimun to increase
     double weight_to_lift_rounded = round_down_to_nearest(weight_to_lift_unrounded, 2.5);
     return weight_to_lift_rounded;
@@ -103,7 +123,7 @@ double base_weight_weighted_squats(questionnaire user) {
     double calculation_1rm_weighted_squat = (100 * body_weight_squats)/(52.2+41.9*pow(M_E,(-0.055*user.squats)));
 
     //  Calculating the wheight the person can lift in sets of 12
-    double weight_to_lift_unrounded = calculation_1rm_weighted_squat * multiplier_weightet_exercises(user);
+    double weight_to_lift_unrounded = calculation_1rm_weighted_squat * training_goal_converter(user);
 
     //rounding the number down to a number that is divisble by 2.5 because thats the minimun to increase
     double weight_to_lift_rounded = round_down_to_nearest(weight_to_lift_unrounded, 2.5);
@@ -113,46 +133,40 @@ double base_weight_weighted_squats(questionnaire user) {
 // Air squats should be the exercise if the perosn can take less than 15 consecutive air squats
 int base_amount_air_squats(questionnaire user) {
     //  The calculation takes into account the users 1rm, fitness_level and training goal when calculating reps.
-    int reps_amount_squats = user.squats * user.fitness_level * user.training_goal;
-    return reps_amount_squats;
+    return base_amount_calculation(user, user.squats);
 }
 
 //Split squats should be the printed exercise if the person can take more than 15 consecutive air squats
 int base_amount_split_squats(questionnaire user) {
-    int reps_amount_split_squats = user.squats * user.fitness_level * user.training_goal;
-    return reps_amount_split_squats;
+    return base_amount_calculation(user, user.squats);
 }
 
 //Elevated pushups should be the printed exercise if the person can take more than 15 consecutive pushups
 int base_amount_elevated_pushups(questionnaire user) {
-        int reps_amount_elevated_pushups = user.pushups * user.fitness_level * user.training_goal;
-        return reps_amount_elevated_pushups;
+        return base_amount_calculation(user, user.pushups);
 }
 
 //Pushups should be the printed exercise if the person can tak less than 15 consecutive pushups
 int base_amount_pushups(questionnaire user) {
-        int reps_amount_pushups = user.pushups * user.fitness_level * user.training_goal;
-        return reps_amount_pushups;
+        return base_amount_calculation(user, user.pushups);
 }
 
 int base_amount_burpees(questionnaire user) {
     /*  We are taking into account that this exercise is more difficult than others
      *  Level of exercise should be amplified by a factor of 2
      */
-    int reps_amount_burpees = (user.squats+user.pushups) * user.fitness_level * user.training_goal;
-    return reps_amount_burpees;
+    return base_amount_calculation(user, (user.pushups+user.squats));
 }
 
 int base_amount_jumping_jacks(questionnaire user) {
-    int reps_amount_jumping_jacks = user.squats * user.fitness_level * user.training_goal;
-    return reps_amount_jumping_jacks;
+    return base_amount_calculation(user, user.squats);
 }
 
 // Print function to display the viable exercises
 void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]) {
     printf("Viable Exercises:\n");
     printf("SE HER:");
-    printf("%lf, %lf", user.fitness_level, multiplier_weightet_exercises(user));
+    printf("%lf, %lf", fitness_level(user), training_goal_converter(user));
     for (int i = 0; i < count; i++) {
         printf("\n_____________________________\n");
         printf("Exercise %d:\n", i);

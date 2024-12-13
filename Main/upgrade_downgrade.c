@@ -3,46 +3,65 @@
 
 
 void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int *input) {
-    printf("\n Let's evaluate the difficulty of your exercises: \n");
-    for(int i = 0; i < sorted_count; i++) {
-        char answer;
-        char second_answer;
-        *input = i;
-        printf("Exercise %d: %s \n", i, exercise_list_sorted[i].name);
-        printf("Would you like to upgrade or downgrade? (u/d) \n");
-        scanf(" %c", &answer);
-        //  Go to, initial call. Happens if the user types a wrong char.
-        if(answer == 'u') {
-            do {
-                upgrade_function(exercise_list_sorted, *input);
+    char initial_answer;
+    do{
+        printf("\n Would you like to change the difficulty of your exercises? (y/n) \n");
+        scanf(" %c", &initial_answer);
+
+        if(initial_answer == 'y') {
+            for(int i = 0; i < sorted_count; i++) {
+                char answer;
+                char second_answer;
+                *input = i;
+                printf("\nExercise %d: %s \n", i, exercise_list_sorted[i].name);
+
+                //  Prints reps or weight based on what the exercise increments
                 if(exercise_list_sorted[i].is_body_weight_exercise == 1) {
-                    printf("Are these repetitions all right? %lf (y/n) \n", exercise_list_sorted[i].amount_of_reps);
+                    printf("Your current amount of repetitions are: %lf repetitions \n", exercise_list_sorted[i].amount_of_reps);
                 } else {
-                    printf("Is this weight all right? %lf (y/n) \n", exercise_list_sorted[i].base_weight);
+                    printf("Your current weight is: %lf kg \n", exercise_list_sorted[i].base_weight);
                 }
-                scanf(" %c", &second_answer);
+
+                do {
+                    printf("Would you like to upgrade, downgrade or stay? (u/d/s) \n");
+                    scanf(" %c", &answer);
+                    if(answer == 'u') {
+                        do {
+                            upgrade_function(exercise_list_sorted, *input);
+                            if(exercise_list_sorted[i].is_body_weight_exercise == 1) {
+                                printf("Are these repetitions all right? %lf (y/n) \n", exercise_list_sorted[i].amount_of_reps);
+                            } else {
+                                printf("Is this weight all right? %lf (y/n) \n", exercise_list_sorted[i].base_weight);
+                            }
+                            scanf(" %c", &second_answer);
+                        } while(second_answer != 'y' && second_answer != 'n');
+
+                    } else if (answer == 'd') {
+                            if(exercise_list_sorted[i].base_weight < 1 || exercise_list_sorted[i].amount_of_reps < 1) {
+                                printf("Not possible");
+                                break;
+                            }
+                            do{
+                                downgrade_function(exercise_list_sorted, *input);
+                                if(exercise_list_sorted[i].is_body_weight_exercise == 1) {
+                                    printf("Are these repetitions all right? %lf (y/n) \n", exercise_list_sorted[i].amount_of_reps);
+                                } else {
+                                    printf("Is this weight all right? %lf (y/n) \n", exercise_list_sorted[i].base_weight);
+                                }
+                                scanf(" %c", &second_answer);
+                            } while (second_answer != 'y' && second_answer != 'n');
+
+                    } else if (answer == 's'){
+                        if(exercise_list_sorted[i].is_body_weight_exercise == 1) {
+                            printf("You chose to stay at: %lf repetitions \n", exercise_list_sorted[i].amount_of_reps);
+                        } else {
+                            printf("You chose to stay at: %lf kg \n", exercise_list_sorted[i].base_weight);
+                        }
+                    }
+                } while (answer != 'u' && answer != 'd' && answer != 's');
             }
-            while(second_answer == 'n');
-        } else if (answer == 'd') {
-            // Repeated code except it downgrades!
-            do {
-                if(exercise_list_sorted[i].base_weight < 1 || exercise_list_sorted[i].amount_of_reps < 1) {
-                    printf("Not possible");
-                    break;
-                }
-                downgrade_function(exercise_list_sorted, *input);
-                if(exercise_list_sorted[i].is_body_weight_exercise == 1) {
-                    printf("Are these repetitions all right? %lf (y/n) \n", exercise_list_sorted[i].amount_of_reps);
-                } else {
-                    printf("Is this weight all right? %lf (y/n) \n", exercise_list_sorted[i].base_weight);
-                }
-                scanf(" %c", &second_answer);
-            }
-            while(second_answer == 'n');
-        } else {
-            printf("Type either 'u' or 'd' !");
         }
-    }
+    } while (initial_answer != 'y' && initial_answer != 'n');
 }
 
 void upgrade_function(exercise *exercise_list_sorted, int input) {
