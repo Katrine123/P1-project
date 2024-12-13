@@ -38,7 +38,7 @@ typedef struct {
     int fitness_level;
     training_day training_days[7];
     int available_equipment[5]; //Array for deciding what exercises they can do
-    muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
+    muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; //int ignored_muscle_group_names_count;
 } questionnaire;
 
 //  Check equipment struct

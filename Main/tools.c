@@ -7,7 +7,7 @@
 int homemade_scan(datatype type, void* input, FILE *file) {//Uses a void for input, because we don't know what datatype we'll get - Inspiration from qsort
     int is_right = 0;
     do {
-        //Checks what datatype we want - ex if i then int
+        //Checks what datatype we want
         if(type == integer) {
             //Test whether scanf gets the right input (it return 1 if true)
             if(fscanf(file,"%d",input)==1) {

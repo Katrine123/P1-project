@@ -12,7 +12,7 @@ TEST_CASE(questionnaire_test1,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67\nmale \n72 \n183 \n6 \n8 \n1 \n4 \n-1 \n120 \nYes\n");
+    fprintf(test_file,"67\nmale \n72 \n183 \n6 \n8 \n1 \n4 \n-1 \n120\nYes\n3\n-1\n-1");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -33,6 +33,7 @@ TEST_CASE(questionnaire_test1,{
     for(int i = 0; i<length_of_equipment_enum;i++) {
         CHECK_EQ_INT(user_test.available_equipment[i],1);
     }
+    CHECK_EQ_INT(user_test.ignored_muscle_group_names[0],2);
 })
 
 //IS SUPPOSED TO SUCCEED
@@ -42,7 +43,7 @@ TEST_CASE(questionnaire_test2,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67 \nhej \nfemale \n72 \n183 \n6 \n8 \n1 \n4 \n-1 \n120 \nNo \n4 \n8 \n2 \n-1\n");
+    fprintf(test_file,"age\n67\n65\nfemale\n0\n58\n170\n-1\n25\n5000000\n-1\n6\n3\n-5\n999\n2\n3\n-1\n3000\n68\n-23\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -53,18 +54,21 @@ TEST_CASE(questionnaire_test2,{
     fclose(test_file);
     CHECK_EQ_INT(user_test.age,67);
     CHECK_EQ_STRING(user_test.gender,"female");
-    CHECK_EQ_DOUBLE(user_test.weight,72,0.001);
-    CHECK_EQ_DOUBLE(user_test.height,183,0.001);
-    CHECK_EQ_INT(user_test.pushups,6);
-    CHECK_EQ_INT(user_test.squats,8);
-    CHECK_EQ_INT(user_test.fitness_level,1);
-    CHECK_EQ_INT(user_test.training_days[0].day_week,thursday);
-    CHECK_EQ_DOUBLE(user_test.training_days[0].available_time,120,0.001);
-    CHECK_EQ_INT(user_test.available_equipment[2],1);
+    CHECK_EQ_DOUBLE(user_test.weight,58,0.001);
+    CHECK_EQ_DOUBLE(user_test.height,170,0.001);
+    CHECK_EQ_INT(user_test.pushups,25);
+    CHECK_EQ_INT(user_test.squats,5000000);
+    CHECK_EQ_INT(user_test.fitness_level,3);
+    CHECK_EQ_INT(user_test.training_days[0].day_week,tuesday);
+    CHECK_EQ_INT(user_test.training_days[1].day_week,wednesday);
+    CHECK_EQ_DOUBLE(user_test.training_days[0].available_time,68,0.001);
+    CHECK_EQ_DOUBLE(user_test.training_days[1].available_time,-23,0.001);
     CHECK_EQ_INT(user_test.available_equipment[0],0);
     CHECK_EQ_INT(user_test.available_equipment[1],0);
-    CHECK_EQ_INT(user_test.available_equipment[3],0);
-    CHECK_EQ_INT(user_test.available_equipment[4],1);
+    CHECK_EQ_INT(user_test.available_equipment[2],1);
+    CHECK_EQ_INT(user_test.available_equipment[3],1);
+    CHECK_EQ_INT(user_test.available_equipment[4],0);
+    CHECK_EQ_INT(user_test.ignored_muscle_group_names[0],0);
 })
 
 #pragma endregion
@@ -76,7 +80,7 @@ TEST_CASE(homemade_scan_test,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"\n45 \nh \nhej \n34 \n");
+    fprintf(test_file,"\n45 \nh \nhej \n87.5 \n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -94,7 +98,7 @@ TEST_CASE(homemade_scan_test,{
     CHECK_EQ_STRING(string_test,"hej");
     double double_test;
     homemade_scan(long_float,&double_test,test_file);
-    CHECK_EQ_DOUBLE(double_test,34,0.001);
+    CHECK_EQ_DOUBLE(double_test,87.5,0.001);
     fclose(test_file);
 })
 
@@ -202,10 +206,10 @@ TEST_CASE(calculations,{
 //IS SUPPOSED TO FAIL - THE QUESTIONNAIRE STOPS ANY ZEROS FOR WEIGHT
 TEST_CASE(calculations2,{
     questionnaire test;
-    test.weight = 0;
+    test.weight = 20;
     test.pushups = 5;
     double test_value = base_weight_bench_press(test);
-    CHECK_EQ_DOUBLE(test_value,30,0.001);
+    CHECK_EQ_DOUBLE(test_value,10,0.001);
 })
 
 //TESTS FOR THE HIGHEST POSSIBLE WEIGHT - SHOULD SUCCEED
@@ -224,6 +228,24 @@ TEST_CASE(calculations4,{
      test.pushups = 5000000;
      double test_value = base_weight_bench_press(test);
      CHECK_EQ_DOUBLE(test_value,55,0.001);
+})
+
+//TESTS FOR THE LOWEST AMOUNT OF PUSHUPS - SHOULD SUCCEED
+TEST_CASE(calculations5,{
+     questionnaire test;
+     test.weight = 65;
+     test.pushups = 0;
+     double test_value = base_weight_bench_press(test);
+     CHECK_EQ_DOUBLE(test_value,30,0.001);
+})
+
+//TESTS FOR -1 - SHOULD SUCCEED
+TEST_CASE(calculations6,{
+     questionnaire test;
+     test.weight = -1;
+     test.pushups = -1;
+     double test_value = base_weight_bench_press(test);
+     CHECK_EQ_DOUBLE(test_value,-1,0.001);
 })
 
 #pragma endregion
@@ -264,9 +286,9 @@ TEST_CASE(workouts_test,{
 #pragma endregion
 
 // X SUPPOSED TO FAIL - X SUPPOSED TO SUCCEED
-MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)
-//MAIN_RUN_TESTS(homemade_scan_test,homemade_scan_test2);
+//MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)
+MAIN_RUN_TESTS(homemade_scan_test,homemade_scan_test2);
 //MAIN_RUN_TESTS(sorting_exercises_test,sorting_exercises_test2,sorting_exercises_test3)
-//MAIN_RUN_TESTS(calculations,calculations2,calculations3,calculations4)
+//MAIN_RUN_TESTS(calculations,calculations2,calculations3,calculations4,calculations5,calculations6)
 //MAIN_RUN_TESTS(upgrade_test)
 

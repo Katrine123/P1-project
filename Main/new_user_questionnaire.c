@@ -172,7 +172,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
         i += add;
     }while(i<5&&muscles[i-1]!=-1);
     int len = sizeof(user.ignored_muscle_group_names)/sizeof(user.ignored_muscle_group_names[0]);
-    for(int j = 0; j<len; j++) {
+    for(int j = 0; j<len-1; j++) {
         user.ignored_muscle_group_names[j] = muscles[j]-1;
     }
 
@@ -257,12 +257,13 @@ void print_quiestionnare(questionnaire user) {
         printf("Nothing");
     }
     printf("Muscles to ignore: ");
-    for(int i = 0; strcmp(naming_muscles(user.ignored_muscle_group_names[i]),"Error");i++) {
+    for(int i = 0; strcmp(naming_muscles(user.ignored_muscle_group_names[i]),"Error")!=0;i++) {
         printf("%s ",naming_muscles(user.ignored_muscle_group_names[i]));
     }
-    /*if(strcmp(naming_muscles(user.ignored_muscle_group_names[0]),"Error")) {
-        printf("Nothing\n");
-    }*/
+    if(strcmp(naming_muscles(user.ignored_muscle_group_names[0]),"Error")==0) {
+        printf("Nothing");
+    }
+    printf("\n");
 }
 
 
