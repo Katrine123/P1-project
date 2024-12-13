@@ -37,12 +37,12 @@ void print_routine() {
     printf("______________________________\n");
     for(int i = 0; i<3;i++) {
         printf("Day %d: %s\n",i+1,naming_days(arr[i].day));
-        printf("Workout duration: %lf minutes\n",arr[i].duration);
-        printf("Workout max duration: %lf minutes\n",arr[i].max_duration);
+        printf("Workout duration: %.1lf minutes\n",arr[i].duration);
+        printf("Workout max duration: %.1lf minutes\n",arr[i].max_duration);
         for(int j = 0; j<arr[j].exercises_count;j++) {
             printf("    Exercise %d: %s\n",j+1,arr[i].exercises[j].name);
-            printf("    Weight: %lf\n",j+1,arr[i].exercises[j].base_weight);
-            printf("    Reps: %lf\n\n",j+1,arr[i].exercises[j].amount_of_reps);
+            printf("    Weight: 34\n");//"%lf\n",j+1,arr[i].exercises[j].base_weight);
+            printf("    Reps: 5\n");//"%lf\n\n",j+1,arr[i].exercises[j].amount_of_reps);
 
             //Tilføj reps og vægt
             //Print instructions

@@ -7,7 +7,7 @@
 int homemade_scan(datatype type, void* input, FILE *file) {//Uses a void for input, because we don't know what datatype we'll get - Inspiration from qsort
     int is_right = 0;
     do {
-        //Checks what datatype we want - ex if i then int
+        //Checks what datatype we want
         if(type == integer) {
             //Test whether scanf gets the right input (it return 1 if true)
             if(fscanf(file,"%d",input)==1) {
@@ -36,7 +36,7 @@ int homemade_scan(datatype type, void* input, FILE *file) {//Uses a void for inp
             }
         }
         //Clears any extra inputs
-        //while ((getchar()) != '\n');//https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/ (HVIS TESTING SÅ UDDKOMMENTER DEN HER LINJE)
+        while ((fgetc(file)) != '\n');
         //Return a true/false, of whether the datatype matches what we want
     }while(is_right == 0);
     return is_right;
@@ -73,6 +73,22 @@ char* naming_days(enum day_of_the_week day) {
         case saturday: return "Saturday";
         break;
         case sunday: return "Sunday";
+        break;
+    }
+    return "Error";
+}
+
+char* naming_muscles(muscle_group_name muscle) {
+    switch(muscle) {
+        case chest: return "Chest";
+        break;
+        case triceps: return "Triceps";
+        break;
+        case shoulders: return "Shoulders";
+        break;
+        case hamstrings: return "Hamstrings";
+        break;
+        case quads: return "Quads";
         break;
     }
     return "Error";

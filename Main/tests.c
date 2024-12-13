@@ -12,7 +12,7 @@ TEST_CASE(questionnaire_test1,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67 male 72 183 6 8 1 4 -1 120 Yes");
+    fprintf(test_file,"67\nmale \n72 \n183 \n6 \n8 \n1 \n4 \n-1 \n120\nYes\n3\n-1\n-1");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -33,16 +33,17 @@ TEST_CASE(questionnaire_test1,{
     for(int i = 0; i<length_of_equipment_enum;i++) {
         CHECK_EQ_INT(user_test.available_equipment[i],1);
     }
+    CHECK_EQ_INT(user_test.ignored_muscle_group_names[0],2);
 })
 
-//CHANGE SO THAT USER INPUT IS DIFFERENT
+//IS SUPPOSED TO SUCCEED
 TEST_CASE(questionnaire_test2,{
     FILE *test_file = fopen("user_input.txt","w");
         if (test_file == NULL) {
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67 male 72 183 6 8 1 4 -1 120 Yes");
+    fprintf(test_file,"age\n67\n65\nfemale\n0\n58\n170\n-1\n25\n5000000\n-1\n6\n3\n-5\n999\n2\n3\n-1\n3000\n68\n-23\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -51,18 +52,35 @@ TEST_CASE(questionnaire_test2,{
         }
     questionnaire user_test = create_and_answer_questionnaire(test_file);
     fclose(test_file);
+    CHECK_EQ_INT(user_test.age,67);
+    CHECK_EQ_STRING(user_test.gender,"female");
+    CHECK_EQ_DOUBLE(user_test.weight,58,0.001);
+    CHECK_EQ_DOUBLE(user_test.height,170,0.001);
+    CHECK_EQ_INT(user_test.pushups,25);
+    CHECK_EQ_INT(user_test.squats,5000000);
+    CHECK_EQ_INT(user_test.fitness_level,3);
+    CHECK_EQ_INT(user_test.training_days[0].day_week,tuesday);
+    CHECK_EQ_INT(user_test.training_days[1].day_week,wednesday);
+    CHECK_EQ_DOUBLE(user_test.training_days[0].available_time,68,0.001);
+    CHECK_EQ_DOUBLE(user_test.training_days[1].available_time,-23,0.001);
+    CHECK_EQ_INT(user_test.available_equipment[0],0);
+    CHECK_EQ_INT(user_test.available_equipment[1],0);
+    CHECK_EQ_INT(user_test.available_equipment[2],1);
+    CHECK_EQ_INT(user_test.available_equipment[3],1);
+    CHECK_EQ_INT(user_test.available_equipment[4],0);
+    CHECK_EQ_INT(user_test.ignored_muscle_group_names[0],0);
 })
 
 #pragma endregion
 
 #pragma region homemade_scan
-TEST_CASE(homemade_scan_test,{//OPLEVER FEJL HVIS ANDEN COMPUTER. DONT KNOW WHY :]
+TEST_CASE(homemade_scan_test,{
     FILE *test_file = fopen("user_input.txt","w");
         if (test_file == NULL) {
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"45 hej 34");
+    fprintf(test_file,"\n45 \nh \nhej \n87.5 \n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -77,14 +95,42 @@ TEST_CASE(homemade_scan_test,{//OPLEVER FEJL HVIS ANDEN COMPUTER. DONT KNOW WHY 
     CHECK_EQ_CHAR(char_test,'h');
     char string_test[10];
     homemade_scan(string,&string_test,test_file);
-    CHECK_EQ_STRING(string_test,"ej");
+    CHECK_EQ_STRING(string_test,"hej");
     double double_test;
     homemade_scan(long_float,&double_test,test_file);
-    CHECK_EQ_DOUBLE(double_test,34,0.001);
+    CHECK_EQ_DOUBLE(double_test,87.5,0.001);
     fclose(test_file);
 })
-#pragma endregion
 
+//THIS TEST WHAT HAPPENS IF YOU INPUT THE WRONG DATATYPE
+//IT SHOULD SUCCEED BUT SHOULD ALSO PRINT SOME THINGS
+TEST_CASE(homemade_scan_test2,{
+    FILE *test_file = fopen("user_input.txt","w");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    fprintf(test_file,"\nhej \n45 \n45 \nh \n45 \nhej \nhej \n87.5 \n");
+    fclose(test_file);
+    test_file = fopen("user_input.txt","r");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    int int_test;
+    homemade_scan(integer,&int_test,test_file);
+    CHECK_EQ_INT(int_test,45);
+    char char_test;
+    homemade_scan(character,&char_test,test_file);
+    CHECK_EQ_CHAR(char_test,'h');
+    char string_test[10];
+    homemade_scan(string,&string_test,test_file);
+    CHECK_EQ_STRING(string_test,"hej");
+    double double_test;
+    homemade_scan(long_float,&double_test,test_file);
+    CHECK_EQ_DOUBLE(double_test,87.5,0.001);
+})
+#pragma endregion
 
 #pragma region sorting_exercises
 //TEST THAT YOU ONLY GET THE EXERCISES NEEDING NO EQUIPMENT - IS SUPPOSED TO SUCCEED
@@ -160,10 +206,10 @@ TEST_CASE(calculations,{
 //IS SUPPOSED TO FAIL - THE QUESTIONNAIRE STOPS ANY ZEROS FOR WEIGHT
 TEST_CASE(calculations2,{
     questionnaire test;
-    test.weight = 0;
+    test.weight = 20;
     test.pushups = 5;
     double test_value = base_weight_bench_press(test);
-    CHECK_EQ_DOUBLE(test_value,30,0.001);
+    CHECK_EQ_DOUBLE(test_value,10,0.001);
 })
 
 //TESTS FOR THE HIGHEST POSSIBLE WEIGHT - SHOULD SUCCEED
@@ -175,7 +221,7 @@ TEST_CASE(calculations3,{
      CHECK_EQ_DOUBLE(test_value,162.5,0.001);
 })
 
-//TESTS FOR THE HIGHEST POSSIBLE WEIGHT - SHOULD SUCCEED
+//TESTS FOR A LOT OF PUSHUPS - SHOULD SUCCEED
 TEST_CASE(calculations4,{
      questionnaire test;
      test.weight = 65;
@@ -183,10 +229,28 @@ TEST_CASE(calculations4,{
      double test_value = base_weight_bench_press(test);
      CHECK_EQ_DOUBLE(test_value,55,0.001);
 })
-//EDGECASES!
+
+//TESTS FOR THE LOWEST AMOUNT OF PUSHUPS - SHOULD SUCCEED
+TEST_CASE(calculations5,{
+     questionnaire test;
+     test.weight = 65;
+     test.pushups = 0;
+     double test_value = base_weight_bench_press(test);
+     CHECK_EQ_DOUBLE(test_value,30,0.001);
+})
+
+//TESTS FOR -1 - SHOULD SUCCEED
+TEST_CASE(calculations6,{
+     questionnaire test;
+     test.weight = -1;
+     test.pushups = -1;
+     double test_value = base_weight_bench_press(test);
+     CHECK_EQ_DOUBLE(test_value,-1,0.001);
+})
 
 #pragma endregion
 
+#pragma region upgrade
 TEST_CASE(upgrade_test,{
     questionnaire user_test = {67,"male",65,183,5,12,1,{monday,67},{1,1,1,1,1}};
     exercise ex_test[length_of_exercises_list];
@@ -213,8 +277,18 @@ TEST_CASE(upgrade_test,{
     CHECK_EQ_DOUBLE(ex_test[6].amount_of_reps,16,0.001);
 })
 
-MAIN_RUN_TESTS(calculations,calculations2,calculations3,calculations4)
+#pragma endregion
 
-/*Testing af Jespers ting*/
-/*Update routine workout*/
+#pragma region workouts
+TEST_CASE(workouts_test,{
+    //update_routine_workouts(exercises, user_questionnaire);
+})
+#pragma endregion
+
+// X SUPPOSED TO FAIL - X SUPPOSED TO SUCCEED
+//MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)
+MAIN_RUN_TESTS(homemade_scan_test,homemade_scan_test2);
+//MAIN_RUN_TESTS(sorting_exercises_test,sorting_exercises_test2,sorting_exercises_test3)
+//MAIN_RUN_TESTS(calculations,calculations2,calculations3,calculations4,calculations5,calculations6)
+//MAIN_RUN_TESTS(upgrade_test)
 

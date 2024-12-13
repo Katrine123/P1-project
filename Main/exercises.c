@@ -69,6 +69,9 @@ double base_weight_bench_press(questionnaire user) {
 
     //rounding the number down to a number that is divisble by 2.5 because thats the minimun to increase
     double weight_to_lift_rounded = round_down_to_nearest(weight_to_lift_unrounded, 2.5);
+    if(weight_to_lift_rounded < 0) {
+        weight_to_lift_rounded = -1;
+    }
     return weight_to_lift_rounded;
 }
 
@@ -85,6 +88,9 @@ double base_weight_weighted_squats(questionnaire user) {
 
     //rounding the number down to a number that is divisble by 2.5 because thats the minimun to increase
     double weight_to_lift_rounded = round_down_to_nearest(weight_to_lift_unrounded, 2.5);
+    if(weight_to_lift_rounded < 0) {
+        weight_to_lift_rounded = -1;
+    }
     return weight_to_lift_rounded;
 }
 
