@@ -32,16 +32,6 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
     save_data(int_to_str(user.age),"age");
     ////////////////////////////////////////////////////////////////////
 
-    // Ask's user to enter there gender, and validate it to only accept input "male" or "female".
-    do{
-        printf("Are you a male or female");
-        homemade_scan(string, user.gender,file);
-    }while(strcmp(user.gender,"male")!=0&& strcmp(user.gender,"female")!=0);
-    save_data(user.gender,"gen");
-
-
-    ////////////////////////////////////////////////////////////////////
-
     // Ask's what users weight is, and loops through the input to make sure the weight is in a reasonable range (20-300 kg).
     while(user.weight < 20 || user.weight > 300) {
         printf("What is your weight in kg");
@@ -51,17 +41,7 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
         }
     }
     save_data(double_to_str(user.weight),"wei");
-    ////////////////////////////////////////////////////////////////////
 
-    // Ask's what users height is and loops through the input, to make sure the height is in a reasonable range (50-300 cm).
-    while(user.height < 50 || user.height > 300) {
-        printf("What is your height in cm?");
-        homemade_scan(long_float, &user.height,file);
-        if(user.height < 50 || user.height > 300) {
-            printf("I don't think that is correct!\n");
-        }
-    }
-    save_data(double_to_str(user.height),"hei");
     ////////////////////////////////////////////////////////////////////
 
     // Ask's user to enter how many push-ups they can perform, ensuring only non-negative numbers.
@@ -245,9 +225,7 @@ int get_user_days(questionnaire* user,FILE *file) {
 
 void print_quiestionnare(questionnaire user) {
     printf("Age:%d\n",user.age);
-    printf("Gender: %s\n",user.gender);
     printf("Weight: %lf\n",user.weight);
-    printf("Height: %lf\n",user.height);
     printf("Amount of pushups: %d\n",user.pushups);
     printf("Fitness level: %d\n",user.fitness_level);
     printf("Time a week:\n");

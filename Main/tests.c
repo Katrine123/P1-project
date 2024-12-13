@@ -12,7 +12,7 @@ TEST_CASE(questionnaire_test1,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67\nmale \n72 \n183 \n6 \n8 \n1 \n4 \n-1 \n120\nYes\n3\n-1\n-1");
+    fprintf(test_file,"67\n72 \n6 \n8 \n1 \n4 \n-1 \n120\nYes\n3\n-1\n-1");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -22,9 +22,7 @@ TEST_CASE(questionnaire_test1,{
     questionnaire user_test = create_and_answer_questionnaire(test_file);
     fclose(test_file);
     CHECK_EQ_INT(user_test.age,67);
-    CHECK_EQ_STRING(user_test.gender,"male");
     CHECK_EQ_DOUBLE(user_test.weight,72,0.001);
-    CHECK_EQ_DOUBLE(user_test.height,183,0.001);
     CHECK_EQ_INT(user_test.pushups,6);
     CHECK_EQ_INT(user_test.squats,8);
     CHECK_EQ_INT(user_test.fitness_level,1);
@@ -43,7 +41,7 @@ TEST_CASE(questionnaire_test2,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"age\n67\n65\nfemale\n0\n58\n170\n-1\n25\n5000000\n-1\n6\n3\n-5\n999\n2\n3\n-1\n3000\n68\n-23\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
+    fprintf(test_file,"age\n67\n0\n58\n-1\n25\n5000000\n-1\n6\n3\n-5\n999\n2\n3\n-1\n3000\n68\n-23\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -53,9 +51,7 @@ TEST_CASE(questionnaire_test2,{
     questionnaire user_test = create_and_answer_questionnaire(test_file);
     fclose(test_file);
     CHECK_EQ_INT(user_test.age,67);
-    CHECK_EQ_STRING(user_test.gender,"female");
     CHECK_EQ_DOUBLE(user_test.weight,58,0.001);
-    CHECK_EQ_DOUBLE(user_test.height,170,0.001);
     CHECK_EQ_INT(user_test.pushups,25);
     CHECK_EQ_INT(user_test.squats,5000000);
     CHECK_EQ_INT(user_test.fitness_level,3);
@@ -135,7 +131,7 @@ TEST_CASE(homemade_scan_test2,{
 #pragma region sorting_exercises
 //TEST THAT YOU ONLY GET THE EXERCISES NEEDING NO EQUIPMENT - IS SUPPOSED TO SUCCEED
 TEST_CASE(sorting_exercises_test,{
-    questionnaire test = {67,"male",72,183,7,12,1,{monday,67},{0,0,0,0,0}};
+    questionnaire test = {67,72,7,12,1,{monday,67},{0,0,0,0,0}};
     exercise ex_test[length_of_exercises_list];
     resistance_exercises_list(ex_test, test);
     aerobic_exercises_list(ex_test,test);
@@ -154,7 +150,7 @@ TEST_CASE(sorting_exercises_test,{
 
 //TESTS THAT YOU GET ALL EXERCISES IF YOU HAVE ALL EQUIPMENT - IS SUPPOSED TO SUCCEED
 TEST_CASE(sorting_exercises_test2,{
-    questionnaire test = {67,"male",72,183,7,12,1,{monday,67},{1,1,1,1,1}};
+    questionnaire test = {67,72,7,12,1,{monday,67},{1,1,1,1,1}};
     exercise ex_test[length_of_exercises_list];
     resistance_exercises_list(ex_test, test);
     aerobic_exercises_list(ex_test,test);
@@ -174,7 +170,7 @@ TEST_CASE(sorting_exercises_test2,{
 
 //TESTS FOR -1 - IS SUPPOSED TO FAIL
 TEST_CASE(sorting_exercises_test3,{
-    questionnaire test = {67,"male",72,183,7,12,1,{monday,67},{-1,1,1,1,1}};
+    questionnaire test = {67,72,7,12,1,{monday,67},{-1,1,1,1,1}};
     exercise ex_test[length_of_exercises_list];
     resistance_exercises_list(ex_test, test);
     aerobic_exercises_list(ex_test,test);
@@ -252,7 +248,7 @@ TEST_CASE(calculations6,{
 
 #pragma region upgrade
 TEST_CASE(upgrade_test,{
-    questionnaire user_test = {67,"male",65,183,5,12,1,{monday,67},{1,1,1,1,1}};
+    questionnaire user_test = {67,65,5,12,1,{monday,67},{1,1,1,1,1}};
     exercise ex_test[length_of_exercises_list];
     resistance_exercises_list(ex_test, user_test);
     aerobic_exercises_list(ex_test,user_test);

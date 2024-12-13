@@ -34,9 +34,7 @@ int save_data(const char *data, const char *data_name) {
 void print_user_data(user_save_data data) {
     printf("Available Equipment: %s\n", data.available_equipment);
     printf("Age: %s\n", data.age);
-    printf("Gender: %s\n", data.gender);
     printf("Weight: %s\n", data.weight);
-    printf("Height: %s\n", data.height);
     printf("Push ups: %s\n", data.pushups);
     printf("Fitness Level: %s\n", data.fitness_level);
 }
@@ -76,19 +74,9 @@ questionnaire load_data() {
                     case 'a':
                         strncpy(data.age, data_data,20);
                         break;
-
-                    case 'g':
-                        strncpy(data.gender, data_data,20);
-                        break;
-
                     case 'w':
                         strncpy(data.weight, data_data, 20);
                         break;
-
-                    case 'h':
-                        strncpy(data.height, data_data, 20);
-                        break;
-
                     case 'p':
                         strncpy(data.pushups, data_data, 20);
                         break;
@@ -121,11 +109,9 @@ questionnaire convert_data (user_save_data data) {
     questionnaire user;
     user.age = str_to_int(data.age);
     user.weight = str_to_double(data.weight);
-    user.height = str_to_double(data.height);
     user.pushups = str_to_int(data.pushups);
     user.squats = str_to_int(data.squats);
     user.fitness_level = str_to_int(data.fitness_level);
-    strcpy(user.gender, data.gender);
     user.training_days[0] = (training_day){0, 4.0};  // Sunday: 4.0 hours
     user.training_days[1] = (training_day){1, 2.5};  // Monday: 2.5 hours
     user.training_days[2] = (training_day){2, 3.0};  // Tuesday: 3.0 hours

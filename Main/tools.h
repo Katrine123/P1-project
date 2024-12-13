@@ -33,9 +33,7 @@ typedef struct {
 
 typedef struct {
     int age;
-    char gender[20];
     double weight;
-    double height;
     int pushups;
     int squats;
     int fitness_level;
