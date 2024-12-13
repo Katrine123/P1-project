@@ -9,8 +9,10 @@
 
 
 int main(void) {
-    questionnaire data = load_data();
-    print_quiestionnare(data);
+    questionnaire user = load_data();
+    user.streak = 0;
+    streak_check(&user,stdin);
+    printf("\n---%d---",user.streak);
     /*//OUTLINE FOR PROGRAM:
     questionnaire user_data;
     system("cls");

@@ -3,6 +3,9 @@
 #include "tools.h"
 
 typedef struct {
+    char streak[20];
+    char day[20];
+    char month[20];
     char available_equipment[20];
     char age[20];
     char weight[20];

@@ -7,12 +7,11 @@ set(CMAKE_C_STANDARD 11)
 add_executable(main main.c)
 
 add_library(bib bib
-        savesystem.c
-        savesystem.h
-        file_conversion.h
-        file_conversion.c
         save_upgrade_downgrade.c
         save_upgrade_downgrade.h)
+add_library(streak_check streak_check)
+add_library(savesystem savesystem)
+add_library(file_convertion file_conversion)
 add_library(upgrade_downgrade upgrade_downgrade)
 add_library(exercises exercises)
 add_library(new_user_questionnaire new_user_questionnaire)
@@ -31,6 +30,9 @@ target_link_libraries(main
         lists
         print_routine
         upgrade_downgrade
+        savesystem
+        streak_check
+        file_convertion
         tools)
 
 ### STUF FOR TESTING IS HERE  ###

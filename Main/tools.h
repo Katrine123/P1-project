@@ -21,6 +21,7 @@ enum day_of_the_week {
     saturday = 6,
     sunday = 7
 };
+//enum months {jan =1, feb = 2, mar = 3, apr = 4, maj = 5, jun = 6, jul = 7, aug = 8, sep = 9, oct = 10, nov = 11, dec = 12};
 
 typedef enum {
     chest, triceps, shoulders, hamstrings, quads
@@ -32,6 +33,12 @@ typedef struct {
 }training_day;
 
 typedef struct {
+    int day;
+    int month;//enum months month;
+}date;
+
+typedef struct {
+    date last_date;
     int age;
     double weight;
     int pushups;
@@ -40,6 +47,7 @@ typedef struct {
     training_day training_days[7];
     int available_equipment[5]; //Array for deciding what exercises they can do
     muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; //int ignored_muscle_group_names_count;
+    int streak;
 } questionnaire;
 
 //  Check equipment struct
@@ -127,5 +135,6 @@ void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int so
 
 
 
+void streak_check(questionnaire* user, FILE* file);
 
 

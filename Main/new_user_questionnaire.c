@@ -14,6 +14,16 @@ questionnaire create_and_answer_questionnaire(FILE *file) {
 
     ////////////////////////////////////////////////////////////////////
 
+    //EDGECASES!!!!!! OG ENUM MONTH
+    printf("What is the current date? Please write the date, enter, and then month");
+    homemade_scan(integer,&user.last_date.day,file);
+    int mon;
+    homemade_scan(integer,&user.last_date.month,file);
+    user.streak =0;
+    save_data(int_to_str(user.last_date.day),"day");
+    save_data(int_to_str(user.last_date.month),"month");
+    save_data(int_to_str(user.streak),"kstreak");
+    ////////////////////////////////////////////////////////////////////
     // Ask's about the users age.
     printf("What is your age in years?");
     homemade_scan(integer,&user.age,file);

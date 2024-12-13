@@ -67,10 +67,18 @@ questionnaire load_data() {
                 data_data[j] = '\0';
                 //printf("%s\n", data_data);
                 switch (data_type[0]) {
+                    case 'k':
+                        strncpy(data.streak,data_data,20);
+                    break;
+                    case 'd':
+                        strncpy(data.day,data_data,20);
+                        break;
+                    case 'm':
+                        strncpy(data.month,data_data,20);
+                        break;
                     case 'e':
                         strncpy(data.available_equipment, data_data,20);
                         break;
-
                     case 'a':
                         strncpy(data.age, data_data,20);
                         break;
@@ -107,6 +115,8 @@ questionnaire load_data() {
 
 questionnaire convert_data (user_save_data data) {
     questionnaire user;
+    user.last_date.day = str_to_int(data.day);
+    user.last_date.month = str_to_int(data.month);
     user.age = str_to_int(data.age);
     user.weight = str_to_double(data.weight);
     user.pushups = str_to_int(data.pushups);
