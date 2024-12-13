@@ -12,10 +12,22 @@ int amount_of_reps_weighted_exercises(questionnaire user) {
     int amount_of_reps_weighted_exercises = 0;
     if(user.training_goal == MUSCULAR_ENDURANCE) {
         amount_of_reps_weighted_exercises = 15;
-    } else if(user.training_goal == HYPERTROPHY) {
+    } else if(user.training_goal == HYPERTROPHY || user.training_goal == I_DONT_KNOW) {
         amount_of_reps_weighted_exercises = 12;
     } else {
         amount_of_reps_weighted_exercises = 5;
+    }
+    return amount_of_reps_weighted_exercises;
+}
+
+double multiplier_weightet_exercises(questionnaire user) {
+    double amount_of_reps_weighted_exercises = 0;
+    if(user.training_goal == MUSCULAR_ENDURANCE) {
+        amount_of_reps_weighted_exercises = 0.65;
+    } else if(user.training_goal == HYPERTROPHY || user.training_goal == I_DONT_KNOW) {
+        amount_of_reps_weighted_exercises = 0.75;
+    } else {
+        amount_of_reps_weighted_exercises = 0.85;
     }
     return amount_of_reps_weighted_exercises;
 }
@@ -73,30 +85,25 @@ double round_down_to_nearest (double number, double divisor) {
 //  Base_weight functions:
 ///  Calculating base weight for bench press from pushups
 double base_weight_bench_press(questionnaire user) {
-    //  Multiplying by a factor so amount of weight based on 12 reps is found
-    double rep_factor_12 = 0.71;
     //  Multiply by 0.65 since that is the percentage of bodyweigth lifted during a pushup
-    double body_weight_pushup = user.weight* 0.65;
+    double body_weight_pushup = user.weight * 0.65;
     //  Mayhews calculation for 1rm:
     double calculation_1rm_bench_press = (100 * body_weight_pushup)/(52.2+41.9*pow(M_E,(-0.055*user.pushups)));
     //  Calculating the height the person can lift in sets of 12
-    double weight_to_lift_unrounded = calculation_1rm_bench_press * rep_factor_12;
-
+    double weight_to_lift_unrounded = calculation_1rm_bench_press * multiplier_weightet_exercises(user);
     //rounding the number down to a number that is divisble by 2.5 because thats the minimun to increase
     double weight_to_lift_rounded = round_down_to_nearest(weight_to_lift_unrounded, 2.5);
     return weight_to_lift_rounded;
 }
 
 double base_weight_weighted_squats(questionnaire user) {
-    //  Multiplying by a factor so amount of weight based on 12 reps is found
-    double rep_factor_12 = 0.71;
     //  Multiply by 0.66 since that is the percentage of bodyweigth lifted during an air squat
-    double body_weight_squats = user.weight* 0.66;
+    double body_weight_squats = user.weight * 0.66;
     //  Mayhews calculation for 1rm:
     double calculation_1rm_weighted_squat = (100 * body_weight_squats)/(52.2+41.9*pow(M_E,(-0.055*user.squats)));
 
     //  Calculating the wheight the person can lift in sets of 12
-    double weight_to_lift_unrounded = calculation_1rm_weighted_squat * rep_factor_12;
+    double weight_to_lift_unrounded = calculation_1rm_weighted_squat * multiplier_weightet_exercises(user);
 
     //rounding the number down to a number that is divisble by 2.5 because thats the minimun to increase
     double weight_to_lift_rounded = round_down_to_nearest(weight_to_lift_unrounded, 2.5);
@@ -105,14 +112,7 @@ double base_weight_weighted_squats(questionnaire user) {
 
 // Air squats should be the exercise if the perosn can take less than 15 consecutive air squats
 int base_amount_air_squats(questionnaire user) {
-    //  Ide til udregning
-        //  Vi ved at for at bygge muscular endurance skal man procentvis bruge mellem 60-80% af 1rm
-        //  Vi kan tage deres fitness level i account med at omdanne til procentbaseret:
-        //  Beginner = 0.5, novice = 0.6 osv..
-        //  Udregning kan være: user.squats * user.fitness_level * 1rm_percentage (0.6)
-        //  Eks: 40 reps, 3 (competent), effort 0.7 = 20 reps
-        //  I upgrade_downgrade kan man tjekke om mængde af reps overstiger 15, dernæst
-        //  gå videre til .harder_exercise
+    //  The calculation takes into account the users 1rm, fitness_level and training goal when calculating reps.
     int reps_amount_squats = user.squats * user.fitness_level * user.training_goal;
     return reps_amount_squats;
 }
@@ -151,7 +151,8 @@ int base_amount_jumping_jacks(questionnaire user) {
 // Print function to display the viable exercises
 void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]) {
     printf("Viable Exercises:\n");
-    printf("SE HER: %d", count);
+    printf("SE HER:");
+    printf("%lf, %lf", user.fitness_level, multiplier_weightet_exercises(user));
     for (int i = 0; i < count; i++) {
         printf("\n_____________________________\n");
         printf("Exercise %d:\n", i);

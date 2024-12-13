@@ -42,7 +42,7 @@ typedef struct {
     double height;
     int pushups;
     int squats;
-    int fitness_level;
+    double fitness_level;
     training_day training_days[7];
     int available_equipment[5]; //Array for deciding what exercises they can do
     double training_goal;
@@ -93,6 +93,7 @@ int base_amount_jumping_jacks(questionnaire user);
 void resistance_exercises_list(exercise* exercise_list, questionnaire user);
 void aerobic_exercises_list(exercise* exercise_list, questionnaire user);
 int amount_of_reps_weighted_exercises(questionnaire user);
+double multiplier_weightet_exercises(questionnaire user);
 
 exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);

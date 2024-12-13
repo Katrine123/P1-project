@@ -112,7 +112,7 @@ questionnaire create_and_answer_questionnaire() {
                "fitness rank 5 (novice): No experience with exercising\n");
 
         // Validates that fitness level is between 1-5.
-        homemade_scan(integer, &user.fitness_level);
+        homemade_scan(long_float, &user.fitness_level);
         if(user.fitness_level < 1 || user.fitness_level > 5) {
             printf("It has to be between 1-5!\n");
         }
