@@ -7,6 +7,7 @@
 
 enum training_goal_e { MUSCULAR_ENDURANCE = 1, HYPERTROPHY = 2, STRENGTH = 3, I_DONT_KNOW = 4 };
 int check_eq[length_of_equipment_enum] = {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands};
+int check_muscle_groups[length_of_muscle_groups_list] = {chest, triceps, shoulders, hamstrings, quads};
 
 int training_goal_reps(questionnaire user) {
     int training_goal_reps = 0;
@@ -50,27 +51,27 @@ double fitness_level(questionnaire user) {
 
 void resistance_exercises_list(exercise* exercise_list, questionnaire user) {
     //  Bench press
-    exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), training_goal_reps(user), 0, NULL};
+    exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), training_goal_reps(user), 0, NULL, {1, 1, 1, 0, 0}};
     exercise_list[0] = bench_press;
 
     //  Weighted squats
-    exercise weighted_squats = {"Weighted squats", {1, 0, 0, 0, 0}, 2.5, base_weight_weighted_squats(user), training_goal_reps(user), 0, NULL};
+    exercise weighted_squats = {"Weighted squats", {1, 0, 0, 0, 0}, 2.5, base_weight_weighted_squats(user), training_goal_reps(user), 0, NULL, {0, 0, 0, 1, 1}};
     exercise_list[1] = weighted_squats;
 
     // Split squats (harder version of squats)
-    exercise split_squats = {"Split squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_split_squats(user), 1, NULL};
+    exercise split_squats = {"Split squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_split_squats(user), 1, NULL, {0, 0, 0, 1, 1}};
     exercise_list[2] = split_squats;
 
     // Air squats
-    exercise air_squats = {"Air squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_air_squats(user), 1, &exercise_list[2]};
+    exercise air_squats = {"Air squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_air_squats(user), 1, &exercise_list[2], {0, 0, 0, 1, 1}};
     exercise_list[3] = air_squats;
 
     // Elevated pushups (harder version of pushups)
-    exercise elevated_pushups = {"Elevated pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_elevated_pushups(user), 1, NULL};
+    exercise elevated_pushups = {"Elevated pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_elevated_pushups(user), 1, NULL, {1, 1, 1, 0, 0}};
     exercise_list[4] = elevated_pushups;
 
     // Pushups
-    exercise pushups = {"Pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_pushups(user), 1, &exercise_list[4]};
+    exercise pushups = {"Pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_pushups(user), 1, &exercise_list[4], {1, 1, 1, 0, 0}};
     exercise_list[5] = pushups;
 
 }
@@ -83,7 +84,7 @@ void aerobic_exercises_list(exercise* exercise_list, questionnaire user){
     exercise burpees = {"Burpees", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_burpees(user), 1, NULL};
     exercise_list[6] = burpees;
 
-    //  find endnu en øvelse af HIIT der er mere aerobic
+    //  find endnu en Ã¸velse af HIIT der er mere aerobic
     exercise jumping_jacks = {"Jumping jacks", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_jumping_jacks(user), 1, NULL};
     exercise_list[7] = jumping_jacks;
     //  Create array
@@ -163,10 +164,8 @@ int base_amount_jumping_jacks(questionnaire user) {
 }
 
 // Print function to display the viable exercises
-void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]) {
+void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user) {
     printf("Viable Exercises:\n");
-    printf("SE HER:");
-    printf("%lf, %lf", fitness_level(user), training_goal_converter(user));
     for (int i = 0; i < count; i++) {
         printf("\n_____________________________\n");
         printf("Exercise %d:\n", i);

@@ -11,6 +11,7 @@ enum fitness_level { novice = 1, advanced_beginner, competent, proficient, exper
 // enum training_goal { muscular_endurance = 0.65, hypertrophy = 0.75, strength = 0.85 };
 enum equipment { barbell, bench, pull_up_bar, pull_down_machine, resistance_bands, length_of_equipment_enum };
 enum exercises {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, jumping_jacks, length_of_exercises_list};
+enum muscle_group_name {chest, triceps, shoulders, hamstrings, quads, length_of_muscle_groups_list};
 enum day_of_the_week {
     monday = 1,
     tuesday = 2,
@@ -50,6 +51,15 @@ typedef struct {
 } check_equipment;
 
 
+typedef struct {
+    int chest;
+    int triceps;
+    int shoulders;
+    int hamstrings;
+    int quads;
+} muscle_groups;
+
+
 //  Exercise platform for resistance exercises
 typedef struct exercise {
     char name[20];
@@ -61,6 +71,7 @@ typedef struct exercise {
     double amount_of_reps;
     int is_body_weight_exercise;
     struct exercise* harder_version;
+    int check_muscle_groups[length_of_muscle_groups_list];
 } exercise;
 
 
@@ -87,10 +98,11 @@ void aerobic_exercises_list(exercise* exercise_list, questionnaire user);
 
 exercise* create_all_exercises();
 void print_exercise(exercise exercises_list[]);
-void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]);
-void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int *input);
+void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user);
+void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *input);
 void upgrade_function(exercise *exercise_list_sorted, int input);
 void downgrade_function(exercise *exercise_list_sorted, int input);
+int evaluation_questionnaire(exercise sorted_exercise_list[], int sorted_count, int *input);
 // Created by mwsan on 11/14/2024.
 //
 

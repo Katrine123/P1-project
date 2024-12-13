@@ -25,18 +25,17 @@ int main(void) {
     exercise* exercise_list_sorted = create_available_exercises(ex_test, test, &sorted_count);
 
     // Print the viable exercises
-    print_exercises_2(exercise_list_sorted, sorted_count, test, ex_test);
+    print_exercises_2(exercise_list_sorted, sorted_count, test);
 
-    //  Call upgrade_downgrade function with sorted_exercise_list
+    //  Call questionnaire
     int input[sorted_count];
-    upgrade_downgrade(exercise_list_sorted,test, sorted_count, input);
-    printf("TEST2");
+    evaluation_questionnaire(exercise_list_sorted, sorted_count, input);
 
     //Call the upgrade function that updates the exercises that need to be upgraded
     //upgrade_function(exercise_list_sorted, test, sorted_count, input);
 
     //  Print exercises again after user has upgraded, or done nothing.
-    print_exercises_2(exercise_list_sorted, sorted_count, test, ex_test);
+    print_exercises_2(exercise_list_sorted, sorted_count, test);
 
     // Free the dynamically allocated memory for the sorted list
     free(exercise_list_sorted);
