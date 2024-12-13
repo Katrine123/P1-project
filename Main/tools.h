@@ -102,7 +102,7 @@ int check_for_save();
 
 int save_data();
 
-void load_data();
+questionnaire load_data();
 
 #endif //SAVESYSTEM_H
 
