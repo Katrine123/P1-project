@@ -26,12 +26,11 @@ enum equipment all_equipment[all_equipment_count] = {
 // TODO: Add in design that the software is proof-of-concept and that's why we do not include that many exercises.
 // TODO: Is length_of_exercises_list a good idea?
 enum exercise_name {
-    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpee, jumping_jacks, length_of_exercises_list
+    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpee, jumping_jacks
 };
 enum day_of_the_week {
     monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
 };
-// TODO: Not implemented yet.
 // TODO: Add in implementation that we define muscle groups in very broad terms (overly simplified).
 // TODO: Add in design that our program does not take into consideration how much an exercise targets each muscle (some muscles are worked harder than others in some exercises).
 typedef enum {
@@ -60,7 +59,6 @@ typedef struct {
     enum fitness_level _fitness_level;
     training_day available_training_days[7]; int available_training_days_count;
     enum equipment available_equipment[ARRAY_MAX]; int available_equipment_count;
-    // TODO: Not implemented yet.
     muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
 } questionnaire;
 
@@ -94,7 +92,6 @@ typedef struct {
 #pragma endregion
 #pragma region global variables
 
-// TODO: Not implemented yet.
 questionnaire _questionnaire;
 // TODO: Only implemented in exercises.c.
 exercise possible_resistance_exercises[ARRAY_MAX]; int possible_resistance_exercises_count;
@@ -141,6 +138,7 @@ questionnaire load_data();
 int homemade_scan(data_type type, void* input);
 char* naming_equipment(enum equipment eq) ;
 char* naming_days(enum day_of_the_week day);
+char* naming_muscle_group(muscle_group_name name);
 
 #pragma endregion
 #pragma region upgrade_downgrade.c

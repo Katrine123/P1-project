@@ -43,35 +43,35 @@ int homemade_scan(data_type type, void* input) {//Uses a void for input, because
 char* naming_equipment(enum equipment eq) {
     switch(eq) {
         case barbell: return "Barbell";
-        break;
         case bench: return "Bench";
-        break;
         case pull_up_bar: return "Pull up bar";
-        break;
         case pull_down_machine: return "Pull down machine";
-        break;
         case resistance_bands: return "Resistance bands";
-        break;
+        default: return "ERROR";
     }
-    return "Error";
 }
+
+char* naming_muscle_group(muscle_group_name name) {
+    switch(name) {
+        case chest: return "Chest";
+        case triceps: return "Triceps";
+        case shoulders: return "Shoulders";
+        case hamstrings: return "Hamstrings";
+        case quads: return "Quads";
+        default: return "ERROR";
+    }
+}
+
 
 char* naming_days(enum day_of_the_week day) {
     switch(day) {
         case monday: return "Monday";
-        break;
         case tuesday: return "Tuesday";
-        break;
         case wednesday: return "Wednesday";
-        break;
         case thursday: return "Thursday";
-        break;
         case friday: return "Friday";
-        break;
         case saturday: return "Saturday";
-        break;
         case sunday: return "Sunday";
-        break;
+        default: return "ERROR";
     }
-    return "Error";
 }

@@ -20,7 +20,7 @@ void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *in
         printf("Which exercises did you complete?\n");
         // print all the exercises available to the user
         for (int i = 0; i < sorted_count; i++) {
-            //  Exercises are listed as 0-6, if they were listed from 1-7 it would provide issues..
+            //  Exercises are listed as 0-6, if they were listed from 1-7 it would cause issues..
             printf("Exercise %d: %s\n", i, exercise_list_sorted[i].name);
         }
         int i = 0;

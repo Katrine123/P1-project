@@ -3,11 +3,11 @@
 #include "references.h"
 
 
-// returns a int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
+// returns an int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
 int evaluation_questionnaire() {
     printf("Welcome back!\n"
             "Your save file has been successfully loaded\n"
-            "How has you're workout been going?\n"
+            "How has your workout been going?\n"
             "__________________________________________________________________________\n\n"
             "Would you like to continue increasing your workout level?:   ***press 1***\n\n"
             "Would you like to stay on your current workout level?:       ***press 2***\n\n"

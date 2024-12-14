@@ -411,8 +411,6 @@ void update_workout_rules() {
             aerobic_rest_multiplier = 1 / 3; // 3:1 work-to-rest ratio.
         }
     }
-
-
 }
 void update_valid_muscle_groups()
 {
