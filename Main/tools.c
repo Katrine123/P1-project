@@ -1,7 +1,9 @@
 #include <ctype.h> //https://www.w3schools.com/c/c_ref_ctype.php
 #include <stdio.h>
+
 #include "references.h"
 
+// Input functions
 int homemade_scan(data_type type, void* input) {//Uses a void for input, because we don't know what datatype we'll get - Inspiration from qsort
     int is_right = 0;
     do {
@@ -11,26 +13,26 @@ int homemade_scan(data_type type, void* input) {//Uses a void for input, because
             if(scanf("%d",input)==1) {
                 is_right = 1;
             }else {
-                printf("Please type an integer");
+                printf("\nPlease type an integer.");
             }
         }else if(type == character) {
             //With chars we test that it's a letter with isalpha()
             if(scanf("%c",input)==1&&isalpha(*(char*)input)!=0) {
                 is_right = 1;
             }else{
-                printf("Please type a char");
+                printf("\nPlease type a char.");
             }
         }else if(type == long_float) {
             if(scanf("%lf",input)==1) {
                 is_right=1;
             }else{
-                printf("Please type a double");
+                printf("\nPlease type a double.");
             }
         }else if(type == string) {
             if(scanf("%s",input)==1&&isalpha(*(char*)input)!=0) {
                 is_right = 1;
             }else{
-                printf("Please type a string");
+                printf("\nPlease type a string.");
             }
         }
         //Clears any extra inputs
@@ -40,6 +42,7 @@ int homemade_scan(data_type type, void* input) {//Uses a void for input, because
     return is_right;
 }
 
+// Naming functions
 char* naming_equipment(enum equipment eq) {
     switch(eq) {
         case barbell: return "Barbell";
@@ -50,7 +53,6 @@ char* naming_equipment(enum equipment eq) {
         default: return "ERROR";
     }
 }
-
 char* naming_muscle_group(muscle_group_name name) {
     switch(name) {
         case chest: return "Chest";
@@ -61,8 +63,6 @@ char* naming_muscle_group(muscle_group_name name) {
         default: return "ERROR";
     }
 }
-
-
 char* naming_days(enum day_of_the_week day) {
     switch(day) {
         case monday: return "Monday";
@@ -72,6 +72,18 @@ char* naming_days(enum day_of_the_week day) {
         case friday: return "Friday";
         case saturday: return "Saturday";
         case sunday: return "Sunday";
+        default: return "ERROR";
+    }
+}
+char* naming_exercises(enum exercise_name name) {
+    switch(name) {
+        case bench_press: return "Bench press";
+        case weighted_squat: return "Weighted squat";
+        case air_squat: return "Air squat";
+        case pushup: return "Push up";
+        case elevated_pushup: return "Elevated push up";
+        case burpees: return "Burpees";
+        case jumping_jacks: return "Jumping jacks";
         default: return "ERROR";
     }
 }

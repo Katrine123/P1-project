@@ -92,7 +92,25 @@ int is_equipment_available(enum equipment _equipment) {
     // Return false if the target equipment is not found
     return 0;
 }
-void update_array_of_possible_resistance_exercises()
+int does_not_contain_ignored_muscle_group(exercise _exercise) {
+
+    // Foreach muscle group that the exercise targets
+    for (int i = 0; i < _exercise.muscles_count; i++) {
+
+        // Foreach ignored muscle group
+        for (int j = 0; j < _questionnaire.ignored_muscle_group_names_count; j++) {
+
+            // Return false if found
+            if (_exercise.muscles[i].name == _questionnaire.ignored_muscle_group_names[j]) {
+                return 0;
+            }
+        }
+    }
+
+    // Return true if not found
+    return 1;
+}
+void update_possible_resistance_exercises()
 {
     // Reset array of valid aerobic exercises
     possible_resistance_exercises_count = 0;
@@ -106,15 +124,17 @@ void update_array_of_possible_resistance_exercises()
         .base_weight = base_weight_bench_press(),
         .reps = 12,
         .is_body_weight_exercise = 0,
-        .set_duration = 0.5,
+        .set_duration = 1,
         .is_aerobic = 0,
         .specific_warmup_duration = 1,
     };
     if (is_equipment_available(bench) && is_equipment_available(barbell)) {
-        _bench_press.muscles[_bench_press.muscles_count++] = { chest };
-        _bench_press.muscles[_bench_press.muscles_count++] = { triceps };
-        _bench_press.muscles[_bench_press.muscles_count++] = { shoulders };
-        possible_resistance_exercises[possible_resistance_exercises_count++] = _bench_press;
+        _bench_press.muscles[_bench_press.muscles_count++].name = chest;
+        _bench_press.muscles[_bench_press.muscles_count++].name = triceps;
+        _bench_press.muscles[_bench_press.muscles_count++].name = shoulders;
+        if (does_not_contain_ignored_muscle_group(_bench_press)) {
+            possible_resistance_exercises[possible_resistance_exercises_count++] = _bench_press;
+        }
     }
 
     //  Weighted squats
@@ -130,9 +150,11 @@ void update_array_of_possible_resistance_exercises()
         .specific_warmup_duration = 1,
     };
     if (is_equipment_available(barbell)) {
-        _weighted_squat.muscles[_weighted_squat.muscles_count++] = { quads };
-        _weighted_squat.muscles[_weighted_squat.muscles_count++] = { hamstrings };
-        possible_resistance_exercises[possible_resistance_exercises_count++] = _weighted_squat;
+        _weighted_squat.muscles[_weighted_squat.muscles_count++].name = quads;
+        _weighted_squat.muscles[_weighted_squat.muscles_count++].name = hamstrings;
+        if (does_not_contain_ignored_muscle_group(_weighted_squat)) {
+            possible_resistance_exercises[possible_resistance_exercises_count++] = _weighted_squat;
+        }
     }
 
     //  Air squats
@@ -147,9 +169,11 @@ void update_array_of_possible_resistance_exercises()
         .specific_warmup_duration = 1,
     };
     // No equipment required
-    _air_squat.muscles[_air_squat.muscles_count++] = { quads };
-    _air_squat.muscles[_air_squat.muscles_count++] = { hamstrings };
-    possible_resistance_exercises[possible_resistance_exercises_count++] = _air_squat;
+    _air_squat.muscles[_air_squat.muscles_count++].name = quads;
+    _air_squat.muscles[_air_squat.muscles_count++].name = hamstrings;
+    if (does_not_contain_ignored_muscle_group(_air_squat)) {
+        possible_resistance_exercises[possible_resistance_exercises_count++] = _air_squat;
+    }
 
     //  Pushups
     exercise _pushup = {
@@ -163,10 +187,12 @@ void update_array_of_possible_resistance_exercises()
         .specific_warmup_duration = 1,
     };
     // No equipment required
-    _pushup.muscles[_pushup.muscles_count++] = { chest };
-    _pushup.muscles[_pushup.muscles_count++] = { triceps };
-    _pushup.muscles[_pushup.muscles_count++] = { shoulders };
-    possible_resistance_exercises[possible_resistance_exercises_count++] = _pushup;
+    _pushup.muscles[_pushup.muscles_count++].name = chest;
+    _pushup.muscles[_pushup.muscles_count++].name = triceps;
+    _pushup.muscles[_pushup.muscles_count++].name = shoulders;
+    if (does_not_contain_ignored_muscle_group(_pushup)) {
+        possible_resistance_exercises[possible_resistance_exercises_count++] = _pushup;
+    }
 
     //  Elevated Pushups
     exercise _elevated_pushup = {
@@ -180,12 +206,14 @@ void update_array_of_possible_resistance_exercises()
         .specific_warmup_duration = 1,
     };
     // No equipment required
-    _elevated_pushup.muscles[_elevated_pushup.muscles_count++] = { chest };
-    _elevated_pushup.muscles[_elevated_pushup.muscles_count++] = { triceps };
-    _elevated_pushup.muscles[_elevated_pushup.muscles_count++] = { shoulders };
-    possible_resistance_exercises[possible_resistance_exercises_count++] = _elevated_pushup;
+    _elevated_pushup.muscles[_elevated_pushup.muscles_count++].name = chest;
+    _elevated_pushup.muscles[_elevated_pushup.muscles_count++].name = triceps;
+    _elevated_pushup.muscles[_elevated_pushup.muscles_count++].name = shoulders;
+    if (does_not_contain_ignored_muscle_group(_elevated_pushup)) {
+        possible_resistance_exercises[possible_resistance_exercises_count++] = _elevated_pushup;
+    }
 }
-void update_array_of_possible_aerobic_exercises() {
+void update_possible_aerobic_exercises() {
 
     // Reset array of valid aerobic exercises
     possible_aerobic_exercises_count = 0;
@@ -195,7 +223,7 @@ void update_array_of_possible_aerobic_exercises() {
     //  Potential lowest bound is 5 reps pr. set. The exercise is more suitable to an increase in additions, therefore 2 instead of 1.
     exercise _burpees = {
         .muscles_count = 0,
-        .name = burpee,
+        .name = burpees,
         .addition = 2,
         .reps = base_amount_burpees(),
         .is_body_weight_exercise = 1,
@@ -221,3 +249,9 @@ void update_array_of_possible_aerobic_exercises() {
     possible_aerobic_exercises[possible_aerobic_exercises_count++] = _jumping_jacks;
 }
 
+// Global functions
+
+void update_possible_exercises() {
+    update_possible_resistance_exercises();
+    update_possible_aerobic_exercises();
+}

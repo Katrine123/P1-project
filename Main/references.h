@@ -19,14 +19,10 @@ enum fitness_level {
 enum equipment {
     barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
 };
-int all_equipment_count = 5;
-enum equipment all_equipment[all_equipment_count] = {
-    barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
-};
 // TODO: Add in design that the software is proof-of-concept and that's why we do not include that many exercises.
 // TODO: Is length_of_exercises_list a good idea?
 enum exercise_name {
-    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpee, jumping_jacks
+    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpees, jumping_jacks
 };
 enum day_of_the_week {
     monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
@@ -36,10 +32,6 @@ enum day_of_the_week {
 typedef enum {
     chest, triceps, shoulders, hamstrings, quads
 } muscle_group_name;
-int all_muscle_names_count = 5;
-muscle_group_name all_muscle_names[all_muscle_names_count] = {
-    chest, triceps, shoulders, hamstrings, quads
-};
 
 #pragma endregion
 #pragma region structs
@@ -92,17 +84,34 @@ typedef struct {
 #pragma endregion
 #pragma region global variables
 
-questionnaire _questionnaire;
+extern int all_equipment_count;
+extern enum equipment all_equipment[ARRAY_MAX];
+extern int all_muscle_names_count;
+extern muscle_group_name all_muscle_names[ARRAY_MAX];
+
+extern questionnaire _questionnaire;
 // TODO: Only implemented in exercises.c.
-exercise possible_resistance_exercises[ARRAY_MAX]; int possible_resistance_exercises_count;
+extern exercise possible_resistance_exercises[ARRAY_MAX];
+extern int possible_resistance_exercises_count;
 // TODO: Only implemented in exercises.c.
-exercise possible_aerobic_exercises[ARRAY_MAX]; int possible_aerobic_exercises_count;
-workout routine_workouts[7]; int routine_workouts_count = 0; // Max 7 workouts per week (1 per day).
+extern exercise possible_aerobic_exercises[ARRAY_MAX];
+extern int possible_aerobic_exercises_count;
+extern workout routine_workouts[7];
+extern int routine_workouts_count;
 
 #pragma endregion
 
 // Functions
 
+#pragma region tools.c
+
+int homemade_scan(data_type type, void* input);
+char* naming_equipment(enum equipment eq) ;
+char* naming_days(enum day_of_the_week day);
+char* naming_muscle_group(muscle_group_name name);
+char* naming_exercises(enum exercise_name name);
+
+#pragma endregion
 #pragma region evaluation_questionnaire.c
 
 int evaluation_questionnaire();
@@ -110,13 +119,17 @@ int evaluation_questionnaire();
 #pragma endregion
 #pragma region exercises.c
 
-void update_array_of_possible_resistance_exercises();
-void update_array_of_possible_aerobic_exercises();
+void update_possible_exercises();
 
 #pragma endregion
 #pragma region new_user_questionnaire.c
 
 void update_questionnaire();
+
+#pragma endregion
+#pragma region workouts.c
+
+void update_routine_workouts();
 
 #pragma endregion
 #pragma region print_routine.c
@@ -131,14 +144,6 @@ int save_data();
 void user_save();
 void print_user_data();
 questionnaire load_data();
-
-#pragma endregion
-#pragma region tools.c
-
-int homemade_scan(data_type type, void* input);
-char* naming_equipment(enum equipment eq) ;
-char* naming_days(enum day_of_the_week day);
-char* naming_muscle_group(muscle_group_name name);
 
 #pragma endregion
 #pragma region upgrade_downgrade.c
