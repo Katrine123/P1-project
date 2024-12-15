@@ -2,259 +2,260 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "savesystem.h"
-#include "tools.h"
-#include "file_conversion.h"
+#include "references.h"
 
-questionnaire create_and_answer_questionnaire(FILE *file) {
-    questionnaire user;
+//TODO: What is function for? Should it be deleted?
+void print_questionnaire() {
+    printf("\nWeight: %lf",_questionnaire.weight);
+    printf("\nAmount of pushups: %d",_questionnaire.pushups);
+    printf("\nFitness level: %d",_questionnaire._fitness_level);
+    printf("\nTime a week:");
+    for (int i = 0; i < _questionnaire.available_training_days_count; i++) {
+        printf("\n%s: %lf minutes",
+            naming_days(_questionnaire.available_training_days[i].day),
+            _questionnaire.available_training_days[i].max_duration);
+    }
+    printf("\nAvailable equipment: ");
+    for(int i = 0; i < _questionnaire.available_equipment_count; i++) {
+        printf("\n%s, ", naming_equipment(_questionnaire.available_equipment[i]));
+    }
+    printf("\nIgnored muscle groups: ");
+    for(int i = 0; i<_questionnaire.ignored_muscle_group_names_count;i++) {
+        printf("%s, ", naming_muscle_group(_questionnaire.ignored_muscle_group_names[i]));
+    }
+}
 
-    // Welcome message to new users.
-    printf("Welcome to your personalized fitness trainer, please answer this questionnaire to create your own personal workout routine \n");
+// Helper functions
+void get_multiple_answers_to_enum_list(int* answers, int* answers_count, int input_list_max) {
 
-    ////////////////////////////////////////////////////////////////////
+    // Reset
+    *answers_count = 0;
 
-    // Ask's about the users age.
-    printf("What is your age in years?");
-    homemade_scan(integer,&user.age,file);
+    // Loop until input is -1 or the max amount of answers has been reached
+    int input;
+    do {
+        printf("\nEnter answer:");
+        homemade_scan(integer, &input);
 
-    // Checks if the user is too old. If user is above 100 years program will exit.
-    if(user.age > 100) {
-        printf("You are too old to exercise!");
-        exit(-1);
+        // Quit
+        if (input == -1) {
+            break;
+        }
+
+        // Has answer already been given?
+        int is_input_duplicate = 0;
+        for (int j = 0; j < *answers_count; j++) {
+            if (answers[j] == input) {
+                is_input_duplicate = 1;
+                break;
+            }
+        }
+        if (is_input_duplicate) {
+            printf("\nYou have already selected this item. Please try again.");
+            continue;
+        }
+
+        // Is input invalid?
+        if (input >= input_list_max || input < -1) {
+            printf("\nYou have entered a number that is not in the list of items. Please try again.");
+            continue;
+        }
+
+        // Store answer, if all checks pass
+        answers[(*answers_count)++] = input;
+    } while(*answers_count < input_list_max);
+}
+int qsort_compare_ascending_order(const void* a, const void* b) {
+
+    training_day* day_a = (training_day*)a;
+    training_day* day_b = (training_day*)b;
+    return (day_a->day - day_b->day);
+}
+
+// Update functions
+void update_available_training_days() {
+
+    // Reset
+    _questionnaire.available_training_days_count = 0;
+
+    // Print a list of possible training days
+    printf("\nWhat days a week do you have time? Please write numbers matching the days and enter '-1' when you are done.");
+    printf("\n0 = Monday\n1 = Tuesday\n2 = Wednesday\n3 = Thursday\n4 = Friday\n5 = Saturday\n6 = Sunday");
+    // NOTE: This numbering is displaced by -1 relative to the global enum day_of_the_week
+    // which starts with 1 = monday, 2 = tuesday, and so on. This is because the function
+    // "get_multiple_answers_to_enum_list()" only works with enums starting at 0.
+
+    // Get answers
+    int answers[7];
+    int answers_count = 333;
+    get_multiple_answers_to_enum_list(answers, &answers_count, 7);
+
+    // No days selected?
+    if (answers_count == 0) {
+        printf("\nYou have to select at least one day to train. Please do so.");
+        update_available_training_days(); // Recursion.
+        return;
     }
 
-    // Checks if the user is too young. If user is below 14 years program will exit.
-    if(user.age < 14) {
-        printf("You are too young for this fitness trainer!");
-        exit(-1);
+    // Add to training days
+    for (int i = 0; i < answers_count; i++) {
+        // The enum day_of_the_week start with monday = 1, tuesday = 2, wednesday = 3, and so on,
+        // but our answers assume that monday = 0, tuesday = 1, wednesday = 4, and so on
+        // which is why we must add +1 to each answer to make it be in accordance with the
+        // numbering of the day_of_the_week enum.
+        answers[i] += 1;
+        _questionnaire.available_training_days[_questionnaire.available_training_days_count++].day = answers[i];
     }
-    save_data(int_to_str(user.age),"age");
-    ////////////////////////////////////////////////////////////////////
 
-    // Ask's what users weight is, and loops through the input to make sure the weight is in a reasonable range (20-300 kg).
-    while(user.weight < 20 || user.weight > 300) {
-        printf("What is your weight in kg");
-        homemade_scan(long_float, &user.weight,file);
-        if(user.weight < 20 || user.weight > 300) {
-            printf("I don't think that is correct!\n");
+    // Sort training days, so that Monday comes first, then Tuesday, and so on.
+    qsort(_questionnaire.available_training_days,
+        _questionnaire.available_training_days_count,
+        sizeof(training_day),
+        qsort_compare_ascending_order);
+
+    // Get available time per each day
+    // Foreach training day
+    for (int i = 0; i < _questionnaire.available_training_days_count; i++) {
+
+        printf("\nHow much time (in minutes) do you have %s?", naming_days(_questionnaire.available_training_days[i].day));
+
+        // Get available time
+        double input;
+        int valid_input = 1;
+        do {
+            homemade_scan(long_float, &input);
+
+            if (input > 1440) {
+                printf("\nInvalid input. That is more minutes than there is in a day. Please try again.");
+                valid_input = 0;
+            } else if (input <= 0) {
+                printf("\nInvalid input. Please enter a positive amount of time. Please try again.");
+                valid_input = 0;
+            }
+        } while (valid_input == 0);
+
+        _questionnaire.available_training_days[i].max_duration = input;
+    }
+
+}
+void update_available_equipment() {
+
+    // Reset
+    _questionnaire.available_equipment_count = 0;
+
+    // Ask the user if they have access to a gym.
+    char access_to_gym[5];
+    printf("\nDo you have access to a gym? (Enter 'yes' or 'no'.)");
+    homemade_scan(string, access_to_gym);
+
+    // We assume that if the user has access to a gym, they have access to all the equipment in the array.
+    if (strcmp(access_to_gym, "Yes") == 0 || strcmp(access_to_gym, "yes") == 0) {
+        for (int i = 0; i < all_equipment_count; i++) {
+            _questionnaire.available_equipment[_questionnaire.available_equipment_count++] = all_equipment[i];
         }
     }
-    save_data(double_to_str(user.weight),"wei");
+    // If the user does not have access to a gym, they will be asked to enter the equipment available.
+    else if (strcmp(access_to_gym, "No") == 0 || strcmp(access_to_gym, "no") == 0 ) {
 
-    ////////////////////////////////////////////////////////////////////
-
-    // Ask's user to enter how many push-ups they can perform, ensuring only non-negative numbers.
-    do {
-        printf("How many push-ups, can you do?");
-        homemade_scan(integer, &user.pushups,file);
-        if(user.pushups < 0) {
-            printf("Please enter 0 or more!\n");
+        // Print a list of possible pieces of equipment
+        printf("\nDo you have access to equipment? "
+               "If so, enter one or more of the corresponding numbers. When you are done enter '-1'.");
+        for (int i = 0; i < all_equipment_count; i++) {
+            printf("\n%d = %s", i, naming_equipment(i));
         }
-    } while(user.pushups < 0);
-    save_data(int_to_str(user.pushups),"pus");
 
-    ////////////////////////////////////////////////////////////////////
+        // Get answers
+        int answers[all_equipment_count];
+        int answers_count = 0;
+        get_multiple_answers_to_enum_list(answers, &answers_count, all_equipment_count);
 
-    // Ask's user to enter how many squats they can perform, ensuring only non-negative numbers.
-    do {
-        printf("How many squats, can you do?");
-        homemade_scan(integer, &user.squats,file);
-        if(user.squats < 0) {
-            printf("Please enter 0 or more!\n");
+        // Add to available equipment
+        for (int i = 0; i < answers_count; i++) {
+            _questionnaire.available_equipment[_questionnaire.available_equipment_count++] = answers[i];
         }
-    } while(user.squats < 0);
-    save_data(int_to_str(user.squats),"squ");
+    }
+    else {
+        // Recursion
+        printf("\nYou have not entered either 'yes' or 'no'. Please try again.");
+        update_available_equipment();
+    }
+}
+void update_ignored_muscle_groups() {
 
-    ////////////////////////////////////////////////////////////////////
+    // Reset
+    _questionnaire.ignored_muscle_group_names_count = 0;
 
-    // Ask's user to enter there fitness level.
+    // Print a list of possible muscle groups to ignore
+    printf("\nDo you wish to ignore exercises targeting a specific muscle group? "
+           "If so, enter one or more of the corresponding numbers. "
+           "Enter '-1' when you are done.");
+    for (int i = 0; i < all_muscle_names_count; i++) {
+        printf("\n%d = %s", i, naming_muscle_group(i));
+    }
+
+    // Get answers
+    int answers[all_muscle_names_count];
+    int answers_count = 0;
+    get_multiple_answers_to_enum_list(answers, &answers_count, all_muscle_names_count);
+
+    // Add to ignored muscle groups
+    for (int i = 0; i < answers_count; i++) {
+        _questionnaire.ignored_muscle_group_names[_questionnaire.ignored_muscle_group_names_count++] = answers[i];
+    }
+}
+void update_questionnaire() {
+
+     // Welcome message to new users.
+     printf("\nWelcome to your personalized fitness trainer, "
+            "please answer this questionnaire to create your own personal workout routine.");
+
+    // Asks what user's weight is, and loops through the input to make sure the weight is in a reasonable range (20-300 kg).
+    while(_questionnaire.weight < 20 || _questionnaire.weight > 300) {
+        printf("\nWhat is your weight in kg?");
+        homemade_scan(long_float, &_questionnaire.weight);
+        if(_questionnaire.weight < 20 || _questionnaire.weight > 300) {
+            printf("\nInvalid weight. Try again.");
+        }
+    }
+
+    // Asks user to enter how many push-ups they can perform, ensuring only non-negative numbers.
     do {
-        printf("What is your fitness level/experience level in a scale of 1-5?\n");
+        printf("\nHow many push-ups can you do?");
+        homemade_scan(integer, &_questionnaire.pushups);
+        if(_questionnaire.pushups < 0) {
+            printf("\nPlease enter 0 or more!");
+        }
+    } while(_questionnaire.pushups < 0);
 
-        printf("fitness rank 1 (expert): expert experience with exercising \n"
-               "fitness rank 2 (proficient): advanced experience with exercising\n"
-               "fitness rank 3 (competent): intermediate experience with exercising\n"
-               "fitness rank 4 (advanced beginner): A little experience with exercising\n"
-               "fitness rank 5 (novice): No experience with exercising\n");
+    // Asks user to enter how many squats they can perform, ensuring only non-negative numbers.
+    do {
+        printf("\nHow many squats can you do?");
+        homemade_scan(integer, &_questionnaire.squats);
+        if(_questionnaire.squats < 0) {
+            printf("\nPlease enter 0 or more!");
+        }
+    } while(_questionnaire.squats < 0);
+
+    // Asks user to enter their fitness level.
+    do {
+        printf("\nWhat is your fitness level/experience level in a scale of 1-5?");
+        printf("\nfitness rank 1 (expert): expert experience with exercising"
+               "\nfitness rank 2 (proficient): advanced experience with exercising"
+               "\nfitness rank 3 (competent): intermediate experience with exercising"
+               "\nfitness rank 4 (advanced beginner): A little experience with exercising"
+               "\nfitness rank 5 (novice): No experience with exercising");
 
         // Validates that fitness level is between 1-5.
-        homemade_scan(integer, &user.fitness_level,file);
-        if(user.fitness_level < expert || user.fitness_level > novice) {
-            printf("It has to be between 1-5!\n");
+        homemade_scan(integer, &_questionnaire._fitness_level);
+        if(_questionnaire._fitness_level < expert || _questionnaire._fitness_level > novice) {
+            printf("\nIt has to be between 1-5!");
         }
-    }while(user.fitness_level < 1 || user.fitness_level > 5);
-    save_data(int_to_str(user.fitness_level),"fit");
+    } while(_questionnaire._fitness_level < expert || _questionnaire._fitness_level > novice);
 
 
-    ////////////////////////////////////////////////////////////////////
-    //Function for getting the days the user can train
-    get_user_days(&user,file);
-    ////////////////////////////////////////////////////////////////////
-
-
-
-    char gym[5];
-
-    // ask's the user if they have access to a gym.
-    printf("Do you have access to a gym?");
-    homemade_scan(string, gym, file);
-
-    // If user have access to a gym, they have access to all the equipment in the array.
-    if(strcmp(gym,"Yes")==0||strcmp(gym,"yes")==0) {
-        for(int i=0; i<5; i++) {
-            user.available_equipment[i]=1;
-        }
-        // If the user do not have access to a gym, they will be asked to enter the equipment available based on a defined list.
-    } else if(strcmp(gym, "No")==0||strcmp(gym, "no")==0) {
-        printf("Of these options what equipment do you have? Please enter the number and when you are done press -1\n");
-        for(int i=0; i<length_of_equipment_enum; i++) {
-            printf("%d: %s \n", i+1, naming_equipment(i));
-        }
-        // Array to store equipment option selected by user.
-        int answer[5];
-        int i = 0;
-        // Loops to gather the equipment selected by the user, stopping at -1.
-        do {
-            homemade_scan(integer, &answer[i],file);
-            if(answer[i]> length_of_equipment_enum || answer[i] < -1||answer[i]==0) {
-                printf("please enter a number that is in the equipment list!");
-            } else {
-                i++;
-            }
-        }while(answer[i-1] != -1);
-
-        for(int n = 0; n < length_of_equipment_enum; n++) {
-            user.available_equipment[n] = 0;
-        }
-        // Transfer selected equipment to the user struct "questionnaire".
-        for(int j = 0; answer[j]!=-1; j++) {
-            user.available_equipment[answer[j]-1] = 1;
-        }
-    }
-    save_data(arr_to_str(user.available_equipment, 5),"equ");
-    ////////////////////////////////////////////////////////////////////
-
-    printf("Of these options, do you have any muscles to avoid training. Please enter the number and when you are done press -1\n");
-    printf("1: Chest\n"
-               "2: Triceps\n"
-               "3: Shoulders\n"
-               "4: Hamstring\n"
-               "5: Quads\n");
-    int i = 0;
-    int muscles[5];
-    do {
-        int add = 1;
-        homemade_scan(integer, &muscles[i],file);
-
-        //Check if the same day is chosen twice
-        for(int j = 0; j<i;j++) {
-            if(muscles[i]==muscles[j]) {
-                printf("This muscle has already been chosen");
-                add = 0;
-                break;
-            }
-        }
-
-        if(muscles[i]>5 || muscles[i]<-1||muscles[i]==0) {
-            printf("Please choose one of the numbers available");
-            add = 0;
-        }
-        i += add;
-    }while(i<5&&muscles[i-1]!=-1);
-    int len = sizeof(user.ignored_muscle_group_names)/sizeof(user.ignored_muscle_group_names[0]);
-    for(int j = 0; j<len-1; j++) {
-        user.ignored_muscle_group_names[j] = muscles[j]-1;
-    }
-
-    ////////////////////////////////////////////////////////////////////
-
-    return user;
+    update_available_training_days();
+    update_available_equipment();
+    update_ignored_muscle_groups();
 }
-
-int get_user_days(questionnaire* user,FILE *file) {
-    printf("What days a week do you have time? Please write numbers matching the days and type -1 when you're done\n");
-    printf("1. Monday\n2. Tuesday\n3. Wednesday\n4.Thursday\n5.Friday\n6. Saturday\n7.Sunday");
-    //Array to store users answer
-    int days[7];
-    int i = 0;
-    do {
-        int add = 1;
-        homemade_scan(integer, &days[i],file);
-
-        //Check if the same day is chosen twice
-        for(int j = 0; j<i;j++) {
-            if(days[i]==days[j]) {
-                printf("This day has already been chosen");
-                add = 0;
-                break;
-            }
-        }
-
-        if(days[i]>7 || days[i]<-1||days[i]==0) {
-            printf("Please choose one of the numbers available");
-            add = 0;
-        }
-        //If they have no days availabe then close program
-        if(i == 0 && days[i]==-1) {
-            printf("If you have no time available we cannot help you!");
-            exit(-1);
-        }
-
-        i += add;
-    }while(i<7&&days[i-1]!=-1);
-
-    i = 0;
-
-    do {
-
-        int add = 1;
-        printf("How much time(in minutes) do you have %s?",naming_days(days[i]));
-        user->training_days[i].day_week = days[i];
-        homemade_scan(long_float,&user->training_days[i].available_time,file);
-        if(user->training_days[i].available_time > 1440) {
-            printf("That's more than there is in a day");
-            add =0;
-        }else if(user->training_days[i].available_time < 0) {
-            printf("If you have no time this day then don't write that you have");
-            //FJERN DAG FRA ARRAY EVT?
-        }
-        i+=add;
-    }while(days[i]!=-1);
-}
-
-void print_quiestionnare(questionnaire user) {
-    printf("Age:%d\n",user.age);
-    printf("Weight: %lf\n",user.weight);
-    printf("Amount of pushups: %d\n",user.pushups);
-    printf("Fitness level: %d\n",user.fitness_level);
-    printf("Time a week:\n");
-    for(int i = 0;strcmp(naming_days(user.training_days[i].day_week),"Error")!=0;i++) {
-        printf("%s: %lf minutes\n",naming_days(user.training_days[i].day_week),user.training_days[i].available_time);
-    }
-    int len = sizeof(user.available_equipment)/sizeof(user.available_equipment[0]);
-    printf("Available equipment: ");
-    int nothing = 0;
-    for(int i = 0; i<len;i++) {
-        if(user.available_equipment[i]==1) {
-            printf("%s, ",naming_equipment(i));
-            nothing = 1;
-        }
-    }
-    printf("\n");
-    if(nothing == 0) {
-        printf("Nothing");
-    }
-    printf("Muscles to ignore: ");
-    for(int i = 0; strcmp(naming_muscles(user.ignored_muscle_group_names[i]),"Error")!=0;i++) {
-        printf("%s ",naming_muscles(user.ignored_muscle_group_names[i]));
-    }
-    if(strcmp(naming_muscles(user.ignored_muscle_group_names[0]),"Error")==0) {
-        printf("Nothing");
-    }
-    printf("\n");
-}
-
-
 
 

@@ -1,69 +1,27 @@
-#include "tools.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include "references.h"
 
 #define MAX_REPS 15
 
-int check_eq[length_of_equipment_enum] = {barbell, bench, pull_up_bar, pull_down_machine, resistance_bands};
+// Helper functions
 
-//  All exercises funktion:
-void resistance_exercises_list(exercise* exercise_list, questionnaire user)
-{
-    //  With equipment
-    //  Bench press
-    exercise bench_press = {"Bench press", {1, 1, 0, 0, 0}, 2.5, base_weight_bench_press(user), 12, 0};
-    exercise_list[0] = bench_press;
-
-    //  Weighted squats
-    exercise weighted_squats = {"Weighted squats", {1, 0, 0, 0, 0}, 2.5, base_weight_weighted_squats(user), 12, 0};
-    exercise_list[1] = weighted_squats;
-
-    //  Air squats
-    exercise air_squats = {"Air squats", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_air_squats(user), 1};
-    exercise_list[2] = air_squats;
-
-    //  Pushups
-    exercise pushups = {"Pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_pushups(user), 1};
-    exercise_list[3] = pushups;
-
-    //  Elevated Pushups
-    exercise elevated_pushups = {"Elevated pushups", {0, 0, 0, 0, 0}, 1, user.weight, base_amount_elevated_pushups(user), 1};
-    exercise_list[4] = elevated_pushups;
-}
-
-
-void aerobic_exercises_list(exercise* exercise_list, questionnaire user){
-    //  HIIT
-    //  Burpees
-    //  Potential lowest bound is 5 reps pr. set. The exercise is more suitable to an increase in additions, therefore 2 instead of 1.
-    exercise burpees = {"Burpees", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_burpees(user), 1};
-    exercise_list[5] = burpees;
-
-    //  find endnu en øvelse af HIIT der er mere aerobic
-    exercise jumping_jacks = {"Jumping jacks", {0, 0, 0, 0, 0}, 2, user.weight, base_amount_jumping_jacks(user), 1};
-    exercise_list[6] = jumping_jacks;
-    //  Create array
-    //  Return this array !
-    //exercise exercises_list[length_of_exercises_list] = {bench_press, weighted_squats, air_squats, pushups, elevated_pushups, burpees, jumping_jacks};
-    //print_exercise(exercises_list);
-    //return exercises_list[length_of_exercises_list];
-}
-
-///function for rounding down to the nearest number divisbl by 2.5
+///function for rounding down to the nearest number divisible by 2.5
 double round_down_to_nearest (double number, double divisor) {
     return floor(number / divisor) * divisor;
 }
 
-//  Base_weight functions:
+// Base_weight functions
+
 ///  Calculating base weight for bench press from pushups
-double base_weight_bench_press(questionnaire user) {
+double base_weight_bench_press() {
     //  Multiplying by a factor so amount of weight based on 12 reps is found
     double rep_factor_12 = 0.71;
     //  Multiply by 0.65 since that is the percentage of bodyweigth lifted during a pushup
-    double body_weight_pushup = user.weight* 0.65;
+    double body_weight_pushup = _questionnaire.weight* 0.65;
     //  Mayhews calculation for 1rm:
-    double calculation_1rm_bench_press = (100 * body_weight_pushup)/(52.2+41.9*pow(M_E,(-0.055*user.pushups)));
+    double calculation_1rm_bench_press = (100 * body_weight_pushup)/(52.2+41.9*pow(M_E,(-0.055*_questionnaire.pushups)));
     //  Calculating the height the person can lift in sets of 12
     double weight_to_lift_unrounded = calculation_1rm_bench_press * rep_factor_12;
 
@@ -74,14 +32,13 @@ double base_weight_bench_press(questionnaire user) {
     }
     return weight_to_lift_rounded;
 }
-
-double base_weight_weighted_squats(questionnaire user) {
+double base_weight_weighted_squats() {
     //  Multiplying by a factor so amount of weight based on 12 reps is found
     double rep_factor_12 = 0.71;
     //  Multiply by 0.66 since that is the percentage of bodyweigth lifted during an air squat
-    double body_weight_squats = user.weight* 0.66;
+    double body_weight_squats = _questionnaire.weight* 0.66;
     //  Mayhews calculation for 1rm:
-    double calculation_1rm_weighted_squat = (100 * body_weight_squats)/(52.2+41.9*pow(M_E,(-0.055*user.squats)));
+    double calculation_1rm_weighted_squat = (100 * body_weight_squats)/(52.2+41.9*pow(M_E,(-0.055*_questionnaire.squats)));
 
     //  Calculating the wheight the person can lift in sets of 12
     double weight_to_lift_unrounded = calculation_1rm_weighted_squat * rep_factor_12;
@@ -93,74 +50,214 @@ double base_weight_weighted_squats(questionnaire user) {
     }
     return weight_to_lift_rounded;
 }
-
 // Air squats should be the exercise if the perosn can take less than 15 consecutive air squats
-int base_amount_air_squats(questionnaire user) {
-    int reps_amount_squats = MAX_REPS - user.fitness_level;
+int base_amount_air_squats() {
+    int reps_amount_squats = MAX_REPS - _questionnaire._fitness_level;
     return reps_amount_squats;
 }
-
 //Split squats should be the printed exercise if the person can take more than 15 consecutive air squats
-int base_amount_split_squats(questionnaire user) {
-    int reps_amount_split_squats = MAX_REPS - user.fitness_level;
+int base_amount_split_squats() {
+    int reps_amount_split_squats = MAX_REPS - _questionnaire._fitness_level;
     return reps_amount_split_squats;
 }
-
 //Elevated pushups should be the printed exercise if the person can take more than 15 consecutive pushups
-int base_amount_elevated_pushups(questionnaire user) {
-        int reps_amount_elevated_pushups = MAX_REPS - user.fitness_level;
+int base_amount_elevated_pushups() {
+        int reps_amount_elevated_pushups = MAX_REPS - _questionnaire._fitness_level;
         return reps_amount_elevated_pushups;
 }
-
-//Pushups should be the printed exercise if the person can tak less than 15 consecutive pushups
-int base_amount_pushups(questionnaire user) {
-        int reps_amount_pushups = MAX_REPS - user.fitness_level;
+//Pushups should be the printed exercise if the person can take less than 15 consecutive pushups
+int base_amount_pushups() {
+        int reps_amount_pushups = MAX_REPS - _questionnaire._fitness_level;
         return reps_amount_pushups;
 }
-
-int base_amount_burpees(questionnaire user) {
+int base_amount_burpees() {
     /*  We are taking into account that this exercise is more difficult than others
      *  Level of exercise should be amplified by a factor of 2
      */
-    int reps_amount_burpees = MAX_REPS - (user.fitness_level*2);
+    int reps_amount_burpees = MAX_REPS - (_questionnaire._fitness_level*2);
     return reps_amount_burpees;
 }
-
-int base_amount_jumping_jacks(questionnaire user) {
-    int reps_amount_jumping_jacks = MAX_REPS - (user.fitness_level);
+int base_amount_jumping_jacks() {
+    int reps_amount_jumping_jacks = MAX_REPS - (_questionnaire._fitness_level);
     return reps_amount_jumping_jacks;
 }
 
-// Print function to display the viable exercises
-void print_exercises_2(exercise sorted_exercise_list[], int count, questionnaire user, exercise exercises_list[]) {
-    printf("Viable Exercises:\n");
-    printf("SE HER: %d", count);
-    for (int i = 0; i < count; i++) {
-        printf("\n_____________________________\n");
-        printf("Exercise %d:\n", i + 1);
-        printf("Name: %s\n", sorted_exercise_list[i].name);
-        printf("Addition: %.2lf\n", sorted_exercise_list[i].addition);
-        if(sorted_exercise_list[i].base_weight != user.weight) {
-            printf("Base weight: %.2lf\n", sorted_exercise_list[i].base_weight);
-        }
-        printf("Reps: %.2lf\n", sorted_exercise_list[i].amount_of_reps);
-        if (sorted_exercise_list[i].check_eq[0] == 1) {
-            printf(" - Barbell\n");
-        }
-        if (sorted_exercise_list[i].check_eq[1] == 1) {
-            printf(" - Bench\n");
-        }
-        if (sorted_exercise_list[i].check_eq[2] == 1) {
-            printf(" - Pull up bar\n");
-        }
-        if (sorted_exercise_list[i].check_eq[3] == 1) {
-            printf(" - Pull down machine\n");
-        }
-        if (sorted_exercise_list[i].check_eq[4] == 1) {
-            printf(" - Resistance bands\n");
-        }
+// Exercise array update functions
 
+int is_equipment_available(enum equipment _equipment) {
 
-        // Add more details as needed, e.g., equipment, difficulty, etc.
+    // Foreach available piece of equipment
+    for (int i = 0; i < _questionnaire.available_equipment_count; i++) {
+
+        // Return true if the target equipment is found
+        if (_questionnaire.available_equipment[i] == _equipment) {
+            return 1;
+        }
     }
+
+    // Return false if the target equipment is not found
+    return 0;
+}
+int does_not_contain_ignored_muscle_group(exercise _exercise) {
+
+    // Foreach muscle group that the exercise targets
+    for (int i = 0; i < _exercise.muscles_count; i++) {
+
+        // Foreach ignored muscle group
+        for (int j = 0; j < _questionnaire.ignored_muscle_group_names_count; j++) {
+
+            // Return false if found
+            if (_exercise.muscles[i].name == _questionnaire.ignored_muscle_group_names[j]) {
+                return 0;
+            }
+        }
+    }
+
+    // Return true if not found
+    return 1;
+}
+void update_possible_resistance_exercises()
+{
+    // Reset array of valid aerobic exercises
+    possible_resistance_exercises_count = 0;
+
+    //  With equipment
+    //  Bench press
+    exercise _bench_press = {
+        .muscles_count = 0,
+        .name = bench_press,
+        .addition = 2.5,
+        .base_weight = base_weight_bench_press(),
+        .reps = 12,
+        .rep_duration = 0.1, // 6 seconds
+        .is_body_weight_exercise = 0,
+        .is_aerobic = 0,
+        .specific_warmup_duration = 1,
+    };
+    if (is_equipment_available(bench) && is_equipment_available(barbell)) {
+        _bench_press.muscles[_bench_press.muscles_count++].name = chest;
+        _bench_press.muscles[_bench_press.muscles_count++].name = triceps;
+        _bench_press.muscles[_bench_press.muscles_count++].name = shoulders;
+        if (does_not_contain_ignored_muscle_group(_bench_press)) {
+            possible_resistance_exercises[possible_resistance_exercises_count++] = _bench_press;
+        }
+    }
+
+    //  Weighted squats
+    exercise _weighted_squat = {
+        .muscles_count = 0,
+        .name = weighted_squat,
+        .addition = 2.5,
+        .base_weight = base_weight_weighted_squats(),
+        .reps = 12,
+        .rep_duration = 0.1, // 6 seconds
+        .is_body_weight_exercise = 0,
+        .is_aerobic = 0,
+        .specific_warmup_duration = 1,
+    };
+    if (is_equipment_available(barbell)) {
+        _weighted_squat.muscles[_weighted_squat.muscles_count++].name = quads;
+        _weighted_squat.muscles[_weighted_squat.muscles_count++].name = hamstrings;
+        if (does_not_contain_ignored_muscle_group(_weighted_squat)) {
+            possible_resistance_exercises[possible_resistance_exercises_count++] = _weighted_squat;
+        }
+    }
+
+    //  Air squats
+    exercise _air_squat = {
+        .muscles_count = 0,
+        .name = air_squat,
+        .addition = 1,
+        .reps = base_amount_air_squats(),
+        .rep_duration = 0.05, // 3 seconds
+        .is_body_weight_exercise = 1,
+        .is_aerobic = 0,
+        .specific_warmup_duration = 1,
+    };
+    // No equipment required
+    _air_squat.muscles[_air_squat.muscles_count++].name = quads;
+    _air_squat.muscles[_air_squat.muscles_count++].name = hamstrings;
+    if (does_not_contain_ignored_muscle_group(_air_squat)) {
+        possible_resistance_exercises[possible_resistance_exercises_count++] = _air_squat;
+    }
+
+    //  Pushups
+    exercise _pushup = {
+        .muscles_count = 0,
+        .name = pushup,
+        .addition = 1,
+        .reps = base_amount_pushups(),
+        .rep_duration = 0.05, // 3 seconds
+        .is_body_weight_exercise = 1,
+        .is_aerobic = 0,
+        .specific_warmup_duration = 1,
+    };
+    // No equipment required
+    _pushup.muscles[_pushup.muscles_count++].name = chest;
+    _pushup.muscles[_pushup.muscles_count++].name = triceps;
+    _pushup.muscles[_pushup.muscles_count++].name = shoulders;
+    if (does_not_contain_ignored_muscle_group(_pushup)) {
+        possible_resistance_exercises[possible_resistance_exercises_count++] = _pushup;
+    }
+
+    //  Elevated Pushups
+    exercise _elevated_pushup = {
+        .muscles_count = 0,
+        .name = elevated_pushup,
+        .addition = 1,
+        .reps = base_amount_elevated_pushups(),
+        .rep_duration = 0.05, // 3 seconds
+        .is_body_weight_exercise = 1,
+        .is_aerobic = 0,
+        .specific_warmup_duration = 1,
+    };
+    // No equipment required
+    _elevated_pushup.muscles[_elevated_pushup.muscles_count++].name = chest;
+    _elevated_pushup.muscles[_elevated_pushup.muscles_count++].name = triceps;
+    _elevated_pushup.muscles[_elevated_pushup.muscles_count++].name = shoulders;
+    if (does_not_contain_ignored_muscle_group(_elevated_pushup)) {
+        possible_resistance_exercises[possible_resistance_exercises_count++] = _elevated_pushup;
+    }
+}
+void update_possible_aerobic_exercises() {
+
+    // Reset array of valid aerobic exercises
+    possible_aerobic_exercises_count = 0;
+
+    //  HIIT
+    //  Burpees
+    //  Potential lowest bound is 5 reps pr. set. The exercise is more suitable to an increase in additions, therefore 2 instead of 1.
+    exercise _burpees = {
+        .muscles_count = 0,
+        .name = burpees,
+        .addition = 2,
+        .reps = base_amount_burpees(),
+        .rep_duration = 0.1, // 6 seconds
+        .is_body_weight_exercise = 1,
+        .is_aerobic = 1,
+        .specific_warmup_duration = 0,
+    };
+    // No equipment required
+    possible_aerobic_exercises[possible_aerobic_exercises_count++] = _burpees;
+
+    //  find endnu en øvelse af HIIT der er mere aerobic
+    exercise _jumping_jacks = {
+        .muscles_count = 0,
+        .name = jumping_jacks,
+        .addition = 2,
+        .reps = base_amount_jumping_jacks(),
+        .rep_duration = 0.025, // 1.5 seconds
+        .is_body_weight_exercise = 1,
+        .is_aerobic = 1,
+        .specific_warmup_duration = 0,
+    };
+    // No equipment required
+    possible_aerobic_exercises[possible_aerobic_exercises_count++] = _jumping_jacks;
+}
+
+// Global functions
+
+void update_possible_exercises() {
+    update_possible_resistance_exercises();
+    update_possible_aerobic_exercises();
 }

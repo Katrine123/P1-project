@@ -1,54 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-
-#include "tools.h"
-#include "routine.h"
-#include "savesystem.h"
-
-
+#include "references.c"
 
 int main(void) {
-    questionnaire data = load_data();
-    print_quiestionnare(data);
-    /*//OUTLINE FOR PROGRAM:
-    questionnaire user_data;
+
+    // Clear terminal screen
     system("cls");
-    //Checks if there is any saved data
-    if (check_for_save()==0) {
-        //If no saved data, then ask questionnaire and print
-        user_data = create_and_answer_questionnaire(stdin);
-        print_quiestionnare(user_data);
-        //Initialize exercises based on users data
-        exercise excercises[];
-        resistance_exercises_list(excercises,user_data);
-        aerobic_exercises_list(excercises,user_data);
-        //Sort through exercises and remove unavailable ones
-        int user_exercises_count;
-        exercise* user_exercises = create_available_exercises(excercises,user_data,user_exercises_count);
-        //Create workout routine and print
-        update_routine_workouts();
-        print_routine();
-    }else {
-        //If there is saved data then get it
-        user_data = load_data();
-        //Initialize exercises with users data
-        exercise excercises[];
-        resistance_exercises_list(excercises,user_data);
-        aerobic_exercises_list(excercises,user_data);
-        //Sort through exercises and remove unavailable ones
-        int user_exercises_count;
-        exercise* user_exercises = create_available_exercises(excercises,user_data,user_exercises_count);
-        //Ask evaluation questionnaire
-        //Evaluation returns 1, if they want to upgrade
-        if(evaluation_questionnaire(&user_data,stdin)==1) {
-            //Upgrade completed exercises
-            int exercises_count;
-            upgrade_downgrade(user_exercises,user_data,exercises_count);
-        }else if(evaluation_questionnaire(&user_data,stdin)==4) {
-            //Evaluation returns 4, if they want to take the questionnaire again
-            create_and_answer_questionnaire(stdin);
-        }
-    }*/
+
+    //TODO: If the following line of code isn't there, we get errors.
+    // This has most likely to do with the ordering of the .c files.
+    // If we do not use a function from tools.c here, it will not
+    // be loaded before everything else and thus the other .c files
+    // that make use of tools.c will not be able to make a reference to it
+    // (because tools.c does not exist yet).
+    // I do not know how to fix this, so I'll just leave this here
+    // as it does not interfere with the rest of the program.
+    naming_equipment(0);
+
+    // Try to load save data
+    // TODO: Implement this.
+
+    // Does save data exist?
+    // if (found_save) {   // TODO: found_save is a boolean int updated when loading save data
+
+        // Evaluation questionnaire
+        // TODO: Implement this.
+
+    // } else {
+
+        // New user questionnaire
+        update_questionnaire();
+
+    // }
+
+    // Create routine
+    update_and_print_routine();
+
+    // Evaluation questionnaire (recursion)
+    // TODO: Implement this.
+
     return 0;
 }
