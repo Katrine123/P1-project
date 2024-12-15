@@ -1,13 +1,15 @@
-cmake_minimum_required(VERSION 3.14)
+#cmake_minimum_required(VERSION 3.14)
 
-project(p1_project C)
+#project(p1_project C)
 
-set(CMAKE_C_STANDARD 11)
+#set(CMAKE_C_STANDARD 11)
 
 
-add_subdirectory(Main)
+#add_subdirectory(Main)
 
-enable_testing()
+#enable_testing()
+
+#(SKAL VÆK???)
 
 
 

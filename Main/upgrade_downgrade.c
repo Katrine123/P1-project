@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include "references.h"
 
-void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *input) {
+void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count) {
+    int input[length_of_exercises_list];
     for (int i = 0; i < sorted_count; i++) {
         input[i] = 0;
     }
@@ -15,6 +16,7 @@ void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *in
             input[i] = 1;
             //  Call upgrade function
         }
+        upgrade_function(exercise_list_sorted,user,sorted_count,input);
 
     } else if (answer == 'n') {
         printf("Which exercises did you complete?\n");
@@ -26,11 +28,16 @@ void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *in
         int i = 0;
         int input_temp;
         do{
+            //TAGER IKKE HØJDE FOR -1 ELLER MIN MAX
+
             scanf("%d", &input_temp);
-            //  input_temp - 1
-            input[input_temp] = 1;
-            i++;
+            if(input_temp!=-1) {
+                //  input_temp - 1
+                input[input_temp] = 1;
+                i++;
+            }
         } while(i < sorted_count && input_temp != -1);
+        upgrade_function(exercise_list_sorted,user,sorted_count,input);
     }
 }
 

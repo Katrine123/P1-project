@@ -2,23 +2,13 @@
 #include <string.h>
 #include "references.h"
 
-typedef struct {
-    char available_equipment[20];
-    char age[20];
-    char gender[20];
-    char weight[20];
-    char height[20];
-    char pushups[20];
-    char fitness_level[20];
-    char time_available_week[20];
-    char adjustmentfactor[20];
-} user_save_data;
+#include "file_conversion.h"
 
 questionnaire convert_data (user_save_data data);
 ///simply checks if save is available returns 1 if data was found and 0 if not
 int check_for_save() {
     FILE * file;
-    if ((file = fopen("user_data_savefile.txt", "r"))) {   // attempts to open file
+    if ((file = fopen("user_save_file", "r"))) {   // attempts to open file
         printf("read operation successful\n");
         fclose(file);
         return(1);
@@ -27,19 +17,16 @@ int check_for_save() {
         return(0);
     }
 }
-
 ///saves data like this {[lorem] ipsum} returns 1 if successful
-int save_data(char* data, char* data_name) {
+int save_data(const char *data, const char *data_name) {
     FILE * file;
-    if ((file = fopen("user_data_savefile.txt", "a"))) {
+    if ((file = fopen("user_save_file", "a"))) {
         fprintf(file, "{[%s] %s}, ", data_name, data);
         fclose(file);
         return (1);
     }
-    else{
-        printf("file opening error\n");
-        return (0);
-    }
+    printf("file opening error\n");
+    return (0);
 }
 
 
@@ -47,12 +34,9 @@ int save_data(char* data, char* data_name) {
 void print_user_data(user_save_data data) {
     printf("Available Equipment: %s\n", data.available_equipment);
     printf("Age: %s\n", data.age);
-    printf("Gender: %s\n", data.gender);
     printf("Weight: %s\n", data.weight);
-    printf("Height: %s\n", data.height);
     printf("Push ups: %s\n", data.pushups);
     printf("Fitness Level: %s\n", data.fitness_level);
-    printf("Time Available per Week: %s\n", data.time_available_week);
 }
 
 ///returns a struct with values harvested from user_data_savefile.txt.
@@ -61,7 +45,7 @@ questionnaire load_data() {
     user_save_data data;
     FILE *file;
     int count=0;
-    if ((file = fopen("user_data_savefile.txt", "r"))) {
+    if ((file = fopen("user_save_file", "r"))) {
         char str[500];
         fgets(str, sizeof(str), file);
         for (int i = 0; i<strlen(str); i++) {
@@ -82,61 +66,62 @@ questionnaire load_data() {
                 }
                 data_data[j] = '\0';
                 //printf("%s\n", data_data);
-                switch (count++) {
-                    case 0:
+                switch (data_type[0]) {
+                    case 'e':
                         strncpy(data.available_equipment, data_data,20);
                         break;
-                    case 1:
-                        strncpy(data.age, data_data, 20);
+
+                    case 'a':
+                        strncpy(data.age, data_data,20);
                         break;
-                    case 2:
-                        strncpy(data.gender, data_data,20);
-                        break;
-                    case 3:
+                    case 'w':
                         strncpy(data.weight, data_data, 20);
                         break;
-                    case 4:
-                        strncpy(data.height, data_data, 20);
-                        break;
-                    case 5:
+                    case 'p':
                         strncpy(data.pushups, data_data, 20);
                         break;
-                    case 6:
+
+                    case 's':
+                        strncpy(data.squats, data_data, 20);
+                        break;
+
+                    case 'f':
                         strncpy(data.fitness_level, data_data, 20);
                         break;
-                    case 7:
-                        strncpy(data.time_available_week, data_data,20);
+
+                    case 'u':
+                        strncpy(data.adjustment_factor, data_data, 20);
                         break;
-                    case 8:
-                        strncpy(data.adjustmentfactor, data_data, 20);
-                        break;
-                    default: printf("too much data will not be read\n");
-                    // Switch copies the read data to the struct user data
-                    // for now user data is all stored as chars for simplicity’s sake
+
+                    default: printf("unknown data type\n");
+                        // Switch copies the read data to the struct user data
+                        // for now user data is all stored in strings and type is read as chars for simplicity’s sake
 
                 }
             }
         }
     } else {printf("file opening error\n");}
     fclose(file); //will at the moment prolly always close the file but am not 100% sure
-    questionnaire user = convert_data(data);
-    return (user);
+    return (convert_data(data));
 }
-
-
-
 
 questionnaire convert_data (user_save_data data) {
     questionnaire user;
     user.age = str_to_int(data.age);
-    user.gender = data.gender;
     user.weight = str_to_double(data.weight);
-    user.height = str_to_double(data.height);
     user.pushups = str_to_int(data.pushups);
     user.squats = str_to_int(data.squats);
     user.fitness_level = str_to_int(data.fitness_level);
-    user.training_days = str_to_train (data.training_days);
-    user.available_equipment = str_to_int(data.available_equipment);
+    user.training_days[0] = (training_day){0, 4.0};  // Sunday: 4.0 hours
+    user.training_days[1] = (training_day){1, 2.5};  // Monday: 2.5 hours
+    user.training_days[2] = (training_day){2, 3.0};  // Tuesday: 3.0 hours
+    user.training_days[3] = (training_day){3, 2.0};  // Wednesday: 2.0 hours
+    user.training_days[4] = (training_day){4, 1.0};  // Thursday: 1.0 hours
+    user.training_days[5] = (training_day){5, 1.5};  // Friday: 1.5 hours
+    user.training_days[6] = (training_day){6, 0.5};  // Saturday: 0.5 hours
+    for (int i = 0 ; i < 5; i++) {
+        user.available_equipment[i] = data.available_equipment[i]-'0';
+    }
     return (user);
 }
 
