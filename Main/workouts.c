@@ -488,13 +488,10 @@ void update_aerobic_days() {
 
             // Add to aerobic days, if all checks pass
             if (day_is_valid) {
-                aerobic_workout_indexes[aerobic_workout_indexes_count] = i;
-                aerobic_workout_indexes_count++;
+                aerobic_workout_indexes[aerobic_workout_indexes_count++] = i;
             }
         }
     }
-
-
 }
 void add_resistance_exercises() {
 

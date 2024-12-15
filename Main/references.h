@@ -57,7 +57,6 @@ typedef struct muscle_group {
     int sets; // Irrelevant for struct exercise, is daily sets for struct workout, and is weekly sets for the global routine variable.
 } muscle_group;
 
-//  Exercise platform for resistance exercises
 typedef struct {
     enum exercise_name name;
    //  We assume that weight only increases by 2.5, argue for this in implementation/design
@@ -71,6 +70,7 @@ typedef struct {
     int is_aerobic; // Is boolean.
     double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
 } exercise;
+
 typedef struct {
     exercise exercises[ARRAY_MAX]; int exercises_count;
     double duration; double max_duration;
@@ -145,16 +145,9 @@ void update_routine_workouts();
 void print_routine();
 
 #pragma endregion
-#pragma region savesystem.c
-
-
-#pragma endregion
 #pragma region evaluation_questionnaire.c
 
 int evaluation_questionnaire();
-
-#pragma endregion
-#pragma region upgrade_downgrade.c
 
 #pragma endregion
 
