@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "tools.h"
+
 #include "references.h"
 
 void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count) {
@@ -22,6 +25,7 @@ void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int s
         printf("Which exercises did you complete?\n");
         // print all the exercises available to the user
         for (int i = 0; i < sorted_count; i++) {
+            //  Exercises are listed as 0-6, if they were listed from 1-7 it would provide issues..
             //  Exercises are listed as 0-6, if they were listed from 1-7 it would cause issues..
             printf("Exercise %d: %s\n", i, exercise_list_sorted[i].name);
         }
@@ -47,6 +51,7 @@ void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int so
             //  What if the user weight is equal to bench press weight?
                 //  This has to be for body_weight_exercises
             if(exercise_list_sorted[i].is_body_weight_exercise == 1) {
+                exercise_list_sorted[i].amount_of_reps += exercise_list_sorted[i].addition;
                 exercise_list_sorted[i].reps += exercise_list_sorted[i].addition;
             } else {
                 exercise_list_sorted[i].base_weight += exercise_list_sorted[i].addition;
