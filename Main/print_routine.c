@@ -46,24 +46,27 @@ void print_routine() {
 
         printf("\n\nDay: %s", naming_days(routine_workouts[i].day));
         printf("\n--------------------------");
-        printf("\nAvailable time):              %.2lf minute(s)", _questionnaire.available_training_days[i].max_duration);
+        printf("\nAvailable time):                  %.2lf minute(s)", _questionnaire.available_training_days[i].max_duration);
 
-        // Edge case where the trainee has not even got time to do the full general warmup
+        // Edge case where the trainee has not even got time to do the full general warmup.
+        // NOTE: Warm-ups are always added to a workout, even if that day's available time
+        // is less than the duration of the workout. For example, on a day with 3 minutes of available
+        // workout time, the workout duration will still be 5 minutes if the general_warmup_duration is 5 minutes.
+        double new_workout_duration = routine_workouts[i].duration;
+        double new_general_warmup_duration = general_warmup_duration;
         if (_questionnaire.available_training_days[i].max_duration < general_warmup_duration) {
-            printf("\nEstimated workout duration:  %.2lf minute(s)", _questionnaire.available_training_days[i].max_duration);
-            printf("\n--------------------------");
-            printf("\nGeneral warmup (%.2lf minute(s))", _questionnaire.available_training_days[i].max_duration);
-            break;
+            new_workout_duration = _questionnaire.available_training_days[i].max_duration;
+            new_general_warmup_duration = _questionnaire.available_training_days[i].max_duration;
         } else if (_questionnaire.available_training_days[i].max_duration < 1) {
             printf("\nYou do not have time to train.");
             break;
         }
 
-        printf("\nEstimated workout duration:  %.2lf minute(s)", routine_workouts[i].duration);
+        printf("\nEstimated workout duration:       %.2lf minute(s)", new_workout_duration);
         printf("\n--------------------------");
-        printf("\n[0] %d minute(s) general warmup", general_warmup_duration);
+        printf("\n[0] %.2lf minute(s) general warmup", new_general_warmup_duration);
 
-        // Foreach exercise
+        // Foreach exercise in the workout
         for (int j = 0; j < routine_workouts[i].exercises_count; j++) {
 
             exercise _exercise = routine_workouts[i].exercises[j];
