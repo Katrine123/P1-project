@@ -28,18 +28,6 @@ muscle_group routine_muscles[ARRAY_MAX]; int routine_muscles_count; // Muscle gr
 int resistance_workout_indexes[3]; int resistance_workout_indexes_count; // Max 3 per week because of 48-72 hour recovery time and doing full-body exercises.
 int aerobic_workout_indexes[7]; int aerobic_workout_indexes_count; // Max 7 per week (1 per day).
 
-// Workout rules
-
-const int general_warmup_duration = 5; // In minutes.
-
-const int max_daily_sets = 6; // For resistance training.
-const int max_daily_aerobic_exercises = 3; // 3 brings a good amount of variety without becoming overly complex.
-const double rest_between_sets_resistance = 1.5; // In minutes. Equivalent to 90 seconds.
-double aerobic_rest_multiplier; // For example, a multiplier of 2, means a work-to-rest ratio of 1:2.
-int max_weekly_sets; // For resistance training.
-int resistance_recovery;
-int max_weekly_aerobic_workouts;
-
 // -----------------------------------------------------------------------------
 
 // Helper functions
@@ -77,14 +65,11 @@ muscle_group* get_muscle_group_in_routine(muscle_group *muscle) {
 double new_workout_duration_when_adding_a_set(exercise _exercise, workout _workout) {
 
     // Add duration of the set
-    double new_duration = _workout.duration + _exercise.set_duration;
+    double new_duration = _workout.duration + _exercise.rep_duration * _exercise.reps;
 
     // Add duration of rest between sets and specific warm-ups (if applicable)
     if (_exercise.is_aerobic) {
-        printf("\n////////////////// aerobic_rest_multiplier: %lf", aerobic_rest_multiplier);
-        printf("\n////////////////// new_duration BEFORE: %lf", new_duration);
-        new_duration += _exercise.set_duration * aerobic_rest_multiplier;
-        printf("\n////////////////// new_duration AFTER: %lf", new_duration);
+        new_duration += _exercise.rep_duration * _exercise.reps * aerobic_rest_multiplier;
     } else {
         new_duration += rest_between_sets_resistance;
         if (_exercise.sets == 0) {
@@ -682,33 +667,32 @@ void update_routine_workouts()
     // since doing resistance training first could risk cooling the trainee down.)
     reverse_order_of_exercises(routine_workouts, routine_workouts_count);
 
-    // TODO: Remove. Only for testing purposes.
-    for (int i_test = 0; i_test < routine_workouts_count; i_test++) {
-        printf("\n----------------------");
-        printf("\n  Routine day: %d", routine_workouts[i_test].day);
-        printf("\n  Duration: %lf", routine_workouts[i_test].duration);
-        printf("\n  Max duration: %lf", routine_workouts[i_test].max_duration);
-        for (int j_test = 0; j_test < routine_workouts[i_test].muscles_count; j_test++) {
-            printf("\n      Included muscle [%d], name: %s, parent.name: %s",
-                j_test,
-                naming_muscle_group(routine_workouts[i_test].muscles[j_test].name),
-                naming_muscle_group(routine_workouts[i_test].muscles[j_test].parent->name));
-        }
-        printf("\n      ----------");
-        for (int j_test = 0; j_test < routine_workouts[i_test].exercises_count; j_test++) {
-            printf("\n      Included exercise [%d], name: %s, sets: %d",
-                j_test,
-                naming_exercises(routine_workouts[i_test].exercises[j_test].name),
-                routine_workouts[i_test].exercises[j_test].sets);
-            for (int k_test = 0; k_test < routine_workouts[i_test].exercises[j_test].muscles_count; k_test++) {
-                printf("\n              Included muscle [%d], name: %s, parent.name: %s, parent.sets: %d, parent != NULL: %d",
-                    k_test,
-                    naming_muscle_group(routine_workouts[i_test].exercises[j_test].muscles[k_test].name),
-                    naming_muscle_group(routine_workouts[i_test].exercises[j_test].muscles[k_test].parent->name),
-                    routine_workouts[i_test].exercises[j_test].muscles[k_test].parent->sets,
-                    routine_workouts[i_test].exercises[j_test].muscles[k_test].parent != NULL);
-            }
-        }
-    }
-    // TODO: Remove. Only for testing purposes.
+    //TODO: Remove. Only for testing purposes.
+    // for (int i_test = 0; i_test < routine_workouts_count; i_test++) {
+    //     printf("\n----------------------");
+    //     printf("\n  Routine day: %d", routine_workouts[i_test].day);
+    //     printf("\n  Duration: %lf", routine_workouts[i_test].duration);
+    //     printf("\n  Max duration: %lf", routine_workouts[i_test].max_duration);
+    //     for (int j_test = 0; j_test < routine_workouts[i_test].muscles_count; j_test++) {
+    //         printf("\n      Included muscle [%d], name: %s, parent.name: %s",
+    //             j_test,
+    //             naming_muscle_group(routine_workouts[i_test].muscles[j_test].name),
+    //             naming_muscle_group(routine_workouts[i_test].muscles[j_test].parent->name));
+    //     }
+    //     printf("\n      ----------");
+    //     for (int j_test = 0; j_test < routine_workouts[i_test].exercises_count; j_test++) {
+    //         printf("\n      Included exercise [%d], name: %s, sets: %d",
+    //             j_test,
+    //             naming_exercises(routine_workouts[i_test].exercises[j_test].name),
+    //             routine_workouts[i_test].exercises[j_test].sets);
+    //         for (int k_test = 0; k_test < routine_workouts[i_test].exercises[j_test].muscles_count; k_test++) {
+    //             printf("\n              Included muscle [%d], name: %s, parent.name: %s, parent.sets: %d, parent != NULL: %d",
+    //                 k_test,
+    //                 naming_muscle_group(routine_workouts[i_test].exercises[j_test].muscles[k_test].name),
+    //                 naming_muscle_group(routine_workouts[i_test].exercises[j_test].muscles[k_test].parent->name),
+    //                 routine_workouts[i_test].exercises[j_test].muscles[k_test].parent->sets,
+    //                 routine_workouts[i_test].exercises[j_test].muscles[k_test].parent != NULL);
+    //         }
+    //     }
+    // }
 }

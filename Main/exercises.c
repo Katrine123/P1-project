@@ -123,8 +123,8 @@ void update_possible_resistance_exercises()
         .addition = 2.5,
         .base_weight = base_weight_bench_press(),
         .reps = 12,
+        .rep_duration = 0.1, // 6 seconds
         .is_body_weight_exercise = 0,
-        .set_duration = 1,
         .is_aerobic = 0,
         .specific_warmup_duration = 1,
     };
@@ -144,8 +144,8 @@ void update_possible_resistance_exercises()
         .addition = 2.5,
         .base_weight = base_weight_weighted_squats(),
         .reps = 12,
+        .rep_duration = 0.1, // 6 seconds
         .is_body_weight_exercise = 0,
-        .set_duration = 1,
         .is_aerobic = 0,
         .specific_warmup_duration = 1,
     };
@@ -163,8 +163,8 @@ void update_possible_resistance_exercises()
         .name = air_squat,
         .addition = 1,
         .reps = base_amount_air_squats(),
+        .rep_duration = 0.05, // 3 seconds
         .is_body_weight_exercise = 1,
-        .set_duration = 1,
         .is_aerobic = 0,
         .specific_warmup_duration = 1,
     };
@@ -181,8 +181,8 @@ void update_possible_resistance_exercises()
         .name = pushup,
         .addition = 1,
         .reps = base_amount_pushups(),
+        .rep_duration = 0.05, // 3 seconds
         .is_body_weight_exercise = 1,
-        .set_duration = 1,
         .is_aerobic = 0,
         .specific_warmup_duration = 1,
     };
@@ -200,8 +200,8 @@ void update_possible_resistance_exercises()
         .name = elevated_pushup,
         .addition = 1,
         .reps = base_amount_elevated_pushups(),
+        .rep_duration = 0.05, // 3 seconds
         .is_body_weight_exercise = 1,
-        .set_duration = 1,
         .is_aerobic = 0,
         .specific_warmup_duration = 1,
     };
@@ -226,8 +226,8 @@ void update_possible_aerobic_exercises() {
         .name = burpees,
         .addition = 2,
         .reps = base_amount_burpees(),
+        .rep_duration = 0.1, // 6 seconds
         .is_body_weight_exercise = 1,
-        .set_duration = 1,
         .is_aerobic = 1,
         .specific_warmup_duration = 0,
     };
@@ -240,8 +240,8 @@ void update_possible_aerobic_exercises() {
         .name = jumping_jacks,
         .addition = 2,
         .reps = base_amount_jumping_jacks(),
+        .rep_duration = 0.025, // 1.5 seconds
         .is_body_weight_exercise = 1,
-        .set_duration = 1,
         .is_aerobic = 1,
         .specific_warmup_duration = 0,
     };

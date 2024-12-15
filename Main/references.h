@@ -42,10 +42,7 @@ typedef struct {
 }training_day;
 
 typedef struct {
-    int age;
-    char gender[20];
     double weight;
-    double height;
     int pushups;
     int squats;
     enum fitness_level _fitness_level;
@@ -66,11 +63,11 @@ typedef struct {
    //  We assume that weight only increases by 2.5, argue for this in implementation/design
     double addition;
     double base_weight;
-    double reps;
+    int reps;
     int is_body_weight_exercise;
     muscle_group muscles[ARRAY_MAX]; int muscles_count; // Muscle groups targeted by the exercise. Aerobic exercises do not target any specific muscles.
     int sets;
-    double set_duration; // In minutes. How long it takes to perform 1 set of the exercise.
+    double rep_duration; // In minutes. How long it takes to perform 1 set of the exercise.
     int is_aerobic; // Is boolean.
     double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
 } exercise;
@@ -99,10 +96,25 @@ extern int possible_aerobic_exercises_count;
 extern workout routine_workouts[7];
 extern int routine_workouts_count;
 
+// Workout rules
+extern const int general_warmup_duration;
+extern const int max_daily_sets;
+extern const int max_daily_aerobic_exercises;
+extern const double rest_between_sets_resistance;
+extern double aerobic_rest_multiplier;
+extern int max_weekly_sets;
+extern int resistance_recovery;
+extern int max_weekly_aerobic_workouts;
+
 #pragma endregion
 
 // Functions
 
+#pragma region references.c
+
+void update_and_print_routine();
+
+#pragma endregion
 #pragma region tools.c
 
 int homemade_scan(data_type type, void* input);
@@ -110,21 +122,17 @@ char* naming_equipment(enum equipment eq) ;
 char* naming_days(enum day_of_the_week day);
 char* naming_muscle_group(muscle_group_name name);
 char* naming_exercises(enum exercise_name name);
-
-#pragma endregion
-#pragma region evaluation_questionnaire.c
-
-int evaluation_questionnaire();
-
-#pragma endregion
-#pragma region exercises.c
-
-void update_possible_exercises();
+char* naming_fitness_level(enum fitness_level name);
 
 #pragma endregion
 #pragma region new_user_questionnaire.c
 
 void update_questionnaire();
+
+#pragma endregion
+#pragma region exercises.c
+
+void update_possible_exercises();
 
 #pragma endregion
 #pragma region workouts.c
@@ -139,17 +147,14 @@ void print_routine();
 #pragma endregion
 #pragma region savesystem.c
 
-int check_for_save();
-int save_data();
-void user_save();
-void print_user_data();
-questionnaire load_data();
+
+#pragma endregion
+#pragma region evaluation_questionnaire.c
+
+int evaluation_questionnaire();
 
 #pragma endregion
 #pragma region upgrade_downgrade.c
-
-void upgrade_downgrade(exercise *exercise_list_sorted, int sorted_count, int *input);
-void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]);
 
 #pragma endregion
 

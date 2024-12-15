@@ -87,3 +87,13 @@ char* naming_exercises(enum exercise_name name) {
         default: return "ERROR";
     }
 }
+char* naming_fitness_level(enum fitness_level name) {
+    switch(name) {
+        case novice: return "Novice";
+        case advanced_beginner: return "Advanced beginner";
+        case competent: return "Competent";
+        case proficient: return "Proficient";
+        case expert: return "Expert";
+        default: return "ERROR";
+    }
+}

@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.1 Chrome/128.0.6613.186 Electron/32.2.6 Safari/537.36" version="25.0.1" pages="8">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Notes">
-    <mxGraphModel dx="4463" dy="2646" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="2" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="1250" dy="741" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="2" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -11,10 +11,7 @@
           <mxGeometry x="250" y="546.25" width="460" height="200" as="geometry" />
         </mxCell>
         <mxCell id="6Xnway8nB9_LhPMWtPpP-160" value="&lt;div&gt;Talk about the edge case where you can only train 2 days right after each other for only a short time, which would let you only do one resistance training day because of the way our algortihm worked.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;To combat this, you could calculate rest days as&lt;/div&gt;&lt;div&gt;&amp;nbsp;full recovery time * sets / daily max sets&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;e.g. doing 4 sets and having a recovery time of 3 days (a beginner), would give you a recovery time of 4 * 3 / 6 = 2 days.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;We chose to not implement this feature, as we cannot find sources on that it is okay to make such a calculation (all sources only talk about recovery from a FULL workout, not a parital one like this one).&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="220" y="814.75" width="500" height="250" as="geometry" />
-        </mxCell>
-        <mxCell id="BbClbvkXhS3ZI8aWRDyh-3" value="Research what the max weekly sets are for more experienced lifters" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#e51400;strokeColor=#B20000;fontColor=#ffffff;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="316" y="2291.1499999999996" width="290" height="77.5" as="geometry" />
+          <mxGeometry x="220" y="810" width="500" height="250" as="geometry" />
         </mxCell>
         <mxCell id="BbClbvkXhS3ZI8aWRDyh-8" value="Explain that resistance exercises are added first, because they are pretty inflexible because of their long recoery times, as opposed to aerobic exercises that can be performed with only 24 hours between sessions." style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="250" y="150" width="460" height="130" as="geometry" />
@@ -37,7 +34,7 @@
           <mxGeometry x="251" y="1775.5100000000002" width="420" height="250" as="geometry" />
         </mxCell>
         <mxCell id="INRdYJu2fYHKdTwNfTuV-1" value="&lt;div&gt;Add to report: the use of global variables can lead to stack overflow errors, but we deem that will not be a problem for out program because of its simplicity.&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="311" y="2432.4799999999996" width="300" height="138.3" as="geometry" />
+          <mxGeometry x="320" y="2299.9999999999995" width="300" height="138.3" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -655,214 +652,214 @@
     </mxGraphModel>
   </diagram>
   <diagram id="QCsqb4m3BK63cD3EIy75" name="Find days">
-    <mxGraphModel dx="3905" dy="-1685" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="1562" dy="-3074" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-2" target="NGTznpkS2c_7DvGbR4LD-15">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="NGTznpkS2c_7DvGbR4LD-2" target="NGTznpkS2c_7DvGbR4LD-15" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1130" y="4630" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-2" value="Get resistance training days" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;shape=parallelogram;fixedSize=1;size=17.5;strokeWidth=1;spacingBottom=0;spacingLeft=15;spacingRight=15;perimeter=parallelogramPerimeter;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-2" value="Get resistance training days" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;shape=parallelogram;fixedSize=1;size=17.5;strokeWidth=1;spacingBottom=0;spacingLeft=15;spacingRight=15;perimeter=parallelogramPerimeter;" parent="1" vertex="1">
           <mxGeometry x="1070" y="4521.25" width="140" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-4" target="NGTznpkS2c_7DvGbR4LD-21">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="NGTznpkS2c_7DvGbR4LD-4" target="NGTznpkS2c_7DvGbR4LD-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-4" value="Next day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-4" value="Next day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="1370" y="4651.27" width="65.52" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-7" target="NGTznpkS2c_7DvGbR4LD-15">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="NGTznpkS2c_7DvGbR4LD-7" target="NGTznpkS2c_7DvGbR4LD-15" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-7" target="NGTznpkS2c_7DvGbR4LD-21">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-7" target="NGTznpkS2c_7DvGbR4LD-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-7" value="Valid recovery time?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-7" value="Valid recovery time?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="1346" y="4930" width="143.7" height="56.23" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-9" target="NGTznpkS2c_7DvGbR4LD-15">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="NGTznpkS2c_7DvGbR4LD-9" target="NGTznpkS2c_7DvGbR4LD-15" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-9" value="Add day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-9" value="Add day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="1572.75" y="4994.760000000001" width="96" height="42.5" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-10" value="Return" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-10" value="Return" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="1529.75" y="4518.77" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-15" target="NGTznpkS2c_7DvGbR4LD-10">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="NGTznpkS2c_7DvGbR4LD-15" target="NGTznpkS2c_7DvGbR4LD-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-12" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-11">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-12" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-11" vertex="1" connectable="0">
           <mxGeometry x="-0.7233" relative="1" as="geometry">
             <mxPoint x="18" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-15" target="NGTznpkS2c_7DvGbR4LD-4">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-15" target="NGTznpkS2c_7DvGbR4LD-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-14" value="START" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-13">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-14" value="START" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-13" vertex="1" connectable="0">
           <mxGeometry x="-0.2888" y="-1" relative="1" as="geometry">
             <mxPoint x="2" y="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-15" value="FOR EACH&lt;div&gt;workout in the routine&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-15" value="FOR EACH&lt;div&gt;workout in the routine&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="1233" y="4530" width="226.75" height="52.5" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-16" value="There is a flaw to choosing resistance days like this, where we just start by checking the first workouts. Doing it like this means that we might pick days where the trainee has not got much workout time, which isn&#39;t ideal for full body resistance training, as it takes a bit of time to perform enough exercises to target all muscle groups. Then it would be better to do resistance training on days where you have more time.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;It would, however, become much more complicated if we were to check for the days with the most available work out time, as it brings compleities of it&#39;s own. For example, if you can train all week except Saturday, and your biggest available times are on first on Tuesday and second on Thursday, and you&#39;re an advanced beginner who can train 3 times a week, you would (by using this method) be recommended a routine with only 2 workout days, whereas just our method of just taking the first workout in the array first would provide 2 workout days.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;All in all, our method is best for getting the most amount of resistance workout days, but it does not necessarily give the best time-efficieny / workout quality. If that makes sense?&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" vertex="1" parent="1">
-          <mxGeometry x="940" y="4180" width="737.64" height="308.77" as="geometry" />
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-16" value="There is a flaw to choosing resistance days like this, where we just start by checking the first workouts. Doing it like this means that we might pick days where the trainee has not got much workout time, which isn&#39;t ideal for full body resistance training, as it takes a bit of time to perform enough exercises to target all muscle groups. Then it would be better to do resistance training on days where you have more time.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;It would, however, become much more complicated if we were to check for the days with the most available work out time, as it brings compleities of it&#39;s own. For example, if you can train all week except Saturday, and your biggest available times are on first on Tuesday and second on Thursday, and you&#39;re an advanced beginner who can train 3 times a week, you would (by using this method) be recommended a routine with only 2 workout days, whereas just our method of just taking the first workout in the array first would provide 2 workout days.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;If we had more time, it would be optimal to make a function that tries out all different combinations of resistance training days to see which scenario utilizes the most amount of available time for resistance training.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;But we have not got time for that. So, all in all, our method is best for getting the most amount of resistance workout days, but it does not necessarily give the best time-efficieny / workout quality. If that makes sense?&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="1" vertex="1">
+          <mxGeometry x="960" y="4070" width="737.64" height="400" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-21" target="NGTznpkS2c_7DvGbR4LD-9">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-21" target="NGTznpkS2c_7DvGbR4LD-9" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1621" y="4772" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-18" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-17">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-18" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-17" vertex="1" connectable="0">
           <mxGeometry x="-0.8716" y="2" relative="1" as="geometry">
             <mxPoint x="9" y="2" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-21" target="NGTznpkS2c_7DvGbR4LD-23">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-21" target="NGTznpkS2c_7DvGbR4LD-23" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1416" y="4799" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-20" value="START" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-19">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-20" value="START" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-19" vertex="1" connectable="0">
           <mxGeometry x="0.0467" relative="1" as="geometry">
             <mxPoint y="3" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-21" value="FOR EACH&lt;div&gt;resistance training day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-21" value="FOR EACH&lt;div&gt;resistance training day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="1346" y="4746" width="226.75" height="52.5" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-23" target="NGTznpkS2c_7DvGbR4LD-7">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-23" target="NGTznpkS2c_7DvGbR4LD-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-23" value="Next resistance day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-23" value="Next resistance day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="1350" y="4840" width="132.15" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-25" target="NGTznpkS2c_7DvGbR4LD-39">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-25" target="NGTznpkS2c_7DvGbR4LD-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-25" value="Get aerobic training days" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;shape=parallelogram;fixedSize=1;size=17.5;strokeWidth=1;spacingBottom=0;spacingLeft=15;spacingRight=15;perimeter=parallelogramPerimeter;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-25" value="Get aerobic training days" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;shape=parallelogram;fixedSize=1;size=17.5;strokeWidth=1;spacingBottom=0;spacingLeft=15;spacingRight=15;perimeter=parallelogramPerimeter;" parent="1" vertex="1">
           <mxGeometry x="170" y="4646.25" width="140" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-27" target="NGTznpkS2c_7DvGbR4LD-31">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="NGTznpkS2c_7DvGbR4LD-27" target="NGTznpkS2c_7DvGbR4LD-31" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-27" value="Next day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-27" value="Next day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="472.6999999999998" y="4766.4400000000005" width="63.25" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-55" target="NGTznpkS2c_7DvGbR4LD-33">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="NGTznpkS2c_7DvGbR4LD-55" target="NGTznpkS2c_7DvGbR4LD-33" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-29" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-28">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-29" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-28" vertex="1" connectable="0">
           <mxGeometry x="-0.111" y="-1" relative="1" as="geometry">
             <mxPoint y="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-31" target="NGTznpkS2c_7DvGbR4LD-39">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-31" target="NGTznpkS2c_7DvGbR4LD-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-31" value="Is also a resistance training day?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-31" value="Is also a resistance training day?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="432.02000000000044" y="4850.1900000000005" width="144.61" height="52.5" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-33" target="NGTznpkS2c_7DvGbR4LD-39">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-33" target="NGTznpkS2c_7DvGbR4LD-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-33" value="Add day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-33" value="Add day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="454" y="5033.41" width="96" height="42.5" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-34" value="Return" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-34" value="Return" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="856.6300000000001" y="4641.25" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-39" target="NGTznpkS2c_7DvGbR4LD-51">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="NGTznpkS2c_7DvGbR4LD-39" target="NGTznpkS2c_7DvGbR4LD-51" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-36" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-35">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-36" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-35" vertex="1" connectable="0">
           <mxGeometry x="-0.7233" relative="1" as="geometry">
             <mxPoint x="18" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-39" target="NGTznpkS2c_7DvGbR4LD-27">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-39" target="NGTznpkS2c_7DvGbR4LD-27" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-38" value="START" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-37">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-38" value="START" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-37" vertex="1" connectable="0">
           <mxGeometry x="-0.2888" y="-1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-39" value="FOR EACH&lt;div&gt;workout day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-39" value="FOR EACH&lt;div&gt;workout day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="348.25" y="4646.25" width="206.75" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-41" target="NGTznpkS2c_7DvGbR4LD-44">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-41" target="NGTznpkS2c_7DvGbR4LD-44" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-41" value="Next day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-41" value="Next day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="731.0799999999999" y="4766.4400000000005" width="63.25" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-44" target="NGTznpkS2c_7DvGbR4LD-46">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-44" target="NGTznpkS2c_7DvGbR4LD-46" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-43" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-42">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-43" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-42" vertex="1" connectable="0">
           <mxGeometry x="-0.5059" y="-1" relative="1" as="geometry">
             <mxPoint x="2" y="6" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-44" value="Weekly aerobic workout max exceeded?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-44" value="Weekly aerobic workout max exceeded?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="668.7800000000007" y="4843.41" width="187.85" height="52.5" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-46" target="NGTznpkS2c_7DvGbR4LD-51">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-46" target="NGTznpkS2c_7DvGbR4LD-51" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-46" value="Add day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-46" value="Add day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="714.710000000001" y="4943.57" width="96" height="42.5" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-51" target="NGTznpkS2c_7DvGbR4LD-34">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-51" target="NGTznpkS2c_7DvGbR4LD-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-48" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-47">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-48" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-47" vertex="1" connectable="0">
           <mxGeometry x="-0.5223" y="3" relative="1" as="geometry">
             <mxPoint x="10" y="3" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-51" target="NGTznpkS2c_7DvGbR4LD-41">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-51" target="NGTznpkS2c_7DvGbR4LD-41" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-50" value="START" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-49">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-50" value="START" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-49" vertex="1" connectable="0">
           <mxGeometry x="-0.4468" y="-1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-51" value="FOR EACH&lt;div&gt;workout day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-51" value="FOR EACH&lt;div&gt;workout day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="606.6300000000001" y="4649.16" width="206.75" height="67.09" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-31" target="NGTznpkS2c_7DvGbR4LD-55">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="NGTznpkS2c_7DvGbR4LD-31" target="NGTznpkS2c_7DvGbR4LD-55" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="504.6300000000001" y="4902.41" as="sourcePoint" />
             <mxPoint x="504.6300000000001" y="4996.41" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-53" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" vertex="1" connectable="0" parent="NGTznpkS2c_7DvGbR4LD-52">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-53" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-52" vertex="1" connectable="0">
           <mxGeometry x="-0.6094" y="-3" relative="1" as="geometry">
             <mxPoint x="4" y="9" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-55" target="NGTznpkS2c_7DvGbR4LD-39">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-55" target="NGTznpkS2c_7DvGbR4LD-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-55" value="Weekly aerobic workout max exceeded?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-55" value="Weekly aerobic workout max exceeded?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="418.5100000000002" y="4943.57" width="173.65" height="52.5" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-56" value="First, we try to insert aerobic days on&amp;nbsp;&lt;div&gt;days that are not also resistance days.&lt;/div&gt;&lt;div&gt;This is &lt;span style=&quot;background-color: initial;&quot;&gt;to help spread out activity&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;throughout the week.&amp;nbsp;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-56" value="First, we try to insert aerobic days on&amp;nbsp;&lt;div&gt;days that are not also resistance days.&lt;/div&gt;&lt;div&gt;This is &lt;span style=&quot;background-color: initial;&quot;&gt;to help spread out activity&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;throughout the week.&amp;nbsp;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="310" y="4557.5" width="240" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-57" value="After this first round, we add in as&amp;nbsp;&lt;div&gt;many additional aerobic days as possible&lt;/div&gt;&lt;div&gt;without taking into account whether the&lt;/div&gt;&lt;div&gt;day is also a resistance day.&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;" vertex="1" parent="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-57" value="After this first round, we add in as&amp;nbsp;&lt;div&gt;many additional aerobic days as possible&lt;/div&gt;&lt;div&gt;without taking into account whether the&lt;/div&gt;&lt;div&gt;day is also a resistance day.&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="585.0100000000002" y="4561.25" width="250" height="80" as="geometry" />
         </mxCell>
       </root>

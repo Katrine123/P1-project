@@ -6,10 +6,7 @@
 
 //TODO: What is function for? Should it be deleted?
 void print_questionnaire() {
-    printf("\nAge:%d",_questionnaire.age);
-    printf("\nGender: %s",_questionnaire.gender);
     printf("\nWeight: %lf",_questionnaire.weight);
-    printf("\nHeight: %lf",_questionnaire.height);
     printf("\nAmount of pushups: %d",_questionnaire.pushups);
     printf("\nFitness level: %d",_questionnaire._fitness_level);
     printf("\nTime a week:");
@@ -68,6 +65,12 @@ void get_multiple_answers_to_enum_list(int* answers, int* answers_count, int inp
         answers[(*answers_count)++] = input;
     } while(*answers_count < input_list_max);
 }
+int qsort_compare_ascending_order(const void* a, const void* b) {
+
+    training_day* day_a = (training_day*)a;
+    training_day* day_b = (training_day*)b;
+    return (day_a->day - day_b->day);
+}
 
 // Update functions
 void update_available_training_days() {
@@ -104,6 +107,12 @@ void update_available_training_days() {
         _questionnaire.available_training_days[_questionnaire.available_training_days_count++].day = answers[i];
     }
 
+    // Sort training days, so that Monday comes first, then Tuesday, and so on.
+    qsort(_questionnaire.available_training_days,
+        _questionnaire.available_training_days_count,
+        sizeof(training_day),
+        qsort_compare_ascending_order);
+
     // Get available time per each day
     // Foreach training day
     for (int i = 0; i < _questionnaire.available_training_days_count; i++) {
@@ -127,6 +136,7 @@ void update_available_training_days() {
 
         _questionnaire.available_training_days[i].max_duration = input;
     }
+
 }
 void update_available_equipment() {
 
@@ -178,7 +188,7 @@ void update_ignored_muscle_groups() {
     // Print a list of possible muscle groups to ignore
     printf("\nDo you wish to ignore exercises targeting a specific muscle group? "
            "If so, enter one or more of the corresponding numbers. "
-           "Enter '-1' when you are done.\n");
+           "Enter '-1' when you are done.");
     for (int i = 0; i < all_muscle_names_count; i++) {
         printf("\n%d = %s", i, naming_muscle_group(i));
     }
@@ -199,45 +209,18 @@ void update_questionnaire() {
      printf("\nWelcome to your personalized fitness trainer, "
             "please answer this questionnaire to create your own personal workout routine.");
 
-    // Ask's about the user's age.
-    printf("\nWhat is your age in years?");
-    homemade_scan(integer, &_questionnaire.age);
-    if (_questionnaire.age > 100) {
-        printf("\nYou are too old for this fitness trainer.");
-        exit(EXIT_FAILURE);
-    }
-    if (_questionnaire.age < 14) {
-        printf("\nYou are too young for this fitness trainer.");
-        exit(EXIT_FAILURE);
-    }
-
-    // Asks user to enter their gender, and validate it to only accept input "male" or "female".
-    do {
-        printf("\nAre you a male or female?");
-        homemade_scan(string, _questionnaire.gender);
-    } while (strcmp(_questionnaire.gender, "male") != 0 && strcmp(_questionnaire.gender, "female") != 0);
-
     // Asks what user's weight is, and loops through the input to make sure the weight is in a reasonable range (20-300 kg).
     while(_questionnaire.weight < 20 || _questionnaire.weight > 300) {
-        printf("\nWhat is your weight in kg");
+        printf("\nWhat is your weight in kg?");
         homemade_scan(long_float, &_questionnaire.weight);
         if(_questionnaire.weight < 20 || _questionnaire.weight > 300) {
             printf("\nInvalid weight. Try again.");
         }
     }
 
-    // Asks what users height is and loops through the input, to make sure the height is in a reasonable range (50-300 cm).
-    while (_questionnaire.height < 50 || _questionnaire.height > 300) {
-        printf("\nWhat is your height in cm?");
-        homemade_scan(long_float, &_questionnaire.height);
-        if (_questionnaire.height < 50 || _questionnaire.height > 300) {
-            printf("\nInvalid height. Try again.");
-        }
-    }
-
     // Asks user to enter how many push-ups they can perform, ensuring only non-negative numbers.
     do {
-        printf("\nHow many push-ups, can you do?");
+        printf("\nHow many push-ups can you do?");
         homemade_scan(integer, &_questionnaire.pushups);
         if(_questionnaire.pushups < 0) {
             printf("\nPlease enter 0 or more!");
@@ -246,7 +229,7 @@ void update_questionnaire() {
 
     // Asks user to enter how many squats they can perform, ensuring only non-negative numbers.
     do {
-        printf("\nHow many squats, can you do?");
+        printf("\nHow many squats can you do?");
         homemade_scan(integer, &_questionnaire.squats);
         if(_questionnaire.squats < 0) {
             printf("\nPlease enter 0 or more!");

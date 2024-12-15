@@ -2,28 +2,23 @@
 #include <stdlib.h>
 #include "references.c"
 
-
-void create_routine() {
-
-    // Create list of exercises
-    update_possible_exercises();
-
-    // Create routine
-    update_routine_workouts();
-
-    // Print routine
-    // TODO: Implement this.
-}
-
 int main(void) {
 
     // Clear terminal screen
-    // system("cls"); // TODO: What is the purpose of this?
+    system("cls");
 
-    //TODO: Test. Remove this.
-    printf("\n%s", naming_equipment(2)); //TODO: Why does this need to be here for me not to get errors? Probably has to do with the order of .c files.
+    //TODO: If the following line of code isn't there, we get errors.
+    // This has most likely to do with the ordering of the .c files.
+    // If we do not use a function from tools.c here, it will not
+    // be loaded before everything else and thus the other .c files
+    // that make use of tools.c will not be able to make a reference to it
+    // (because tools.c does not exist yet).
+    // I do not know how to fix this, so I'll just leave this here
+    // as it does not interfere with the rest of the program.
+    naming_equipment(0);
 
     // Try to load save data
+    // TODO: Implement this.
 
     // Does save data exist?
     // if (found_save) {   // TODO: found_save is a boolean int updated when loading save data
@@ -38,11 +33,11 @@ int main(void) {
 
     // }
 
-    create_routine();
+    // Create routine
+    update_and_print_routine();
 
     // Evaluation questionnaire (recursion)
     // TODO: Implement this.
-
 
     return 0;
 }
