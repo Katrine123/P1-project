@@ -64,6 +64,10 @@ void evaluation_questionnaire(int *input) {
                     printf("Registered 2, proceeding to reevaluate training days:");
                     update_available_training_days();
                 break;
+                case 3:
+                    printf("Exiting..");
+                    exit(0);
+                break;
                 default:;
                 printf("invalid input\n");
                 has_answer_2--;
