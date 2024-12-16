@@ -7,7 +7,6 @@ int main(void) {
     // Clear terminal screen
     system("cls");
 
-
     // Try to load save data
     // TODO: Implement this.
 
@@ -20,8 +19,8 @@ int main(void) {
     // } else {
 
         // New user questionnaire
-        update_questionnaire();
 
+    get_user_data();
     // }
 
     // Create routine
