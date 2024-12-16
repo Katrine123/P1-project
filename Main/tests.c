@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mtest.h"
-#include "tools.h"
+#include "references.h"
 
 #pragma region questionnaire
 TEST_CASE(questionnaire_test1,{
@@ -19,17 +19,17 @@ TEST_CASE(questionnaire_test1,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    questionnaire user_test = create_and_answer_questionnaire(test_file);
+    update_questionnaire();
     fclose(test_file);
-    CHECK_EQ_INT(user_test.age,67);
-    CHECK_EQ_DOUBLE(user_test.weight,72,0.001);
-    CHECK_EQ_INT(user_test.pushups,6);
-    CHECK_EQ_INT(user_test.squats,8);
-    CHECK_EQ_INT(user_test.fitness_level,1);
-    CHECK_EQ_INT(user_test.training_days[0].day_week,thursday);
-    CHECK_EQ_DOUBLE(user_test.training_days[0].available_time,120,0.001);
+    CHECK_EQ_INT(_questionnaire.age,67);
+    CHECK_EQ_DOUBLE(_questionnaire.weight,72,0.001);
+    CHECK_EQ_INT(_questionnaire.pushups,6);
+    CHECK_EQ_INT(_questionnaire.squats,8);
+    CHECK_EQ_INT(_questionnaire._fitness_level,1);
+    CHECK_EQ_INT(_questionnaire.training_days[0].day_week,thursday);
+    CHECK_EQ_DOUBLE(_questionnaire.training_days[0].available_time,120,0.001);
     for(int i = 0; i<length_of_equipment_enum;i++) {
-        CHECK_EQ_INT(user_test.available_equipment[i],1);
+        CHECK_EQ_INT(_questionnaire.available_equipment[i],1);
     }
     CHECK_EQ_INT(user_test.ignored_muscle_group_names[0],2);
 })

@@ -14,13 +14,14 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Project" targetName="exercises" />
-      <config projectName="Project" targetName="main" />
-      <config projectName="Project" targetName="tools" />
-      <config projectName="Project" targetName="workouts" />
-      <config projectName="Project" targetName="references" />
-      <config projectName="Project" targetName="new_user_questionnaire" />
-      <config projectName="Project" targetName="print_routine" />
+      <config projectName="p1_project" targetName="main" />
+      <config projectName="p1_project" targetName="workouts" />
+      <config projectName="p1_project" targetName="tools" />
+      <config projectName="p1_project" targetName="new_user_questionnaire" />
+      <config projectName="p1_project" targetName="print_routine" />
+      <config projectName="p1_project" targetName="exercises" />
+      <config projectName="p1_project" targetName="references" />
+      <config projectName="p1_project" targetName="tests" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -30,10 +31,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d35455da-221e-4df9-9b81-5ae1a995d0af" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests.c" beforeDir="false" afterPath="$PROJECT_DIR$/tests.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,7 @@
     <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/main.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/new_user_questionnaire.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/new_user_questionnaire.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/tests.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/tools.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/tools.h" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -112,37 +112,42 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="exercises" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="exercises" CONFIG_NAME="Debug">
+    <configuration name="exercises" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="exercises" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="main">
+    <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="p1_project" RUN_TARGET_NAME="main">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="new_user_questionnaire" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="new_user_questionnaire" CONFIG_NAME="Debug">
+    <configuration name="new_user_questionnaire" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="new_user_questionnaire" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="print_routine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="print_routine" CONFIG_NAME="Debug">
+    <configuration name="print_routine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="print_routine" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="references" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="references" CONFIG_NAME="Debug">
+    <configuration name="references" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="references" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="tools" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="tools" CONFIG_NAME="Debug">
+    <configuration name="tests" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="p1_project" RUN_TARGET_NAME="tests">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="workouts" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="workouts" CONFIG_NAME="Debug">
+    <configuration name="tools" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="tools" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="workouts" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="workouts" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -153,6 +158,7 @@
       <item itemvalue="CMake Application.new_user_questionnaire" />
       <item itemvalue="CMake Application.print_routine" />
       <item itemvalue="CMake Application.references" />
+      <item itemvalue="CMake Application.tests" />
       <item itemvalue="CMake Application.tools" />
       <item itemvalue="CMake Application.workouts" />
     </list>
