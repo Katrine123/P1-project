@@ -12,7 +12,7 @@ int evaluation_questionnaire(int *input) {
             "__________________________________________________________________________\n\n"
             "Would you like to retake the questionnaire?                  ***press 1***\n\n"
             "Reevaluate the difficulty of your exercises?                 ***press 2***\n\n"
-            "To exit program immediately :                                ***press 3***\n"
+            "None of the above. I would like to move on:                  ***press 3***\n"
             "__________________________________________________________________________\n");
 
     int answer=0;
@@ -25,28 +25,48 @@ int evaluation_questionnaire(int *input) {
         switch (answer) {
             case 1:
                 printf("Registered 1, questionnaire will appear!");
+                update_questionnaire();
             break;
             case 2:
                 printf("Registered 2, proceeding to reevaluate exercises:");
-                //  Retrieving sorted exercise list
+            //  Retrieving sorted exercise list
                 upgrade_downgrade(input);
             break;
             case 3:
-                printf("Program exiting");
-            _Exit(0);
+                printf("Moving on..\n");
+                break;
             default:;
             printf("invalid input\n");
             has_answer--;
             //Continues while loop if answer defaults.
         }
-
     }
-    printf("How would you like to schedule this week's workouts?\n"
-        "____________________________________________________________________________________\n\n"
-        "If you want your workouts on the same days and the same times as last week   press 1\n\n"
-        "If you would like to change your workout schedule                            press 2\n"
-        "____________________________________________________________________________________\n");
 
+        printf("How would you like to schedule this week's workouts?\n"
+            "____________________________________________________________________________________\n\n"
+            "If you want your workouts on the same days and the same times as last week   ***press 1***\n"
+            "If you would like to change your workout schedule                            ***press 2***\n"
+            "To exit program immediately :                                                ***press 3***\n"
+            "____________________________________________________________________________________\n");
 
-    return answer;
+        int has_answer_2=0; //used for while loop to define when 2 break.
+
+        while(has_answer_2==0) {
+            scanf("%d", &answer);
+            has_answer++;
+            switch (answer) {
+                case 1:
+                    printf("Registered 1, you chose the same days.");
+                break;
+                case 2:
+                    printf("Registered 2, proceeding to reevaluate training days:");
+                    update_available_training_days();
+                break;
+                default:;
+                printf("invalid input\n");
+                has_answer_2--;
+                //Continues while loop if answer defaults.
+            }
+        }
+        return answer;
 }

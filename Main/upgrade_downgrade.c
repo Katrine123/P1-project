@@ -78,7 +78,7 @@ void upgrade_downgrade(int *input) {
                         } else {
                             printf("Type either (u/d/s), please try again. ");
                         }
-                } while (second_answer != 'u' && second_answer != 'd' && second_answer != 's');
+                } while (second_answer != 'u' || second_answer != 'd' || second_answer == 's');
             }
         } else if (first_answer == 'n') {
             // do nothing

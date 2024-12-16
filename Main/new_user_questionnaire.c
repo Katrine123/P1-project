@@ -136,7 +136,6 @@ void update_available_training_days() {
 
         _questionnaire.available_training_days[i].max_duration = input;
     }
-
 }
 void update_available_equipment() {
 

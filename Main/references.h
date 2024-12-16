@@ -143,6 +143,8 @@ void update_questionnaire();
 
 void update_possible_exercises();
 
+void all_possible_exercises();
+
 #pragma endregion
 #pragma region workouts.c
 
@@ -163,8 +165,9 @@ void print_routine();
 
 int evaluation_questionnaire(int *input);
 
+void update_available_training_days();
+
 #pragma endregion
 
 
 
-void all_possible_exercises();
