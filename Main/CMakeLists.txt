@@ -23,6 +23,12 @@ add_library(
 add_library(
         print_routine
         print_routine)
+add_library(
+        evaluation_questionnaire
+        evaluation_questionnaire)
+add_library(
+        upgrade_downgrade
+        upgrade_downgrade)
 
 
 target_link_libraries(main
@@ -31,4 +37,6 @@ target_link_libraries(main
         new_user_questionnaire
         exercises
         workouts
+        evaluation_questionnaire
+        upgrade_downgrade
         print_routine)

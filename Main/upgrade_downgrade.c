@@ -1,58 +1,88 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "references.h"
 
-#include "tools.h"
-
-
-void upgrade_downgrade(exercise *exercise_list_sorted, questionnaire user, int sorted_count) {
-    int input[length_of_exercises_list];
-    for (int i = 0; i < sorted_count; i++) {
-        input[i] = 0;
-    }
-    char answer;
-    printf("Did you complete all assigned exercises? (y/n)");
-    scanf(" %c", &answer);
-
-    if (answer == 'y') {
-        for (int i = 0; i < sorted_count; i++) {
-            input[i] = 1;
-            //  Call upgrade function
-        }
-        upgrade_function(exercise_list_sorted,user,sorted_count,input);
-
-    } else if (answer == 'n') {
-        printf("Which exercises did you complete?\n");
-        // print all the exercises available to the user
-        for (int i = 0; i < sorted_count; i++) {
-            //  Exercises are listed as 0-6, if they were listed from 1-7 it would provide issues..
-            printf("Exercise %d: %s\n", i, exercise_list_sorted[i].name);
-        }
-        int i = 0;
-        int input_temp;
-        do{
-            //TAGER IKKE HØJDE FOR -1 ELLER MIN MAX
-
-            scanf("%d", &input_temp);
-            if(input_temp!=-1) {
-                //  input_temp - 1
-                input[input_temp] = 1;
-                i++;
-            }
-        } while(i < sorted_count && input_temp != -1);
-        upgrade_function(exercise_list_sorted,user,sorted_count,input);
+void check_if_body_weight_exercise_and_print(int i) {
+    if(possible_exercises[i].is_body_weight_exercise == 1) {
+        printf("Your current amount of repetitions are: %d repetitions \n", possible_exercises[i].reps);
+    } else {
+        printf("Your current weight is: %lf kg \n", possible_exercises[i].base_weight);
     }
 }
 
-void upgrade_function(exercise *exercise_list_sorted, questionnaire user, int sorted_count, int input[]) {
-    for (int i = 0; i < sorted_count; i++) {
-        if (input[i] == 1) {
-            //  What if the user weight is equal to bench press weight?
-                //  This has to be for body_weight_exercises
-            if(exercise_list_sorted[i].is_body_weight_exercise == 1) {
-                exercise_list_sorted[i].amount_of_reps += exercise_list_sorted[i].addition;
-            } else {
-                exercise_list_sorted[i].base_weight += exercise_list_sorted[i].addition;
-            }
+void upgrade_function(int input) {
+    if(possible_exercises[input].is_body_weight_exercise == 1) {
+        possible_exercises[input].reps += possible_exercises[input].addition;
+    } else {
+        possible_exercises[input].base_weight += possible_exercises[input].addition;
+    }
+
+
+}
+
+void downgrade_function(int input) {
+    if (possible_exercises[input].is_body_weight_exercise == 1) {
+        // Ensure reps cannot go below 0
+        if (possible_exercises[input].reps > possible_exercises[input].addition) {
+            possible_exercises[input].reps -= possible_exercises[input].addition;
+        } else {
+            possible_exercises[input].reps = 0;
+            printf("Repetitions cannot be reduced further!\n");
+        }
+    } else {
+        // Ensure weight cannot go below 0
+        if (possible_exercises[input].base_weight > possible_exercises[input].addition) {
+            possible_exercises[input].base_weight -= possible_exercises[input].addition;
+        } else {
+            possible_exercises[input].base_weight = 0;
+            printf("Weight cannot be reduced further!\n");
         }
     }
 }
+
+void upgrade_downgrade(int *input) {
+    char first_answer;
+    do{
+        //  first question
+        printf("Would you like to change the difficulty of your exercises? (y/n)");
+        scanf(" %c", &first_answer);
+        if(first_answer == 'y') {
+            //  Creating for loop, since we have to evaluate each exercise one-by-one.
+            for(int i = 0; i < possible_exercises_count; i++) {
+                *input = i;
+                printf("\nExercise %d: %s \n", i + 1, naming_exercises(possible_exercises[i].name));
+
+                //  Printing exercise. Checking if it increments repetitions or weight
+                check_if_body_weight_exercise_and_print(i);
+
+                //  Asking second question
+                char second_answer;
+                do {
+                    printf("Would you like to upgrade, downgrade or stay? (u/d/s) \n");
+                    scanf(" %c", &second_answer);
+                    //  Checking answer
+                        if(second_answer == 'u') {
+                            upgrade_function(*input);
+                            //  printing the altered exercise:
+                            check_if_body_weight_exercise_and_print(i);
+
+                        } else if(second_answer == 'd') {
+                            downgrade_function(*input);
+                            //  printing the altered exercise:
+                            check_if_body_weight_exercise_and_print(i);
+
+                        } else if(second_answer == 's') {
+                            //  printing the unaltered exercise:
+                            check_if_body_weight_exercise_and_print(i);
+                            break;
+                            // do nothing
+                        } else {
+                            printf("Type either (u/d/s), please try again. ");
+                        }
+                } while (second_answer != 'u' && second_answer != 'd' && second_answer != 's');
+            }
+        } else if (first_answer == 'n') {
+            // do nothing
+        }
+    } while (first_answer != 'y' && first_answer != 'n');
+}
+

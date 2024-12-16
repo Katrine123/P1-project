@@ -37,7 +37,8 @@ int main(void) {
     update_and_print_routine();
 
     // Evaluation questionnaire (recursion)
-    // TODO: Implement this.
+    int input[possible_exercises_count];
+    evaluation_questionnaire(input);
 
     return 0;
 }

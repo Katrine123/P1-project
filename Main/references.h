@@ -16,6 +16,9 @@ typedef enum {
 enum fitness_level {
     novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1
 };
+
+enum training_goal_e { MUSCULAR_ENDURANCE = 1, HYPERTROPHY = 2, STRENGTH = 3, I_DONT_KNOW = 4 };
+
 enum equipment {
     barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
 };
@@ -49,6 +52,7 @@ typedef struct {
     training_day available_training_days[7]; int available_training_days_count;
     enum equipment available_equipment[ARRAY_MAX]; int available_equipment_count;
     muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
+    double training_goal;
 } questionnaire;
 
 typedef struct muscle_group {
@@ -93,6 +97,10 @@ extern int possible_resistance_exercises_count;
 // TODO: Only implemented in exercises.c.
 extern exercise possible_aerobic_exercises[ARRAY_MAX];
 extern int possible_aerobic_exercises_count;
+//  Appending all exercises into one array
+extern exercise possible_exercises[ARRAY_MAX*2];
+extern int possible_exercises_count;
+
 extern workout routine_workouts[7];
 extern int routine_workouts_count;
 
@@ -140,6 +148,11 @@ void update_possible_exercises();
 void update_routine_workouts();
 
 #pragma endregion
+#pragma region upgrade_downgrade.c
+
+void upgrade_downgrade(int *input);
+
+#pragma endregion
 #pragma region print_routine.c
 
 void print_routine();
@@ -147,9 +160,10 @@ void print_routine();
 #pragma endregion
 #pragma region evaluation_questionnaire.c
 
-int evaluation_questionnaire();
+int evaluation_questionnaire(int *input);
 
 #pragma endregion
 
 
 
+void all_possible_exercises();
