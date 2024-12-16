@@ -28,7 +28,7 @@ int routine_workouts_count = 0; // Max 7 workouts per week (1 per day).
 // Workout rules
 const int general_warmup_duration = 5; // In minutes.
 const int max_daily_sets = 6; // For resistance training.
-const int max_daily_aerobic_exercises = 3; // 3 brings a good amount of variety without becoming overly complex.
+const int max_daily_aerobic_exercises = 4; // 4 brings a good amount of variety without becoming overly complex.
 const double rest_between_sets_resistance = 1.5; // In minutes. Equivalent to 90 seconds.
 double aerobic_rest_multiplier; // For example, a multiplier of 2, means a work-to-rest ratio of 1:2.
 int max_weekly_sets; // For resistance training.
