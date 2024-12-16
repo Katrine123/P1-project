@@ -209,6 +209,26 @@ void update_questionnaire() {
      printf("\nWelcome to your personalized fitness trainer, "
             "please answer this questionnaire to create your own personal workout routine.");
 
+    // Asks the user's age (our program does not work with children)
+    int age;
+    printf("\nWhat is your age?");
+    homemade_scan(integer, &age);
+    if (age < 18) {
+        printf("\nSorry, our program is designed for adults. You are too young.");
+        exit(EXIT_FAILURE);
+    } else if (age > 100) {
+        printf("\nSorry, but our program is not designed for people who are more than 100 years old.");
+        exit(EXIT_FAILURE);
+    }
+
+    while(_questionnaire.weight < 20 || _questionnaire.weight > 300) {
+        printf("\nWhat is your weight in kg?");
+        homemade_scan(long_float, &_questionnaire.weight);
+        if(_questionnaire.weight < 20 || _questionnaire.weight > 300) {
+            printf("\nInvalid weight. Try again.");
+        }
+    }
+
     // Asks what user's weight is, and loops through the input to make sure the weight is in a reasonable range (20-300 kg).
     while(_questionnaire.weight < 20 || _questionnaire.weight > 300) {
         printf("\nWhat is your weight in kg?");
