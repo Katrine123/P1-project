@@ -26,9 +26,9 @@ add_library(
 
 
 target_link_libraries(main
-        references
-        tools
         new_user_questionnaire
         exercises
         workouts
-        print_routine)
+        print_routine
+        tools
+        references)
