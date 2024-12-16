@@ -244,6 +244,7 @@ void try_to_find_resistance_exercise_candidate(int *found_valid_candidate, exerc
     // Get a random start index of the valid resistance exercises
     srand(time(NULL));
     int exercises_count = possible_resistance_exercises_count;
+    if (possible_resistance_exercises_count == 0) return;
     int start_index = rand() % exercises_count;
 
     // Foreach valid resistance exercise
@@ -311,6 +312,8 @@ void try_to_find_resistance_exercise_candidate(int *found_valid_candidate, exerc
 }
 void try_to_find_aerobic_exercise_candidate(int *found_valid_candidate, exercise* candidate, workout _workout) {
 
+
+
     // Declare variables
     *found_valid_candidate = 0;
     exercise last_valid_exercise;
@@ -318,6 +321,7 @@ void try_to_find_aerobic_exercise_candidate(int *found_valid_candidate, exercise
     // Get a random start index of the valid aerobic exercises
     srand(time(NULL));
     int exercises_count = possible_aerobic_exercises_count;
+    if (exercises_count == 0) return;
     int start_index = rand() % exercises_count;
 
     // Foreach valid resistance exercise
@@ -547,7 +551,6 @@ void add_resistance_exercises() {
             add_set_to_exercise(new_exercise_in_workout, _workout);
         }
     }
-
 }
 void add_aerobic_exercises() {
 
