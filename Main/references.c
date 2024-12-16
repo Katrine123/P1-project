@@ -18,6 +18,10 @@ int possible_resistance_exercises_count;
 // TODO: Only implemented in exercises.c.
 exercise possible_aerobic_exercises[ARRAY_MAX];
 int possible_aerobic_exercises_count;
+
+exercise possible_aerobic_exercises[ARRAY_MAX];
+int possible_aerobic_exercises_count;
+
 workout routine_workouts[7];
 int routine_workouts_count = 0; // Max 7 workouts per week (1 per day).
 
@@ -40,6 +44,8 @@ void update_and_print_routine() {
     // Create list of exercises
     update_possible_exercises();
     printf("test 2\n");
+
+    all_possible_exercises();
 
     // Create routine workouts
     update_routine_workouts();
