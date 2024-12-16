@@ -210,6 +210,13 @@ char* double_to_str(double d) {
 double str_to_double(char* str) {
     return atof(str);
 }
+void initialized_save_file() {
+    FILE *f = fopen("user_upgrades", "r");
+    for (int i = 0; i <= length_of_exercise_enum; i++) {
+        fprintf(f, "0 ,");
+    }
+    fclose(f);
+}
 
 void load_upgr_dogr(int* data) {
     FILE *f = fopen("user_upgrades", "r");
@@ -230,17 +237,15 @@ void upgr_dogr(int exercisecount, int upgrade_count) {
     load_upgr_dogr(temp_save);
     temp_save[exercisecount] = temp_save[exercisecount] + upgrade_count;
     save_upgr_dogr(temp_save);
-
-
 }
 
 
 void save_upgr_dogr(int data[length_of_exercise_enum]) {
-    FILE *file = fopen("user_upgrades", "w");
+    FILE *f = fopen("user_upgrades", "w");
     for (int i = 0; i <= length_of_exercise_enum; i++) {
-        fprintf(file, "%d ,", data[i]);
+        fprintf(f, "%d ,", data[i]);
     }
-    fclose(file);
+    fclose(f);
 }
 //int str_to_seq_int(int n, char str[n]) {
 //    int arr[6];

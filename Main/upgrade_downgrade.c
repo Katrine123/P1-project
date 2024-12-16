@@ -1,5 +1,23 @@
 #include <stdio.h>
 #include "references.h"
+void upgrade_function(int i);
+void downgrade_function(int i);
+
+void load_saved_upgrades() {
+    int saved_data[possible_exercises_count];
+    load_upgr_dogr(saved_data);
+    for (int i = 0; i < possible_exercises_count; i++) {
+        if (0<saved_data) {
+            for (int j = 0; j < saved_data[i]; j++) {
+                upgrade_function(i);
+            }
+        } else {
+            for (int j = 0; j > saved_data[i] ; j--) {
+                downgrade_function(i);
+            }
+        }
+    }
+}
 
 void check_if_body_weight_exercise_and_print(int i) {
     if(possible_exercises[i].is_body_weight_exercise == 1) {
@@ -9,37 +27,36 @@ void check_if_body_weight_exercise_and_print(int i) {
     }
 }
 
-void upgrade_function(int input) {
-    if(possible_exercises[input].is_body_weight_exercise == 1) {
-        possible_exercises[input].reps += possible_exercises[input].addition;
+void upgrade_function(int i) {
+    if(possible_exercises[i].is_body_weight_exercise == 1) {
+        possible_exercises[i].reps += possible_exercises[i].addition;
     } else {
-        possible_exercises[input].base_weight += possible_exercises[input].addition;
+        possible_exercises[i].base_weight += possible_exercises[i].addition;
     }
-
-
+    upgr_dogr(i, 1);
 }
 
-void downgrade_function(int input) {
-    if (possible_exercises[input].is_body_weight_exercise == 1) {
+void downgrade_function(int i) {
+    if (possible_exercises[i].is_body_weight_exercise == 1) {
         // Ensure reps cannot go below 0
-        if (possible_exercises[input].reps > possible_exercises[input].addition) {
-            possible_exercises[input].reps -= possible_exercises[input].addition;
+        if (possible_exercises[i].reps > possible_exercises[i].addition) {
+            possible_exercises[i].reps -= possible_exercises[i].addition;
         } else {
-            possible_exercises[input].reps = 0;
+            possible_exercises[i].reps = 0;
             printf("Repetitions cannot be reduced further!\n");
         }
     } else {
         // Ensure weight cannot go below 0
-        if (possible_exercises[input].base_weight > possible_exercises[input].addition) {
-            possible_exercises[input].base_weight -= possible_exercises[input].addition;
+        if (possible_exercises[i].base_weight > possible_exercises[i].addition) {
+            possible_exercises[i].base_weight -= possible_exercises[i].addition;
         } else {
-            possible_exercises[input].base_weight = 0;
+            possible_exercises[i].base_weight = 0;
             printf("Weight cannot be reduced further!\n");
         }
     }
 }
 
-void upgrade_downgrade(int *input) {
+void upgrade_downgrade() {
     char first_answer;
     do{
         //  first question
@@ -48,7 +65,6 @@ void upgrade_downgrade(int *input) {
         if(first_answer == 'y') {
             //  Creating for loop, since we have to evaluate each exercise one-by-one.
             for(int i = 0; i < possible_exercises_count; i++) {
-                *input = i;
                 printf("\nExercise %d: %s \n", i + 1, naming_exercises(possible_exercises[i].name));
 
                 //  Printing exercise. Checking if it increments repetitions or weight
@@ -61,12 +77,12 @@ void upgrade_downgrade(int *input) {
                     scanf(" %c", &second_answer);
                     //  Checking answer
                         if(second_answer == 'u') {
-                            upgrade_function(*input);
+                            upgrade_function(i);
                             //  printing the altered exercise:
                             check_if_body_weight_exercise_and_print(i);
                             possible_exercises[i].counter_upgrade_downgrade++;
                         } else if(second_answer == 'd') {
-                            downgrade_function(*input);
+                            downgrade_function(i);
                             //  printing the altered exercise:
                             check_if_body_weight_exercise_and_print(i);
                             possible_exercises[i].counter_upgrade_downgrade--;
