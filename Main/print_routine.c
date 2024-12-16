@@ -1,69 +1,92 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-#include "tools.h"
-
-#define EXERCISES_ARRAY_MAX 32
-
-/*Warmup er altid general warmup - Er i starten af hver warmup
- * Til excercises - Reps, sets og vægt, og navn
- */
-
-
-
-
-typedef struct {
-    exercise exercises[EXERCISES_ARRAY_MAX]; //struct array of exercises for 1 day
-    int exercises_count; //How many exercises in a day
-    double duration; // In minutes.
-    double max_duration; // In minutes.
-    enum day_of_the_week day; //What day is it.
-} workout;
-
-void creating_test(workout* test_example);
+#include "references.h"
 
 void print_routine() {
-    workout test_example1,test_example2,test_example3;
-    creating_test(&test_example1);
-    creating_test(&test_example2);
-    creating_test(&test_example3);
-    workout arr[3];
-    arr[0] = test_example1;
-    arr[1] = test_example2;
-    arr[2] = test_example3;
 
-    //ACTUAL PRINTING STARTS HERE
-    printf("____________________________________________________________\n");
-    printf("______________________________\n");
-    for(int i = 0; i<3;i++) {
-        printf("Day %d: %s\n",i+1,naming_days(arr[i].day));
-        printf("Workout duration: %.1lf minutes\n",arr[i].duration);
-        printf("Workout max duration: %.1lf minutes\n",arr[i].max_duration);
-        for(int j = 0; j<arr[j].exercises_count;j++) {
-            printf("    Exercise %d: %s\n",j+1,arr[i].exercises[j].name);
-            printf("    Weight: 34\n");//"%lf\n",j+1,arr[i].exercises[j].base_weight);
-            printf("    Reps: 5\n");//"%lf\n\n",j+1,arr[i].exercises[j].amount_of_reps);
+    printf("\n\n\n\n================================");
+    printf("\nYOUR FITNESS ROUTINE:");
+    printf("\n================================");
 
-            //Tilføj reps og vægt
-            //Print instructions
-        }
-        printf("______________________________\n");
+    // Information about user
+    printf("\n\nInformation about you which has been used, but might change as you progress:");
+    printf("\n    Weight:           %.2lf kg", _questionnaire.weight);
+    printf("\n    Fitness level:    %s", naming_fitness_level(_questionnaire._fitness_level));
+
+    // Foreach available equipment
+    printf("\n\nEquipment available to you:");
+    for (int i = 0; i < _questionnaire.available_equipment_count; i++) {
+        printf("\n    [%d] %s", i, naming_equipment(_questionnaire.available_equipment[i]));
     }
-    printf("____________________________________________________________\n");
+    if (_questionnaire.available_equipment_count == 0) {
+        printf("\n    No equipment available");
+    }
 
+    // Foreach ignored muscle group
+    printf("\n\nMuscle groups you have chosen to ignore:");
+    for (int i = 0; i < _questionnaire.ignored_muscle_group_names_count; i++) {
+        printf("\n    [%d] %s", i, naming_muscle_group(_questionnaire.ignored_muscle_group_names[i]));
+    }
+    if (_questionnaire.ignored_muscle_group_names_count == 0) {
+        printf("\n    No muscle groups ignored");
+    }
 
-}
+    // Established workout rules
+    printf("\n\nWorkout rules based on your fitness level:");
+    printf("\n    Assumed max daily resistance training sets per muscle group:      %d set(s)", max_daily_sets);
+    printf("\n    Assumed max weekly resistance training sets per muscle group:     %d set(s)", max_weekly_sets);
+    printf("\n    Assumed max weekly aerobic (HIIT) workouts:                       %d workout(s)", max_weekly_aerobic_workouts);
+    printf("\n    Assumed rest between sets for resistance exercises:               %.2lf minute(s)", rest_between_sets_resistance);
+    printf("\n    Assumed aerobic (HIIT) rest-to-work ratio:                        %.2lf:1", aerobic_rest_multiplier);
+    printf("\n    Assumed recovery time of resistance training days:                %d day(s)", resistance_recovery);
+    printf("\n    Assumed recovery time of aerobic (HIIT) training days:            %d day(s)", 1);
 
-void creating_test(workout* test_example) {
-    //Indsætter exercises for at teste:
-    exercise bench_press = {"Bench press", {0, 1, 1, 0, 0}, 2.5, 34, 12};
-    exercise weighted_squats = {"Weighted squats", {0, 1, 0, 0, 0}, 2.5, 56, 12};
-    //////////////////////
-    test_example->day = monday;
-    test_example->duration =23;
-    test_example->max_duration = 30;
-    test_example->exercises[0] = bench_press;
-    test_example->exercises[1] = weighted_squats;
-    test_example->exercises_count = 2;
+    // Foreach workout day
+    for (int i = 0; i < routine_workouts_count; i++) {
+
+        printf("\n\nDay: %s", naming_days(routine_workouts[i].day));
+        printf("\n--------------------------");
+        printf("\nAvailable time):                  %.2lf minute(s)", _questionnaire.available_training_days[i].max_duration);
+
+        // Edge case where the trainee has not even got time to do the full general warmup.
+        // NOTE: Warm-ups are always added to a workout, even if that day's available time
+        // is less than the duration of the workout. For example, on a day with 3 minutes of available
+        // workout time, the workout duration will still be 5 minutes if the general_warmup_duration is 5 minutes.
+        double new_workout_duration = routine_workouts[i].duration;
+        double new_general_warmup_duration = general_warmup_duration;
+        if (_questionnaire.available_training_days[i].max_duration < general_warmup_duration) {
+            new_workout_duration = _questionnaire.available_training_days[i].max_duration;
+            new_general_warmup_duration = _questionnaire.available_training_days[i].max_duration;
+        } else if (_questionnaire.available_training_days[i].max_duration < 1) {
+            printf("\nYou do not have time to train.");
+            break;
+        }
+
+        printf("\nEstimated workout duration:       %.2lf minute(s)", new_workout_duration);
+        printf("\n--------------------------");
+        printf("\n[0] %.2lf minute(s) general warmup", new_general_warmup_duration);
+
+        // Foreach exercise in the workout
+        for (int j = 0; j < routine_workouts[i].exercises_count; j++) {
+
+            exercise _exercise = routine_workouts[i].exercises[j];
+
+            printf("\n[%d] %s: %d set(s) of %d rep(s)",
+                j+1, //+1 to make room for the general warmup
+                naming_exercises(_exercise.name),
+                _exercise.sets,
+                _exercise.reps);
+
+            if (!_exercise.is_body_weight_exercise) {
+                printf(", %.2lf kg", _exercise.base_weight);
+            }
+
+            if (!_exercise.is_aerobic) {
+                printf(" (remember to do an exercise-specific warm-up)");
+            }
+
+            printf(".");
+        }
+    }
 }
 

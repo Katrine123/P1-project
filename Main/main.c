@@ -1,20 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-
-#include "tools.h"
-#include "routine.h"
-#include "savesystem.h"
-
-
+#include "references.c"
 
 int main(void) {
-    questionnaire user = load_data();
-    user.streak = 0;
-    streak_check(&user,stdin);
-    printf("\n---%d---",user.streak);
-    /*//OUTLINE FOR PROGRAM:
-    questionnaire user_data;
+
     system("cls");
     //Checks if there is any saved data
     if (check_for_save()==0) {
