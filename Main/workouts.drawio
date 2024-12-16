@@ -168,7 +168,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="QCsqb4m3BK63cD3EIy75" name="Find days">
-    <mxGraphModel dx="893" dy="-3471" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="2231" dy="-2677" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -250,46 +250,26 @@
         <mxCell id="NGTznpkS2c_7DvGbR4LD-21" value="FOR EACH&lt;div&gt;resistance training day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="1346" y="4633" width="226.75" height="52.5" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-25" target="NGTznpkS2c_7DvGbR4LD-39" edge="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-25" target="NGTznpkS2c_7DvGbR4LD-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-25" value="Find aerobic training days" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;shape=parallelogram;fixedSize=1;size=17.5;strokeWidth=1;spacingBottom=0;spacingLeft=15;spacingRight=15;perimeter=parallelogramPerimeter;" parent="1" vertex="1">
-          <mxGeometry x="382" y="4537" width="140" height="70" as="geometry" />
+          <mxGeometry x="188" y="4646.55" width="140" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="NGTznpkS2c_7DvGbR4LD-55" target="NGTznpkS2c_7DvGbR4LD-33" edge="1">
+        <mxCell id="0YPtE-3albvdVMipt6aX-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-31" target="NGTznpkS2c_7DvGbR4LD-34">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-29" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-28" vertex="1" connectable="0">
-          <mxGeometry x="-0.111" y="-1" relative="1" as="geometry">
-            <mxPoint y="1" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-31" target="NGTznpkS2c_7DvGbR4LD-39" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="400" y="4796" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-31" value="Weekly aerobic workout max reached?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="412.65" y="4766.44" width="183.35" height="59.81" as="geometry" />
+          <mxGeometry x="421.00999999999993" y="4760.92" width="183.35" height="59.81" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-33" target="NGTznpkS2c_7DvGbR4LD-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-33" value="Add day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="457.34" y="4966.25" width="96" height="42.5" as="geometry" />
+          <mxGeometry x="464.68" y="4864.76" width="96" height="42.5" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-34" value="Return" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="670.0100000000001" y="4537" width="80" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="NGTznpkS2c_7DvGbR4LD-39" target="NGTznpkS2c_7DvGbR4LD-51" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-36" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-35" vertex="1" connectable="0">
-          <mxGeometry x="-0.7233" relative="1" as="geometry">
-            <mxPoint x="18" as="offset" />
-          </mxGeometry>
+          <mxGeometry x="586.0000000000001" y="4922" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-39" target="NGTznpkS2c_7DvGbR4LD-31" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -301,8 +281,16 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-39" value="FOR EACH&lt;div&gt;workout day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
-          <mxGeometry x="348.25" y="4646.25" width="206.75" height="70" as="geometry" />
+        <mxCell id="0YPtE-3albvdVMipt6aX-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-39" target="NGTznpkS2c_7DvGbR4LD-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0YPtE-3albvdVMipt6aX-22" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;fillColor=default;gradientColor=none;" vertex="1" connectable="0" parent="0YPtE-3albvdVMipt6aX-16">
+          <mxGeometry x="-0.7782" y="-3" relative="1" as="geometry">
+            <mxPoint x="8" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-39" value="FOR EACH&lt;div&gt;non-resistance training day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="348.25" y="4646.25" width="219.75" height="70" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-44" target="NGTznpkS2c_7DvGbR4LD-46" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -312,34 +300,21 @@
             <mxPoint x="2" y="8" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0RVS4V61ZdH40i1mgPBV-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="NGTznpkS2c_7DvGbR4LD-44" target="NGTznpkS2c_7DvGbR4LD-51" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="658" y="4872" />
-              <mxPoint x="658" y="4780" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="0YPtE-3albvdVMipt6aX-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-44" target="NGTznpkS2c_7DvGbR4LD-34">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-44" value="Weekly aerobic workout max reached?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="669.22" y="4765" width="184.78" height="56.59" as="geometry" />
+          <mxGeometry x="651" y="4762.530000000001" width="184.78" height="56.59" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-46" target="NGTznpkS2c_7DvGbR4LD-51" edge="1">
+        <mxCell id="0YPtE-3albvdVMipt6aX-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-46" target="NGTznpkS2c_7DvGbR4LD-51">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-46" value="Add day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="713.6100000000009" y="4867.07" width="96" height="42.5" as="geometry" />
+          <mxGeometry x="695.3900000000009" y="4864.6" width="96" height="42.5" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-51" target="NGTznpkS2c_7DvGbR4LD-34" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-48" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-47" vertex="1" connectable="0">
-          <mxGeometry x="-0.5223" y="3" relative="1" as="geometry">
-            <mxPoint x="5" y="-5" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-51" target="NGTznpkS2c_7DvGbR4LD-44" edge="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-51" target="NGTznpkS2c_7DvGbR4LD-44" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="762.7049999999999" y="4766.4400000000005" as="targetPoint" />
+            <mxPoint x="708.7049999999999" y="4764.990000000001" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-50" value="START" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-49" vertex="1" connectable="0">
@@ -347,29 +322,27 @@
             <mxPoint x="1" y="7" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-51" value="FOR EACH&lt;div&gt;workout day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
-          <mxGeometry x="606.6300000000001" y="4649.16" width="206.75" height="67.09" as="geometry" />
+        <mxCell id="0YPtE-3albvdVMipt6aX-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="NGTznpkS2c_7DvGbR4LD-51" target="NGTznpkS2c_7DvGbR4LD-34">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="NGTznpkS2c_7DvGbR4LD-31" target="NGTznpkS2c_7DvGbR4LD-55" edge="1">
+        <mxCell id="0YPtE-3albvdVMipt6aX-21" value="END" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;fillColor=default;gradientColor=none;" vertex="1" connectable="0" parent="0YPtE-3albvdVMipt6aX-17">
+          <mxGeometry x="-0.778" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-51" value="FOR EACH&lt;div&gt;resistance training day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="691.3900000000001" y="4646.55" width="206.75" height="67.09" as="geometry" />
+        </mxCell>
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="NGTznpkS2c_7DvGbR4LD-31" target="NGTznpkS2c_7DvGbR4LD-33" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="504.6300000000001" y="4902.41" as="sourcePoint" />
-            <mxPoint x="504.6300000000001" y="4996.41" as="targetPoint" />
+            <mxPoint x="506.6199999999999" y="4870" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-53" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="NGTznpkS2c_7DvGbR4LD-52" vertex="1" connectable="0">
           <mxGeometry x="-0.6094" y="-3" relative="1" as="geometry">
             <mxPoint x="4" y="9" as="offset" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-55" target="NGTznpkS2c_7DvGbR4LD-39" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="400" y="4897" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-55" value="Is also a resistance training day?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=14;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="414.24" y="4870" width="184.76" height="53.53" as="geometry" />
         </mxCell>
         <mxCell id="0RVS4V61ZdH40i1mgPBV-6" value="&lt;div&gt;First, we try to insert aerobic days on&amp;nbsp;&lt;/div&gt;&lt;div&gt;days that are not also resistance days.&lt;/div&gt;&lt;div&gt;This is to help spread out activity&lt;/div&gt;&lt;div&gt;throughout the week.&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
           <mxGeometry x="234" y="4389.23" width="307.19" height="110" as="geometry" />
@@ -381,12 +354,12 @@
     </mxGraphModel>
   </diagram>
   <diagram id="WstX8PQ2UtdNDrGTnmhC" name="Resistance exercises">
-    <mxGraphModel dx="1562" dy="926" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="1250" dy="741" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="xim7N5nV-5fypsWGBwo1-1" value="Add resistance exercises" style="whiteSpace=wrap;html=1;shape=parallelogram;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontFamily=lexend light;fontSize=14;fixedSize=1;perimeter=parallelogramPerimeter;" parent="1" vertex="1">
-          <mxGeometry x="114.37999999999988" y="325.8600000000001" width="150" height="80" as="geometry" />
+          <mxGeometry x="149.9999999999999" y="326.17000000000013" width="150" height="80" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-5" target="xim7N5nV-5fypsWGBwo1-8" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -414,25 +387,24 @@
           <mxGeometry x="456.99999999999966" y="541.6700000000001" width="233" height="70" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-8" value="Find a&amp;nbsp;&lt;b&gt;resistance &lt;/b&gt;exercise candidates" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shape=parallelogram;fixedSize=1;size=18.050000000000182;perimeter=parallelogramPerimeter;" parent="1" vertex="1">
-          <mxGeometry x="545.3599999999991" y="665.0000000000015" width="173.97" height="62.5" as="geometry" />
+          <mxGeometry x="545.3599999999991" y="651.0000000000015" width="173.97" height="62.5" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-14" target="xim7N5nV-5fypsWGBwo1-20" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1366" y="373" />
+              <mxPoint x="1366" y="382" />
+              <mxPoint x="1365" y="382" />
             </Array>
             <mxPoint x="1365.25" y="435.8800000000001" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-12" value="START" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="xim7N5nV-5fypsWGBwo1-11" vertex="1" connectable="0">
           <mxGeometry x="-0.3372" relative="1" as="geometry">
-            <mxPoint y="16" as="offset" />
+            <mxPoint y="10" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-53" target="xim7N5nV-5fypsWGBwo1-23" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-14" value="FOR EACH&lt;div&gt;valid&amp;nbsp;&lt;b&gt;resistance &lt;/b&gt;exercise&lt;/div&gt;&lt;div&gt;(start at a random index)&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
+        <mxCell id="xim7N5nV-5fypsWGBwo1-14" value="FOR EACH&lt;div&gt;valid&amp;nbsp;&lt;b&gt;resistance &lt;/b&gt;exercise&lt;/div&gt;&lt;div&gt;&lt;b&gt;(start at a random index)&lt;/b&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="1183.68" y="310.1300000000001" width="229.13" height="62.5" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="xim7N5nV-5fypsWGBwo1-17" target="xim7N5nV-5fypsWGBwo1-14" edge="1">
@@ -440,53 +412,58 @@
             <mxPoint x="1278.68" y="445.8800000000001" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="xim7N5nV-5fypsWGBwo1-17" target="xim7N5nV-5fypsWGBwo1-28" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="eQgaaufL89ULKPI6Iu9r-4" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="xim7N5nV-5fypsWGBwo1-16" vertex="1" connectable="0">
-          <mxGeometry x="-0.0874" y="-2" relative="1" as="geometry">
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-21" value="TRUE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;fillColor=default;gradientColor=none;" vertex="1" connectable="0" parent="xim7N5nV-5fypsWGBwo1-15">
+          <mxGeometry x="-0.6885" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-17" value="Workout duration limit exceeded?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1288.69" y="531.6700000000005" width="153.13" height="60" as="geometry" />
+        <mxCell id="xim7N5nV-5fypsWGBwo1-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="xim7N5nV-5fypsWGBwo1-17" target="xim7N5nV-5fypsWGBwo1-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xim7N5nV-5fypsWGBwo1-17" value="Will exceed workout duration?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="1288.3400000000001" y="463.0000000000005" width="153.13" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-20" target="xim7N5nV-5fypsWGBwo1-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eQgaaufL89ULKPI6Iu9r-3" value="TRUE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="xim7N5nV-5fypsWGBwo1-18" vertex="1" connectable="0">
-          <mxGeometry x="-0.6413" y="2" relative="1" as="geometry">
-            <mxPoint x="-4" y="12" as="offset" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-20" target="xim7N5nV-5fypsWGBwo1-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-20" value="Includes desired muscle group?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1288.69" y="430.0000000000001" width="153.13" height="60" as="geometry" />
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-20" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;fillColor=default;gradientColor=none;" vertex="1" connectable="0" parent="xim7N5nV-5fypsWGBwo1-19">
+          <mxGeometry x="-0.5069" y="1" relative="1" as="geometry">
+            <mxPoint x="1" y="-1" as="offset" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-23" value="Return&lt;div&gt;nothing&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1700" y="302.6300000000001" width="80" height="80" as="geometry" />
+        <mxCell id="xim7N5nV-5fypsWGBwo1-20" value="Includes desired muscle group?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="1288.3300000000002" y="403.0000000000001" width="153.13" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xim7N5nV-5fypsWGBwo1-23" value="Return&lt;div&gt;&quot;no candidate found&quot;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="1609" y="406.43" width="125.37" height="125.37" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-25" target="xim7N5nV-5fypsWGBwo1-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-25" value="Find &lt;b&gt;resistance &lt;/b&gt;exercise candidate" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;shape=parallelogram;fixedSize=1;size=18.050000000000182;perimeter=parallelogramPerimeter;" parent="1" vertex="1">
-          <mxGeometry x="973.6800000000001" y="310.1300000000001" width="170" height="62.5" as="geometry" />
+          <mxGeometry x="1010.0000000000001" y="310.1300000000001" width="170" height="62.5" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="xim7N5nV-5fypsWGBwo1-28" target="xim7N5nV-5fypsWGBwo1-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="xim7N5nV-5fypsWGBwo1-28" target="xim7N5nV-5fypsWGBwo1-36" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="eQgaaufL89ULKPI6Iu9r-5" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="xim7N5nV-5fypsWGBwo1-27" vertex="1" connectable="0">
-          <mxGeometry x="-0.1197" y="-2" relative="1" as="geometry">
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-22" value="" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;fillColor=default;gradientColor=none;" vertex="1" connectable="0" parent="xim7N5nV-5fypsWGBwo1-26">
+          <mxGeometry x="-0.7218" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-28" value="Max &lt;b&gt;weekly sets&lt;/b&gt; exceeded?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1288.3300000000002" y="630.0000000000001" width="153.13" height="60" as="geometry" />
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-23" value="TRUE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;fillColor=default;gradientColor=none;" vertex="1" connectable="0" parent="xim7N5nV-5fypsWGBwo1-26">
+          <mxGeometry x="-0.7462" y="2" relative="1" as="geometry">
+            <mxPoint x="4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xim7N5nV-5fypsWGBwo1-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="xim7N5nV-5fypsWGBwo1-28" target="xim7N5nV-5fypsWGBwo1-36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xim7N5nV-5fypsWGBwo1-28" value="Max &lt;b&gt;weekly sets&lt;/b&gt; reached?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="1288.3400000000001" y="523.0000000000001" width="153.13" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-8" target="xim7N5nV-5fypsWGBwo1-32" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -508,23 +485,18 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-32" value="Found a candidate?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="562.3399999999998" y="753.1800000000011" width="140" height="60" as="geometry" />
+          <mxGeometry x="562.3399999999998" y="728.0000000000011" width="140" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="xim7N5nV-5fypsWGBwo1-36" target="xim7N5nV-5fypsWGBwo1-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-48" target="xim7N5nV-5fypsWGBwo1-63" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1362.819999999999" y="1153.8800000000006" as="targetPoint" />
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-25" value="TRUE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;fillColor=default;gradientColor=none;" vertex="1" connectable="0" parent="xim7N5nV-5fypsWGBwo1-33">
+          <mxGeometry x="-0.803" y="1" relative="1" as="geometry">
+            <mxPoint x="5" y="-1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-35" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#001DBC;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;fillColor=#0050ef;" parent="xim7N5nV-5fypsWGBwo1-34" vertex="1" connectable="0">
-          <mxGeometry x="-0.2184" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-36" value="Max &lt;b&gt;daily sets&lt;/b&gt; exceeded?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1288.3300000000004" y="738.1800000000005" width="153.13" height="60" as="geometry" />
+        <mxCell id="xim7N5nV-5fypsWGBwo1-36" value="Max &lt;b&gt;daily sets&lt;/b&gt; reached?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="1288.3400000000004" y="583.0000000000005" width="153.13" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-1" target="xim7N5nV-5fypsWGBwo1-41" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -544,19 +516,27 @@
           <mxGeometry x="315.2499999999998" y="330.8600000000001" width="267.45" height="70" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-42" value="Return" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="659.9999999999998" y="326.1700000000001" width="80" height="80" as="geometry" />
+          <mxGeometry x="629.9999999999998" y="325.86000000000007" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-43" value="As you can see on the flow chart, I add only one exercise per day, then cycle through all days until all muscle groups have been looked at, instead of adding all exercises for one day, then moving on to the next.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;I did this because it more evenly distributes exercises across the days.&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
-          <mxGeometry x="129.99999999999977" y="665.0000000000001" width="260" height="376.56" as="geometry" />
+          <mxGeometry x="29.999999999999773" y="1160" width="260" height="376.56" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-46" value="&lt;div&gt;Remember to start at a random index&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;when looking through muscle&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;groups.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;This ensures that there is an equal chance&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;for all muscle groups to be considered first&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;instead of just the the ones that come&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;first in the array of possible resistance&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;exercises.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
-          <mxGeometry x="39.99999999999977" y="125.86000000000013" width="390" height="170" as="geometry" />
+          <mxGeometry x="509.9999999999998" y="1260.0000000000002" width="390" height="170" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="xim7N5nV-5fypsWGBwo1-48" target="xim7N5nV-5fypsWGBwo1-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-27" value="TRUE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;fillColor=default;gradientColor=none;" vertex="1" connectable="0" parent="xim7N5nV-5fypsWGBwo1-47">
+          <mxGeometry x="-0.8626" y="1" relative="1" as="geometry">
+            <mxPoint x="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="xim7N5nV-5fypsWGBwo1-48" target="xim7N5nV-5fypsWGBwo1-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-48" value="&lt;b&gt;Routine &lt;/b&gt;already includes the candidate?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1286.2500000000002" y="1040.0000000000005" width="153.13" height="60" as="geometry" />
+          <mxGeometry x="1288.3200000000002" y="794.0000000000006" width="153.13" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-14" target="xim7N5nV-5fypsWGBwo1-53" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -574,22 +554,25 @@
             <mxPoint x="1560.2499999999998" y="425.88000000000056" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="xim7N5nV-5fypsWGBwo1-52" value="TRUE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#001DBC;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;fillColor=#0050ef;" parent="xim7N5nV-5fypsWGBwo1-51" vertex="1" connectable="0">
-          <mxGeometry x="-0.2541" relative="1" as="geometry">
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-28" value="TRUE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;fillColor=default;gradientColor=none;" vertex="1" connectable="0" parent="xim7N5nV-5fypsWGBwo1-51">
+          <mxGeometry x="-0.256" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="xim7N5nV-5fypsWGBwo1-53" target="xim7N5nV-5fypsWGBwo1-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-53" value="Has a valid exercise been stored?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1483.68" y="312.63" width="186.32" height="60" as="geometry" />
+          <mxGeometry x="1462" y="312.63" width="186.32" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-54" value="&lt;div&gt;Remember to start at a random index&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;when looking through&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;exercises.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;This ensures that there is an equal chance&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;for all exercises to be considered&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;instead of just the the ones that come&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;first in the array of possible resistance&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;exercises.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
-          <mxGeometry x="790.0000000000002" y="120" width="360.26" height="170" as="geometry" />
+          <mxGeometry x="806.0000000000002" y="84" width="360.26" height="170" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-55" value="&lt;div&gt;First, we want to try to find unique&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;resistance exercises for each workout.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
-          <mxGeometry x="1193.24" y="199.69000000000005" width="210" height="85" as="geometry" />
+          <mxGeometry x="1200" y="145.47000000000006" width="210" height="85" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-56" value="&lt;div&gt;If we cannot find any exercise unique to the routine,&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;we must settle for an already used one,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;provided that there is a valid one to be found.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
-          <mxGeometry x="1452.9800000000002" y="178.1500000000001" width="236.32" height="119.06" as="geometry" />
+          <mxGeometry x="1450.0000000000002" y="145.47000000000008" width="236.32" height="119.06" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-36" target="xim7N5nV-5fypsWGBwo1-59" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -597,16 +580,16 @@
             <mxPoint x="1365.0000000000002" y="1113.44" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="eQgaaufL89ULKPI6Iu9r-6" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="xim7N5nV-5fypsWGBwo1-57" vertex="1" connectable="0">
-          <mxGeometry x="-0.2121" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-59" target="xim7N5nV-5fypsWGBwo1-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-26" value="TRUE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;fillColor=default;gradientColor=none;" vertex="1" connectable="0" parent="xim7N5nV-5fypsWGBwo1-58">
+          <mxGeometry x="-0.8114" y="-1" relative="1" as="geometry">
+            <mxPoint x="7" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-59" value="&lt;b&gt;Workout&amp;nbsp;&lt;/b&gt;already includes the candidate?" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=15;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1288.3300000000006" y="840.0000000000011" width="153.13" height="60" as="geometry" />
+          <mxGeometry x="1288.3400000000006" y="643.0000000000011" width="153.13" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-59" target="xim7N5nV-5fypsWGBwo1-62" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -614,22 +597,17 @@
             <mxPoint x="1365.0000000000002" y="1113.44" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="eQgaaufL89ULKPI6Iu9r-7" value="FALSE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=default;spacingLeft=15;spacingRight=15;spacingBottom=0;fontFamily=lexend light;fontSize=14;fontColor=default;fillColor=default;" parent="xim7N5nV-5fypsWGBwo1-60" vertex="1" connectable="0">
-          <mxGeometry x="-0.3543" relative="1" as="geometry">
-            <mxPoint x="1" y="7" as="offset" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="xim7N5nV-5fypsWGBwo1-62" target="xim7N5nV-5fypsWGBwo1-48" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-62" value="Store as the last checked valid exercise" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1299.8" y="950" width="130.2" height="65.42" as="geometry" />
+          <mxGeometry x="1299.81" y="716" width="130.2" height="65.42" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-63" value="Return routine &lt;b&gt;unique &lt;/b&gt;candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1298.9700000000003" y="1149.9999999999998" width="127.68" height="120.03" as="geometry" />
+          <mxGeometry x="1527.0000000000002" y="537.9999999999998" width="127.68" height="120.03" as="geometry" />
         </mxCell>
         <mxCell id="xim7N5nV-5fypsWGBwo1-64" value="Return routine &lt;b&gt;non-unique&lt;/b&gt; candidate" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1510.6" y="418.07000000000005" width="132.48" height="123.6" as="geometry" />
+          <mxGeometry x="1449.9999999999998" y="408.20000000000005" width="132.48" height="123.6" as="geometry" />
         </mxCell>
         <mxCell id="7FRGocctKcV0BRKn-qUU-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=#ffffff;" parent="1" source="xim7N5nV-5fypsWGBwo1-41" target="7FRGocctKcV0BRKn-qUU-1" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -665,64 +643,52 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="p93PY3bavDS1oBo3iGEr-2" value="Update muscle group pointers for exercise" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shape=parallelogram;fixedSize=1;size=18.050000000000182;perimeter=parallelogramPerimeter;" parent="1" vertex="1">
-          <mxGeometry x="545.9999999999991" y="943.0000000000014" width="173.97" height="62.5" as="geometry" />
+          <mxGeometry x="545.3599999999991" y="910.0000000000014" width="173.97" height="62.5" as="geometry" />
         </mxCell>
         <mxCell id="p93PY3bavDS1oBo3iGEr-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="p93PY3bavDS1oBo3iGEr-3" target="xim7N5nV-5fypsWGBwo1-5" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="515" y="1061" />
+              <mxPoint x="515" y="1020" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="p93PY3bavDS1oBo3iGEr-3" value="Add a set to exercise" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;shape=parallelogram;fixedSize=1;size=18.050000000000182;perimeter=parallelogramPerimeter;" parent="1" vertex="1">
-          <mxGeometry x="545.9999999999991" y="1030.0000000000014" width="173.97" height="62.5" as="geometry" />
-        </mxCell>
-        <mxCell id="tq8UVvVGDge4iADyrJbT-1" value="struct&lt;div&gt;exercise&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="129.99999999999977" y="2313.77" width="124.5" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="tq8UVvVGDge4iADyrJbT-2" value="struct&lt;div&gt;&amp;nbsp;workout 1&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="379.4999999999998" y="2225" width="115.5" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="tq8UVvVGDge4iADyrJbT-3" value="global variable routine&lt;div&gt;(an array of muscle groups)&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="634.2100000000007" y="2313.77" width="176.04" height="103.77" as="geometry" />
+          <mxGeometry x="545.3599999999991" y="989.0000000000014" width="173.97" height="62.5" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-4" value="Muscle group 1" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="394.9999999999998" y="2295" width="84.5" height="40" as="geometry" />
+          <mxGeometry x="396.4999999999998" y="2353.77" width="84.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-5" value="Muscle group 3" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="394.9999999999998" y="2425" width="84.5" height="40" as="geometry" />
+          <mxGeometry x="396.4999999999998" y="2433.77" width="84.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-6" value="Muscle group 2" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="394.9999999999998" y="2365" width="84.5" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="tq8UVvVGDge4iADyrJbT-7" value="struct&lt;div&gt;workout 2&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="379.4999999999998" y="2518.77" width="115.5" height="40" as="geometry" />
+          <mxGeometry x="396.4999999999998" y="2393.77" width="84.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-8" value="Muscle group 2" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="394.9999999999998" y="2588.77" width="84.5" height="40" as="geometry" />
+          <mxGeometry x="396.4999999999998" y="2548.25" width="84.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-9" value="Muscle group 4" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="394.9999999999998" y="2658.77" width="84.5" height="40" as="geometry" />
+          <mxGeometry x="396.4999999999998" y="2588.25" width="84.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-10" value="Muscle group 1" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="679.9799999999993" y="2453.77" width="84.5" height="40" as="geometry" />
+          <mxGeometry x="679.2499999999993" y="2390.23" width="84.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-11" value="Muscle group 3" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="679.9799999999993" y="2583.77" width="84.5" height="40" as="geometry" />
+          <mxGeometry x="679.2499999999993" y="2470" width="84.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-12" value="Muscle group 2" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="679.9799999999993" y="2523.77" width="84.5" height="40" as="geometry" />
+          <mxGeometry x="679.2499999999993" y="2430.23" width="84.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-13" value="Muscle group 4" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="679.9799999999993" y="2648.77" width="84.5" height="40" as="geometry" />
+          <mxGeometry x="679.2499999999993" y="2510" width="84.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-14" value="Muscle group 1" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="149.99999999999977" y="2383.77" width="84.5" height="40" as="geometry" />
+          <mxGeometry x="136.99999999999977" y="2287.52" width="84.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tq8UVvVGDge4iADyrJbT-15" value="Muscle group 2" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="149.99999999999977" y="2453.77" width="84.5" height="40" as="geometry" />
+          <mxGeometry x="136.99999999999977" y="2327.52" width="84.5" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="tq8UVvVGDge4iADyrJbT-16" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="tq8UVvVGDge4iADyrJbT-8" target="tq8UVvVGDge4iADyrJbT-12" edge="1">
+        <mxCell id="tq8UVvVGDge4iADyrJbT-16" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="tq8UVvVGDge4iADyrJbT-8" target="tq8UVvVGDge4iADyrJbT-12" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="539.4999999999998" y="2598.77" as="sourcePoint" />
             <mxPoint x="589.4999999999998" y="2548.77" as="targetPoint" />
@@ -734,7 +700,7 @@
             <mxPoint x="589.4999999999998" y="2548.77" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="tq8UVvVGDge4iADyrJbT-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="tq8UVvVGDge4iADyrJbT-6" target="tq8UVvVGDge4iADyrJbT-12" edge="1">
+        <mxCell id="tq8UVvVGDge4iADyrJbT-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="tq8UVvVGDge4iADyrJbT-6" target="tq8UVvVGDge4iADyrJbT-12" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="539.4999999999998" y="2598.77" as="sourcePoint" />
             <mxPoint x="589.4999999999998" y="2548.77" as="targetPoint" />
@@ -767,14 +733,14 @@
         <mxCell id="tq8UVvVGDge4iADyrJbT-23" value="&lt;div&gt;Sketch of how muscle groups are connected.&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;Muscle groups in struct exercise have pointers to muscle groups in struct workout.&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Muscle groups in struct workout have pointers to muscle groups in the global routine variable.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
           <mxGeometry x="204.79999999999995" y="2090" width="510" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="RjMMQ90gt1GePqWnKewF-2" value="&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;Add exercise to workout&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="568" y="852" width="130.2" height="65.42" as="geometry" />
+        <mxCell id="RjMMQ90gt1GePqWnKewF-2" value="&lt;span style=&quot;&quot;&gt;Add exercise to workout&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="567.88" y="825" width="130.2" height="65.42" as="geometry" />
         </mxCell>
         <mxCell id="RjMMQ90gt1GePqWnKewF-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="RjMMQ90gt1GePqWnKewF-3" target="RjMMQ90gt1GePqWnKewF-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="RjMMQ90gt1GePqWnKewF-3" value="Update muscle group pointers for exercise" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;shape=parallelogram;fixedSize=1;size=18.050000000000182;perimeter=parallelogramPerimeter;" parent="1" vertex="1">
-          <mxGeometry x="959.9999999999991" y="2251.2700000000013" width="173.97" height="62.5" as="geometry" />
+          <mxGeometry x="984.9999999999991" y="2251.2700000000013" width="173.97" height="62.5" as="geometry" />
         </mxCell>
         <mxCell id="RjMMQ90gt1GePqWnKewF-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="RjMMQ90gt1GePqWnKewF-4" target="RjMMQ90gt1GePqWnKewF-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -845,10 +811,10 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="RjMMQ90gt1GePqWnKewF-19" value="Make the muscle group of the &lt;b&gt;workout &lt;/b&gt;point to the muscle group of the &lt;b&gt;routine&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1317.31" y="2688.77" width="248.27" height="86.23" as="geometry" />
+          <mxGeometry x="1317.31" y="2679" width="248.27" height="86.23" as="geometry" />
         </mxCell>
         <mxCell id="RjMMQ90gt1GePqWnKewF-28" value="Return" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1483.6799999999998" y="2242.52" width="80" height="80" as="geometry" />
+          <mxGeometry x="1486" y="2245.76" width="73.52" height="73.52" as="geometry" />
         </mxCell>
         <mxCell id="LBPqBFWttYFA3_RaDy9c-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="RjMMQ90gt1GePqWnKewF-32" target="LBPqBFWttYFA3_RaDy9c-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -898,14 +864,14 @@
         <mxCell id="LBPqBFWttYFA3_RaDy9c-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="LBPqBFWttYFA3_RaDy9c-5" target="LBPqBFWttYFA3_RaDy9c-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="LBPqBFWttYFA3_RaDy9c-5" value="Add set to corresponding muscle group in the &lt;b&gt;workout&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+        <mxCell id="LBPqBFWttYFA3_RaDy9c-5" value="Add a set to corresponding muscle group in the &lt;b&gt;workout&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="1143" y="2983" width="196.03" height="80" as="geometry" />
         </mxCell>
         <mxCell id="LBPqBFWttYFA3_RaDy9c-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="LBPqBFWttYFA3_RaDy9c-6" target="RjMMQ90gt1GePqWnKewF-33" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="LBPqBFWttYFA3_RaDy9c-6" value="Add set to corresponding muscle group in the &lt;b&gt;routine&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1144" y="3087" width="196.03" height="80" as="geometry" />
+        <mxCell id="LBPqBFWttYFA3_RaDy9c-6" value="Add a set to corresponding muscle group in the &lt;b&gt;routine&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="1143.68" y="3085.75" width="196.03" height="80" as="geometry" />
         </mxCell>
         <mxCell id="LBPqBFWttYFA3_RaDy9c-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="LBPqBFWttYFA3_RaDy9c-11" target="LBPqBFWttYFA3_RaDy9c-37" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -939,7 +905,7 @@
         <mxCell id="LBPqBFWttYFA3_RaDy9c-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="LBPqBFWttYFA3_RaDy9c-37" target="LBPqBFWttYFA3_RaDy9c-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="LBPqBFWttYFA3_RaDy9c-37" value="Add duration of 1 set to workout duration" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+        <mxCell id="LBPqBFWttYFA3_RaDy9c-37" value="Add the duration of 1 set to workout duration" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="521.3299999999999" y="3028" width="198" height="69" as="geometry" />
         </mxCell>
         <mxCell id="LBPqBFWttYFA3_RaDy9c-43" value="&lt;div&gt;Keeps track of &lt;b&gt;daily sets&lt;/b&gt; per muscle group&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
@@ -949,10 +915,70 @@
           <mxGeometry x="1370" y="3106.25" width="350.97" height="41.5" as="geometry" />
         </mxCell>
         <mxCell id="LBPqBFWttYFA3_RaDy9c-46" value="&lt;div&gt;Keeps track of &lt;b&gt;daily sets&lt;/b&gt; per muscle group&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
-          <mxGeometry x="346.46000000000004" y="2730" width="181.58" height="41.5" as="geometry" />
+          <mxGeometry x="311.00000000000006" y="2771.5" width="181.58" height="41.5" as="geometry" />
         </mxCell>
         <mxCell id="LBPqBFWttYFA3_RaDy9c-47" value="&lt;div&gt;Keeps track of &lt;b&gt;weekly sets&lt;/b&gt; per muscle group&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
-          <mxGeometry x="622.71" y="2720" width="197.29" height="41.5" as="geometry" />
+          <mxGeometry x="623.58" y="2730" width="197.29" height="41.5" as="geometry" />
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-2" value="Muscle group 3" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="136.99999999999977" y="2433" width="84.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-5" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="k9GZm6NZhvRL3W5SzqYL-2" target="tq8UVvVGDge4iADyrJbT-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="232" y="2418" as="sourcePoint" />
+            <mxPoint x="405" y="2395" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-7" value="Muscle group 2" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="136.99999999999977" y="2576" width="84.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-8" value="Muscle group 4" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="136.99999999999977" y="2616" width="84.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-10" value="Muscle group 2" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" vertex="1" parent="1">
+          <mxGeometry x="136.99999999999977" y="2473" width="84.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="k9GZm6NZhvRL3W5SzqYL-10" target="tq8UVvVGDge4iADyrJbT-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="232" y="2463" as="sourcePoint" />
+            <mxPoint x="405" y="2455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-12" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="k9GZm6NZhvRL3W5SzqYL-7" target="tq8UVvVGDge4iADyrJbT-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="263" y="2581.77" as="sourcePoint" />
+            <mxPoint x="436" y="2588.77" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-13" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="k9GZm6NZhvRL3W5SzqYL-8" target="tq8UVvVGDge4iADyrJbT-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="238" y="2632" as="sourcePoint" />
+            <mxPoint x="405" y="2619" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-15" value="Each workout keeps track of&lt;div&gt;&lt;b&gt;daily sets&lt;/b&gt;&amp;nbsp;per muscle group.&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="338" y="2251.27" width="205" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-16" value="An array pertaining to the&amp;nbsp;&lt;div&gt;whole routine keeps track of&lt;div&gt;&lt;div&gt;&amp;nbsp;&lt;b&gt;weekly sets&lt;/b&gt;&amp;nbsp;per muscle group.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="612.5" y="2279" width="219" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="tq8UVvVGDge4iADyrJbT-1" value="Resistance exercise 1" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+          <mxGeometry x="116.99999999999977" y="2247.52" width="124.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-1" value="Resistance exercise 2" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+          <mxGeometry x="116.99999999999977" y="2393" width="124.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="k9GZm6NZhvRL3W5SzqYL-6" value="Resistance exercise 3" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+          <mxGeometry x="116.99999999999977" y="2536" width="124.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tq8UVvVGDge4iADyrJbT-3" value="Routine" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" parent="1" vertex="1">
+          <mxGeometry x="660" y="2354" width="123" height="36.23" as="geometry" />
+        </mxCell>
+        <mxCell id="tq8UVvVGDge4iADyrJbT-7" value="Workout 2" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+          <mxGeometry x="380.9999999999998" y="2508.25" width="115.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tq8UVvVGDge4iADyrJbT-2" value="Workout 1" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+          <mxGeometry x="380.9999999999998" y="2313.77" width="115.5" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
