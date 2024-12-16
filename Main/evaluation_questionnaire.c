@@ -25,7 +25,7 @@ void evaluation_questionnaire(int *input) {
         switch (answer) {
             case 1:
                 printf("Registered 1, questionnaire will appear!");
-                update_questionnaire();
+                //update_questionnaire();
                 evaluation_questionnaire(input);
             break;
             case 2:
@@ -62,7 +62,7 @@ void evaluation_questionnaire(int *input) {
                 break;
                 case 2:
                     printf("Registered 2, proceeding to reevaluate training days:");
-                    update_available_training_days();
+                    //update_available_training_days();
                 break;
                 case 3:
                     printf("Exiting..");
