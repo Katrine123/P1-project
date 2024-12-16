@@ -64,12 +64,12 @@ void upgrade_downgrade(int *input) {
                             upgrade_function(*input);
                             //  printing the altered exercise:
                             check_if_body_weight_exercise_and_print(i);
-
+                            possible_exercises[i].counter_upgrade_downgrade++;
                         } else if(second_answer == 'd') {
                             downgrade_function(*input);
                             //  printing the altered exercise:
                             check_if_body_weight_exercise_and_print(i);
-
+                            possible_exercises[i].counter_upgrade_downgrade--;
                         } else if(second_answer == 's') {
                             //  printing the unaltered exercise:
                             check_if_body_weight_exercise_and_print(i);

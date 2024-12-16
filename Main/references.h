@@ -73,6 +73,7 @@ typedef struct {
     double rep_duration; // In minutes. How long it takes to perform 1 set of the exercise.
     int is_aerobic; // Is boolean.
     double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
+    int counter_upgrade_downgrade;
 } exercise;
 
 typedef struct {
