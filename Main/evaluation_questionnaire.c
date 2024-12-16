@@ -4,7 +4,7 @@
 #include "references.h"
 
 // returns an int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
-int evaluation_questionnaire(int *input) {
+void evaluation_questionnaire(int *input) {
     //  Creating a struct array in order to collect all exercises in one array
     printf("\n\nWelcome back!\n"
             "Your save file has been successfully loaded\n"
@@ -26,6 +26,7 @@ int evaluation_questionnaire(int *input) {
             case 1:
                 printf("Registered 1, questionnaire will appear!");
                 update_questionnaire();
+                evaluation_questionnaire(input);
             break;
             case 2:
                 printf("Registered 2, proceeding to reevaluate exercises:");
@@ -49,12 +50,13 @@ int evaluation_questionnaire(int *input) {
             "To exit program immediately :                                                ***press 3***\n"
             "____________________________________________________________________________________\n");
 
+        int second_answer=0;
         int has_answer_2=0; //used for while loop to define when 2 break.
 
         while(has_answer_2==0) {
-            scanf("%d", &answer);
-            has_answer++;
-            switch (answer) {
+            scanf("%d", &second_answer);
+            has_answer_2++;
+            switch (second_answer) {
                 case 1:
                     printf("Registered 1, you chose the same days.");
                 break;
@@ -68,5 +70,4 @@ int evaluation_questionnaire(int *input) {
                 //Continues while loop if answer defaults.
             }
         }
-        return answer;
 }

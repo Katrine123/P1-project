@@ -163,7 +163,7 @@ void print_routine();
 #pragma endregion
 #pragma region evaluation_questionnaire.c
 
-int evaluation_questionnaire(int *input);
+void evaluation_questionnaire(int *input);
 
 void update_available_training_days();
 
