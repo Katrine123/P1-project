@@ -12,6 +12,8 @@ void print_routine() {
     printf("\n\nInformation about you which has been used, but might change as you progress:");
     printf("\n    Weight:           %.2lf kg", _questionnaire.weight);
     printf("\n    Fitness level:    %s", naming_fitness_level(_questionnaire._fitness_level));
+    printf("\n    Training Goal:    %s", naming_training_goal(_questionnaire.training_goal));
+
 
     // Foreach available equipment
     printf("\n\nEquipment available to you:");

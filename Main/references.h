@@ -25,7 +25,7 @@ enum equipment {
 // TODO: Add in design that the software is proof-of-concept and that's why we do not include that many exercises.
 // TODO: Is length_of_exercises_list a good idea?
 enum exercise_name {
-    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpees, jumping_jacks
+    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpees, jumping_jacks, length_of_exercise_enum
 };
 enum day_of_the_week {
     monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
@@ -132,6 +132,7 @@ char* naming_days(enum day_of_the_week day);
 char* naming_muscle_group(muscle_group_name name);
 char* naming_exercises(enum exercise_name name);
 char* naming_fitness_level(enum fitness_level name);
+char* naming_training_goal(enum training_goal_e name);
 
 #pragma endregion
 #pragma region new_user_questionnaire.c
