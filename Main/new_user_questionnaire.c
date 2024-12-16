@@ -136,6 +136,7 @@ void update_available_training_days() {
 
         _questionnaire.available_training_days[i].max_duration = input;
     }
+
 }
 void update_available_equipment() {
 
@@ -267,26 +268,10 @@ void update_questionnaire() {
         // Validates that fitness level is between 1-5.
         homemade_scan(integer, &_questionnaire._fitness_level);
         if(_questionnaire._fitness_level < expert || _questionnaire._fitness_level > novice) {
-            printf("\nIt has to be between 1-5!\n");
+            printf("\nIt has to be between 1-5!");
         }
     } while(_questionnaire._fitness_level < expert || _questionnaire._fitness_level > novice);
 
-    // ask about fitness goal.
-    do {
-        printf("\nWhat goal would you like to accomplish with your training?\n");
-
-        printf("fitness goal 1 (Muscular endurance): Building stamina and the ability to perform a large number of repetitions. \n"
-               "fitness rank 2 (Hypertrophy): Building muscle size\n"
-               "fitness rank 3 (Strength): Increasing the amount of weight you can lift.\n"
-               "fitness goal 4: I have not thought about this. I just want to get started! \n");
-
-        // Validates that fitness level is between 1-5.
-        homemade_scan(long_float, &_questionnaire.training_goal);
-        //  Defining bounds based on print statement. Not variable so could create issues!
-        if(_questionnaire.training_goal < 1 || _questionnaire.training_goal > 4) {
-            printf("It has to be between 1-4!\n");
-        }
-    }while(_questionnaire.training_goal < 1 || _questionnaire.training_goal > 4);
 
     update_available_training_days();
     update_available_equipment();
