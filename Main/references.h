@@ -16,13 +16,16 @@ typedef enum {
 enum fitness_level {
     novice = 5, advanced_beginner = 4, competent = 3, proficient = 2, expert = 1
 };
+
+enum training_goal_e { MUSCULAR_ENDURANCE = 1, HYPERTROPHY = 2, STRENGTH = 3, I_DONT_KNOW = 4 };
+
 enum equipment {
     barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
 };
 // TODO: Add in design that the software is proof-of-concept and that's why we do not include that many exercises.
 // TODO: Is length_of_exercises_list a good idea?
 enum exercise_name {
-    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpees, jumping_jacks
+    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpees, jumping_jacks, length_of_exercise_enum
 };
 enum day_of_the_week {
     monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
@@ -49,6 +52,7 @@ typedef struct {
     training_day available_training_days[7]; int available_training_days_count;
     enum equipment available_equipment[ARRAY_MAX]; int available_equipment_count;
     muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
+    double training_goal;
 } questionnaire;
 
 typedef struct muscle_group {
@@ -69,6 +73,7 @@ typedef struct {
     double rep_duration; // In minutes. How long it takes to perform 1 set of the exercise.
     int is_aerobic; // Is boolean.
     double specific_warmup_duration; // In minutes. Only relevant for resistance training exercises.
+    int counter_upgrade_downgrade;
 } exercise;
 
 typedef struct {
@@ -93,6 +98,10 @@ extern int possible_resistance_exercises_count;
 // TODO: Only implemented in exercises.c.
 extern exercise possible_aerobic_exercises[ARRAY_MAX];
 extern int possible_aerobic_exercises_count;
+//  Appending all exercises into one array
+extern exercise possible_exercises[ARRAY_MAX*2];
+extern int possible_exercises_count;
+
 extern workout routine_workouts[7];
 extern int routine_workouts_count;
 
@@ -123,6 +132,7 @@ char* naming_days(enum day_of_the_week day);
 char* naming_muscle_group(muscle_group_name name);
 char* naming_exercises(enum exercise_name name);
 char* naming_fitness_level(enum fitness_level name);
+char* naming_training_goal(enum training_goal_e name);
 
 #pragma endregion
 #pragma region new_user_questionnaire.c
@@ -134,10 +144,17 @@ void update_questionnaire();
 
 void update_possible_exercises();
 
+void all_possible_exercises();
+
 #pragma endregion
 #pragma region workouts.c
 
 void update_routine_workouts();
+
+#pragma endregion
+#pragma region upgrade_downgrade.c
+
+void upgrade_downgrade(int *input);
 
 #pragma endregion
 #pragma region print_routine.c
@@ -147,7 +164,9 @@ void print_routine();
 #pragma endregion
 #pragma region evaluation_questionnaire.c
 
-int evaluation_questionnaire();
+void evaluation_questionnaire(int *input);
+
+void update_available_training_days();
 
 #pragma endregion
 
