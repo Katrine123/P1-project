@@ -39,10 +39,14 @@ void update_and_print_routine() {
 
     // Create list of exercises
     update_possible_exercises();
+    printf("test 2\n");
 
     // Create routine workouts
     update_routine_workouts();
+    printf("test 3\n");
 
     // Print routine
     print_routine();
+    printf("test 4\n");
+
 }

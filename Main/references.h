@@ -22,7 +22,7 @@ enum equipment {
 // TODO: Add in design that the software is proof-of-concept and that's why we do not include that many exercises.
 // TODO: Is length_of_exercises_list a good idea?
 enum exercise_name {
-    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpees, jumping_jacks
+    bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpees, jumping_jacks, length_of_exercise_enum
 };
 enum day_of_the_week {
     monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
@@ -49,6 +49,7 @@ typedef struct {
     training_day available_training_days[7]; int available_training_days_count;
     enum equipment available_equipment[ARRAY_MAX]; int available_equipment_count;
     muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
+    int age;
 } questionnaire;
 
 typedef struct muscle_group {
@@ -150,6 +151,43 @@ void print_routine();
 int evaluation_questionnaire();
 
 #pragma endregion
+#pragma region savesystem.c
+char* arr_to_str(const int *arr, int len);
+char* int_to_str(int n);
+int str_to_int(char *str);
 
+char* double_to_str(double d);
+double str_to_double(char *str);
 
+int str_to_equip();
 
+void load_upgr_dogr(int* data);
+void upgr_dogr(int exercise_count, int upgrade_count);
+void save_upgr_dogr(int data[length_of_exercise_enum]);
+typedef struct {
+    char available_equipment[20];
+    char available_equipment_count[20];
+    char available_training_days_count[20];
+    char available_training_days[20];
+    char ignored_muscle_group_names_count[20];
+    char ignored_muscle_group_names[20];
+    char age[20];
+    char weight[20];
+    char pushups[20];
+    char squats[20];
+    char fitness_level[20];
+} user_save_data;
+
+void save_all_data();
+
+int check_for_save();
+
+int save_data(const char *data, const char *data_name);
+
+void print_user_data(user_save_data data);
+
+void get_user_data();
+
+questionnaire convert_data(user_save_data data);
+
+#pragma endregion
