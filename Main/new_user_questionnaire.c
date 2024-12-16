@@ -87,7 +87,7 @@ void update_available_training_days() {
 
     // Get answers
     int answers[7];
-    int answers_count = 333;
+    int answers_count = 0;
     get_multiple_answers_to_enum_list(answers, &answers_count, 7);
 
     // No days selected?
