@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.1 Chrome/128.0.6613.186 Electron/32.2.6 Safari/537.36" version="25.0.1" pages="7">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Notes">
-    <mxGraphModel dx="1250" dy="741" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="2" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="1562" dy="926" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="2" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -27,11 +27,8 @@
         <mxCell id="ykD68FAz-AZpenLA8IzE-9" value="For the Implementation chapter:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;I&#39;ve decided to not use lists because it becomes difficult to manage memory with them.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;For example: I have a list of workouts. Each workout contains a list of exercises. If I free the list of workouts, the memory from the lists of exercises is leaked.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;A similar situation is with a list of resistance training workouts that each contain a list of missing muscle groups (to target).&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;So, if I used lists, I would have to make a lot of specific functions that disposed of the lists inside other lists. Then I&#39;d also have to keep track of the amount of elements.´&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;All in all, it becomes even more of a hassle and more complicated to deal with lists instead of arrays.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;That&#39;s why I don&#39;t use lists in my code relating to workouts.&amp;nbsp;&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="250" y="1116.250000000001" width="460" height="390" as="geometry" />
         </mxCell>
-        <mxCell id="bB_BcJhIjzea677D-l3r-0" value="Make sure to mark all fucntions and global variables that should not be used by other .c-files as static to ensure clean code. Also, write it into &quot;Design&quot; chapter.&amp;nbsp;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#e51400;strokeColor=#B20000;fontColor=#ffffff;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="316" y="1544.71" width="290" height="179.31" as="geometry" />
-        </mxCell>
         <mxCell id="0qZmJ44rOw8FfiNEY0Dv-23" value="&lt;div&gt;Add to report: We try to add different exercises for the same muscle group to increase variation (so the trainee doesn&#39;t get bored), and because each variation uses slightly different muscles (e.g. stabillizer muscles), so you get a more balanced physique by doing different exercises for the same muscle group.&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="251" y="1775.5100000000002" width="420" height="250" as="geometry" />
+          <mxGeometry x="250" y="1750.0000000000002" width="420" height="250" as="geometry" />
         </mxCell>
         <mxCell id="INRdYJu2fYHKdTwNfTuV-1" value="&lt;div&gt;Add to report: the use of global variables can lead to stack overflow errors, but we deem that will not be a problem for out program because of its simplicity.&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="320" y="2299.9999999999995" width="300" height="138.3" as="geometry" />
@@ -40,7 +37,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="QmKp3luUn4SPB80j5HL4" name="Update routine">
-    <mxGraphModel dx="1562" dy="926" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="371" dy="639" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -104,7 +101,7 @@
         <mxCell id="rYiqC3c0cWGm_lFuFHfc-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rYiqC3c0cWGm_lFuFHfc-21" target="rYiqC3c0cWGm_lFuFHfc-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rYiqC3c0cWGm_lFuFHfc-21" value="&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;Reset routine workouts&lt;/span&gt;&lt;div style=&quot;color: rgb(255, 255, 255);&quot;&gt;and add general warmups&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+        <mxCell id="rYiqC3c0cWGm_lFuFHfc-21" value="Reset routine workouts&lt;div style=&quot;&quot;&gt;and add general warmups&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="988" y="733.81" width="156" height="96.19" as="geometry" />
         </mxCell>
         <mxCell id="rYiqC3c0cWGm_lFuFHfc-22" value="&lt;h1&gt;&lt;font style=&quot;font-size: 52px;&quot;&gt;MAIN PROCESS&lt;/font&gt;&lt;/h1&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" vertex="1">
@@ -171,7 +168,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="QCsqb4m3BK63cD3EIy75" name="Find days">
-    <mxGraphModel dx="1562" dy="-3074" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="1157" dy="-3314" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -200,11 +197,11 @@
         <mxCell id="NGTznpkS2c_7DvGbR4LD-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="NGTznpkS2c_7DvGbR4LD-9" target="NGTznpkS2c_7DvGbR4LD-15" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-9" value="Add day" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1560" y="4807.690000000001" width="96" height="42.5" as="geometry" />
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-9" value="Add day to array of resistance training days" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
+          <mxGeometry x="1507.64" y="4789" width="190" height="63" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-10" value="Return" style="ellipse;whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
-          <mxGeometry x="1529.75" y="4518.77" width="80" height="80" as="geometry" />
+          <mxGeometry x="1535" y="4516.25" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="NGTznpkS2c_7DvGbR4LD-15" target="NGTznpkS2c_7DvGbR4LD-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -224,7 +221,7 @@
             <mxPoint x="2" y="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NGTznpkS2c_7DvGbR4LD-15" value="FOR EACH&lt;div&gt;available workout day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
+        <mxCell id="NGTznpkS2c_7DvGbR4LD-15" value="FOR EACH&lt;div&gt;workout day&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="1233" y="4530" width="226.75" height="52.5" as="geometry" />
         </mxCell>
         <mxCell id="NGTznpkS2c_7DvGbR4LD-16" value="There is a flaw to choosing resistance days like this, where we just start by checking the first workouts. Doing it like this means that we might pick days where the trainee has not got much workout time, which isn&#39;t ideal for full body resistance training, as it takes a bit of time to perform enough exercises to target all muscle groups. Then it would be better to do resistance training on days where you have more time.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;It would, however, become much more complicated if we were to check for the days with the most available work out time, as it brings compleities of it&#39;s own. For example, if you can train all week except Saturday, and your biggest available times are on first on Tuesday and second on Thursday, and you&#39;re an advanced beginner who can train 3 times a week, you would (by using this method) be recommended a routine with only 2 workout days, whereas just our method of just taking the first workout in the array first would provide 2 workout days.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;If we had more time, it would be optimal to make a function that tries out all different combinations of resistance training days to see which scenario utilizes the most amount of available time for resistance training.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;But we have not got time for that. So, all in all, our method is best for getting the most amount of resistance workout days, but it does not necessarily give the best time-efficieny / workout quality. If that makes sense?&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=lexend light;fontSize=14;spacingBottom=0;spacingLeft=15;spacingRight=15;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" parent="1" vertex="1">
@@ -233,7 +230,7 @@
         <mxCell id="NGTznpkS2c_7DvGbR4LD-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=lexend light;fontSize=14;fontColor=default;" parent="1" source="NGTznpkS2c_7DvGbR4LD-21" target="NGTznpkS2c_7DvGbR4LD-9" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1608" y="4659" />
+              <mxPoint x="1603" y="4659" />
             </Array>
           </mxGeometry>
         </mxCell>

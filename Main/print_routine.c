@@ -31,15 +31,17 @@ void print_routine() {
         printf("\n    No muscle groups ignored");
     }
 
-    // Established workout rules
-    printf("\n\nWorkout rules based on your fitness level:");
-    printf("\n    Assumed max daily resistance training sets per muscle group:      %d set(s)", max_daily_sets);
-    printf("\n    Assumed max weekly resistance training sets per muscle group:     %d set(s)", max_weekly_sets);
-    printf("\n    Assumed max weekly aerobic (HIIT) workouts:                       %d workout(s)", max_weekly_aerobic_workouts);
-    printf("\n    Assumed rest between sets for resistance exercises:               %.2lf minute(s)", rest_between_sets_resistance);
-    printf("\n    Assumed aerobic (HIIT) rest-to-work ratio:                        %.2lf:1", aerobic_rest_multiplier);
-    printf("\n    Assumed recovery time of resistance training days:                %d day(s)", resistance_recovery);
-    printf("\n    Assumed recovery time of aerobic (HIIT) training days:            %d day(s)", 1);
+    // Show workout rules for everyone other than complete beginners (we don't want to confuse them)
+    if (_questionnaire._fitness_level < novice) {
+        printf("\n\nWorkout rules based on your fitness level:");
+        printf("\n    Assumed max daily resistance training sets per muscle group:      %d set(s)", max_daily_sets);
+        printf("\n    Assumed max weekly resistance training sets per muscle group:     %d set(s)", max_weekly_sets);
+        printf("\n    Assumed max weekly aerobic (HIIT) workouts:                       %d workout(s)", max_weekly_aerobic_workouts);
+        printf("\n    Assumed rest between sets for resistance exercises:               %.2lf minute(s)", rest_between_sets_resistance);
+        printf("\n    Assumed aerobic (HIIT) rest-to-work ratio:                        %.2lf:1", aerobic_rest_multiplier);
+        printf("\n    Assumed recovery time of resistance training days:                %d day(s)", resistance_recovery);
+        printf("\n    Assumed recovery time of aerobic (HIIT) training days:            %d day(s)", 1);
+    }
 
     // Foreach workout day
     for (int i = 0; i < routine_workouts_count; i++) {
