@@ -4,7 +4,7 @@
 #include "references.h"
 
 // returns an int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
-void evaluation_questionnaire(int *input) {
+void evaluation_questionnaire(user_data *user, int *input) {
     //  Creating a struct array in order to collect all exercises in one array
     printf("\n\nWelcome back!\n"
             "Your save file has been successfully loaded\n"
@@ -26,12 +26,12 @@ void evaluation_questionnaire(int *input) {
             case 1:
                 printf("Registered 1, questionnaire will appear!");
                 //update_questionnaire();
-                evaluation_questionnaire(input);
+                evaluation_questionnaire(user, input);
             break;
             case 2:
                 printf("Registered 2, proceeding to reevaluate exercises:");
             //  Retrieving sorted exercise list
-                upgrade_downgrade(input);
+                upgrade_downgrade(user, input);
             break;
             case 3:
                 printf("Moving on..\n");

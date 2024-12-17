@@ -2,10 +2,30 @@
 #include <stdlib.h>
 #include "references.h"
 
+// Miscellaneous functions
+
+void update_and_print_routine(user_data *user) {
+
+    // Create list of exercises
+    update_possible_exercises(user);
+
+    all_possible_exercises(user);
+
+    // Create routine workouts
+    update_routine_workouts(user);
+
+    // Print routine
+    print_routine(user);
+}
+
+// Main function
+
 int main(void) {
 
     // Clear terminal screen
     system("cls");
+
+    user_data user;
 
     // Try to load save data
     // TODO: Implement this.
@@ -19,22 +39,13 @@ int main(void) {
     // } else {
 
         // New user questionnaire
-        // update_questionnaire();
-
-    get_user_data();
-    // }
+        update_questionnaire(&user);
 
     // Create routine
-    update_and_print_routine();
+    update_and_print_routine(&user);
 
     // Evaluation questionnaire (recursion)
-    int input[possible_exercises_count];
-
-    evaluation_questionnaire(input);
-
-    update_and_print_routine();
-
-
+    // TODO: Implement this.
 
     return 0;
 }
