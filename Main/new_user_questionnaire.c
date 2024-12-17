@@ -203,7 +203,7 @@ void update_ignored_muscle_groups(user_data *user) {
         user->ignored_muscle_group_names[user->ignored_muscle_group_names_count++] = answers[i];
     }
 }
-void update_questionnaire(user_data *user) {
+void answer_new_user_questionnaire(user_data *user) {
 
      // Welcome message to new users.
      printf("\nWelcome to your personalized fitness trainer, "
@@ -221,22 +221,15 @@ void update_questionnaire(user_data *user) {
         exit(EXIT_FAILURE);
     }
 
-    while(user->weight < 20 || user->weight > 300) {
-        printf("\nWhat is your weight in kg?");
-        homemade_scan(long_float, &user->weight);
-        if(user->weight < 20 || user->weight > 300) {
-            printf("\nInvalid weight. Try again.");
-        }
-    }
 
     // Asks what user's weight is, and loops through the input to make sure the weight is in a reasonable range (20-300 kg).
-    while(user->weight < 20 || user->weight > 300) {
+    do  {
         printf("\nWhat is your weight in kg?");
         homemade_scan(long_float, &user->weight);
         if(user->weight < 20 || user->weight > 300) {
             printf("\nInvalid weight. Try again.");
         }
-    }
+    } while(user->weight < 20 || user->weight > 300);
 
     // Asks user to enter how many push-ups they can perform, ensuring only non-negative numbers.
     do {
@@ -287,7 +280,7 @@ void update_questionnaire(user_data *user) {
         if(user->training_goal < 1 || user->training_goal > 4) {
             printf("It has to be between 1-4!\n");
         }
-    }while(user->training_goal < 1 || user->training_goal > 4);
+    } while(user->training_goal < 1 || user->training_goal > 4);
 
     user->time_when_questionnaire_answered = time(NULL);
 
@@ -295,7 +288,9 @@ void update_questionnaire(user_data *user) {
     update_available_equipment(user);
     update_ignored_muscle_groups(user);
 
-    save_all_data(user);
+    // Save answers and reset upgrades save file
+    save_user_data(user);
+    reset_upgrades_save(user); // create user_upgrades save file
 }
 
 

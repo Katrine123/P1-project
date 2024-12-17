@@ -389,11 +389,12 @@ void update_workout_rules(user_data *user) {
 }
 void reset_routine_workouts(user_data *user) {
 
-    // Reset array count
+    // Reset counts
     user->routine_workouts_count = user->available_training_days_count;
+    routine_muscles_count = 0;
 
     // Foreach new workout
-    for (int i = 0; i < user->routine_workouts_count; i++) {
+    for (int i = 0; i < user->available_training_days_count; i++) {
 
         // Reset properties to defaults
         user->routine_workouts[i].day = user->available_training_days[i].day;
@@ -450,8 +451,6 @@ void update_aerobic_days(user_data *user) {
 
     // Foreach non-resistance training day
     for (int i = 0, j = 0; i < user->routine_workouts_count; i++ ) {
-
-        printf("\ni = %d, Resistance index = %d", i, resistance_workout_indexes[i]);
 
         // Ignore resistance workouts
         if (i == resistance_workout_indexes[j]) {

@@ -302,7 +302,6 @@ void update_possible_aerobic_exercises(user_data *user) {
 
 // Global functions
 
-
 void update_possible_exercises(user_data *user) {
     update_possible_resistance_exercises(user);
     update_possible_aerobic_exercises(user);
