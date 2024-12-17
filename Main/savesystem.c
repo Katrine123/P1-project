@@ -3,20 +3,20 @@
 #include <string.h>
 #include "references.h"
 
-void save_all_data() {
+void save_all_data(user_data *user) {
    //int active_functions = 8;
     //int error_check = 0;
-    save_data(int_to_str(_questionnaire.squats), "squats");
-    save_data(int_to_str(_questionnaire.pushups), "push");
-    save_data(int_to_str(_questionnaire.training_goal), "train");
-    //save_data(int_to_str(_questionnaire.available_training_days_count),"Days") +
-    save_data(int_to_str(_questionnaire.ignored_muscle_group_names_count), "Muscles");
-    save_data(int_to_str(_questionnaire.available_equipment_count), "Equipment");
-    save_data(int_to_str(_questionnaire._fitness_level), "lvl");
-    save_data(double_to_str(_questionnaire.weight), "weight");
-    //save_data(arr_to_str(_questionnaire.available_training_days, _questionnaire.available_training_days_count),"days");
-    save_data(arr_to_str(_questionnaire.available_equipment, _questionnaire.available_equipment_count), "equipment");
-    save_data(arr_to_str(_questionnaire.ignored_muscle_group_names, _questionnaire.ignored_muscle_group_names_count),"muscles");
+    save_data(int_to_str(user->squats), "squats");
+    save_data(int_to_str(user->pushups), "push");
+    save_data(int_to_str(user->training_goal), "train");
+    //save_data(int_to_str(user->available_training_days_count),"Days") +
+    save_data(int_to_str(user->ignored_muscle_group_names_count), "Muscles");
+    save_data(int_to_str(user->available_equipment_count), "Equipment");
+    save_data(int_to_str(user->_fitness_level), "lvl");
+    save_data(double_to_str(user->weight), "weight");
+    //save_data(arr_to_str(user->available_training_days, user->available_training_days_count),"days");
+    save_data(arr_to_str(user->available_equipment, user->available_equipment_count), "equipment");
+    save_data(arr_to_str(user->ignored_muscle_group_names, user->ignored_muscle_group_names_count),"muscles");
 
     //if (error_check==active_functions) {
     //  printf("data saved successfully\n");
@@ -64,7 +64,7 @@ void print_user_data(user_save_data data) {
 
 ///returns a struct with values harvested from user_data_savefile.txt.
 ///is pretty resilient and can be used like this to print "print_user_data(load_data());"
-void get_user_data() {
+void get_user_data(user_data *user) {
     user_save_data data;
     FILE *file;
     int count=0;
@@ -137,12 +137,12 @@ void get_user_data() {
         }
     } else {printf("file opening error\n");}
     fclose(file); //will at the moment prolly always close the file but am not 100% sure
-    _questionnaire = convert_data(data);
+    *user = convert_data(data);
     return;
 }
 
-questionnaire convert_data (user_save_data data) {
-    questionnaire user;
+user_data convert_data (user_save_data data) {
+    user_data user;
     //standard data handling with the conversion functions
     user.age            = str_to_int(data.age);
     user.weight         = str_to_double(data.weight);

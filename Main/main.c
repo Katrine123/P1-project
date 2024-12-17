@@ -2,39 +2,36 @@
 #include <stdlib.h>
 #include "references.h"
 
+// Main function
+
 int main(void) {
 
     // Clear terminal screen
     system("cls");
 
-    // Try to load save data
-    // TODO: Implement this.
+    user_data user;
+    // update_questionnaire(&user);
+    // save_all_data(&user);
 
     // Does save data exist?
-    // if (found_save) {   // TODO: found_save is a boolean int updated when loading save data
+    if (check_for_save()) {   // TODO: found_save is a boolean int updated when loading save data
 
         // Evaluation questionnaire
-        // TODO: Implement this.
+        get_user_data(&user);
+        update_possible_exercises(&user);
+        int input[user.possible_exercises_count];
+        evaluation_questionnaire(&user, input);
+        update_routine_workouts(&user);
+        print_routine(&user);
 
-    // } else {
+    } else {
 
         // New user questionnaire
-        // update_questionnaire();
-
-    get_user_data();
-    // }
-
-    // Create routine
-    update_and_print_routine();
-
-    // Evaluation questionnaire (recursion)
-    int input[possible_exercises_count];
-
-    evaluation_questionnaire(input);
-
-    update_and_print_routine();
-
-
+        update_questionnaire(&user);
+        update_possible_exercises(&user);
+        update_routine_workouts(&user);
+        print_routine(&user);
+    }
 
     return 0;
 }
