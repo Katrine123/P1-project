@@ -98,7 +98,6 @@ typedef struct {
     char available_equipment[20];
     char available_equipment_count[20];
     char available_training_days_count[20];
-    char available_training_days[20];
     char ignored_muscle_group_names_count[20];
     char ignored_muscle_group_names[20];
     char age[20];
@@ -107,6 +106,13 @@ typedef struct {
     char squats[20];
     char fitness_level[20];
     char training_goal[20];
+    char day1[20];
+    char day2[20];
+    char day3[20];
+    char day4[20];
+    char day5[20];
+    char day6[20];
+    char day7[20];
 } user_save_data;
 
 #pragma endregion
@@ -167,6 +173,9 @@ int check_for_save();
 void reset_upgrades_save(user_data *user);
 void get_saved_user_data(user_data *user);
 void load_saved_upgrades_onto_possible_exercises(user_data *user);
+
+training_day str_to_week(char *str);
+char* week_to_str(training_day training_day);
 
 #pragma endregion
 #pragma region main.c
