@@ -19,6 +19,7 @@ int main(void) {
         // Evaluation questionnaire
         get_user_data(&user);
         update_possible_exercises(&user);
+        initialize_upgr_dogr(&user);
         int input[user.possible_exercises_count];
         evaluation_questionnaire(&user, input);
         update_routine_workouts(&user);

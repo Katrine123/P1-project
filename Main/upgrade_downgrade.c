@@ -90,7 +90,7 @@ void upgrade_downgrade(user_data *user, int *input) {
 void load_saved_upgrades(user_data *user) {
     int saved_data[user->possible_exercises_count];
     load_upgr_dogr(user, saved_data);
-    for (int i = 0; i < user->possible_exercises_count; i++) {
+    for (int i = 0; i < user->possible_exercises_count-1; i++) {
         int upgrade_counter = 0; 
         if (saved_data[i]>0) {
             for (int j = 0; j < saved_data[i]-100; j++) {
