@@ -486,19 +486,19 @@ void add_resistance_exercises(user_data *user) {
 
     // Get a random start index of the valid muscle groups
     srand(time(NULL));
-    int start_index = rand() % all_muscle_names_count;
+    int start_index = rand() % muscle_group_name_enum_length;
 
     // Foreach valid muscle group
-    for (int old_i = 0; old_i < all_muscle_names_count; old_i++) {
+    for (int old_i = 0; old_i < muscle_group_name_enum_length; old_i++) {
 
         // Get new index
         int i = start_index + old_i;
-        if (i >= all_muscle_names_count) {
-            i -= all_muscle_names_count;
+        if (i >= muscle_group_name_enum_length) {
+            i -= muscle_group_name_enum_length;
         }
 
         // Declare variables
-        muscle_group_name target_muscle_name = all_muscle_names[i];
+        muscle_group_name target_muscle_name = i;
 
         // Is an ignored muscle group?
         int is_ignored_group = 0;

@@ -20,7 +20,7 @@ enum fitness_level {
 enum training_goal_e { MUSCULAR_ENDURANCE = 1, HYPERTROPHY = 2, STRENGTH = 3, I_DONT_KNOW = 4 };
 
 enum equipment {
-    barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
+    barbell, bench, pull_up_bar, pull_down_machine, resistance_bands, equipment_enum_length
 };
 enum exercise_name {
     bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpees, jumping_jacks, length_of_exercise_enum
@@ -29,7 +29,7 @@ enum day_of_the_week {
     monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
 };
 typedef enum {
-    chest, triceps, shoulders, hamstrings, quads
+    chest, triceps, shoulders, hamstrings, quads, muscle_group_name_enum_length
 } muscle_group_name;
 
 #pragma endregion
@@ -92,14 +92,6 @@ typedef struct {
     int resistance_recovery;
     int max_weekly_aerobic_workouts;
 } user_data;
-
-#pragma endregion
-#pragma region global variables
-
-extern int all_equipment_count;
-extern enum equipment all_equipment[ARRAY_MAX];
-extern int all_muscle_names_count;
-extern muscle_group_name all_muscle_names[ARRAY_MAX];
 
 #pragma endregion
 

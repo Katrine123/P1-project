@@ -85,8 +85,8 @@ void update_available_equipment(user_data *user) {
 
     // We assume that if the user has access to a gym, they have access to all the equipment in the array.
     if (strcmp(access_to_gym, "Yes") == 0 || strcmp(access_to_gym, "yes") == 0) {
-        for (int i = 0; i < all_equipment_count; i++) {
-            user->available_equipment[user->available_equipment_count++] = all_equipment[i];
+        for (int i = 0; i < equipment_enum_length; i++) {
+            user->available_equipment[user->available_equipment_count++] = i;
         }
     }
     // If the user does not have access to a gym, they will be asked to enter the equipment available.
@@ -95,14 +95,14 @@ void update_available_equipment(user_data *user) {
         // Print a list of possible pieces of equipment
         printf("\nDo you have access to equipment? "
                "If so, enter one or more of the corresponding numbers. When you are done enter '-1'.");
-        for (int i = 0; i < all_equipment_count; i++) {
+        for (int i = 0; i < equipment_enum_length; i++) {
             printf("\n%d = %s", i, naming_equipment(i));
         }
 
         // Get answers
-        int answers[all_equipment_count];
+        int answers[equipment_enum_length];
         int answers_count = 0;
-        get_multiple_answers_to_enum_list(answers, &answers_count, all_equipment_count);
+        get_multiple_answers_to_enum_list(answers, &answers_count, equipment_enum_length);
 
         // Add to available equipment
         for (int i = 0; i < answers_count; i++) {
@@ -188,14 +188,14 @@ void update_ignored_muscle_groups(user_data *user) {
     printf("\nDo you wish to ignore exercises targeting a specific muscle group? "
            "If so, enter one or more of the corresponding numbers. "
            "Enter '-1' when you are done.");
-    for (int i = 0; i < all_muscle_names_count; i++) {
+    for (int i = 0; i < muscle_group_name_enum_length; i++) {
         printf("\n%d = %s", i, naming_muscle_group(i));
     }
 
     // Get answers
-    int answers[all_muscle_names_count];
+    int answers[muscle_group_name_enum_length];
     int answers_count = 0;
-    get_multiple_answers_to_enum_list(answers, &answers_count, all_muscle_names_count);
+    get_multiple_answers_to_enum_list(answers, &answers_count, muscle_group_name_enum_length);
 
     // Add to ignored muscle groups
     for (int i = 0; i < answers_count; i++) {
