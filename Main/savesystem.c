@@ -17,7 +17,6 @@ void save_all_data(user_data *user) {
     //save_data(arr_to_str(user->available_training_days, user->available_training_days_count),"days");
     save_data(arr_to_str(user->available_equipment, user->available_equipment_count), "equipment");
     save_data(arr_to_str(user->ignored_muscle_group_names, user->ignored_muscle_group_names_count),"muscles");
-
     //if (error_check==active_functions) {
     //  printf("data saved successfully\n");
 
@@ -67,7 +66,6 @@ void print_user_data(user_save_data data) {
 void get_user_data(user_data *user) {
     user_save_data data;
     FILE *file;
-    int count=0;
     if ((file = fopen("user_save_file", "r"))) {
         fseek(file, 0L, SEEK_END);
         int size = ftell(file);
@@ -212,37 +210,45 @@ double str_to_double(char* str) {
     return atof(str);
 }
 
-void load_upgr_dogr(int* data) {
+void load_upgr_dogr(user_data *user, int *data) {
     FILE *f = fopen("user_upgrades", "r");
 
-    char temp[500];
+    char temp[32*user->available_equipment_count];
     fgets(temp, sizeof(temp), f);
 
     char *token = strtok(temp, ",");
     int i = 0;
-    while (token != NULL && i <= length_of_exercise_enum) {
+    while (token != NULL && i < user->available_equipment_count) {
         data[i++] = atoi(token);
         token = strtok(NULL, ",");
     }
     fclose(f);
 }
-void upgr_dogr(int exercisecount, int upgrade_count) {
-    int temp_save[length_of_exercise_enum];
-    load_upgr_dogr(temp_save);
+void upgr_dogr(user_data *user, int exercisecount, int upgrade_count) {
+    int temp_save[user->possible_exercises_count];
+    load_upgr_dogr(user, temp_save);
     temp_save[exercisecount] = temp_save[exercisecount] + upgrade_count;
-    save_upgr_dogr(temp_save);
-
-
+    save_upgr_dogr(user, temp_save);
 }
 
-
-void save_upgr_dogr(int data[length_of_exercise_enum]) {
+void save_upgr_dogr(user_data *user, int data[user->possible_exercises_count+1]) {
     FILE *file = fopen("user_upgrades", "w");
-    for (int i = 0; i <= length_of_exercise_enum; i++) {
+    for (int i = 0; i < user->possible_exercises_count; i++) {
         fprintf(file, "%d ,", data[i]);
     }
     fclose(file);
 }
+
+void initialize_upgr_dogr(user_data *user) {
+    FILE *file = fopen("user_upgrades", "w");
+    for (int i = 0; i < 100; i++) {
+        fprintf(file, "0 ,");
+    }
+    fclose(file);
+}
+//int str_to_seq_i
+
+
 //int str_to_seq_int(int n, char str[n]) {
 //    int arr[6];
 //    for (int i = 0; i < 6; i++) {

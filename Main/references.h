@@ -149,9 +149,9 @@ double str_to_double(char *str);
 
 int str_to_equip();
 
-void load_upgr_dogr(int* data);
-void upgr_dogr(int exercise_count, int upgrade_count);
-void save_upgr_dogr(int data[length_of_exercise_enum]);
+void load_upgr_dogr(user_data *user, int* data);
+void upgr_dogr(user_data *user, int exercise_count, int upgrade_count);
+void save_upgr_dogr(user_data *user, int data[user->possible_resistance_exercises_count]);
 typedef struct {
     char available_equipment[20];
     char available_equipment_count[20];
@@ -173,11 +173,15 @@ int check_for_save();
 
 int save_data(const char *data, const char *data_name);
 
+void initialize_upgr_dogr(user_data *user);
+
 void print_user_data(user_save_data data);
 
 void get_user_data(user_data *user);
 
 user_data convert_data(user_save_data data);
+
+void load_saved_upgrades(user_data *user);
 
 #pragma endregion
 #pragma region main.c

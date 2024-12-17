@@ -3,12 +3,11 @@
 
 void check_if_body_weight_exercise_and_print(user_data *user, int i) {
     if(user->possible_exercises[i]->is_body_weight_exercise == 1) {
-        printf("Your current amount of repetitions are: %d repetitions \n", user->possible_exercises[i]->reps);
+        printf("Your current amount of repetitions are: %d repetitions \n",user->possible_exercises[i]->reps);
     } else {
         printf("Your current weight is: %lf kg \n", user->possible_exercises[i]->base_weight);
     }
 }
-
 void upgrade_function(user_data *user, int input) {
     if(user->possible_exercises[input]->is_body_weight_exercise == 1) {
         user->possible_exercises[input]->reps += user->possible_exercises[input]->addition;
@@ -38,6 +37,7 @@ void downgrade_function(user_data *user, int input) {
 }
 
 void upgrade_downgrade(user_data *user, int *input) {
+    load_saved_upgrades(user);
     char first_answer;
     do{
         //  first question
@@ -64,11 +64,13 @@ void upgrade_downgrade(user_data *user, int *input) {
                             //  printing the altered exercise:
                             check_if_body_weight_exercise_and_print(user, i);
                             user->possible_exercises[i]->counter_upgrade_downgrade++;
+                            upgr_dogr(user, i, 1);
                         } else if(second_answer == 'd') {
                             downgrade_function(user, *input);
                             //  printing the altered exercise:
                             check_if_body_weight_exercise_and_print(user, i);
                             user->possible_exercises[i]->counter_upgrade_downgrade--;
+                            upgr_dogr(user, i, -1);
                         } else if(second_answer == 's') {
                             //  printing the unaltered exercise:
                             check_if_body_weight_exercise_and_print(user, i);
@@ -87,17 +89,22 @@ void upgrade_downgrade(user_data *user, int *input) {
 
 void load_saved_upgrades(user_data *user) {
     int saved_data[user->possible_exercises_count];
-    load_upgr_dogr(saved_data);
+    load_upgr_dogr(user, saved_data);
     for (int i = 0; i < user->possible_exercises_count; i++) {
-        if (0<saved_data) {
-            for (int j = 0; j < saved_data[i]; j++) {
+        int upgrade_counter = 0; 
+        if (saved_data[i]>0) {
+            for (int j = 0; j < saved_data[i]-100; j++) {
                 upgrade_function(user, i);
-            }
-        } else {
-            for (int j = 0; j > saved_data[i]; j--) {
-                downgrade_function(user, i);
+                upgrade_counter++;
             }
         }
+        if (saved_data[i]<0) {
+            for (int j = 0; j > saved_data[i]-100; j--) {
+                downgrade_function(user, i);
+                upgrade_counter--;
+            }
+        }
+        printf("exercise %d was upgraded %d\n", i, upgrade_counter);
     }
 }
 

@@ -31,6 +31,8 @@ int main(void) {
         update_possible_exercises(&user);
         update_routine_workouts(&user);
         print_routine(&user);
+        initialize_upgr_dogr(&user);
+
     }
 
     return 0;

@@ -26,7 +26,7 @@ void evaluation_questionnaire(user_data *user, int *input) {
             case 1:
                 printf("Registered 1, questionnaire will appear!");
                 //update_questionnaire();
-                evaluation_questionnaire(user, input);
+                update_questionnaire(user);
             break;
             case 2:
                 update_possible_exercises(user);
@@ -38,6 +38,7 @@ void evaluation_questionnaire(user_data *user, int *input) {
             break;
             case 3:
                 printf("Moving on..\n");
+                load_saved_upgrades(user);
                 break;
             default:;
             printf("invalid input\n ");
