@@ -27,7 +27,7 @@ void start_evaluation_questionnaire(user_data *user) {
                 break;
             case 3: // Update schedule (training days)
                 update_available_training_days(user);
-                save_user_data_save(user);
+                save_user_data_save(user); // because update_available_training_days does not save by itself.
                 break;
             case 4: // Print routine
                 update_possible_exercises(user);

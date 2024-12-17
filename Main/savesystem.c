@@ -143,7 +143,6 @@ void save_user_data_save(user_data *user) {
 
     for (int i = 0; i <= user->available_training_days_count; i++) {
         add_to_user_data_save(training_day_to_str(user->available_training_days[i]), int_to_str(i+1));
-        printf("%s\n", training_day_to_str(user->available_training_days[i]));
     }
 
 }
