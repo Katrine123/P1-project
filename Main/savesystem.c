@@ -17,6 +17,8 @@ void save_all_data(user_data *user) {
     //save_data(arr_to_str(user->available_training_days, user->available_training_days_count),"days");
     save_data(arr_to_str(user->available_equipment, user->available_equipment_count), "equipment");
     save_data(arr_to_str(user->ignored_muscle_group_names, user->ignored_muscle_group_names_count),"muscles");
+
+
     //if (error_check==active_functions) {
     //  printf("data saved successfully\n");
     //for (int i = 1; i <= 7; i++) {
@@ -211,16 +213,21 @@ char* double_to_str(double d) {
 double str_to_double(char* str) {
     return atof(str);
 }
+training_day str_to_week(char *str) {
+}
+
+
+
 
 void load_upgr_dogr(user_data *user, int *data) {
     FILE *f = fopen("user_upgrades", "r");
 
-    char temp[32*user->available_equipment_count];
+    char temp[32*user->possible_exercises_count];
     fgets(temp, sizeof(temp), f);
 
     char *token = strtok(temp, ",");
     int i = 0;
-    while (token != NULL && i < user->available_equipment_count) {
+    while (token != NULL && i < user->possible_exercises_count) {
         data[i++] = atoi(token);
         token = strtok(NULL, ",");
     }
