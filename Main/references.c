@@ -2,6 +2,7 @@
 
 #pragma region global variables
 
+// Lists of all items
 int all_equipment_count = 5;
 enum equipment all_equipment[ARRAY_MAX] = {
     barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
@@ -12,18 +13,10 @@ muscle_group_name all_muscle_names[ARRAY_MAX] = {
 };
 
 questionnaire _questionnaire;
-// TODO: Only implemented in exercises.c.
-exercise possible_resistance_exercises[ARRAY_MAX];
-int possible_resistance_exercises_count;
-// TODO: Only implemented in exercises.c.
-exercise possible_aerobic_exercises[ARRAY_MAX];
-int possible_aerobic_exercises_count;
-
-exercise possible_aerobic_exercises[ARRAY_MAX];
-int possible_aerobic_exercises_count;
-
-workout routine_workouts[7];
-int routine_workouts_count = 0; // Max 7 workouts per week (1 per day).
+exercise possible_resistance_exercises[ARRAY_MAX]; int possible_resistance_exercises_count;
+exercise possible_aerobic_exercises[ARRAY_MAX]; int possible_aerobic_exercises_count;
+exercise possible_aerobic_exercises[ARRAY_MAX]; int possible_aerobic_exercises_count;
+workout routine_workouts[7]; int routine_workouts_count = 0; // Max 7 workouts per week (1 per day).
 
 // Workout rules
 const int general_warmup_duration = 5; // In minutes.

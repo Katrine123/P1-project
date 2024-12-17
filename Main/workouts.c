@@ -4,24 +4,6 @@
 
 #include "references.h"
 
-//TODO:
-// (WON'T DO)
-// For resistance training: compound movements should be given priority (for people with only little time).
-
-//TODO:
-// (WON'T DO)
-// Make specific exercise warmup optional (if people don't feel like they need it, they can save a lot of time/
-// do a lot more exercises if they do not do the specific warmup).
-
-//TODO:
-// In the report: add that there is an edge case where if you have only little time, you might not get a full-body resistance workout.
-// Then you could actually have more than 3 resistance training days a week, because you would have muscle groups that
-// are not used in one workout. This is something our design does not take into account.
-
-//TODO:
-// (WON'T DO)
-// Implement ignored exercises (user story: "I hate squats, please give me any leg exercise other than squats.")
-
 // For the whole fitness routine
 
 muscle_group routine_muscles[ARRAY_MAX]; int routine_muscles_count; // Muscle groups included in the routine.

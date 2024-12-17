@@ -22,16 +22,12 @@ enum training_goal_e { MUSCULAR_ENDURANCE = 1, HYPERTROPHY = 2, STRENGTH = 3, I_
 enum equipment {
     barbell, bench, pull_up_bar, pull_down_machine, resistance_bands
 };
-// TODO: Add in design that the software is proof-of-concept and that's why we do not include that many exercises.
-// TODO: Is length_of_exercises_list a good idea?
 enum exercise_name {
     bench_press, weighted_squat, air_squat, pushup, elevated_pushup, burpees, jumping_jacks, length_of_exercise_enum
 };
 enum day_of_the_week {
     monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
 };
-// TODO: Add in implementation that we define muscle groups in very broad terms (overly simplified).
-// TODO: Add in design that our program does not take into consideration how much an exercise targets each muscle (some muscles are worked harder than others in some exercises).
 typedef enum {
     chest, triceps, shoulders, hamstrings, quads
 } muscle_group_name;
@@ -43,18 +39,6 @@ typedef struct {
     enum day_of_the_week day;
     double max_duration;
 }training_day;
-
-typedef struct {
-    double weight;
-    int pushups;
-    int squats;
-    enum fitness_level _fitness_level;
-    training_day available_training_days[7]; int available_training_days_count;
-    enum equipment available_equipment[ARRAY_MAX]; int available_equipment_count;
-    muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
-    double training_goal;
-    int age;
-} questionnaire;
 
 typedef struct muscle_group {
     muscle_group_name name;
@@ -84,6 +68,18 @@ typedef struct {
     enum day_of_the_week day;
 } workout;
 
+typedef struct {
+    double weight;
+    int pushups;
+    int squats;
+    enum fitness_level _fitness_level;
+    training_day available_training_days[7]; int available_training_days_count;
+    enum equipment available_equipment[ARRAY_MAX]; int available_equipment_count;
+    muscle_group_name ignored_muscle_group_names[ARRAY_MAX]; int ignored_muscle_group_names_count;
+    double training_goal;
+    int age;
+} questionnaire;
+
 #pragma endregion
 #pragma region global variables
 
@@ -93,10 +89,8 @@ extern int all_muscle_names_count;
 extern muscle_group_name all_muscle_names[ARRAY_MAX];
 
 extern questionnaire _questionnaire;
-// TODO: Only implemented in exercises.c.
 extern exercise possible_resistance_exercises[ARRAY_MAX];
 extern int possible_resistance_exercises_count;
-// TODO: Only implemented in exercises.c.
 extern exercise possible_aerobic_exercises[ARRAY_MAX];
 extern int possible_aerobic_exercises_count;
 //  Appending all exercises into one array

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "references.c"
+#include "references.h"
 
 int main(void) {
 
@@ -19,6 +19,7 @@ int main(void) {
     // } else {
 
         // New user questionnaire
+        // update_questionnaire();
 
     get_user_data();
     // }
