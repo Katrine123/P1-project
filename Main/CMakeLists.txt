@@ -38,12 +38,11 @@ add_library(
 add_library(
         savesystem
         savesystem)
-
 target_link_libraries(main
-        new_user_questionnaire
         exercises
         savesystem
         evaluation_questionnaire
+        new_user_questionnaire
         upgrade_downgrade
         tools
         references
