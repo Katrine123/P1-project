@@ -4,21 +4,24 @@
 #include "references.h"
 
 void save_all_data(user_data *user) {
-   //int active_functions = 8;
+    //int active_functions = 8;
     //int error_check = 0;
     save_data(int_to_str(user->squats), "squats");
     save_data(int_to_str(user->pushups), "push");
     save_data(int_to_str(user->training_goal), "train");
-    //save_data(int_to_str(user->available_training_days_count),"Days") +
+    save_data(int_to_str(user->available_training_days_count),"Days") +
     save_data(int_to_str(user->ignored_muscle_group_names_count), "Muscles");
     save_data(int_to_str(user->available_equipment_count), "Equipment");
     save_data(int_to_str(user->_fitness_level), "lvl");
     save_data(double_to_str(user->weight), "weight");
     //save_data(arr_to_str(user->available_training_days, user->available_training_days_count),"days");
     save_data(arr_to_str(user->available_equipment, user->available_equipment_count), "equipment");
-    save_data(arr_to_str(user->ignored_muscle_group_names, user->ignored_muscle_group_names_count),"muscles");
+    save_data(arr_to_str(user->ignored_muscle_group_names, user->ignored_muscle_group_names_count), "muscles");
 
-
+    for (int i = 0; i <= user->available_training_days_count; i++) {
+        save_data(week_to_str(user->available_training_days[i]), int_to_str(i+1));
+        printf("%s\n", week_to_str(user->available_training_days[i]));
+    }
     //if (error_check==active_functions) {
     //  printf("data saved successfully\n");
     //for (int i = 1; i <= 7; i++) {
@@ -95,23 +98,42 @@ void get_user_data(user_data *user) {
                 data_data[j] = '\0';
                 //printf("%s\n", data_data);
                 switch (data_type[0]) {
+                    case '1':
+                        strncpy(data.day1, data_data,20);
+                        break;
+                    case '2':
+                        strncpy(data.day2, data_data,20);
+                        break;
+                    case '3':
+                        strncpy(data.day3, data_data,20);
+                        break;
+                    case '4':
+                        strncpy(data.day4, data_data,20);
+                        break;
+                    case '5':
+                        strncpy(data.day5, data_data,20);
+                        break;
+                    case '6':
+                        strncpy(data.day6, data_data,20);
+                        break;
+                    case '7':
+                        strncpy(data.day7, data_data,20);
+                        break;
                     case 'e':
                         strncpy(data.available_equipment, data_data,20);
                         break;
                     case 'E':
                         strncpy(data.available_equipment_count, data_data,20);
                         break;
-                    case 'd':
-                    //    strncpy(data.available_training_days, data_data,20);
-                        break;
                     case 'D':
-                    //    strncpy(data.available_training_days_count, data_data,20);
+                        strncpy(data.available_training_days_count, data_data,20);
                         break;
                     case 'm':
                         strncpy(data.ignored_muscle_group_names, data_data,20);
-                    break;
+                        break;
                     case 'M':
                         strncpy(data.ignored_muscle_group_names_count, data_data,20);
+                        break;
                     case 'a':
                         strncpy(data.age, data_data,20);
                         break;
@@ -154,14 +176,15 @@ user_data convert_data (user_save_data data) {
     user.training_goal 	= str_to_int(data.training_goal);
 
     //random inputs just so it will work til its replaced
-    user.available_training_days_count = 6;
-    user.available_training_days[0] = (training_day){1, 42};
-    user.available_training_days[1] = (training_day){2, 42};
-    user.available_training_days[2] = (training_day){3, 42};
-    user.available_training_days[3] = (training_day){4, 42};
-    user.available_training_days[4] = (training_day){5, 42};
-    user.available_training_days[5] = (training_day){6, 42};
-    user.available_training_days[6] = (training_day){7, 42};
+    user.available_training_days_count = str_to_int(data.available_training_days_count);
+
+    user.available_training_days[0] = str_to_week(data.day1);
+    user.available_training_days[1] = str_to_week(data.day2);
+    user.available_training_days[2] = str_to_week(data.day3);
+    user.available_training_days[3] = str_to_week(data.day4);
+    user.available_training_days[4] = str_to_week(data.day5);
+    user.available_training_days[5] = str_to_week(data.day6);
+    user.available_training_days[6] = str_to_week(data.day7);
 
     //handling of arrays
     user.available_equipment_count = str_to_int(data.available_equipment_count);
@@ -214,7 +237,19 @@ double str_to_double(char* str) {
     return atof(str);
 }
 training_day str_to_week(char *str) {
+    training_day training_day;
+    char* token = strtok(str, " - ");
+    training_day.day = str_to_int(token);
+    token = strtok(NULL, " - ");
+    training_day.max_duration = str_to_int(token);
+    return (training_day);
 }
+char* week_to_str(training_day training_day) {
+    static char str[20];
+    sprintf(str, "%d-%.0f", training_day.day, training_day.max_duration);
+    return (str);
+}
+
 
 
 

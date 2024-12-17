@@ -68,7 +68,7 @@ void evaluation_questionnaire(user_data *user) {
                 break;
                 case 2:
                     printf("Registered 2, proceeding to reevaluate training days:");
-                    // update_available_training_days();
+                    update_available_training_days(user);
                 break;
                 case 3:
                     printf("Exiting..");

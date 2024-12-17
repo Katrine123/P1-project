@@ -153,11 +153,13 @@ int str_to_equip();
 void load_upgr_dogr(user_data *user, int* data);
 void upgr_dogr(user_data *user, int exercise_count, int upgrade_count);
 void save_upgr_dogr(user_data *user, int data[user->possible_resistance_exercises_count]);
+
+
+
 typedef struct {
     char available_equipment[20];
     char available_equipment_count[20];
     char available_training_days_count[20];
-    char available_training_days[20];
     char ignored_muscle_group_names_count[20];
     char ignored_muscle_group_names[20];
     char age[20];
@@ -166,6 +168,13 @@ typedef struct {
     char squats[20];
     char fitness_level[20];
     char training_goal[20];
+    char day1[20];
+    char day2[20];
+    char day3[20];
+    char day4[20];
+    char day5[20];
+    char day6[20];
+    char day7[20];
 } user_save_data;
 
 void save_all_data(user_data *user);
@@ -181,6 +190,10 @@ void print_user_data(user_save_data data);
 void get_user_data(user_data *user);
 
 user_data convert_data(user_save_data data);
+
+training_day str_to_week(char *str);
+
+char* week_to_str(training_day training_day);
 
 void load_saved_upgrades(user_data *user);
 
