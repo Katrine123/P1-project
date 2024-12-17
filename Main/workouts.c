@@ -224,7 +224,7 @@ void try_to_find_resistance_exercise_candidate(user_data *user, int *found_valid
     *found_valid_candidate = 0;
 
     // Get a random start index of the valid resistance exercises
-    srand(time(NULL));
+    srand(user->time_when_questionnaire_answered);
     int exercises_count = user->possible_resistance_exercises_count;
     if (user->possible_resistance_exercises_count == 0) return;
     int start_index = rand() % exercises_count;
@@ -299,7 +299,7 @@ void try_to_find_aerobic_exercise_candidate(user_data *user, int *found_valid_ca
     exercise last_valid_exercise;
 
     // Get a random start index of the valid aerobic exercises
-    srand(time(NULL));
+    srand(user->time_when_questionnaire_answered);
     int exercises_count = user->possible_aerobic_exercises_count;
     if (exercises_count == 0) return;
     int start_index = rand() % exercises_count;
@@ -485,7 +485,7 @@ void add_resistance_exercises(user_data *user) {
     // NOTE: Adds 1 set of exercises.
 
     // Get a random start index of the valid muscle groups
-    srand(time(NULL));
+    srand(user->time_when_questionnaire_answered);
     int start_index = rand() % muscle_group_name_enum_length;
 
     // Foreach valid muscle group

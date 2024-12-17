@@ -36,7 +36,7 @@ void downgrade_function(user_data *user, int input) {
     }
 }
 
-void upgrade_downgrade(user_data *user, int *input) {
+void upgrade_downgrade(user_data *user) {
     load_saved_upgrades(user);
     char first_answer;
     do{
@@ -47,7 +47,6 @@ void upgrade_downgrade(user_data *user, int *input) {
             //  Creating for loop, since we have to evaluate each exercise one-by-one.
             printf("\n fuck: %d ", user->possible_exercises_count);
             for(int i = 0; i < user->possible_exercises_count; i++) {
-                *input = i;
                 printf("\nExercise %d: %s \n", i + 1, naming_exercises(user->possible_exercises[i]->name));
 
                 //  Printing exercise. Checking if it increments repetitions or weight
@@ -60,13 +59,13 @@ void upgrade_downgrade(user_data *user, int *input) {
                     scanf(" %c", &second_answer);
                     //  Checking answer
                         if(second_answer == 'u') {
-                            upgrade_function(user, *input);
+                            upgrade_function(user, i);
                             //  printing the altered exercise:
                             check_if_body_weight_exercise_and_print(user, i);
                             user->possible_exercises[i]->counter_upgrade_downgrade++;
                             upgr_dogr(user, i, 1);
                         } else if(second_answer == 'd') {
-                            downgrade_function(user, *input);
+                            downgrade_function(user, i);
                             //  printing the altered exercise:
                             check_if_body_weight_exercise_and_print(user, i);
                             user->possible_exercises[i]->counter_upgrade_downgrade--;

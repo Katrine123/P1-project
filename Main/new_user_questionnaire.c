@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "references.h"
 
@@ -287,6 +288,8 @@ void update_questionnaire(user_data *user) {
             printf("It has to be between 1-4!\n");
         }
     }while(user->training_goal < 1 || user->training_goal > 4);
+
+    user->time_when_questionnaire_answered = time(NULL);
 
     update_available_training_days(user);
     update_available_equipment(user);

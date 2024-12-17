@@ -69,6 +69,7 @@ typedef struct {
 } workout;
 
 typedef struct {
+    int time_when_questionnaire_answered;
     int age;
     double weight;
     int pushups;
@@ -126,7 +127,7 @@ void update_routine_workouts(user_data *user);
 #pragma endregion
 #pragma region upgrade_downgrade.c
 
-void upgrade_downgrade(user_data *user, int *input);
+void upgrade_downgrade(user_data *user);
 
 #pragma endregion
 #pragma region print_routine.c
@@ -136,7 +137,7 @@ void print_routine(user_data *user);
 #pragma endregion
 #pragma region evaluation_questionnaire.c
 
-void evaluation_questionnaire(user_data *user, int *input);
+void evaluation_questionnaire(user_data *user);
 
 #pragma endregion
 #pragma region savesystem.c
