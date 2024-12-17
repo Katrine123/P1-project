@@ -92,13 +92,13 @@ void load_saved_upgrades(user_data *user) {
     for (int i = 0; i < user->possible_exercises_count-1; i++) {
         int upgrade_counter = 0; 
         if (saved_data[i]>0) {
-            for (int j = 0; j < saved_data[i]-100; j++) {
+            for (int j = 0; j < saved_data[i]; j++) {
                 upgrade_function(user, i);
                 upgrade_counter++;
             }
         }
         if (saved_data[i]<0) {
-            for (int j = 0; j > saved_data[i]-100; j--) {
+            for (int j = 0; j > saved_data[i]; j--) {
                 downgrade_function(user, i);
                 upgrade_counter--;
             }
