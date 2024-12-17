@@ -31,6 +31,7 @@ add_library(
         print_routine)
 
 
+
 target_link_libraries(main
         new_user_questionnaire
         exercises
@@ -53,4 +54,13 @@ FetchContent_Declare(mtest
 FetchContent_MakeAvailable(mtest)
 
 add_executable(tests tests.c)
-target_link_libraries(tests upgrade_downgrade new_user_questionnaire exercises routine tools mtest)
+#target_link_libraries(tests exercises workouts print_routine new_user_questionnaire tools references mtest)
+
+target_link_libraries(tests
+        new_user_questionnaire
+        exercises
+        workouts
+        print_routine
+        tools
+        references
+        mtest)

@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 // Data
 
@@ -117,7 +118,7 @@ void update_and_print_routine();
 #pragma endregion
 #pragma region tools.c
 
-int homemade_scan(data_type type, void* input);
+int homemade_scan(data_type type, void* input,FILE* file);
 char* naming_equipment(enum equipment eq) ;
 char* naming_days(enum day_of_the_week day);
 char* naming_muscle_group(muscle_group_name name);
@@ -127,12 +128,13 @@ char* naming_fitness_level(enum fitness_level name);
 #pragma endregion
 #pragma region new_user_questionnaire.c
 
-void update_questionnaire();
+void update_questionnaire(FILE* file);
 
 #pragma endregion
 #pragma region exercises.c
 
 void update_possible_exercises();
+double base_weight_bench_press();
 
 #pragma endregion
 #pragma region workouts.c

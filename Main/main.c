@@ -20,7 +20,7 @@ int main(void) {
     // } else {
 
         // New user questionnaire
-        update_questionnaire();
+        update_questionnaire(stdin);
 
     // }
 

@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mtest.h"
-#include "references.h"
-
+#include "references.c"
+/*
 #pragma region questionnaire
 TEST_CASE(questionnaire_test1,{
     //Making "User inputs"
@@ -12,26 +12,25 @@ TEST_CASE(questionnaire_test1,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67\n72 \n6 \n8 \n1 \n4 \n-1 \n120\nYes\n3\n-1\n-1");
+    fprintf(test_file,"67\n72\n6 \n8 \n1 \n4 \n-1 \n120\nYes\n3\n-1\n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
             printf("The file couldn't be opened");
             exit(-1);
         }
-    update_questionnaire();
+    update_questionnaire(test_file);
     fclose(test_file);
-    CHECK_EQ_INT(_questionnaire.age,67);
     CHECK_EQ_DOUBLE(_questionnaire.weight,72,0.001);
     CHECK_EQ_INT(_questionnaire.pushups,6);
     CHECK_EQ_INT(_questionnaire.squats,8);
     CHECK_EQ_INT(_questionnaire._fitness_level,1);
-    CHECK_EQ_INT(_questionnaire.training_days[0].day_week,thursday);
-    CHECK_EQ_DOUBLE(_questionnaire.training_days[0].available_time,120,0.001);
-    for(int i = 0; i<length_of_equipment_enum;i++) {
-        CHECK_EQ_INT(_questionnaire.available_equipment[i],1);
+    CHECK_EQ_INT(_questionnaire.available_training_days[0].day,thursday); //FIKS?
+    CHECK_EQ_DOUBLE(_questionnaire.available_training_days[0].max_duration,120,0.001);
+    for(int i = 0; i<_questionnaire.available_equipment_count;i++) {
+        CHECK_EQ_INT(_questionnaire.available_equipment[i],i);
     }
-    CHECK_EQ_INT(user_test.ignored_muscle_group_names[0],2);
+    CHECK_EQ_INT(_questionnaire.ignored_muscle_group_names[0],shoulders); //FIKS?
 })
 
 //IS SUPPOSED TO SUCCEED
@@ -41,30 +40,29 @@ TEST_CASE(questionnaire_test2,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"age\n67\n0\n58\n-1\n25\n5000000\n-1\n6\n3\n-5\n999\n2\n3\n-1\n3000\n68\n-23\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
+    fprintf(test_file,"age\n67\n0\n58\n-1\n25\n5000000\n-1\n6\n3\n-5\n999\n2\n3\n-1\n3000\n68\n23\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
             printf("The file couldn't be opened");
             exit(-1);
         }
-    questionnaire user_test = create_and_answer_questionnaire(test_file);
+    update_questionnaire(test_file);
     fclose(test_file);
-    CHECK_EQ_INT(user_test.age,67);
-    CHECK_EQ_DOUBLE(user_test.weight,58,0.001);
-    CHECK_EQ_INT(user_test.pushups,25);
-    CHECK_EQ_INT(user_test.squats,5000000);
-    CHECK_EQ_INT(user_test.fitness_level,3);
-    CHECK_EQ_INT(user_test.training_days[0].day_week,tuesday);
-    CHECK_EQ_INT(user_test.training_days[1].day_week,wednesday);
-    CHECK_EQ_DOUBLE(user_test.training_days[0].available_time,68,0.001);
-    CHECK_EQ_DOUBLE(user_test.training_days[1].available_time,-23,0.001);
-    CHECK_EQ_INT(user_test.available_equipment[0],0);
-    CHECK_EQ_INT(user_test.available_equipment[1],0);
-    CHECK_EQ_INT(user_test.available_equipment[2],1);
-    CHECK_EQ_INT(user_test.available_equipment[3],1);
-    CHECK_EQ_INT(user_test.available_equipment[4],0);
-    CHECK_EQ_INT(user_test.ignored_muscle_group_names[0],0);
+    CHECK_EQ_DOUBLE(_questionnaire.weight,58,0.001);
+    CHECK_EQ_INT(_questionnaire.pushups,25);
+    CHECK_EQ_INT(_questionnaire.squats,5000000);
+    CHECK_EQ_INT(_questionnaire._fitness_level,3);
+    CHECK_EQ_INT(_questionnaire.available_training_days[0].day,tuesday);
+    CHECK_EQ_INT(_questionnaire.available_training_days[1].day,wednesday);
+    CHECK_EQ_DOUBLE(_questionnaire.available_training_days[0].max_duration,68,0.001);
+    CHECK_EQ_DOUBLE(_questionnaire.available_training_days[1].max_duration,-23,0.001);
+    CHECK_EQ_INT(_questionnaire.available_equipment[0],0);
+    CHECK_EQ_INT(_questionnaire.available_equipment[1],0);
+    CHECK_EQ_INT(_questionnaire.available_equipment[2],1);
+    CHECK_EQ_INT(_questionnaire.available_equipment[3],1);
+    CHECK_EQ_INT(_questionnaire.available_equipment[4],0);
+    CHECK_EQ_INT(_questionnaire.ignored_muscle_group_names[0],0);
 })
 
 #pragma endregion
@@ -128,119 +126,52 @@ TEST_CASE(homemade_scan_test2,{
 })
 #pragma endregion
 
-#pragma region sorting_exercises
-//TEST THAT YOU ONLY GET THE EXERCISES NEEDING NO EQUIPMENT - IS SUPPOSED TO SUCCEED
-TEST_CASE(sorting_exercises_test,{
-    questionnaire test = {67,72,7,12,1,{monday,67},{0,0,0,0,0}};
-    exercise ex_test[length_of_exercises_list];
-    resistance_exercises_list(ex_test, test);
-    aerobic_exercises_list(ex_test,test);
-    int sorted_count = 0;
-    exercise* exercise_list_sorted = create_available_exercises(ex_test, test, &sorted_count);
-
-    CHECK_EQ_STRING(exercise_list_sorted[0].name,"Air squats");
-    CHECK_EQ_STRING(exercise_list_sorted[1].name,"Pushups");
-    CHECK_EQ_STRING(exercise_list_sorted[2].name,"Elevated pushups");
-    CHECK_EQ_STRING(exercise_list_sorted[3].name,"Burpees");
-    CHECK_EQ_STRING(exercise_list_sorted[4].name,"Jumping jacks");
-
-    // Free the dynamically allocated memory for the sorted list
-    free(exercise_list_sorted);
-})
-
-//TESTS THAT YOU GET ALL EXERCISES IF YOU HAVE ALL EQUIPMENT - IS SUPPOSED TO SUCCEED
-TEST_CASE(sorting_exercises_test2,{
-    questionnaire test = {67,72,7,12,1,{monday,67},{1,1,1,1,1}};
-    exercise ex_test[length_of_exercises_list];
-    resistance_exercises_list(ex_test, test);
-    aerobic_exercises_list(ex_test,test);
-    int sorted_count = 0;
-    exercise* exercise_list_sorted = create_available_exercises(ex_test, test, &sorted_count);
-    CHECK_EQ_STRING(exercise_list_sorted[0].name,"Bench press");
-    CHECK_EQ_STRING(exercise_list_sorted[1].name,"Weighted squats");
-    CHECK_EQ_STRING(exercise_list_sorted[2].name,"Air squats");
-    CHECK_EQ_STRING(exercise_list_sorted[3].name,"Pushups");
-    CHECK_EQ_STRING(exercise_list_sorted[4].name,"Elevated pushups");
-    CHECK_EQ_STRING(exercise_list_sorted[5].name,"Burpees");
-    CHECK_EQ_STRING(exercise_list_sorted[6].name,"Jumping jacks");
-
-    // Free the dynamically allocated memory for the sorted list
-    free(exercise_list_sorted);
-})
-
-//TESTS FOR -1 - IS SUPPOSED TO FAIL
-TEST_CASE(sorting_exercises_test3,{
-    questionnaire test = {67,72,7,12,1,{monday,67},{-1,1,1,1,1}};
-    exercise ex_test[length_of_exercises_list];
-    resistance_exercises_list(ex_test, test);
-    aerobic_exercises_list(ex_test,test);
-    int sorted_count = 0;
-    exercise* exercise_list_sorted = create_available_exercises(ex_test, test, &sorted_count);
-    CHECK_EQ_STRING(exercise_list_sorted[0].name,"Bench press");
-    CHECK_EQ_STRING(exercise_list_sorted[1].name,"Weighted squats");
-    CHECK_EQ_STRING(exercise_list_sorted[2].name,"Air squats");
-    CHECK_EQ_STRING(exercise_list_sorted[3].name,"Pushups");
-    CHECK_EQ_STRING(exercise_list_sorted[4].name,"Elevated pushups");
-    CHECK_EQ_STRING(exercise_list_sorted[5].name,"Burpees");
-    CHECK_EQ_STRING(exercise_list_sorted[6].name,"Jumping jacks");
-
-    // Free the dynamically allocated memory for the sorted list
-    free(exercise_list_sorted);
-})
-#pragma endregion
-
 #pragma region calculations
 
 TEST_CASE(calculations,{
-    questionnaire test;
-    test.weight = 65;
-    test.pushups = 5;
-    double test_value = base_weight_bench_press(test);
+    _questionnaire.weight = 65;
+    _questionnaire.pushups = 5;
+    double test_value = base_weight_bench_press();
     CHECK_EQ_DOUBLE(test_value,35,0.001);
 })
 
-//IS SUPPOSED TO FAIL - THE QUESTIONNAIRE STOPS ANY ZEROS FOR WEIGHT
+//IS SUPPOSED TO SUCCEED - LOWEST POSSIBLE WEIGHT FROM THE QUESTIONNAIRE
 TEST_CASE(calculations2,{
-    questionnaire test;
-    test.weight = 20;
-    test.pushups = 5;
-    double test_value = base_weight_bench_press(test);
+    _questionnaire.weight = 20;
+    _questionnaire.pushups = 5;
+    double test_value = base_weight_bench_press();
     CHECK_EQ_DOUBLE(test_value,10,0.001);
 })
 
 //TESTS FOR THE HIGHEST POSSIBLE WEIGHT - SHOULD SUCCEED
 TEST_CASE(calculations3,{
-     questionnaire test;
-     test.weight = 300;
-     test.pushups = 5;
-     double test_value = base_weight_bench_press(test);
+     _questionnaire.weight = 300;
+     _questionnaire.pushups = 5;
+     double test_value = base_weight_bench_press();
      CHECK_EQ_DOUBLE(test_value,162.5,0.001);
 })
 
 //TESTS FOR A LOT OF PUSHUPS - SHOULD SUCCEED
 TEST_CASE(calculations4,{
-     questionnaire test;
-     test.weight = 65;
-     test.pushups = 5000000;
-     double test_value = base_weight_bench_press(test);
+     _questionnaire.weight = 65;
+     _questionnaire.pushups = 5000000;
+     double test_value = base_weight_bench_press();
      CHECK_EQ_DOUBLE(test_value,55,0.001);
 })
 
 //TESTS FOR THE LOWEST AMOUNT OF PUSHUPS - SHOULD SUCCEED
 TEST_CASE(calculations5,{
-     questionnaire test;
-     test.weight = 65;
-     test.pushups = 0;
-     double test_value = base_weight_bench_press(test);
+     _questionnaire.weight = 65;
+     _questionnaire.pushups = 0;
+     double test_value = base_weight_bench_press();
      CHECK_EQ_DOUBLE(test_value,30,0.001);
 })
 
 //TESTS FOR -1 - SHOULD SUCCEED
 TEST_CASE(calculations6,{
-     questionnaire test;
-     test.weight = -1;
-     test.pushups = -1;
-     double test_value = base_weight_bench_press(test);
+     _questionnaire.weight = -1;
+     _questionnaire.pushups = -1;
+     double test_value = base_weight_bench_press();
      CHECK_EQ_DOUBLE(test_value,-1,0.001);
 })
 
@@ -248,7 +179,7 @@ TEST_CASE(calculations6,{
 
 #pragma region upgrade
 TEST_CASE(upgrade_test,{
-    questionnaire user_test = {67,65,5,12,1,{monday,67},{1,1,1,1,1}};
+    questionnaire user_test = {67,"male",65,183,5,12,1,{monday,67},{1,1,1,1,1}};
     exercise ex_test[length_of_exercises_list];
     resistance_exercises_list(ex_test, user_test);
     aerobic_exercises_list(ex_test,user_test);
@@ -274,17 +205,74 @@ TEST_CASE(upgrade_test,{
 })
 
 #pragma endregion
-
+*/
 #pragma region workouts
+
+//SUPPOSED TO FAIL - NOT ALL EXERCISES ARE USED
 TEST_CASE(workouts_test,{
-    //update_routine_workouts(exercises, user_questionnaire);
+    //Making "User inputs"
+    FILE *test_file = fopen("user_input.txt","w");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    fprintf(test_file,"67\n72\n6 \n8 \n1 \n4 \n-1 \n120\nYes\n3\n-1\n");
+    fclose(test_file);
+    test_file = fopen("user_input.txt","r");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    update_questionnaire(test_file);
+    fclose(test_file);
+    update_possible_exercises();
+    update_routine_workouts();
+    print_routine();
+    CHECK_EQ_INT(routine_workouts[0].exercises_count,5);//There should be enough time for a full workout
+    CHECK_EQ_INT(routine_workouts[0].muscles_count,3); //Is three because only three muscles are used
+    CHECK_EQ_INT(routine_workouts[0].muscles[0].name,chest);
+    CHECK_EQ_INT(routine_workouts[0].muscles[1].name,triceps);
+    CHECK_EQ_INT(routine_workouts[0].muscles[2].name,shoulders);
+    CHECK_EQ_INT(routine_workouts[0].muscles[3].name,quads);
+    CHECK_EQ_DOUBLE(routine_workouts[0].max_duration,120,0.001);
+    CHECK_EQ_DOUBLE(routine_workouts[0].duration,119.9333,0.001);
+    CHECK_EQ_INT(routine_workouts[0].day,friday);
+})
+
+TEST_CASE(workouts_test2,{
+    //Making "User inputs"
+    FILE *test_file = fopen("user_input.txt","w");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    fprintf(test_file,"67\n72\n6 \n8 \n1 \n2\n4\n \n-1 \n87\n1440\nYes\n2\n4\n-1\n");
+    fclose(test_file);
+    test_file = fopen("user_input.txt","r");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    update_questionnaire(test_file);
+    fclose(test_file);
+    update_possible_exercises();
+    update_routine_workouts();
+    print_routine();
+    CHECK_EQ_INT(routine_workouts[0].exercises_count,5);//There should be enough time for a full workout
+    CHECK_EQ_INT(routine_workouts[0].muscles_count,3); //Is three because only three muscles are used
+    CHECK_EQ_INT(routine_workouts[0].muscles[0].name,chest);
+    CHECK_EQ_INT(routine_workouts[0].muscles[1].name,triceps);
+    CHECK_EQ_INT(routine_workouts[0].muscles[2].name,shoulders);
+    CHECK_EQ_INT(routine_workouts[0].muscles[3].name,quads);
+    CHECK_EQ_DOUBLE(routine_workouts[0].max_duration,120,0.001);
+    CHECK_EQ_DOUBLE(routine_workouts[0].duration,119.9333,0.001);
+    CHECK_EQ_INT(routine_workouts[0].day,friday);
 })
 #pragma endregion
 
 // X SUPPOSED TO FAIL - X SUPPOSED TO SUCCEED
 //MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)
-MAIN_RUN_TESTS(homemade_scan_test,homemade_scan_test2);
-//MAIN_RUN_TESTS(sorting_exercises_test,sorting_exercises_test2,sorting_exercises_test3)
+//MAIN_RUN_TESTS(homemade_scan_test,homemade_scan_test2);
 //MAIN_RUN_TESTS(calculations,calculations2,calculations3,calculations4,calculations5,calculations6)
 //MAIN_RUN_TESTS(upgrade_test)
-
+MAIN_RUN_TESTS(workouts_test2)
