@@ -4,81 +4,43 @@
 #include "references.h"
 
 // returns an int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
-void evaluation_questionnaire(user_data *user) {
-    //  Creating a struct array in order to collect all exercises in one array
-    printf("\n\nWelcome back!\n"
-            "Your save file has been successfully loaded\n"
-            "How has you're workout been going?\n"
-            "__________________________________________________________________________\n\n"
-            "Would you like to retake the questionnaire?                  ***press 1***\n\n"
-            "Reevaluate the difficulty of your exercises?                 ***press 2***\n\n"
-            "None of the above. I would like to move on:                  ***press 3***\n"
-            "__________________________________________________________________________\n");
+void start_evaluation_questionnaire(user_data *user) {
 
-    int answer=0;
-
-    int has_answer=0; //used for while loop to define when 2 break.
-
-    while(has_answer==0) {
-        has_answer++;
+    // Continues looping until the user quits the program
+    while(1) {
+        printf("\n\n\nWhat would you like to do?"
+        "\n_______________________________________________________________________________"
+        "\nWould you like to retake the questionnaire?                      ***press 1***"
+        "\nWould yuu like to reevaluate the difficulty of your exercises?   ***press 2***"
+        "\nWould you like to change your workout schedule?                  ***press 3***"
+        "\nWould you like to print your fitness routine?                    ***press 4***"
+        "\nWould you like to quit the program?                              ***press 5***"
+        "\n_______________________________________________________________________________");
+        int answer = 0;
         homemade_scan(integer, &answer);
         switch (answer) {
-            case 1:
-                printf("Registered 1, questionnaire will appear!");
-                //update_questionnaire();
-                update_questionnaire(user);
-            break;
-            case 2:
+            case 1: // Retake questionnaire
+                start_new_user_questionnaire(user);
+                break;
+            case 2: // Upgrade/downgrade
+                start_upgrade_downgrade_questionnaire(user);
+                break;
+            case 3: // Update schedule (training days)
+                update_available_training_days(user);
+                save_user_data_save(user); // because update_available_training_days does not save by itself.
+                break;
+            case 4: // Print routine
                 update_possible_exercises(user);
-                printf("Registered 2, proceeding to reevaluate exercises:");
-            //  Retrieving sorted exercise list
-                upgrade_downgrade(user);
+                load_saved_upgrades_onto_possible_exercises(user);
                 update_routine_workouts(user);
                 print_routine(user);
-            break;
-            case 3:
-                printf("Moving on..\n");
-                load_saved_upgrades(user);
                 break;
-            default:;
-            printf("invalid input\n ");
-            has_answer--;
-            break;
-            //Continues while loop if answer defaults.
+            case 5: // Exit program
+                printf("Exiting program...");
+                exit(EXIT_SUCCESS);
+            default: // Continues while loop if answer defaults.
+                printf("Invalid input. Please try again.\n");
+                break;
         }
     }
-
-        printf("How would you like to schedule this week's workouts?\n"
-            "____________________________________________________________________________________\n\n"
-            "If you want your workouts on the same days and the same times as last week   ***press 1***\n"
-            "If you would like to change your workout schedule                            ***press 2***\n"
-            "To exit program immediately :                                                ***press 3***\n"
-            "____________________________________________________________________________________\n");
-
-        int second_answer = 0;
-        int has_answer_2 = 0; //used for while loop to define when 2 break.
-
-        while(has_answer_2 == 0) {
-            has_answer_2++;
-            homemade_scan(integer, &second_answer);
-            switch (second_answer) {
-                case 1:
-                    printf("Registered 1, you chose the same days.");
-
-                break;
-                case 2:
-                    printf("Registered 2, proceeding to reevaluate training days:");
-                    update_available_training_days(user);
-                break;
-                case 3:
-                    printf("Exiting..");
-                    exit(0);
-                default:;
-                printf("invalid input\n");
-                has_answer_2--;
-                //Continues while loop if answer defaults.
-            }
-        }
-
-    save_all_data(user);
 }

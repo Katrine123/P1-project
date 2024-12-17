@@ -3,77 +3,153 @@
 #include <string.h>
 #include "references.h"
 
-void save_all_data(user_data *user) {
-    //int active_functions = 8;
-    //int error_check = 0;
-    save_data(int_to_str(user->squats), "squats");
-    save_data(int_to_str(user->pushups), "push");
-    save_data(int_to_str(user->training_goal), "train");
-    save_data(int_to_str(user->available_training_days_count),"Days") +
-    save_data(int_to_str(user->ignored_muscle_group_names_count), "Muscles");
-    save_data(int_to_str(user->available_equipment_count), "Equipment");
-    save_data(int_to_str(user->_fitness_level), "lvl");
-    save_data(double_to_str(user->weight), "weight");
-    //save_data(arr_to_str(user->available_training_days, user->available_training_days_count),"days");
-    save_data(arr_to_str(user->available_equipment, user->available_equipment_count), "equipment");
-    save_data(arr_to_str(user->ignored_muscle_group_names, user->ignored_muscle_group_names_count), "muscles");
+// Save file names
+const char user_data_save_file_name[] = "user_data_save_file";
+const char user_upgrades_save_file_name[] = "user_upgrades_save_file";
 
-    for (int i = 0; i <= user->available_training_days_count; i++) {
-        save_data(week_to_str(user->available_training_days[i]), int_to_str(i+1));
-        printf("%s\n", week_to_str(user->available_training_days[i]));
+// Functions for data conversion
+
+/// Uses malloc() for the return value, so remember to free it.
+char* arr_to_str(const int *arr, int len) {
+    char *str = malloc(len+1);
+    str[0] = '\0';
+    for (int i = 0; i < len; i++) {
+        char temp_str[10];
+        snprintf(temp_str, sizeof(temp_str), "%d", arr[i]);
+        strcat(str, temp_str);
     }
-    //if (error_check==active_functions) {
-    //  printf("data saved successfully\n");
-    //for (int i = 1; i <= 7; i++) {
-    //    save_data(int_to_str(user->available_training_days[i].max_duration), int_to_str(i));
-    //}
-    //if (error_check<active_functions) {
-    // printf("ERROR: file could most likely not be opened.\n");
-    // printf("If user_save_data.txt'' is open on pc please attempt to close the file\n");
-    // printf("Attempting to save again\n");
-    // save_all_data();
+    str[len] = '\0';
+    return str;
+}
+char* int_to_str(int n) {
+    static char str[2];
+    sprintf(str, "%d", n);
+    return (str);
+}
+int str_to_int(char *str) {
+    return atoi(str);
+}
+char* double_to_str(double d) {
+    static char str[10];
+    sprintf(str, "%lf", d);
+    return (str);
+}
+double str_to_double(char* str) {
+    return atof(str);
+}
+training_day str_to_training_day(char *str) {
+    training_day training_day;
+    char* token = strtok(str, " - ");
+    training_day.day = str_to_int(token);
+    token = strtok(NULL, " - ");
+    training_day.max_duration = str_to_int(token);
+    return (training_day);
+}
+char* training_day_to_str(training_day training_day) {
+    static char str[20];
+    sprintf(str, "%d-%.0f", training_day.day, training_day.max_duration);
+    return (str);
+}
+user_data convert_to_user_data (user_save_data data) {
+
+    user_data user;
+    //standard data handling with the conversion functions
+    user.age            = str_to_int(data.age);
+    user.weight         = str_to_double(data.weight);
+    user.pushups        = str_to_int(data.pushups);
+    user.squats         = str_to_int(data.squats);
+    user._fitness_level = str_to_int(data.fitness_level);
+    user.training_goal 	= str_to_int(data.training_goal);
+
+    //random inputs just so it will work til its replaced
+    user.available_training_days_count = str_to_int(data.available_training_days_count);
+
+    user.available_training_days[0] = str_to_training_day(data.day1);
+    user.available_training_days[1] = str_to_training_day(data.day2);
+    user.available_training_days[2] = str_to_training_day(data.day3);
+    user.available_training_days[3] = str_to_training_day(data.day4);
+    user.available_training_days[4] = str_to_training_day(data.day5);
+    user.available_training_days[5] = str_to_training_day(data.day6);
+    user.available_training_days[6] = str_to_training_day(data.day7);
+
+    //handling of arrays
+    user.available_equipment_count = str_to_int(data.available_equipment_count);
+    for (int i = 0 ; i <= user.available_equipment_count; i++) {
+        user.available_equipment[i] = data.available_equipment[i]-'0';
+    }
+    user.ignored_muscle_group_names_count = str_to_int(data.ignored_muscle_group_names_count);
+    for (int i = 0 ; i <= user.ignored_muscle_group_names_count; i++) {
+        user.ignored_muscle_group_names[i] = data.ignored_muscle_group_names[i]-'0';
+    }
+
+    return user;
 }
 
-///simply checks if save is available returns 1 if data was found and 0 if not
-int check_for_save() {
+// Functions for user data save
+
+/// Simply checks if save is available. Returns 1 if data was found, and 0 if not.
+int check_for_user_data_save() {
     FILE * file;
-    if ((file = fopen("user_save_file", "r"))) {   // attempts to open file
-        printf("read operation successful\n");
+    if ((file = fopen(user_data_save_file_name, "r"))) {   // attempts to open file
+        printf("\nRead operation successful.");
         fclose(file);
         return(1);
     }
-    else {printf("No previous answers saved\n");
+    else {printf("\nNo previous answers saved.");
         return(0);
     }
 }
-///saves data like this {[lorem] ipsum} returns 1 if successful
-int save_data(const char *data, const char *data_name) {
+int reset_user_data_save() {
     FILE * file;
-    if ((file = fopen("user_save_file", "a"))) {
+    if ((file = fopen(user_data_save_file_name, "w"))) {
+        fprintf(file, "");
+        fclose(file);
+        return (1);
+    }
+    printf("\nFile opening error.");
+    return (0);
+}
+/// Saves data like this {[lorem] ipsum}. Returns 1 if successful.
+int add_to_user_data_save(const char *data, const char *data_name) {
+    FILE * file;
+    if ((file = fopen(user_data_save_file_name, "a"))) {
         fprintf(file, "{[%s] %s}, ", data_name, data);
         fclose(file);
         return (1);
     }
-    printf("file opening error\n");
+    printf("\nFile opening error.");
     return (0);
 }
+void save_user_data_save(user_data *user) {
 
+    reset_user_data_save();
 
-///prints data should be used to be used in conjunction with load_data()
-void print_user_data(user_save_data data) {
-    printf("Available Equipment: %s\n", data.available_equipment);
-    printf("Age: %s\n", data.age);
-    printf("Weight: %s\n", data.weight);
-    printf("Push ups: %s\n", data.pushups);
-    printf("Fitness Level: %s\n", data.fitness_level);
+    add_to_user_data_save(int_to_str(user->squats), "squats");
+    add_to_user_data_save(int_to_str(user->pushups), "push");
+    add_to_user_data_save(int_to_str(user->training_goal), "train");
+    add_to_user_data_save(int_to_str(user->available_training_days_count),"Days") +
+    add_to_user_data_save(int_to_str(user->ignored_muscle_group_names_count), "Muscles");
+    add_to_user_data_save(int_to_str(user->available_equipment_count), "Equipment");
+    add_to_user_data_save(int_to_str(user->_fitness_level), "lvl");
+    add_to_user_data_save(double_to_str(user->weight), "weight");
+
+    char* equipment = arr_to_str(user->available_equipment, user->available_equipment_count);
+    add_to_user_data_save(equipment, "equipment");
+    free(equipment);
+
+    char* ignored_muscles = arr_to_str(user->ignored_muscle_group_names, user->ignored_muscle_group_names_count);
+    add_to_user_data_save(ignored_muscles, "muscles");
+    free(ignored_muscles);
+
+    for (int i = 0; i <= user->available_training_days_count; i++) {
+        add_to_user_data_save(training_day_to_str(user->available_training_days[i]), int_to_str(i+1));
+    }
+
 }
-
-///returns a struct with values harvested from user_data_savefile.txt.
-///is pretty resilient and can be used like this to print "print_user_data(load_data());"
-void get_user_data(user_data *user) {
+void load_user_data_save(user_data *user) {
     user_save_data data;
     FILE *file;
-    if ((file = fopen("user_save_file", "r"))) {
+    if ((file = fopen(user_data_save_file_name, "r"))) {
         fseek(file, 0L, SEEK_END);
         int size = ftell(file);
         char str[size+10];
@@ -88,7 +164,6 @@ void get_user_data(user_data *user) {
                     data_type[j++] = str[i++]; //this is terrible but also temporary :3
                 }
                 data_type[j] = '\0';
-                //printf("%s\n", data_name);
 
                 j=0;
                 i+=2;
@@ -96,7 +171,6 @@ void get_user_data(user_data *user) {
                     data_data[j++] = str[i++];
                 }
                 data_data[j] = '\0';
-                //printf("%s\n", data_data);
                 switch (data_type[0]) {
                     case '1':
                         strncpy(data.day1, data_data,20);
@@ -152,110 +226,37 @@ void get_user_data(user_data *user) {
                     case 't':
                         strncpy(data.training_goal, data_data, 20);
                         break;
-                    default: printf("unknown data type \n %s %s\n",data_type, data_data );
+                    default: printf("\nUnknown data type \n %s %s",data_type, data_data );
                         // Switch copies the read data to the struct user data
                         // for now user data is all stored in strings and type is read as chars for simplicity’s sake
 
                 }
             }
         }
-    } else {printf("file opening error\n");}
+    } else {printf("\nFile opening error.");}
     fclose(file); //will at the moment prolly always close the file but am not 100% sure
-    *user = convert_data(data);
-    return;
+    *user = convert_to_user_data(data);
 }
 
-user_data convert_data (user_save_data data) {
-    user_data user;
-    //standard data handling with the conversion functions
-    user.age            = str_to_int(data.age);
-    user.weight         = str_to_double(data.weight);
-    user.pushups        = str_to_int(data.pushups);
-    user.squats         = str_to_int(data.squats);
-    user._fitness_level = str_to_int(data.fitness_level);
-    user.training_goal 	= str_to_int(data.training_goal);
+// Functions for user upgrades save
 
-    //random inputs just so it will work til its replaced
-    user.available_training_days_count = str_to_int(data.available_training_days_count);
-
-    user.available_training_days[0] = str_to_week(data.day1);
-    user.available_training_days[1] = str_to_week(data.day2);
-    user.available_training_days[2] = str_to_week(data.day3);
-    user.available_training_days[3] = str_to_week(data.day4);
-    user.available_training_days[4] = str_to_week(data.day5);
-    user.available_training_days[5] = str_to_week(data.day6);
-    user.available_training_days[6] = str_to_week(data.day7);
-
-    //handling of arrays
-    user.available_equipment_count = str_to_int(data.available_equipment_count);
-    for (int i = 0 ; i <= user.available_equipment_count; i++) {
-        user.available_equipment[i] = data.available_equipment[i]-'0';
+void reset_user_upgrades_save(user_data *user) {
+    update_possible_exercises(user);
+    FILE *file = fopen(user_upgrades_save_file_name, "w");
+    for (int i = 0; i < user->possible_exercises_count; i++) {
+        fprintf(file, "0 ,");
     }
-    user.ignored_muscle_group_names_count = str_to_int(data.ignored_muscle_group_names_count);
-    for (int i = 0 ; i <= user.ignored_muscle_group_names_count; i++) {
-        user.ignored_muscle_group_names[i] = data.ignored_muscle_group_names[i]-'0';
+    fclose(file);
+}
+void save_user_upgrades_save(user_data *user, int data[user->possible_exercises_count+1]) {
+    FILE *file = fopen(user_upgrades_save_file_name, "w");
+    for (int i = 0; i < user->possible_exercises_count; i++) {
+        fprintf(file, "%d ,", data[i]);
     }
-    //user.available_training_days_count = str_to_int(data.available_training_days_count);
-    //for (int i = 0 ; i <= user.available_training_days_count; i++) {
-    //    user.available_training_days[i] = data.available_training_days[i]-'0';
-    //}
-    return (user);
+    fclose(file);
 }
-
-// int total_days = 1;
-
-// char train_to_str(training_day d);
-// training_day str_to_train(char);
-
-char* arr_to_str(const int *arr, int len) {
-    char *str = malloc(len+1);
-    str[0] = '\0';
-    for (int i = 0; i < len; i++) {
-        char temp_str[10];
-        snprintf(temp_str, sizeof(temp_str), "%d", arr[i]);
-        strcat(str, temp_str);
-    }
-    str[len] = '\0';
-    return str;
-}
-
-char* int_to_str(int n) {
-    static char str[2];
-    sprintf(str, "%d", n);
-    return (str);
-}
-int str_to_int(char *str) {
-    return atoi(str);
-}
-char* double_to_str(double d) {
-    static char str[10];
-    sprintf(str, "%lf", d);
-    return (str);
-}
-
-double str_to_double(char* str) {
-    return atof(str);
-}
-training_day str_to_week(char *str) {
-    training_day training_day;
-    char* token = strtok(str, " - ");
-    training_day.day = str_to_int(token);
-    token = strtok(NULL, " - ");
-    training_day.max_duration = str_to_int(token);
-    return (training_day);
-}
-char* week_to_str(training_day training_day) {
-    static char str[20];
-    sprintf(str, "%d-%.0f", training_day.day, training_day.max_duration);
-    return (str);
-}
-
-
-
-
-
-void load_upgr_dogr(user_data *user, int *data) {
-    FILE *f = fopen("user_upgrades", "r");
+void get_data_from_user_upgrades_save(user_data *user, int *data) {
+    FILE *f = fopen(user_upgrades_save_file_name, "r");
 
     char temp[32*user->possible_exercises_count];
     fgets(temp, sizeof(temp), f);
@@ -268,62 +269,6 @@ void load_upgr_dogr(user_data *user, int *data) {
     }
     fclose(f);
 }
-void upgr_dogr(user_data *user, int exercisecount, int upgrade_count) {
-    int temp_save[user->possible_exercises_count];
-    load_upgr_dogr(user, temp_save);
-    temp_save[exercisecount] = temp_save[exercisecount] + upgrade_count;
-    save_upgr_dogr(user, temp_save);
-}
-
-void save_upgr_dogr(user_data *user, int data[user->possible_exercises_count+1]) {
-    FILE *file = fopen("user_upgrades", "w");
-    for (int i = 0; i < user->possible_exercises_count; i++) {
-        fprintf(file, "%d ,", data[i]);
-    }
-    fclose(file);
-}
-
-void initialize_upgr_dogr(user_data *user) {
-    FILE *file = fopen("user_upgrades", "w");
-    for (int i = 0; i < user->possible_exercises_count; i++) {
-        fprintf(file, "0 ,");
-    }
-    fclose(file);
-}
-//int str_to_seq_i
 
 
-//int str_to_seq_int(int n, char str[n]) {
-//    int arr[6];
-//    for (int i = 0; i < 6; i++) {
-//        arr[i] = str[i] - '0';
-//    }
-//    return ;
-//}
 
-
-//char train_to_str(training_day user) {
-//    char str[20];
-//    for (int i = 1; i <= total_days; i++) {
-//        sprintf(str, "%d, %lf", user[i].day_week, user[i].available_time);
-//    }
-//
-//    return (str);
-//}
-
-
-//training_day* str_to_train(const char* str) {
-//    training_day *user = malloc(total_days * sizeof(training_day));
-//    for (int i = 0; i <= total_days; i++) {
-//
-//    }
-//    return user;
-//}
-
-///needs work and might be renamed to insert data so data can be changed after the first save.
-///void delete_data() {
-/// FILE * file;
-/// if ((file = fopen("user_data_savefile.txt", "r"))) {
-/// printf("Delete operation successful\n");
-/// }
-/// }
