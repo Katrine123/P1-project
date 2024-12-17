@@ -20,8 +20,8 @@ void evaluation_questionnaire(user_data *user, int *input) {
     int has_answer=0; //used for while loop to define when 2 break.
 
     while(has_answer==0) {
-        scanf("%d", &answer);
         has_answer++;
+        homemade_scan(integer, &answer);
         switch (answer) {
             case 1:
                 printf("Registered 1, questionnaire will appear!");
@@ -37,8 +37,9 @@ void evaluation_questionnaire(user_data *user, int *input) {
                 printf("Moving on..\n");
                 break;
             default:;
-            printf("invalid input\n");
+            printf("invalid input\n ");
             has_answer--;
+            break;
             //Continues while loop if answer defaults.
         }
     }
@@ -50,12 +51,12 @@ void evaluation_questionnaire(user_data *user, int *input) {
             "To exit program immediately :                                                ***press 3***\n"
             "____________________________________________________________________________________\n");
 
-        int second_answer=0;
-        int has_answer_2=0; //used for while loop to define when 2 break.
+        int second_answer = 0;
+        int has_answer_2 = 0; //used for while loop to define when 2 break.
 
-        while(has_answer_2==0) {
-            scanf("%d", &second_answer);
+        while(has_answer_2 == 0) {
             has_answer_2++;
+            homemade_scan(integer, &second_answer);
             switch (second_answer) {
                 case 1:
                     printf("Registered 1, you chose the same days.");
@@ -67,7 +68,6 @@ void evaluation_questionnaire(user_data *user, int *input) {
                 case 3:
                     printf("Exiting..");
                     exit(0);
-                break;
                 default:;
                 printf("invalid input\n");
                 has_answer_2--;

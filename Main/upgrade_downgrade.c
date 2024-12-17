@@ -86,3 +86,19 @@ void upgrade_downgrade(user_data *user, int *input) {
     } while (first_answer != 'y' && first_answer != 'n');
 }
 
+void load_saved_upgrades() {
+    int saved_data[possible_exercises_count];
+    load_upgr_dogr(saved_data);
+    for (int i = 0; i < possible_exercises_count; i++) {
+        if (0<saved_data) {
+            for (int j = 0; j < saved_data[i]; j++) {
+                upgrade_function(i);
+            }
+        } else {
+            for (int j = 0; j > saved_data[i] ; j--) {
+                downgrade_function(i);
+            }
+        }
+    }
+}
+
