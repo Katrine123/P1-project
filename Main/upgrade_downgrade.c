@@ -2,38 +2,36 @@
 #include "references.h"
 
 void check_if_body_weight_exercise_and_print(user_data *user, int i) {
-    if(user->possible_exercises[i].is_body_weight_exercise == 1) {
-        printf("Your current amount of repetitions are: %d repetitions \n", user->possible_exercises[i].reps);
+    if(user->possible_exercises[i]->is_body_weight_exercise == 1) {
+        printf("Your current amount of repetitions are: %d repetitions \n", user->possible_exercises[i]->reps);
     } else {
-        printf("Your current weight is: %lf kg \n", user->possible_exercises[i].base_weight);
+        printf("Your current weight is: %lf kg \n", user->possible_exercises[i]->base_weight);
     }
 }
 
 void upgrade_function(user_data *user, int input) {
-    if(user->possible_exercises[input].is_body_weight_exercise == 1) {
-        user->possible_exercises[input].reps += user->possible_exercises[input].addition;
+    if(user->possible_exercises[input]->is_body_weight_exercise == 1) {
+        user->possible_exercises[input]->reps += user->possible_exercises[input]->addition;
     } else {
-        user->possible_exercises[input].base_weight += user->possible_exercises[input].addition;
+        user->possible_exercises[input]->base_weight += user->possible_exercises[input]->addition;
     }
-
-
 }
 
 void downgrade_function(user_data *user, int input) {
-    if (user->possible_exercises[input].is_body_weight_exercise == 1) {
+    if (user->possible_exercises[input]->is_body_weight_exercise == 1) {
         // Ensure reps cannot go below 0
-        if (user->possible_exercises[input].reps > user->possible_exercises[input].addition) {
-            user->possible_exercises[input].reps -= user->possible_exercises[input].addition;
+        if (user->possible_exercises[input]->reps > user->possible_exercises[input]->addition) {
+            user->possible_exercises[input]->reps -= user->possible_exercises[input]->addition;
         } else {
-            user->possible_exercises[input].reps = 0;
+            user->possible_exercises[input]->reps = 0;
             printf("Repetitions cannot be reduced further!\n");
         }
     } else {
         // Ensure weight cannot go below 0
-        if (user->possible_exercises[input].base_weight > user->possible_exercises[input].addition) {
-            user->possible_exercises[input].base_weight -= user->possible_exercises[input].addition;
+        if (user->possible_exercises[input]->base_weight > user->possible_exercises[input]->addition) {
+            user->possible_exercises[input]->base_weight -= user->possible_exercises[input]->addition;
         } else {
-            user->possible_exercises[input].base_weight = 0;
+            user->possible_exercises[input]->base_weight = 0;
             printf("Weight cannot be reduced further!\n");
         }
     }
@@ -47,9 +45,10 @@ void upgrade_downgrade(user_data *user, int *input) {
         scanf(" %c", &first_answer);
         if(first_answer == 'y') {
             //  Creating for loop, since we have to evaluate each exercise one-by-one.
+            printf("\n fuck: %d ", user->possible_exercises_count);
             for(int i = 0; i < user->possible_exercises_count; i++) {
                 *input = i;
-                printf("\nExercise %d: %s \n", i + 1, naming_exercises(user->possible_exercises[i].name));
+                printf("\nExercise %d: %s \n", i + 1, naming_exercises(user->possible_exercises[i]->name));
 
                 //  Printing exercise. Checking if it increments repetitions or weight
                 check_if_body_weight_exercise_and_print(user, i);
@@ -64,12 +63,12 @@ void upgrade_downgrade(user_data *user, int *input) {
                             upgrade_function(user, *input);
                             //  printing the altered exercise:
                             check_if_body_weight_exercise_and_print(user, i);
-                            user->possible_exercises[i].counter_upgrade_downgrade++;
+                            user->possible_exercises[i]->counter_upgrade_downgrade++;
                         } else if(second_answer == 'd') {
                             downgrade_function(user, *input);
                             //  printing the altered exercise:
                             check_if_body_weight_exercise_and_print(user, i);
-                            user->possible_exercises[i].counter_upgrade_downgrade--;
+                            user->possible_exercises[i]->counter_upgrade_downgrade--;
                         } else if(second_answer == 's') {
                             //  printing the unaltered exercise:
                             check_if_body_weight_exercise_and_print(user, i);
@@ -86,17 +85,17 @@ void upgrade_downgrade(user_data *user, int *input) {
     } while (first_answer != 'y' && first_answer != 'n');
 }
 
-void load_saved_upgrades() {
-    int saved_data[possible_exercises_count];
+void load_saved_upgrades(user_data *user) {
+    int saved_data[user->possible_exercises_count];
     load_upgr_dogr(saved_data);
-    for (int i = 0; i < possible_exercises_count; i++) {
+    for (int i = 0; i < user->possible_exercises_count; i++) {
         if (0<saved_data) {
             for (int j = 0; j < saved_data[i]; j++) {
-                upgrade_function(i);
+                upgrade_function(user, i);
             }
         } else {
-            for (int j = 0; j > saved_data[i] ; j--) {
-                downgrade_function(i);
+            for (int j = 0; j > saved_data[i]; j--) {
+                downgrade_function(user, i);
             }
         }
     }

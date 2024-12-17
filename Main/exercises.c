@@ -5,9 +5,6 @@
 
 #define MAX_REPS 15
 
-exercise possible_exercises[ARRAY_MAX*2];
-int possible_exercises_count = 0;
-
 // Helper functions
 
 ///function for rounding down to the nearest number divisible by 2.5
@@ -305,25 +302,21 @@ void update_possible_aerobic_exercises(user_data *user) {
 
 // Global functions
 
+
 void update_possible_exercises(user_data *user) {
     update_possible_resistance_exercises(user);
     update_possible_aerobic_exercises(user);
-}
 
-void all_possible_exercises(user_data *user) {
-    update_possible_resistance_exercises(user);
-    update_possible_aerobic_exercises(user);
-
-    possible_exercises_count = 0;
+    user->possible_exercises_count = 0;
 
     // Add resistance exercises to the unified array
     for (int i = 0; i < user->possible_resistance_exercises_count; i++) {
-        possible_exercises[possible_exercises_count++] = user->possible_resistance_exercises[i];
+        user->possible_exercises[user->possible_exercises_count++] = &user->possible_resistance_exercises[i];
     }
 
     // Add aerobic exercises to the unified array
     for (int i = 0; i < user->possible_aerobic_exercises_count; i++) {
-        possible_exercises[possible_exercises_count++] = user->possible_aerobic_exercises[i];
+        user->possible_exercises[user->possible_exercises_count++] = &user->possible_aerobic_exercises[i];
     }
 }
 

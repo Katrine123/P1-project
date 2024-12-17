@@ -29,9 +29,12 @@ void evaluation_questionnaire(user_data *user, int *input) {
                 evaluation_questionnaire(user, input);
             break;
             case 2:
+                update_possible_exercises(user);
                 printf("Registered 2, proceeding to reevaluate exercises:");
             //  Retrieving sorted exercise list
                 upgrade_downgrade(user, input);
+                update_routine_workouts(user);
+                print_routine(user);
             break;
             case 3:
                 printf("Moving on..\n");
@@ -60,10 +63,11 @@ void evaluation_questionnaire(user_data *user, int *input) {
             switch (second_answer) {
                 case 1:
                     printf("Registered 1, you chose the same days.");
+
                 break;
                 case 2:
                     printf("Registered 2, proceeding to reevaluate training days:");
-                    //update_available_training_days();
+                    // update_available_training_days();
                 break;
                 case 3:
                     printf("Exiting..");
@@ -74,4 +78,6 @@ void evaluation_questionnaire(user_data *user, int *input) {
                 //Continues while loop if answer defaults.
             }
         }
+
+    save_all_data(user);
 }

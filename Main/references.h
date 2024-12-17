@@ -80,7 +80,7 @@ typedef struct {
     double training_goal;
     exercise possible_resistance_exercises[ARRAY_MAX]; int possible_resistance_exercises_count;
     exercise possible_aerobic_exercises[ARRAY_MAX]; int possible_aerobic_exercises_count;
-    exercise possible_exercises[ARRAY_MAX*2]; int possible_exercises_count;
+    exercise* possible_exercises[ARRAY_MAX*2]; int possible_exercises_count;
     workout routine_workouts[7]; int routine_workouts_count; // Max 7 workouts per week (1 per day).
     // Workout rules
     int general_warmup_duration; // In minutes.
@@ -117,7 +117,6 @@ void update_available_training_days(user_data *user);
 #pragma region exercises.c
 
 void update_possible_exercises(user_data *user_data);
-void all_possible_exercises(user_data *user_data);
 
 #pragma endregion
 #pragma region workouts.c

@@ -291,6 +291,8 @@ void update_questionnaire(user_data *user) {
     update_available_training_days(user);
     update_available_equipment(user);
     update_ignored_muscle_groups(user);
+
+    save_all_data(user);
 }
 
 
