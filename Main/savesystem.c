@@ -19,7 +19,9 @@ void save_all_data(user_data *user) {
     save_data(arr_to_str(user->ignored_muscle_group_names, user->ignored_muscle_group_names_count),"muscles");
     //if (error_check==active_functions) {
     //  printf("data saved successfully\n");
-
+    //for (int i = 1; i <= 7; i++) {
+    //    save_data(int_to_str(user->available_training_days[i].max_duration), int_to_str(i));
+    //}
     //if (error_check<active_functions) {
     // printf("ERROR: file could most likely not be opened.\n");
     // printf("If user_save_data.txt'' is open on pc please attempt to close the file\n");
@@ -242,7 +244,7 @@ void save_upgr_dogr(user_data *user, int data[user->possible_exercises_count+1])
 void initialize_upgr_dogr(user_data *user) {
     FILE *file = fopen("user_upgrades", "w");
     for (int i = 0; i < 100; i++) {
-        fprintf(file, "0 ,");
+        fprintf(file, "100 ,");
     }
     fclose(file);
 }
