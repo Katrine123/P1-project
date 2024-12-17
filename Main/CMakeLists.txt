@@ -36,10 +36,10 @@ add_library(
 target_link_libraries(main
         new_user_questionnaire
         exercises
-        workouts
         savesystem
         evaluation_questionnaire
         upgrade_downgrade
-        print_routine
         tools
-        references)
+        references
+        workouts
+        print_routine)

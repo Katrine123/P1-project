@@ -127,6 +127,7 @@ void get_user_data() {
                         break;
                     case 't':
                         strncpy(data.training_goal, data_data, 20);
+                        break;
                     default: printf("unknown data type \n %s %s\n",data_type, data_data );
                         // Switch copies the read data to the struct user data
                         // for now user data is all stored in strings and type is read as chars for simplicity’s sake
