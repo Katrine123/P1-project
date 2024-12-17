@@ -15,7 +15,6 @@ void upgrade_function(user_data *user, int input) {
         user->possible_exercises[input]->base_weight += user->possible_exercises[input]->addition;
     }
 }
-
 void downgrade_function(user_data *user, int input) {
     if (user->possible_exercises[input]->is_body_weight_exercise == 1) {
         // Ensure reps cannot go below 0
@@ -34,6 +33,13 @@ void downgrade_function(user_data *user, int input) {
             printf("Weight cannot be reduced further!\n");
         }
     }
+}
+
+void upgrade_or_downgrade_exercise(user_data *user, int exercise_index, int addition_to_upgrade) {
+    int temp_save[user->possible_exercises_count];
+    get_data_from_user_upgrades_save(user, temp_save);
+    temp_save[exercise_index] = temp_save[exercise_index] + addition_to_upgrade;
+    save_user_upgrades_save(user, temp_save);
 }
 
 void start_upgrade_downgrade_questionnaire(user_data *user) {
@@ -78,7 +84,7 @@ void start_upgrade_downgrade_questionnaire(user_data *user) {
 
 void load_saved_upgrades_onto_possible_exercises(user_data *user) {
     int saved_data[user->possible_exercises_count];
-    get_saved_upgrades(user, saved_data);
+    get_data_from_user_upgrades_save(user, saved_data);
     for (int i = 0; i < user->possible_exercises_count-1; i++) {
         if (saved_data[i]>0) {
             for (int j = 0; j < saved_data[i]; j++) {

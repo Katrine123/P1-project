@@ -69,7 +69,7 @@ typedef struct {
 } workout;
 
 typedef struct {
-    int time_when_questionnaire_answered;
+    int time_when_questionnaire_answered; // This is used when generating randomization seeds in workouts.c
     int age;
     double weight;
     int pushups;
@@ -132,7 +132,7 @@ char* naming_training_goal(enum training_goal_e name);
 #pragma endregion
 #pragma region new_user_questionnaire.c
 
-void answer_new_user_questionnaire(user_data *user);
+void start_new_user_questionnaire(user_data *user);
 void update_available_training_days(user_data *user);
 
 #pragma endregion
@@ -149,6 +149,7 @@ void update_routine_workouts(user_data *user);
 #pragma region upgrade_downgrade.c
 
 void start_upgrade_downgrade_questionnaire(user_data *user);
+void load_saved_upgrades_onto_possible_exercises(user_data *user);
 
 #pragma endregion
 #pragma region print_routine.c
@@ -158,29 +159,20 @@ void print_routine(user_data *user);
 #pragma endregion
 #pragma region evaluation_questionnaire.c
 
-void evaluation_questionnaire(user_data *user);
+void start_evaluation_questionnaire(user_data *user);
 
 #pragma endregion
 #pragma region savesystem.c
 
-void get_saved_upgrades(user_data *user, int* data);
-void upgrade_or_downgrade_exercise(user_data *user, int exercise_index, int addition_to_upgrade);
-void save_upgrades(user_data *user, int data[user->possible_resistance_exercises_count]);
+// User data save
+int check_for_user_data_save();
+void save_user_data_save(user_data *user);
+void load_user_data_save(user_data *user);
 
-void save_user_data(user_data *user);
-int check_for_save();
-
-void reset_upgrades_save(user_data *user);
-void get_saved_user_data(user_data *user);
-void load_saved_upgrades_onto_possible_exercises(user_data *user);
-
-training_day str_to_week(char *str);
-char* week_to_str(training_day training_day);
-
-#pragma endregion
-#pragma region main.c
-
-void update_and_print_routine(user_data *user);
+// User upgrades save
+void reset_user_upgrades_save(user_data *user);
+void save_user_upgrades_save(user_data *user, int data[user->possible_resistance_exercises_count]);
+void get_data_from_user_upgrades_save(user_data *user, int* data);
 
 #pragma endregion
 

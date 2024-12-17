@@ -11,16 +11,16 @@ int main(void) {
     user_data user;
 
     // Does save data exist?
-    if (check_for_save()) {   // TODO: found_save is a boolean int updated when loading save data
-        get_saved_user_data(&user); // get user_data from user_save_file
+    if (check_for_user_data_save()) {
+        load_user_data_save(&user);
         printf("\n\nWelcome back!\n"
             "Your save file has been successfully loaded.\n");
     } else {
-        answer_new_user_questionnaire(&user);
+        start_new_user_questionnaire(&user);
     }
 
     // Run evaluation questionnaire
-    evaluation_questionnaire(&user);
+    start_evaluation_questionnaire(&user);
 
     return 0;
 }
