@@ -4,7 +4,7 @@
 #include "references.h"
 
 // returns an int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
-void evaluation_questionnaire(user_data *user, int *input) {
+void evaluation_questionnaire(user_data *user, int *input,FILE* file) {
     //  Creating a struct array in order to collect all exercises in one array
     printf("\n\nWelcome back!\n"
             "Your save file has been successfully loaded\n"
@@ -21,12 +21,12 @@ void evaluation_questionnaire(user_data *user, int *input) {
 
     while(has_answer==0) {
         has_answer++;
-        homemade_scan(integer, &answer);
+        homemade_scan(integer, &answer,file);
         switch (answer) {
             case 1:
                 printf("Registered 1, questionnaire will appear!");
                 //update_questionnaire();
-                evaluation_questionnaire(user, input);
+                evaluation_questionnaire(user, input,file);
             break;
             case 2:
                 update_possible_exercises(user);
@@ -59,7 +59,7 @@ void evaluation_questionnaire(user_data *user, int *input) {
 
         while(has_answer_2 == 0) {
             has_answer_2++;
-            homemade_scan(integer, &second_answer);
+            homemade_scan(integer, &second_answer,file);
             switch (second_answer) {
                 case 1:
                     printf("Registered 1, you chose the same days.");

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "mtest.h"
 #include "references.c"
-/*
+
 #pragma region questionnaire
 TEST_CASE(questionnaire_test1,{
     //Making "User inputs"
@@ -66,7 +66,7 @@ TEST_CASE(questionnaire_test2,{
 })
 
 #pragma endregion
-
+/*
 #pragma region homemade_scan
 TEST_CASE(homemade_scan_test,{
     FILE *test_file = fopen("user_input.txt","w");
@@ -271,8 +271,8 @@ TEST_CASE(workouts_test2,{
 #pragma endregion
 
 // X SUPPOSED TO FAIL - X SUPPOSED TO SUCCEED
-//MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)
+MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)
 //MAIN_RUN_TESTS(homemade_scan_test,homemade_scan_test2);
 //MAIN_RUN_TESTS(calculations,calculations2,calculations3,calculations4,calculations5,calculations6)
 //MAIN_RUN_TESTS(upgrade_test)
-MAIN_RUN_TESTS(workouts_test2)
+//MAIN_RUN_TESTS(workouts_test2)

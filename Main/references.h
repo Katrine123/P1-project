@@ -112,7 +112,7 @@ char* naming_training_goal(enum training_goal_e name);
 #pragma region new_user_questionnaire.c
 
 void update_questionnaire(user_data *user, FILE* file);
-void update_available_training_days(user_data *user);
+void update_available_training_days(user_data *user,FILE* file);
 
 #pragma endregion
 #pragma region exercises.c
@@ -137,7 +137,7 @@ void print_routine(user_data *user);
 #pragma endregion
 #pragma region evaluation_questionnaire.c
 
-void evaluation_questionnaire(user_data *user, int *input);
+void evaluation_questionnaire(user_data *user, int *input, FILE* file);
 
 #pragma endregion
 #pragma region savesystem.c

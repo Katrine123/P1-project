@@ -26,7 +26,7 @@ void print_questionnaire(user_data *user) {
 }
 
 // Helper functions
-void get_multiple_answers_to_enum_list(int* answers, int* answers_count, int input_list_max) {
+void get_multiple_answers_to_enum_list(int* answers, int* answers_count, int input_list_max,FILE* file) {
 
     // Reset
     *answers_count = 0;
@@ -35,7 +35,7 @@ void get_multiple_answers_to_enum_list(int* answers, int* answers_count, int inp
     int input;
     do {
         printf("\nEnter answer:");
-        homemade_scan(integer, &input);
+        homemade_scan(integer, &input,file);
 
         // Quit
         if (input == -1) {
@@ -73,7 +73,7 @@ int qsort_compare_ascending_order(const void* a, const void* b) {
 }
 
 // Update functions
-void update_available_equipment(user_data *user) {
+void update_available_equipment(user_data *user, FILE* file) {
 
     // Reset
     user->available_equipment_count = 0;
@@ -81,7 +81,7 @@ void update_available_equipment(user_data *user) {
     // Ask the user if they have access to a gym.
     char access_to_gym[5];
     printf("\nDo you have access to a gym? (Enter 'yes' or 'no'.)");
-    homemade_scan(string, access_to_gym);
+    homemade_scan(string, access_to_gym,file);
 
     // We assume that if the user has access to a gym, they have access to all the equipment in the array.
     if (strcmp(access_to_gym, "Yes") == 0 || strcmp(access_to_gym, "yes") == 0) {
@@ -102,7 +102,7 @@ void update_available_equipment(user_data *user) {
         // Get answers
         int answers[equipment_enum_length];
         int answers_count = 0;
-        get_multiple_answers_to_enum_list(answers, &answers_count, equipment_enum_length);
+        get_multiple_answers_to_enum_list(answers, &answers_count, equipment_enum_length,file);
 
         // Add to available equipment
         for (int i = 0; i < answers_count; i++) {
@@ -112,10 +112,10 @@ void update_available_equipment(user_data *user) {
     else {
         // Recursion
         printf("\nYou have not entered either 'yes' or 'no'. Please try again.");
-        update_available_equipment(user);
+        update_available_equipment(user,file);
     }
 }
-void update_available_training_days(user_data *user) {
+void update_available_training_days(user_data *user, FILE* file) {
 
     // Reset
     user->available_training_days_count = 0;
@@ -130,12 +130,12 @@ void update_available_training_days(user_data *user) {
     // Get answers
     int answers[7];
     int answers_count = 0;
-    get_multiple_answers_to_enum_list(answers, &answers_count, 7);
+    get_multiple_answers_to_enum_list(answers, &answers_count, 7,file);
 
     // No days selected?
     if (answers_count == 0) {
         printf("\nYou have to select at least one day to train. Please do so.");
-        update_available_training_days(user); // Recursion.
+        update_available_training_days(user,file); // Recursion.
         return;
     }
 
@@ -165,7 +165,7 @@ void update_available_training_days(user_data *user) {
         double input;
         int valid_input = 1;
         do {
-            homemade_scan(long_float, &input);
+            homemade_scan(long_float, &input,file);
 
             if (input > 1440) {
                 printf("\nInvalid input. That is more minutes than there is in a day. Please try again.");
@@ -179,7 +179,7 @@ void update_available_training_days(user_data *user) {
         user->available_training_days[i].max_duration = input;
     }
 }
-void update_ignored_muscle_groups(user_data *user) {
+void update_ignored_muscle_groups(user_data *user,FILE* file) {
 
     // Reset
     user->ignored_muscle_group_names_count = 0;
@@ -195,14 +195,14 @@ void update_ignored_muscle_groups(user_data *user) {
     // Get answers
     int answers[muscle_group_name_enum_length];
     int answers_count = 0;
-    get_multiple_answers_to_enum_list(answers, &answers_count, muscle_group_name_enum_length);
+    get_multiple_answers_to_enum_list(answers, &answers_count, muscle_group_name_enum_length,file);
 
     // Add to ignored muscle groups
     for (int i = 0; i < answers_count; i++) {
         user->ignored_muscle_group_names[user->ignored_muscle_group_names_count++] = answers[i];
     }
 }
-void update_questionnaire(user_data *user) {
+void update_questionnaire(user_data *user,FILE* file) {
 
      // Welcome message to new users.
      printf("\nWelcome to your personalized fitness trainer, "
@@ -211,7 +211,7 @@ void update_questionnaire(user_data *user) {
     // Asks the user's age (our program does not work with children)
     int age;
     printf("\nWhat is your age?");
-    homemade_scan(integer, &age);
+    homemade_scan(integer, &age,file);
     if (age < 18) {
         printf("\nSorry, our program is designed for adults. You are too young.");
         exit(EXIT_FAILURE);
@@ -222,7 +222,7 @@ void update_questionnaire(user_data *user) {
 
     while(user->weight < 20 || user->weight > 300) {
         printf("\nWhat is your weight in kg?");
-        homemade_scan(long_float, &user->weight);
+        homemade_scan(long_float, &user->weight,file);
         if(user->weight < 20 || user->weight > 300) {
             printf("\nInvalid weight. Try again.");
         }
@@ -231,7 +231,7 @@ void update_questionnaire(user_data *user) {
     // Asks what user's weight is, and loops through the input to make sure the weight is in a reasonable range (20-300 kg).
     while(user->weight < 20 || user->weight > 300) {
         printf("\nWhat is your weight in kg?");
-        homemade_scan(long_float, &user->weight);
+        homemade_scan(long_float, &user->weight,file);
         if(user->weight < 20 || user->weight > 300) {
             printf("\nInvalid weight. Try again.");
         }
@@ -240,7 +240,7 @@ void update_questionnaire(user_data *user) {
     // Asks user to enter how many push-ups they can perform, ensuring only non-negative numbers.
     do {
         printf("\nHow many push-ups can you do?");
-        homemade_scan(integer, &user->pushups);
+        homemade_scan(integer, &user->pushups,file);
         if(user->pushups < 0) {
             printf("\nPlease enter 0 or more!");
         }
@@ -249,7 +249,7 @@ void update_questionnaire(user_data *user) {
     // Asks user to enter how many squats they can perform, ensuring only non-negative numbers.
     do {
         printf("\nHow many squats can you do?");
-        homemade_scan(integer, &user->squats);
+        homemade_scan(integer, &user->squats,file);
         if(user->squats < 0) {
             printf("\nPlease enter 0 or more!");
         }
@@ -265,7 +265,7 @@ void update_questionnaire(user_data *user) {
                "\nfitness rank 5 (novice): No experience with exercising");
 
         // Validates that fitness level is between 1-5.
-        homemade_scan(integer, &user->_fitness_level);
+        homemade_scan(integer, &user->_fitness_level,file);
         if(user->_fitness_level < expert || user->_fitness_level > novice) {
             printf("\nIt has to be between 1-5!\n");
         }
@@ -281,16 +281,16 @@ void update_questionnaire(user_data *user) {
                "fitness goal 4: I have not thought about this. I just want to get started! \n");
 
         // Validates that fitness level is between 1-5.
-        homemade_scan(long_float, &user->training_goal);
+        homemade_scan(long_float, &user->training_goal,file);
         //  Defining bounds based on print statement. Not variable so could create issues!
         if(user->training_goal < 1 || user->training_goal > 4) {
             printf("It has to be between 1-4!\n");
         }
     }while(user->training_goal < 1 || user->training_goal > 4);
 
-    update_available_training_days(user);
-    update_available_equipment(user);
-    update_ignored_muscle_groups(user);
+    update_available_training_days(user,file);
+    update_available_equipment(user,file);
+    update_ignored_muscle_groups(user,file);
 
     save_all_data(user);
 }

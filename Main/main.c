@@ -20,14 +20,14 @@ int main(void) {
         get_user_data(&user);
         update_possible_exercises(&user);
         int input[user.possible_exercises_count];
-        evaluation_questionnaire(&user, input);
+        evaluation_questionnaire(&user, input,stdin);
         update_routine_workouts(&user);
         print_routine(&user);
 
     } else {
 
         // New user questionnaire
-        update_questionnaire(&user);
+        update_questionnaire(&user,stdin);
         update_possible_exercises(&user);
         update_routine_workouts(&user);
         print_routine(&user);
