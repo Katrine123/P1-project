@@ -243,7 +243,7 @@ void save_upgr_dogr(user_data *user, int data[user->possible_exercises_count+1])
 
 void initialize_upgr_dogr(user_data *user) {
     FILE *file = fopen("user_upgrades", "w");
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < user->possible_exercises_count; i++) {
         fprintf(file, "100 ,");
     }
     fclose(file);
