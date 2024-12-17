@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "references.c"
+#include "references.h"
 
 int main(void) {
 
@@ -20,15 +20,22 @@ int main(void) {
     // } else {
 
         // New user questionnaire
-        update_questionnaire(stdin);
+        // update_questionnaire();
 
+    get_user_data();
     // }
 
     // Create routine
     update_and_print_routine();
 
     // Evaluation questionnaire (recursion)
-    // TODO: Implement this.
+    int input[possible_exercises_count];
+
+    evaluation_questionnaire(input);
+
+    update_and_print_routine();
+
+
 
     return 0;
 }

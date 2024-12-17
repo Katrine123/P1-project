@@ -1,10 +1,33 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include "savesystem.h"
+#include "references.h"
 
-#include "file_conversion.h"
+void save_all_data() {
+   //int active_functions = 8;
+    //int error_check = 0;
+    save_data(int_to_str(_questionnaire.squats), "squats");
+    save_data(int_to_str(_questionnaire.pushups), "push");
+    save_data(int_to_str(_questionnaire.training_goal), "train");
+    //save_data(int_to_str(_questionnaire.available_training_days_count),"Days") +
+    save_data(int_to_str(_questionnaire.ignored_muscle_group_names_count), "Muscles");
+    save_data(int_to_str(_questionnaire.available_equipment_count), "Equipment");
+    save_data(int_to_str(_questionnaire._fitness_level), "lvl");
+    save_data(double_to_str(_questionnaire.weight), "weight");
+    //save_data(arr_to_str(_questionnaire.available_training_days, _questionnaire.available_training_days_count),"days");
+    save_data(arr_to_str(_questionnaire.available_equipment, _questionnaire.available_equipment_count), "equipment");
+    save_data(arr_to_str(_questionnaire.ignored_muscle_group_names, _questionnaire.ignored_muscle_group_names_count),"muscles");
 
-questionnaire convert_data (user_save_data data);
+    //if (error_check==active_functions) {
+    //  printf("data saved successfully\n");
+
+    //if (error_check<active_functions) {
+    // printf("ERROR: file could most likely not be opened.\n");
+    // printf("If user_save_data.txt'' is open on pc please attempt to close the file\n");
+    // printf("Attempting to save again\n");
+    // save_all_data();
+}
+
 ///simply checks if save is available returns 1 if data was found and 0 if not
 int check_for_save() {
     FILE * file;
@@ -41,12 +64,15 @@ void print_user_data(user_save_data data) {
 
 ///returns a struct with values harvested from user_data_savefile.txt.
 ///is pretty resilient and can be used like this to print "print_user_data(load_data());"
-questionnaire load_data() {
+void get_user_data() {
     user_save_data data;
     FILE *file;
     int count=0;
     if ((file = fopen("user_save_file", "r"))) {
-        char str[500];
+        fseek(file, 0L, SEEK_END);
+        int size = ftell(file);
+        char str[size+10];
+        fseek(file, 0L, SEEK_SET);
         fgets(str, sizeof(str), file);
         for (int i = 0; i<strlen(str); i++) {
             if (str[i-1] == '[') {
@@ -70,7 +96,20 @@ questionnaire load_data() {
                     case 'e':
                         strncpy(data.available_equipment, data_data,20);
                         break;
-
+                    case 'E':
+                        strncpy(data.available_equipment_count, data_data,20);
+                        break;
+                    case 'd':
+                    //    strncpy(data.available_training_days, data_data,20);
+                        break;
+                    case 'D':
+                    //    strncpy(data.available_training_days_count, data_data,20);
+                        break;
+                    case 'm':
+                        strncpy(data.ignored_muscle_group_names, data_data,20);
+                    break;
+                    case 'M':
+                        strncpy(data.ignored_muscle_group_names_count, data_data,20);
                     case 'a':
                         strncpy(data.age, data_data,20);
                         break;
@@ -80,20 +119,16 @@ questionnaire load_data() {
                     case 'p':
                         strncpy(data.pushups, data_data, 20);
                         break;
-
                     case 's':
                         strncpy(data.squats, data_data, 20);
                         break;
-
-                    case 'f':
+                    case 'l':
                         strncpy(data.fitness_level, data_data, 20);
                         break;
-
-                    case 'u':
-                        strncpy(data.adjustment_factor, data_data, 20);
+                    case 't':
+                        strncpy(data.training_goal, data_data, 20);
                         break;
-
-                    default: printf("unknown data type\n");
+                    default: printf("unknown data type \n %s %s\n",data_type, data_data );
                         // Switch copies the read data to the struct user data
                         // for now user data is all stored in strings and type is read as chars for simplicity’s sake
 
@@ -102,29 +137,138 @@ questionnaire load_data() {
         }
     } else {printf("file opening error\n");}
     fclose(file); //will at the moment prolly always close the file but am not 100% sure
-    return (convert_data(data));
+    _questionnaire = convert_data(data);
+    return;
 }
 
 questionnaire convert_data (user_save_data data) {
     questionnaire user;
-    user.age = str_to_int(data.age);
-    user.weight = str_to_double(data.weight);
-    user.pushups = str_to_int(data.pushups);
-    user.squats = str_to_int(data.squats);
-    user.fitness_level = str_to_int(data.fitness_level);
-    user.training_days[0] = (training_day){0, 4.0};  // Sunday: 4.0 hours
-    user.training_days[1] = (training_day){1, 2.5};  // Monday: 2.5 hours
-    user.training_days[2] = (training_day){2, 3.0};  // Tuesday: 3.0 hours
-    user.training_days[3] = (training_day){3, 2.0};  // Wednesday: 2.0 hours
-    user.training_days[4] = (training_day){4, 1.0};  // Thursday: 1.0 hours
-    user.training_days[5] = (training_day){5, 1.5};  // Friday: 1.5 hours
-    user.training_days[6] = (training_day){6, 0.5};  // Saturday: 0.5 hours
-    for (int i = 0 ; i < 5; i++) {
+    //standard data handling with the conversion functions
+    user.age            = str_to_int(data.age);
+    user.weight         = str_to_double(data.weight);
+    user.pushups        = str_to_int(data.pushups);
+    user.squats         = str_to_int(data.squats);
+    user._fitness_level = str_to_int(data.fitness_level);
+    user.training_goal 	= str_to_int(data.training_goal);
+
+    //random inputs just so it will work til its replaced
+    user.available_training_days_count = 6;
+    user.available_training_days[0] = (training_day){1, 42};
+    user.available_training_days[1] = (training_day){2, 42};
+    user.available_training_days[2] = (training_day){3, 42};
+    user.available_training_days[3] = (training_day){4, 42};
+    user.available_training_days[4] = (training_day){5, 42};
+    user.available_training_days[5] = (training_day){6, 42};
+    user.available_training_days[6] = (training_day){7, 42};
+
+    //handling of arrays
+    user.available_equipment_count = str_to_int(data.available_equipment_count);
+    for (int i = 0 ; i <= user.available_equipment_count; i++) {
         user.available_equipment[i] = data.available_equipment[i]-'0';
     }
+    user.ignored_muscle_group_names_count = str_to_int(data.ignored_muscle_group_names_count);
+    for (int i = 0 ; i <= user.ignored_muscle_group_names_count; i++) {
+        user.ignored_muscle_group_names[i] = data.ignored_muscle_group_names[i]-'0';
+    }
+    //user.available_training_days_count = str_to_int(data.available_training_days_count);
+    //for (int i = 0 ; i <= user.available_training_days_count; i++) {
+    //    user.available_training_days[i] = data.available_training_days[i]-'0';
+    //}
     return (user);
 }
 
+// int total_days = 1;
+
+// char train_to_str(training_day d);
+// training_day str_to_train(char);
+
+char* arr_to_str(const int *arr, int len) {
+    char *str = malloc(len+1);
+    str[0] = '\0';
+    for (int i = 0; i < len; i++) {
+        char temp_str[10];
+        snprintf(temp_str, sizeof(temp_str), "%d", arr[i]);
+        strcat(str, temp_str);
+    }
+    str[len] = '\0';
+    return str;
+}
+
+char* int_to_str(int n) {
+    static char str[2];
+    sprintf(str, "%d", n);
+    return (str);
+}
+int str_to_int(char *str) {
+    return atoi(str);
+}
+char* double_to_str(double d) {
+    static char str[10];
+    sprintf(str, "%lf", d);
+    return (str);
+}
+
+double str_to_double(char* str) {
+    return atof(str);
+}
+
+void load_upgr_dogr(int* data) {
+    FILE *f = fopen("user_upgrades", "r");
+
+    char temp[500];
+    fgets(temp, sizeof(temp), f);
+
+    char *token = strtok(temp, ",");
+    int i = 0;
+    while (token != NULL && i <= length_of_exercise_enum) {
+        data[i++] = atoi(token);
+        token = strtok(NULL, ",");
+    }
+    fclose(f);
+}
+void upgr_dogr(int exercisecount, int upgrade_count) {
+    int temp_save[length_of_exercise_enum];
+    load_upgr_dogr(temp_save);
+    temp_save[exercisecount] = temp_save[exercisecount] + upgrade_count;
+    save_upgr_dogr(temp_save);
+
+
+}
+
+
+void save_upgr_dogr(int data[length_of_exercise_enum]) {
+    FILE *file = fopen("user_upgrades", "w");
+    for (int i = 0; i <= length_of_exercise_enum; i++) {
+        fprintf(file, "%d ,", data[i]);
+    }
+    fclose(file);
+}
+//int str_to_seq_int(int n, char str[n]) {
+//    int arr[6];
+//    for (int i = 0; i < 6; i++) {
+//        arr[i] = str[i] - '0';
+//    }
+//    return ;
+//}
+
+
+//char train_to_str(training_day user) {
+//    char str[20];
+//    for (int i = 1; i <= total_days; i++) {
+//        sprintf(str, "%d, %lf", user[i].day_week, user[i].available_time);
+//    }
+//
+//    return (str);
+//}
+
+
+//training_day* str_to_train(const char* str) {
+//    training_day *user = malloc(total_days * sizeof(training_day));
+//    for (int i = 0; i <= total_days; i++) {
+//
+//    }
+//    return user;
+//}
 
 ///needs work and might be renamed to insert data so data can be changed after the first save.
 ///void delete_data() {
@@ -133,6 +277,3 @@ questionnaire convert_data (user_save_data data) {
 /// printf("Delete operation successful\n");
 /// }
 /// }
-
-
-

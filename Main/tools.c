@@ -97,3 +97,13 @@ char* naming_fitness_level(enum fitness_level name) {
         default: return "ERROR";
     }
 }
+
+char* naming_training_goal(enum training_goal_e name) {
+    switch(name) {
+        case MUSCULAR_ENDURANCE: return "Muscular endurance";
+        case HYPERTROPHY: return "Hypertrophy";
+        case STRENGTH: return "Strength";
+        case I_DONT_KNOW: return "I don't know";
+        default: return "ERROR";
+    }
+}

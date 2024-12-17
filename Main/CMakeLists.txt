@@ -29,16 +29,26 @@ add_library(
 add_library(
         print_routine
         print_routine)
-
-
+add_library(
+        evaluation_questionnaire
+        evaluation_questionnaire)
+add_library(
+        upgrade_downgrade
+        upgrade_downgrade)
+add_library(
+        savesystem
+        savesystem)
 
 target_link_libraries(main
         new_user_questionnaire
         exercises
-        workouts
-        print_routine
+        savesystem
+        evaluation_questionnaire
+        upgrade_downgrade
         tools
-        references)
+        references
+        workouts
+        print_routine)
 
 
 ### STUF FOR TESTING IS HERE  ###

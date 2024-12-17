@@ -4,24 +4,6 @@
 
 #include "references.h"
 
-//TODO:
-// (WON'T DO)
-// For resistance training: compound movements should be given priority (for people with only little time).
-
-//TODO:
-// (WON'T DO)
-// Make specific exercise warmup optional (if people don't feel like they need it, they can save a lot of time/
-// do a lot more exercises if they do not do the specific warmup).
-
-//TODO:
-// In the report: add that there is an edge case where if you have only little time, you might not get a full-body resistance workout.
-// Then you could actually have more than 3 resistance training days a week, because you would have muscle groups that
-// are not used in one workout. This is something our design does not take into account.
-
-//TODO:
-// (WON'T DO)
-// Implement ignored exercises (user story: "I hate squats, please give me any leg exercise other than squats.")
-
 // For the whole fitness routine
 
 muscle_group routine_muscles[ARRAY_MAX]; int routine_muscles_count; // Muscle groups included in the routine.
@@ -244,6 +226,7 @@ void try_to_find_resistance_exercise_candidate(int *found_valid_candidate, exerc
     // Get a random start index of the valid resistance exercises
     srand(time(NULL));
     int exercises_count = possible_resistance_exercises_count;
+    if (possible_resistance_exercises_count == 0) return;
     int start_index = rand() % exercises_count;
 
     // Foreach valid resistance exercise
@@ -318,6 +301,7 @@ void try_to_find_aerobic_exercise_candidate(int *found_valid_candidate, exercise
     // Get a random start index of the valid aerobic exercises
     srand(time(NULL));
     int exercises_count = possible_aerobic_exercises_count;
+    if (exercises_count == 0) return;
     int start_index = rand() % exercises_count;
 
     // Foreach valid resistance exercise
@@ -436,14 +420,11 @@ void update_resistance_days() {
             workout resistance_workout = routine_workouts[resistance_workout_indexes[j]];
 
             // Get days in-between
-            int days_between = _workout.day - resistance_workout.day;
-            // Account for if the check day is in next week (e.g. the days between Sunday and Monday).
-            if (days_between < 0) {
-                days_between += 7;
-            }
+            int days_between1 = _workout.day - resistance_workout.day;
+            int days_between2 = resistance_workout.day + 7 - _workout.day; // Account for if the check day is in next week (e.g. the days between Sunday and Monday).
 
             // Mark day as invalid, if recovery rules are not met.
-            if (days_between < resistance_recovery) {
+            if (days_between1 < resistance_recovery || days_between2 < resistance_recovery) {
                 day_is_valid = 0;
                 break;
             }
@@ -460,37 +441,36 @@ void update_aerobic_days() {
     // Reset array count
     aerobic_workout_indexes_count = 0;
 
-    // Do 2 loops
-    for (int loop = 0; loop < 2; loop++) {
-        // Foreach workout in routine
-        for (int i = 0; i < routine_workouts_count; i++ ) {
+    // Foreach non-resistance training day
+    for (int i = 0, j = 0; i < routine_workouts_count; i++ ) {
 
-            // Assume day is valid
-            int day_is_valid = 1;
+        printf("\ni = %d, Resistance index = %d", i, resistance_workout_indexes[i]);
 
-            // On 1st loop
-            if (loop == 0) {
-                // Is workout day also a resistance training day?
-                for (int j = 0; j < resistance_workout_indexes_count; j++) {
-                    // Ignore this day
-                    if (resistance_workout_indexes[j] == i) {
-                        day_is_valid = 0;
-                        break;
-                    }
-                }
-            }
-
-            // On both loops
-            // Weekly aerobic workout max exceeded?
-            if (aerobic_workout_indexes_count >= max_weekly_aerobic_workouts) {
-                day_is_valid = 0;
-            }
-
-            // Add to aerobic days, if all checks pass
-            if (day_is_valid) {
-                aerobic_workout_indexes[aerobic_workout_indexes_count++] = i;
-            }
+        // Ignore resistance workouts
+        if (i == resistance_workout_indexes[j]) {
+            j++;
+            continue;
         }
+
+        // Weekly aerobic workout max exceeded?
+        if (aerobic_workout_indexes_count >= max_weekly_aerobic_workouts) {
+            return;
+        }
+
+        // Add day
+        aerobic_workout_indexes[aerobic_workout_indexes_count++] = i;
+    }
+
+    // Foreach resistance training day
+    for (int i = 0; i < resistance_workout_indexes_count; i++ ) {
+
+        // Weekly aerobic workout max exceeded?
+        if (aerobic_workout_indexes_count >= max_weekly_aerobic_workouts) {
+            return;
+        }
+
+        // Add day
+        aerobic_workout_indexes[aerobic_workout_indexes_count++] = resistance_workout_indexes[i];
     }
 }
 void add_resistance_exercises() {
@@ -547,7 +527,6 @@ void add_resistance_exercises() {
             add_set_to_exercise(new_exercise_in_workout, _workout);
         }
     }
-
 }
 void add_aerobic_exercises() {
 

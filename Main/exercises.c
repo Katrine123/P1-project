@@ -5,11 +5,59 @@
 
 #define MAX_REPS 15
 
+exercise possible_exercises[ARRAY_MAX*2];
+int possible_exercises_count = 0;
+
 // Helper functions
 
 ///function for rounding down to the nearest number divisible by 2.5
 double round_down_to_nearest (double number, double divisor) {
     return floor(number / divisor) * divisor;
+}
+
+int training_goal_reps() {
+    int training_goal_reps = 0;
+    if(_questionnaire.training_goal == MUSCULAR_ENDURANCE) {
+        training_goal_reps = 15;
+    } else if(_questionnaire.training_goal == HYPERTROPHY || _questionnaire.training_goal == I_DONT_KNOW) {
+        training_goal_reps = 12;
+    } else {
+        training_goal_reps = 5;
+    }
+    return training_goal_reps;
+}
+
+double training_goal_converter() {
+    double training_goal_converter = 0;
+    if(_questionnaire.training_goal == MUSCULAR_ENDURANCE) {
+        training_goal_converter = 0.65;
+    } else if(_questionnaire.training_goal == HYPERTROPHY || _questionnaire.training_goal == I_DONT_KNOW) {
+        training_goal_converter = 0.75;
+    } else {
+        training_goal_converter = 0.85;
+    }
+    return training_goal_converter;
+}
+
+double fitness_level() {
+    double fitness_level = 0;
+    if (_questionnaire._fitness_level == novice) {
+        fitness_level = 0.5;
+    } else if (_questionnaire._fitness_level == advanced_beginner) {
+        fitness_level = 0.6;
+    } else if (_questionnaire._fitness_level == competent) {
+        fitness_level = 0.7;
+    } else if (_questionnaire._fitness_level == proficient) {
+        fitness_level = 0.8;
+    } else {
+        fitness_level = 0.9;
+    }
+    return fitness_level;
+}
+
+/// function for calculating bodyweight exercise's base reps
+int base_amount_calculation(int user_1rm_exercise) {
+    return (int)user_1rm_exercise * fitness_level(_questionnaire);
 }
 
 // Base_weight functions
@@ -52,34 +100,34 @@ double base_weight_weighted_squats() {
 }
 // Air squats should be the exercise if the perosn can take less than 15 consecutive air squats
 int base_amount_air_squats() {
-    int reps_amount_squats = MAX_REPS - _questionnaire._fitness_level;
-    return reps_amount_squats;
+    //  The calculation takes into account the users 1rm, fitness_level and training goal when calculating reps.
+    return base_amount_calculation(_questionnaire.squats);
 }
+
 //Split squats should be the printed exercise if the person can take more than 15 consecutive air squats
 int base_amount_split_squats() {
-    int reps_amount_split_squats = MAX_REPS - _questionnaire._fitness_level;
-    return reps_amount_split_squats;
+    return base_amount_calculation(_questionnaire.squats);
 }
+
 //Elevated pushups should be the printed exercise if the person can take more than 15 consecutive pushups
 int base_amount_elevated_pushups() {
-        int reps_amount_elevated_pushups = MAX_REPS - _questionnaire._fitness_level;
-        return reps_amount_elevated_pushups;
+    return base_amount_calculation(_questionnaire.pushups);
 }
-//Pushups should be the printed exercise if the person can take less than 15 consecutive pushups
+
+//Pushups should be the printed exercise if the person can tak less than 15 consecutive pushups
 int base_amount_pushups() {
-        int reps_amount_pushups = MAX_REPS - _questionnaire._fitness_level;
-        return reps_amount_pushups;
+    return base_amount_calculation(_questionnaire.pushups);
 }
+
 int base_amount_burpees() {
     /*  We are taking into account that this exercise is more difficult than others
      *  Level of exercise should be amplified by a factor of 2
      */
-    int reps_amount_burpees = MAX_REPS - (_questionnaire._fitness_level*2);
-    return reps_amount_burpees;
+    return base_amount_calculation((_questionnaire.pushups+_questionnaire.squats));
 }
+
 int base_amount_jumping_jacks() {
-    int reps_amount_jumping_jacks = MAX_REPS - (_questionnaire._fitness_level);
-    return reps_amount_jumping_jacks;
+    return base_amount_calculation(_questionnaire.squats);
 }
 
 // Exercise array update functions
@@ -261,3 +309,21 @@ void update_possible_exercises() {
     update_possible_resistance_exercises();
     update_possible_aerobic_exercises();
 }
+
+void all_possible_exercises() {
+    update_possible_resistance_exercises();
+    update_possible_aerobic_exercises();
+
+    possible_exercises_count = 0;
+
+    // Add resistance exercises to the unified array
+    for (int i = 0; i < possible_resistance_exercises_count; i++) {
+        possible_exercises[possible_exercises_count++] = possible_resistance_exercises[i];
+    }
+
+    // Add aerobic exercises to the unified array
+    for (int i = 0; i < possible_aerobic_exercises_count; i++) {
+        possible_exercises[possible_exercises_count++] = possible_aerobic_exercises[i];
+    }
+}
+

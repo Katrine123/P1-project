@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "references.h"
 
 //TODO: What is function for? Should it be deleted?
@@ -64,7 +65,6 @@ void get_multiple_answers_to_enum_list(int* answers, int* answers_count, int inp
         answers[(*answers_count)++] = input;
     } while(*answers_count < input_list_max);
 }
-
 int qsort_compare_ascending_order(const void* a, const void* b) {
 
     training_day* day_a = (training_day*)a;
@@ -87,7 +87,7 @@ void update_available_training_days(FILE* file) {
 
     // Get answers
     int answers[7];
-    int answers_count = 333;
+    int answers_count = 0;
     get_multiple_answers_to_enum_list(answers, &answers_count, 7,file);
 
     // No days selected?
@@ -209,7 +209,6 @@ void update_questionnaire(FILE *file) {
      printf("\nWelcome to your personalized fitness trainer, "
             "please answer this questionnaire to create your own personal workout routine.");
 
-
     // Asks the user's age (our program does not work with children)
     int age;
     printf("\nWhat is your age?");
@@ -269,10 +268,26 @@ void update_questionnaire(FILE *file) {
         // Validates that fitness level is between 1-5.
         homemade_scan(integer, &_questionnaire._fitness_level,file);
         if(_questionnaire._fitness_level < expert || _questionnaire._fitness_level > novice) {
-            printf("\nIt has to be between 1-5!");
+            printf("\nIt has to be between 1-5!\n");
         }
     } while(_questionnaire._fitness_level < expert || _questionnaire._fitness_level > novice);
 
+    // ask about fitness goal.
+    do {
+        printf("\nWhat goal would you like to accomplish with your training?\n");
+
+        printf("fitness goal 1 (Muscular endurance): Building stamina and the ability to perform a large number of repetitions. \n"
+               "fitness rank 2 (Hypertrophy): Building muscle size\n"
+               "fitness rank 3 (Strength): Increasing the amount of weight you can lift.\n"
+               "fitness goal 4: I have not thought about this. I just want to get started! \n");
+
+        // Validates that fitness level is between 1-5.
+        homemade_scan(long_float, &_questionnaire.training_goal,file);
+        //  Defining bounds based on print statement. Not variable so could create issues!
+        if(_questionnaire.training_goal < 1 || _questionnaire.training_goal > 4) {
+            printf("It has to be between 1-4!\n");
+        }
+    }while(_questionnaire.training_goal < 1 || _questionnaire.training_goal > 4);
 
     update_available_training_days(file);
     update_available_equipment(file);
