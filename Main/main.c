@@ -16,6 +16,7 @@ int main(void) {
         printf("\n\nWelcome back!\n"
             "Your save file has been successfully loaded.\n"
             "Your current streak is: %d\n",user.streak);
+        streak_check(&user,stdin);
     } else {
         start_new_user_questionnaire(&user,stdin);
     }
