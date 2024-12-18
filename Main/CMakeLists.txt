@@ -42,6 +42,7 @@ add_library(
 add_library(
         streak_check
         streak_check)
+
 target_link_libraries(main
         savesystem
         evaluation_questionnaire
@@ -68,12 +69,12 @@ FetchContent_Declare(mtest
 FetchContent_MakeAvailable(mtest)
 
 add_executable(tests tests.c)
-#target_link_libraries(tests exercises workouts print_routine new_user_questionnaire tools references mtest)
 
 target_link_libraries(tests
         exercises
         evaluation_questionnaire
         new_user_questionnaire
+        streak_check
         savesystem
         workouts
         upgrade_downgrade

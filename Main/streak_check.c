@@ -1,7 +1,7 @@
 #include "references.h"
 
 how_many_days_left(date last);
-int is_more_than_week(date current, date last);
+int is_less_than_week(date current, date last);
 
 void streak_check(user_data* user, FILE* file) {
     printf("Last date: %d/%d\n",user->last_date.day,user->last_date.month);
@@ -9,7 +9,7 @@ void streak_check(user_data* user, FILE* file) {
     date temp;
     homemade_scan(integer,&temp.day,file);
     homemade_scan(integer,&temp.month,file);
-    int val = is_more_than_week(temp,user->last_date);
+    int val = is_less_than_week(temp,user->last_date);
     if(val == 1) {
         user->streak ++;
     }else {
@@ -17,7 +17,7 @@ void streak_check(user_data* user, FILE* file) {
     }
 }
 
-int is_more_than_week(date current, date last) {
+int is_less_than_week(date current, date last) {
     if(current.month == last.month){
         if(current.day > last.day+7) {
             return 0;
@@ -38,29 +38,29 @@ int is_more_than_week(date current, date last) {
 
 how_many_days_left(date last) {
     switch (last.month){
-        case 1: return 31 - last.day;
+        case jan: return 31 - last.day;
         break;
-        case 2: return 28 - last.day;
+        case feb: return 28 - last.day;
         break;
-        case 3: return 31 - last.day;
+        case mar: return 31 - last.day;
         break;
-        case 4: return 30 - last.day;
+        case apr: return 30 - last.day;
         break;
-        case 5: return 31 - last.day;
+        case may: return 31 - last.day;
         break;
-        case 6: return 30 - last.day;
+        case jun: return 30 - last.day;
         break;
-        case 7: return 31 - last.day;
+        case jul: return 31 - last.day;
         break;
-        case 8: return 31 - last.day;
+        case aug: return 31 - last.day;
         break;
-        case 9: return 30 - last.day;
+        case sep: return 30 - last.day;
         break;
-        case 10: return 31 - last.day;
+        case oct: return 31 - last.day;
         break;
-        case 11: return 30 - last.day;
+        case nov: return 30 - last.day;
         break;
-        case 12: return 31 - last.day;
+        case dec: return 31 - last.day;
         break;
     }
 }

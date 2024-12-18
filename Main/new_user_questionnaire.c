@@ -211,11 +211,39 @@ void start_new_user_questionnaire(user_data *user, FILE* file) {
      printf("\nWelcome to your personalized fitness trainer, "
             "please answer this questionnaire to create your own personal workout routine.");
 
-    //EDGECASES!!!!!! OG ENUM MONTH
-    printf("What is the current date? Please write the date, enter, and then month");
-    homemade_scan(integer,&user->last_date.day,file);
-    int mon;
-    homemade_scan(integer,&user->last_date.month,file);
+    //Finds the current date - Is used for streak
+    printf("What is the current date? Please write the month:");
+    do {
+        homemade_scan(integer,&user->last_date.month,file);
+        if(user->last_date.month>12 || user->last_date.month <1) {
+            printf("Please enter a valid month");
+        }
+    }while(user->last_date.month>12 || user->last_date.month <1);
+
+    printf("Now please enter the day");
+    int right;
+    do {
+        right = 1;
+        homemade_scan(integer,&user->last_date.day,file);
+        if(user->last_date.day <1) {
+            printf("Please enter a valid day");
+            right = 0;
+        }else if(user->last_date.day>28) {
+            if(user->last_date.month == feb) {
+                printf("Please enter a valid day");
+                right = 0;
+            }else if(user->last_date.day>30 && (user->last_date.month == apr ||user->last_date.month ==  jun || user->last_date.month ==  sep || user->last_date.month ==  nov)) {
+                printf("Please enter a valid day");
+                right = 0;
+            }else if(user->last_date.day>31) {
+                printf("Please enter a valid day");
+                right = 0;
+            }
+        }
+    }while(right == 0);
+
+
+
     user->streak =0;
 
     // Asks the user's age (our program does not work with children)

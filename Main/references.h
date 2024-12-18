@@ -33,13 +33,13 @@ typedef enum {
     chest, triceps, shoulders, hamstrings, quads, muscle_group_name_enum_length
 } muscle_group_name;
 
-//enum months {jan =1, feb = 2, mar = 3, apr = 4, maj = 5, jun = 6, jul = 7, aug = 8, sep = 9, oct = 10, nov = 11, dec = 12};
+enum months {jan =1, feb = 2, mar = 3, apr = 4, may = 5, jun = 6, jul = 7, aug = 8, sep = 9, oct = 10, nov = 11, dec = 12};
 
 #pragma endregion
 #pragma region structs
 typedef struct {
     int day;
-    int month;//enum months month;
+    enum months month;
 }date;
 
 typedef struct {
@@ -165,6 +165,7 @@ void update_routine_workouts(user_data *user);
 
 void start_upgrade_downgrade_questionnaire(user_data *user);
 void load_saved_upgrades_onto_possible_exercises(user_data *user);
+void downgrade_function(user_data *user, int input);
 
 #pragma endregion
 #pragma region print_routine.c

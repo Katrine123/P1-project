@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mtest.h"
-#include "references.c"
+#include "references.h"
 
-/*#pragma region questionnaire
+#pragma region questionnaire
 TEST_CASE(questionnaire_test1,{
     //Making "User inputs"
     FILE *test_file = fopen("user_input.txt","w");
@@ -12,7 +12,7 @@ TEST_CASE(questionnaire_test1,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67\n72\n6 \n8 \n1\n2\n4 \n-1 \n120\nYes\n3\n-1\n");
+    fprintf(test_file,"6\n8\n67\n72\n6 \n8 \n1\n2\n4 \n-1 \n120\nYes\n3\n-1\n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -20,7 +20,7 @@ TEST_CASE(questionnaire_test1,{
             exit(-1);
         }
     user_data user_test;
-    update_questionnaire(&user_test, test_file);
+    start_new_user_questionnaire(&user_test, test_file);
     fclose(test_file);
     CHECK_EQ_DOUBLE(user_test.weight,72,0.001);
     CHECK_EQ_INT(user_test.pushups,6);
@@ -41,7 +41,8 @@ TEST_CASE(questionnaire_test2,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"age\n67\n0\n58\n-1\n25\n5000000\n-1\n6\n3\n-2\n 8\n2\n-5\n999\n2\n3\n-1\n3000\n68\n23\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
+    //EDGECASES FOR DATE
+    fprintf(test_file,"4\n8\nage\n67\n0\n58\n-1\n25\n5000000\n-1\n6\n3\n-2\n 8\n2\n-5\n999\n2\n3\n-1\n3000\n68\n23\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -49,7 +50,7 @@ TEST_CASE(questionnaire_test2,{
             exit(-1);
         }
     user_data user_test;
-    update_questionnaire(&user_test,test_file);
+    start_new_user_questionnaire(&user_test,test_file);
     fclose(test_file);
     CHECK_EQ_DOUBLE(user_test.weight,58,0.001);
     CHECK_EQ_INT(user_test.pushups,25);
@@ -68,7 +69,8 @@ TEST_CASE(questionnaire_test2,{
 })
 
 #pragma endregion
-*/
+
+
 #pragma region homemade_scan
 TEST_CASE(homemade_scan_test,{
     FILE *test_file = fopen("user_input.txt","w");
@@ -237,14 +239,57 @@ TEST_CASE(base_amount6,{
 
 
 #pragma endregion
-/*
+
 #pragma region upgrade
 TEST_CASE(upgrade_test,{
+    //Making "User inputs"
+    FILE *test_file = fopen("user_input.txt","w");
+     if (test_file == NULL) {
+         printf("The file couldn't be opened");
+         exit(-1);
+     }
+    fprintf(test_file,"5\n6\n67\n72\n6 \n8 \n1\n2\n4 \n-1 \n120\nYes\n3\n-1\n");
+    fclose(test_file);
+    test_file = fopen("user_input.txt","r");
+     if (test_file == NULL) {
+         printf("The file couldn't be opened");
+         exit(-1);
+     }
+    user_data user_test;
+    start_new_user_questionnaire(&user_test, test_file);
+    fclose(test_file);
+    CHECK_EQ_STRING(naming_exercises(user_test.possible_exercises[0]->name),"Bench press");
+    CHECK_EQ_DOUBLE(user_test.possible_exercises[0]->base_weight,40,0.001);
+    downgrade_function(&user_test,0);
+    CHECK_EQ_DOUBLE(user_test.possible_exercises[0]->base_weight,40-2.5,0.001);
+})
 
+TEST_CASE(upgrade_test2,{
+    //Making "User inputs"
+    FILE *test_file = fopen("user_input.txt","w");
+     if (test_file == NULL) {
+         printf("The file couldn't be opened");
+         exit(-1);
+     }
+    fprintf(test_file,"5\n6\n67\n72\n6 \n8 \n1\n2\n4 \n-1 \n120\nYes\n3\n-1\n");
+    fclose(test_file);
+    test_file = fopen("user_input.txt","r");
+     if (test_file == NULL) {
+         printf("The file couldn't be opened");
+         exit(-1);
+     }
+    user_data user_test;
+    start_new_user_questionnaire(&user_test, test_file);
+    fclose(test_file);
+    user_test.possible_exercises[0]->base_weight = 0;
+    CHECK_EQ_STRING(naming_exercises(user_test.possible_exercises[0]->name),"Bench press");
+    CHECK_EQ_DOUBLE(user_test.possible_exercises[0]->base_weight,0,0.001);
+    downgrade_function(&user_test,0);
+    CHECK_EQ_DOUBLE(user_test.possible_exercises[0]->base_weight,0,0.001);
 })
 
 #pragma endregion
-*/
+
 #pragma region workouts
 
 //SUPPOSED TO FAIL - NOT ALL EXERCISES ARE USED
@@ -255,7 +300,7 @@ TEST_CASE(workouts_test,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67\n72\n6 \n8 \n1\n2\n4 \n-1 \n120\nYes\n3\n-1\n");
+    fprintf(test_file,"4\n5\n67\n72\n6 \n8 \n1\n2\n4 \n-1 \n120\nYes\n3\n-1\n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -285,7 +330,7 @@ TEST_CASE(workouts_test2,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"67\n72\n6 \n8 \n1\n2\n4 \n-1 \n120\nYes\n3\n-1\n");
+    fprintf(test_file,"4\n5\n67\n72\n6 \n8 \n1\n2\n4 \n-1 \n120\nYes\n3\n-1\n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -310,17 +355,81 @@ TEST_CASE(workouts_test2,{
 
 #pragma endregion
 
+#pragma region streak
+
+TEST_CASE(streak_test1,{
+user_data user_test;
+    FILE *test_file = fopen("user_input.txt","w");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    fprintf(test_file,"4\n7\n");
+    fclose(test_file);
+    test_file = fopen("user_input.txt","r");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    user_test.last_date.day = 6;
+    user_test.last_date.month = 3;
+    user_test.streak = 0;
+    streak_check(&user_test,test_file);
+    CHECK_EQ_INT(user_test.streak, 0);
+})
+
+TEST_CASE(streak_test2,{
+user_data user_test;
+    FILE *test_file = fopen("user_input.txt","w");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    fprintf(test_file,"15\n7\n");
+    fclose(test_file);
+    test_file = fopen("user_input.txt","r");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    user_test.last_date.day = 13;
+    user_test.last_date.month = 7;
+    user_test.streak = 0;
+    streak_check(&user_test,test_file);
+    CHECK_EQ_INT(user_test.streak, 1);
+})
+
+TEST_CASE(streak_test3,{
+user_data user_test;
+    FILE *test_file = fopen("user_input.txt","w");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    fprintf(test_file,"5\n8\n");
+    fclose(test_file);
+    test_file = fopen("user_input.txt","r");
+        if (test_file == NULL) {
+            printf("The file couldn't be opened");
+            exit(-1);
+        }
+    user_test.last_date.day = 30;
+    user_test.last_date.month = 7;
+    user_test.streak = 0;
+    streak_check(&user_test,test_file);
+    CHECK_EQ_INT(user_test.streak, 1);
+})
+
+
+#pragma endregion
+
 
 // X SUPPOSED TO FAIL - X SUPPOSED TO SUCCEED
-//MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2)
-//MAIN_RUN_TESTS(homemade_scan_test,homemade_scan_test2);
-//MAIN_RUN_TESTS(calculations,calculations2,calculations3,calculations4,calculations5,calculations6)
-//MAIN_RUN_TESTS(upgrade_test)
-//MAIN_RUN_TESTS(workouts_test,workouts_test2)
-//MAIN_RUN_TESTS(base_amount1, base_amount2, base_amount3, base_amount4, base_amount5, base_amount6)
+MAIN_RUN_TESTS(questionnaire_test1,questionnaire_test2,
+                homemade_scan_test,homemade_scan_test2,
+                calculations,calculations2,calculations3,calculations4,calculations5,calculations6,
+                upgrade_test,upgrade_test2,
+                workouts_test,workouts_test2,
+                base_amount1, base_amount2, base_amount3, base_amount4, base_amount5, base_amount6,
+                streak_test1,streak_test2,streak_test3)
 
-/*Tests:
- * Savesystem
- * upgrade downgrade
- * specifikke workout funktioner
- */
