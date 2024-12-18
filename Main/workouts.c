@@ -224,7 +224,7 @@ void try_to_find_resistance_exercise_candidate(user_data *user, int *found_valid
     *found_valid_candidate = 0;
 
     // Get a random start index of the valid resistance exercises
-    srand(time(NULL));
+    srand(user->time_when_questionnaire_answered);
     int exercises_count = user->possible_resistance_exercises_count;
     if (user->possible_resistance_exercises_count == 0) return;
     int start_index = rand() % exercises_count;
@@ -299,7 +299,7 @@ void try_to_find_aerobic_exercise_candidate(user_data *user, int *found_valid_ca
     exercise last_valid_exercise;
 
     // Get a random start index of the valid aerobic exercises
-    srand(time(NULL));
+    srand(user->time_when_questionnaire_answered);
     int exercises_count = user->possible_aerobic_exercises_count;
     if (exercises_count == 0) return;
     int start_index = rand() % exercises_count;
@@ -389,11 +389,12 @@ void update_workout_rules(user_data *user) {
 }
 void reset_routine_workouts(user_data *user) {
 
-    // Reset array count
+    // Reset counts
     user->routine_workouts_count = user->available_training_days_count;
+    routine_muscles_count = 0;
 
     // Foreach new workout
-    for (int i = 0; i < user->routine_workouts_count; i++) {
+    for (int i = 0; i < user->available_training_days_count; i++) {
 
         // Reset properties to defaults
         user->routine_workouts[i].day = user->available_training_days[i].day;
@@ -451,8 +452,6 @@ void update_aerobic_days(user_data *user) {
     // Foreach non-resistance training day
     for (int i = 0, j = 0; i < user->routine_workouts_count; i++ ) {
 
-        printf("\ni = %d, Resistance index = %d", i, resistance_workout_indexes[i]);
-
         // Ignore resistance workouts
         if (i == resistance_workout_indexes[j]) {
             j++;
@@ -485,7 +484,7 @@ void add_resistance_exercises(user_data *user) {
     // NOTE: Adds 1 set of exercises.
 
     // Get a random start index of the valid muscle groups
-    srand(time(NULL));
+    srand(user->time_when_questionnaire_answered);
     int start_index = rand() % muscle_group_name_enum_length;
 
     // Foreach valid muscle group

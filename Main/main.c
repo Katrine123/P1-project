@@ -6,32 +6,21 @@
 
 int main(void) {
 
-    // Clear terminal screen
-    system("cls");
+    system("cls"); // Clears terminal screen
 
     user_data user;
-    // update_questionnaire(&user);
-    // save_all_data(&user);
 
     // Does save data exist?
-    if (check_for_save()) {   // TODO: found_save is a boolean int updated when loading save data
-
-        // Evaluation questionnaire
-        get_user_data(&user);
-        update_possible_exercises(&user);
-        int input[user.possible_exercises_count];
-        evaluation_questionnaire(&user, input,stdin);
-        update_routine_workouts(&user);
-        print_routine(&user);
-
+    if (check_for_user_data_save()) {
+        load_user_data_save(&user);
+        printf("\n\nWelcome back!\n"
+            "Your save file has been successfully loaded.\n");
     } else {
-
-        // New user questionnaire
-        update_questionnaire(&user,stdin);
-        update_possible_exercises(&user);
-        update_routine_workouts(&user);
-        print_routine(&user);
+        start_new_user_questionnaire(&user);
     }
+
+    // Run evaluation questionnaire
+    start_evaluation_questionnaire(&user);
 
     return 0;
 }

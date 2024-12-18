@@ -70,6 +70,7 @@ typedef struct {
 } workout;
 
 typedef struct {
+    int time_when_questionnaire_answered; // This is used when generating randomization seeds in workouts.c
     int age;
     double weight;
     int pushups;
@@ -94,6 +95,27 @@ typedef struct {
     int max_weekly_aerobic_workouts;
 } user_data;
 
+typedef struct {
+    char available_equipment[20];
+    char available_equipment_count[20];
+    char available_training_days_count[20];
+    char ignored_muscle_group_names_count[20];
+    char ignored_muscle_group_names[20];
+    char age[20];
+    char weight[20];
+    char pushups[20];
+    char squats[20];
+    char fitness_level[20];
+    char training_goal[20];
+    char day1[20];
+    char day2[20];
+    char day3[20];
+    char day4[20];
+    char day5[20];
+    char day6[20];
+    char day7[20];
+} user_save_data;
+
 #pragma endregion
 
 // Functions
@@ -111,7 +133,7 @@ char* naming_training_goal(enum training_goal_e name);
 #pragma endregion
 #pragma region new_user_questionnaire.c
 
-void update_questionnaire(user_data *user, FILE* file);
+void start_new_user_questionnaire(user_data *user, FILE* file));
 void update_available_training_days(user_data *user,FILE* file);
 
 #pragma endregion
@@ -129,7 +151,8 @@ void update_routine_workouts(user_data *user);
 #pragma endregion
 #pragma region upgrade_downgrade.c
 
-void upgrade_downgrade(user_data *user, int *input);
+void start_upgrade_downgrade_questionnaire(user_data *user);
+void load_saved_upgrades_onto_possible_exercises(user_data *user);
 
 #pragma endregion
 #pragma region print_routine.c
@@ -139,54 +162,20 @@ void print_routine(user_data *user);
 #pragma endregion
 #pragma region evaluation_questionnaire.c
 
-void evaluation_questionnaire(user_data *user, int *input, FILE* file);
+void start_evaluation_questionnaire(user_data *user, FILE* file);
 
 #pragma endregion
 #pragma region savesystem.c
-char* arr_to_str(const int *arr, int len);
-char* int_to_str(int n);
-int str_to_int(char *str);
 
-char* double_to_str(double d);
-double str_to_double(char *str);
+// User data save
+int check_for_user_data_save();
+void save_user_data_save(user_data *user);
+void load_user_data_save(user_data *user);
 
-int str_to_equip();
-
-void load_upgr_dogr(int* data);
-void upgr_dogr(int exercise_count, int upgrade_count);
-void save_upgr_dogr(int data[length_of_exercise_enum]);
-typedef struct {
-    char available_equipment[20];
-    char available_equipment_count[20];
-    char available_training_days_count[20];
-    char available_training_days[20];
-    char ignored_muscle_group_names_count[20];
-    char ignored_muscle_group_names[20];
-    char age[20];
-    char weight[20];
-    char pushups[20];
-    char squats[20];
-    char fitness_level[20];
-    char training_goal[20];
-} user_save_data;
-
-void save_all_data(user_data *user);
-
-int check_for_save();
-
-int save_data(const char *data, const char *data_name);
-
-void print_user_data(user_save_data data);
-
-void get_user_data(user_data *user);
-
-user_data convert_data(user_save_data data);
+// User upgrades save
+void reset_user_upgrades_save(user_data *user);
+void save_user_upgrades_save(user_data *user, int data[user->possible_resistance_exercises_count]);
+void get_data_from_user_upgrades_save(user_data *user, int* data);
 
 #pragma endregion
-#pragma region main.c
-
-void update_and_print_routine(user_data *user);
-
-#pragma endregion
-
 
