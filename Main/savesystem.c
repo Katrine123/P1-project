@@ -82,9 +82,9 @@ user_data convert_to_user_data (user_save_data data) {
         user.ignored_muscle_group_names[i] = data.ignored_muscle_group_names[i]-'0';
     }
 
-    user.last_date.day = str_to_int(data.date_day);
+    user.last_date.day   = str_to_int(data.date_day);
     user.last_date.month = str_to_int(data.date_month);
-    user.streak = str_to_int(data.streak);
+    user.streak          = str_to_int(data.streak);
 
     return user;
 }
@@ -235,13 +235,13 @@ void load_user_data_save(user_data *user) {
                         break;
                     case 'y':
                         strncpy(data.date_day, data_data, 20);
-                    break;
+                        break;
                     case 'h':
                         strncpy(data.date_month, data_data, 20);
-                    break;
+                        break;
                     case 'k':
                         strncpy(data.streak, data_data, 20);
-                    break;
+                        break;
                     default: printf("\nUnknown data type \n %s %s",data_type, data_data );
                         // Switch copies the read data to the struct user data
                         // for now user data is all stored in strings and type is read as chars for simplicity’s sake

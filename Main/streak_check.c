@@ -14,6 +14,9 @@ void streak_check(user_data* user, FILE* file) {
     }else {
         user->streak =0;
     }
+    user->last_date.day = temp.day;
+    user->last_date.month = temp.month;
+    save_user_data_save(user);
 }
 
 int is_less_than_week(date current, date last) {

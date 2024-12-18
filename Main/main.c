@@ -14,7 +14,8 @@ int main(void) {
     if (check_for_user_data_save()) {
         load_user_data_save(&user);
         printf("\n\nWelcome back!\n"
-            "Your save file has been successfully loaded.\n");
+            "Your save file has been successfully loaded.\n"
+            "Your current streak is: %d\n",user.streak);
     } else {
         start_new_user_questionnaire(&user,stdin);
     }
