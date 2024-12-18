@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 #include "references.h"
 
@@ -224,10 +223,9 @@ void try_to_find_resistance_exercise_candidate(user_data *user, int *found_valid
     *found_valid_candidate = 0;
 
     // Get a random start index of the valid resistance exercises
-    srand(user->time_when_questionnaire_answered);
     int exercises_count = user->possible_resistance_exercises_count;
     if (user->possible_resistance_exercises_count == 0) return;
-    int start_index = rand() % exercises_count;
+    int start_index = user->time_when_questionnaire_answered % exercises_count;
 
     // Foreach valid resistance exercise
     for (int old_i = 0; old_i < exercises_count; old_i++) {
@@ -299,10 +297,9 @@ void try_to_find_aerobic_exercise_candidate(user_data *user, int *found_valid_ca
     exercise last_valid_exercise;
 
     // Get a random start index of the valid aerobic exercises
-    srand(user->time_when_questionnaire_answered);
     int exercises_count = user->possible_aerobic_exercises_count;
     if (exercises_count == 0) return;
-    int start_index = rand() % exercises_count;
+    int start_index = user->time_when_questionnaire_answered % exercises_count;
 
     // Foreach valid resistance exercise
     for (int old_i = 0; old_i < exercises_count; old_i++) {
@@ -360,7 +357,6 @@ void update_workout_rules(user_data *user) {
     user->max_daily_sets = 6;
     user->max_daily_aerobic_exercises = 4; // 4 brings a good amount of variety without becoming overly complex.
     user->rest_between_sets_resistance = 1.5; // Equivalent to 90 seconds.
-
 
     enum fitness_level level = user->_fitness_level;
 
@@ -428,11 +424,11 @@ void update_resistance_days(user_data *user) {
             workout resistance_workout = user->routine_workouts[resistance_workout_indexes[j]];
 
             // Get days in-between
-            int days_between1 = _workout.day - resistance_workout.day;
-            int days_between2 = resistance_workout.day + 7 - _workout.day; // Account for if the check day is in next week (e.g. the days between Sunday and Monday).
+            int days_between_past = _workout.day - resistance_workout.day;
+            int days_between_future = resistance_workout.day + 7 - _workout.day; // Account for if the check day is in next week (e.g. the days between Sunday and Monday).
 
             // Mark day as invalid, if recovery rules are not met.
-            if (days_between1 < user->resistance_recovery || days_between2 < user->resistance_recovery) {
+            if (days_between_past < user->resistance_recovery || days_between_future < user->resistance_recovery) {
                 day_is_valid = 0;
                 break;
             }
@@ -484,10 +480,9 @@ void add_resistance_exercises(user_data *user) {
     // NOTE: Adds 1 set of exercises.
 
     // Get a random start index of the valid muscle groups
-    srand(user->time_when_questionnaire_answered);
-    int start_index = rand() % muscle_group_name_enum_length;
+    int start_index = user->time_when_questionnaire_answered % muscle_group_name_enum_length;
 
-    // Foreach valid muscle group
+    // Foreach muscle group
     for (int old_i = 0; old_i < muscle_group_name_enum_length; old_i++) {
 
         // Get new index
