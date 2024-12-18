@@ -38,6 +38,10 @@ add_library(
 add_library(
         savesystem
         savesystem)
+
+add_library(
+        streak_check
+        streak_check)
 target_link_libraries(main
         savesystem
         evaluation_questionnaire
@@ -69,10 +73,10 @@ target_link_libraries(tests
         exercises
         evaluation_questionnaire
         new_user_questionnaire
-        upgrade_downgrade
         savesystem
+        workouts
+        upgrade_downgrade
+        print_routine
         tools
         references
-        workouts
-        print_routine
         mtest)

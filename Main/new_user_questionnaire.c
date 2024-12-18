@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "references.h"
 
@@ -283,9 +284,9 @@ void start_new_user_questionnaire(user_data *user, FILE* file) {
         }
     } while(user->training_goal < 1 || user->training_goal > 4);
 
-    update_available_training_days(user);
-    update_available_equipment(user);
-    update_ignored_muscle_groups(user);
+    update_available_training_days(user,file);
+    update_available_equipment(user,file);
+    update_ignored_muscle_groups(user,file);
     user->time_when_questionnaire_answered = time(NULL);
 
     // Save answers and reset upgrades save file

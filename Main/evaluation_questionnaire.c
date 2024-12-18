@@ -4,7 +4,7 @@
 #include "references.h"
 
 // returns an int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
-void start_evaluation_questionnaire(user_data *user,int *input,FILE* file) {
+void start_evaluation_questionnaire(user_data *user,FILE* file) {
 
     // Continues looping until the user quits the program
     while(1) {
@@ -17,16 +17,16 @@ void start_evaluation_questionnaire(user_data *user,int *input,FILE* file) {
         "\nWould you like to quit the program?                              ***press 5***"
         "\n_______________________________________________________________________________");
         int answer = 0;
-        homemade_scan(integer, &answer);
+        homemade_scan(integer, &answer,file);
         switch (answer) {
             case 1: // Retake questionnaire
-                start_new_user_questionnaire(user);
+                start_new_user_questionnaire(user,file);
                 break;
             case 2: // Upgrade/downgrade
                 start_upgrade_downgrade_questionnaire(user);
                 break;
             case 3: // Update schedule (training days)
-                update_available_training_days(user);
+                update_available_training_days(user,file);
                 save_user_data_save(user); // because update_available_training_days does not save by itself.
                 break;
             case 4: // Print routine

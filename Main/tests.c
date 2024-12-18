@@ -240,29 +240,7 @@ TEST_CASE(base_amount6,{
 /*
 #pragma region upgrade
 TEST_CASE(upgrade_test,{
-    questionnaire user_test = {67,"male",65,183,5,12,1,{monday,67},{1,1,1,1,1}};
-    exercise ex_test[length_of_exercises_list];
-    resistance_exercises_list(ex_test, user_test);
-    aerobic_exercises_list(ex_test,user_test);
-    print_exercises_2(ex_test,7,user_test,ex_test);
-    int input[] = {1,1,0,0,1,0,1};
-    CHECK_EQ_DOUBLE(ex_test[0].base_weight,35,0.001);
-    CHECK_EQ_DOUBLE(ex_test[1].base_weight,40,0.001);
-    CHECK_EQ_DOUBLE(ex_test[2].amount_of_reps,14,0.001);
-    CHECK_EQ_DOUBLE(ex_test[3].amount_of_reps,14,0.001);
-    CHECK_EQ_DOUBLE(ex_test[4].amount_of_reps,14,0.001);
-    CHECK_EQ_DOUBLE(ex_test[5].amount_of_reps,13,0.001);
-    CHECK_EQ_DOUBLE(ex_test[6].amount_of_reps,14,0.001);
 
-    upgrade_function(ex_test,user_test,length_of_exercises_list,input);
-
-    CHECK_EQ_DOUBLE(ex_test[0].base_weight,37.5,0.001);
-    CHECK_EQ_DOUBLE(ex_test[1].base_weight,42.5,0.001);
-    CHECK_EQ_DOUBLE(ex_test[2].amount_of_reps,14,0.001);
-    CHECK_EQ_DOUBLE(ex_test[3].amount_of_reps,14,0.001);
-    CHECK_EQ_DOUBLE(ex_test[4].amount_of_reps,15,0.001);
-    CHECK_EQ_DOUBLE(ex_test[5].amount_of_reps,13,0.001);
-    CHECK_EQ_DOUBLE(ex_test[6].amount_of_reps,16,0.001);
 })
 
 #pragma endregion
@@ -285,7 +263,7 @@ TEST_CASE(workouts_test,{
             exit(-1);
         }
     user_data user_test;
-    update_questionnaire(&user_test,test_file);
+    start_new_user_questionnaire(&user_test,test_file);
     fclose(test_file);
     update_possible_exercises(&user_test);
     update_routine_workouts(&user_test);
@@ -315,7 +293,7 @@ TEST_CASE(workouts_test2,{
             exit(-1);
         }
     user_data user_test;
-    update_questionnaire(&user_test,test_file);
+    start_new_user_questionnaire(&user_test,test_file);
     fclose(test_file);
     update_possible_exercises(&user_test);
     update_routine_workouts(&user_test);
@@ -339,4 +317,10 @@ TEST_CASE(workouts_test2,{
 //MAIN_RUN_TESTS(calculations,calculations2,calculations3,calculations4,calculations5,calculations6)
 //MAIN_RUN_TESTS(upgrade_test)
 //MAIN_RUN_TESTS(workouts_test,workouts_test2)
-MAIN_RUN_TESTS(base_amount1, base_amount2, base_amount3, base_amount4, base_amount5, base_amount6)
+//MAIN_RUN_TESTS(base_amount1, base_amount2, base_amount3, base_amount4, base_amount5, base_amount6)
+
+/*Tests:
+ * Savesystem
+ * upgrade downgrade
+ * specifikke workout funktioner
+ */

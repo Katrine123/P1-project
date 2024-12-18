@@ -34,8 +34,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d35455da-221e-4df9-9b81-5ae1a995d0af" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/streak_check.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluation_questionnaire.c" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation_questionnaire.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new_user_questionnaire.c" beforeDir="false" afterPath="$PROJECT_DIR$/new_user_questionnaire.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/references.h" beforeDir="false" afterPath="$PROJECT_DIR$/references.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests.c" beforeDir="false" afterPath="$PROJECT_DIR$/tests.c" afterDir="false" />
@@ -70,12 +73,10 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/evaluation_questionnaire.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/evaluation_questionnaire.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/main.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/new_user_questionnaire.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/new_user_questionnaire.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/new_user_questionnaire.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/new_user_questionnaire.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/katri/Downloads/P1-project/Main/references.h" root0="SKIP_HIGHLIGHTING" />
@@ -116,9 +117,9 @@
   }
 }]]></component>
   <component name="RunManager" selected="CMake Application.tests">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="evaluation_questionnaire" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="evaluation_questionnaire" CONFIG_NAME="Debug">
@@ -156,6 +157,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="streak_check" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="streak_check" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="tests" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p1_project" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="p1_project" RUN_TARGET_NAME="tests">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -184,6 +190,7 @@
       <item itemvalue="CMake Application.print_routine" />
       <item itemvalue="CMake Application.references" />
       <item itemvalue="CMake Application.savesystem" />
+      <item itemvalue="CMake Application.streak_check" />
       <item itemvalue="CMake Application.tests" />
       <item itemvalue="CMake Application.tools" />
       <item itemvalue="CMake Application.upgrade_downgrade" />
@@ -209,6 +216,8 @@
       <workItem from="1734356362260" duration="1695000" />
       <workItem from="1734358228027" duration="13303000" />
       <workItem from="1734444017229" duration="6176000" />
+      <workItem from="1734504930452" duration="3000" />
+      <workItem from="1734504935718" duration="1448000" />
     </task>
     <servers />
   </component>

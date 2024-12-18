@@ -16,11 +16,11 @@ int main(void) {
         printf("\n\nWelcome back!\n"
             "Your save file has been successfully loaded.\n");
     } else {
-        start_new_user_questionnaire(&user);
+        start_new_user_questionnaire(&user,stdin);
     }
 
     // Run evaluation questionnaire
-    start_evaluation_questionnaire(&user);
+    start_evaluation_questionnaire(&user,stdin);
 
     return 0;
 }

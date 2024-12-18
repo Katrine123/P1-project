@@ -133,7 +133,7 @@ char* naming_training_goal(enum training_goal_e name);
 #pragma endregion
 #pragma region new_user_questionnaire.c
 
-void start_new_user_questionnaire(user_data *user, FILE* file));
+void start_new_user_questionnaire(user_data *user, FILE* file);
 void update_available_training_days(user_data *user,FILE* file);
 
 #pragma endregion
