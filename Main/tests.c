@@ -44,8 +44,7 @@ TEST_CASE(questionnaire_test2,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    //EDGECASES FOR DATE ---------------- //CHANGE TIME TO -23 AND MAKE WORK
-    fprintf(test_file,"4\n8\nage\n67\n0\n58\n-1\n25\n5000000\n-1\n6\n3\n-2\n 8\n2\n-5\n999\n2\n3\n-1\n3000\n68\n-23\n45\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
+    fprintf(test_file,"-12\n200\n4\n-1\n0\n8\nage\n67\n0\n58\n-1\n25\n5000000\n-1\n6\n3\n-2\n 8\n2\n-5\n999\n2\n3\n-1\n3000\n68\n-23\n45\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -364,8 +363,8 @@ TEST_CASE(workouts_test2,{
     update_possible_exercises(&user_test);
     update_routine_workouts(&user_test);
     print_routine(&user_test);
-    CHECK_EQ_INT(user_test.routine_workouts[0].exercises_count,0);//There should be enough time for a full workout
-    CHECK_EQ_INT(user_test.routine_workouts[0].muscles_count,0); //Is three because only three muscles are used
+    CHECK_EQ_INT(user_test.routine_workouts[0].exercises_count,0); //There's not time for exercises
+    CHECK_EQ_INT(user_test.routine_workouts[0].muscles_count,0);
     CHECK_EQ_DOUBLE(user_test.routine_workouts[0].max_duration,3,0.001);
     CHECK_EQ_DOUBLE(user_test.routine_workouts[0].duration,5,0.1);
     CHECK_EQ_INT(user_test.routine_workouts[0].day,friday);
@@ -392,8 +391,8 @@ TEST_CASE(workouts_test3,{
     update_possible_exercises(&user_test);
     update_routine_workouts(&user_test);
     print_routine(&user_test);
-    CHECK_EQ_INT(user_test.routine_workouts[0].exercises_count,5);//There should be enough time for a full workout
-    CHECK_EQ_INT(user_test.routine_workouts[0].muscles_count,5); //Is three because only three muscles are used
+    CHECK_EQ_INT(user_test.routine_workouts[0].exercises_count,5);
+    CHECK_EQ_INT(user_test.routine_workouts[0].muscles_count,5);
     CHECK_EQ_DOUBLE(user_test.routine_workouts[0].max_duration,200,0.001);
     CHECK_EQ_DOUBLE(user_test.routine_workouts[0].duration,199,1);
     CHECK_EQ_INT(user_test.routine_workouts[0].day,friday);
