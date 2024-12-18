@@ -211,6 +211,13 @@ void start_new_user_questionnaire(user_data *user, FILE* file) {
      printf("\nWelcome to your personalized fitness trainer, "
             "please answer this questionnaire to create your own personal workout routine.");
 
+    //EDGECASES!!!!!! OG ENUM MONTH
+    printf("What is the current date? Please write the date, enter, and then month");
+    homemade_scan(integer,&user->last_date.day,file);
+    int mon;
+    homemade_scan(integer,&user->last_date.month,file);
+    user->streak =0;
+
     // Asks the user's age (our program does not work with children)
     int age;
     printf("\nWhat is your age?");

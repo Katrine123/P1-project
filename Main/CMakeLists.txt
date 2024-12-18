@@ -45,6 +45,7 @@ add_library(
 target_link_libraries(main
         savesystem
         evaluation_questionnaire
+        streak_check
         new_user_questionnaire
         upgrade_downgrade
         exercises

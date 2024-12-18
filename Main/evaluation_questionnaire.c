@@ -5,7 +5,7 @@
 
 // returns an int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
 void start_evaluation_questionnaire(user_data *user,FILE* file) {
-
+    streak_check(user,file);
     // Continues looping until the user quits the program
     while(1) {
         printf("\n\n\nWhat would you like to do?"

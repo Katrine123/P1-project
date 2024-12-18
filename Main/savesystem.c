@@ -82,6 +82,10 @@ user_data convert_to_user_data (user_save_data data) {
         user.ignored_muscle_group_names[i] = data.ignored_muscle_group_names[i]-'0';
     }
 
+    user.last_date.day = str_to_int(data.date_day);
+    user.last_date.month = str_to_int(data.date_month);
+    user.streak = str_to_int(data.streak);
+
     return user;
 }
 
@@ -144,6 +148,9 @@ void save_user_data_save(user_data *user) {
     for (int i = 0; i <= user->available_training_days_count; i++) {
         add_to_user_data_save(training_day_to_str(user->available_training_days[i]), int_to_str(i+1));
     }
+    add_to_user_data_save(int_to_str(user->last_date.day), "y_day");
+    add_to_user_data_save(int_to_str(user->last_date.month), "h_month");
+    add_to_user_data_save(double_to_str(user->streak), "k_streak");
 
 }
 void load_user_data_save(user_data *user) {
@@ -226,6 +233,15 @@ void load_user_data_save(user_data *user) {
                     case 't':
                         strncpy(data.training_goal, data_data, 20);
                         break;
+                    case 'y':
+                        strncpy(data.date_day, data_data, 20);
+                    break;
+                    case 'h':
+                        strncpy(data.date_month, data_data, 20);
+                    break;
+                    case 'k':
+                        strncpy(data.streak, data_data, 20);
+                    break;
                     default: printf("\nUnknown data type \n %s %s",data_type, data_data );
                         // Switch copies the read data to the struct user data
                         // for now user data is all stored in strings and type is read as chars for simplicity’s sake

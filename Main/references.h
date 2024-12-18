@@ -33,8 +33,14 @@ typedef enum {
     chest, triceps, shoulders, hamstrings, quads, muscle_group_name_enum_length
 } muscle_group_name;
 
+//enum months {jan =1, feb = 2, mar = 3, apr = 4, maj = 5, jun = 6, jul = 7, aug = 8, sep = 9, oct = 10, nov = 11, dec = 12};
+
 #pragma endregion
 #pragma region structs
+typedef struct {
+    int day;
+    int month;//enum months month;
+}date;
 
 typedef struct {
     enum day_of_the_week day;
@@ -93,6 +99,8 @@ typedef struct {
     int max_weekly_sets; // For resistance training.
     int resistance_recovery;
     int max_weekly_aerobic_workouts;
+    date last_date;
+    int streak;
 } user_data;
 
 typedef struct {
@@ -114,7 +122,11 @@ typedef struct {
     char day5[20];
     char day6[20];
     char day7[20];
+    char date_day[20];
+    char date_month[20];
+    char streak[20];
 } user_save_data;
+
 
 #pragma endregion
 
@@ -179,3 +191,4 @@ void get_data_from_user_upgrades_save(user_data *user, int* data);
 
 #pragma endregion
 
+void streak_check(user_data* user, FILE* file);

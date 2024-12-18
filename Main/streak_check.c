@@ -1,7 +1,5 @@
 #include "references.h"
 
-//DEBUGGING YAY!
-
 how_many_days_left(date last);
 int is_more_than_week(date current, date last);
 
@@ -12,15 +10,11 @@ void streak_check(user_data* user, FILE* file) {
     homemade_scan(integer,&temp.day,file);
     homemade_scan(integer,&temp.month,file);
     int val = is_more_than_week(temp,user->last_date);
-    printf("%d",val);
     if(val == 1) {
         user->streak ++;
     }else {
         user->streak =0;
     }
-    save_data(int_to_str(user->last_date.day),"day");
-    save_data(int_to_str(user->last_date.month),"month");
-    save_data(int_to_str(user->streak),"kstreak");
 }
 
 int is_more_than_week(date current, date last) {
