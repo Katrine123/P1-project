@@ -60,7 +60,7 @@ double new_workout_duration_when_adding_a_set(user_data *user, exercise _exercis
 
     return new_duration;
 }
-int does_adding_a_set_exceed_daily_or_weekly_set_max(user_data *user, exercise _exercise, workout* _workout) {
+int does_adding_a_set_exceed_daily_or_weekly_set_max(user_data *user, exercise _exercise, workout *_workout) {
 
     // Foreach muscle group that the exercise targets
     for (int i = 0; i <_exercise.muscles_count; i++) {
@@ -142,7 +142,7 @@ int does_workout_already_contain_exercise(exercise _exercise, workout _workout) 
     // Return false if the checks passes
     return 0;
 }
-void add_set_to_exercise(user_data *user, exercise *_exercise, workout* _workout) {
+void add_set_to_exercise(user_data *user, exercise *_exercise, workout *_workout) {
 
     /// NOTE: Also adds specific warmup for resistance exercises, if sets = 0.
 
@@ -171,7 +171,7 @@ void add_set_to_exercise(user_data *user, exercise *_exercise, workout* _workout
     // Add set to exercise
     _exercise->sets++;
 }
-exercise* add_exercise_candidate_to_workout(exercise added_exercise, workout* _workout) {
+exercise* add_exercise_candidate_to_workout(exercise added_exercise, workout *_workout) {
 
     // NOTE: Added exercises start with 0 sets.
 
@@ -182,7 +182,7 @@ exercise* add_exercise_candidate_to_workout(exercise added_exercise, workout* _w
     _workout->exercises_count++;
     return workout_exercise;
 }
-void update_resistance_exercise_muscle_groups(exercise *_exercise, workout* _workout) {
+void update_resistance_exercise_muscle_groups(exercise *_exercise, workout *_workout) {
 
     // Update the muscle groups of the exercise, workout, and routine
     // Foreach muscle group that the exercise targets

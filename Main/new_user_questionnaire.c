@@ -208,31 +208,31 @@ void update_ignored_muscle_groups(user_data *user,FILE* file) {
 
 void update_date(enum months* month, int *day, FILE* file) {
     //Finds the current date - Is used for streak
-    printf("What is the current date? Please write the month:");
+    printf("\nWhat is the current date? Please write the month:");
     do {
         homemade_scan(integer,month,file);
         if(*month > 12 || *month <1) {
-            printf("Please enter a valid month");
+            printf("\nPlease enter a valid month");
         }
     }while(*month>12 || *month <1);
 
-    printf("Now please enter the day");
+    printf("\nNow please enter the day");
     int right;
     do {
         right = 1;
         homemade_scan(integer,day,file);
         if(*day <1) {
-            printf("Please enter a valid day");
+            printf("\nPlease enter a valid day");
             right = 0;
         }else if(*day>28) {
             if(*month == feb) {
-                printf("Please enter a valid day");
+                printf("\nPlease enter a valid day");
                 right = 0;
             }else if(*day>30 && (*month == apr ||*month ==  jun || *month ==  sep || *month ==  nov)) {
-                printf("Please enter a valid day");
+                printf("\nPlease enter a valid day");
                 right = 0;
             }else if(*day>31) {
-                printf("Please enter a valid day");
+                printf("\nPlease enter a valid day");
                 right = 0;
             }
         }
