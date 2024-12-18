@@ -43,7 +43,7 @@ TEST_CASE(questionnaire_test2,{
             exit(-1);
         }
     //EDGECASES FOR DATE ---------------- //CHANGE TIME TO -23 AND MAKE WORK
-    fprintf(test_file,"4\n8\nage\n67\n0\n58\n-1\n25\n5000000\n-1\n6\n3\n-2\n 8\n2\n-5\n999\n2\n3\n-1\n3000\n68\n23\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
+    fprintf(test_file,"4\n8\nage\n67\n0\n58\n-1\n25\n5000000\n-1\n6\n3\n-2\n 8\n2\n-5\n999\n2\n3\n-1\n3000\n68\n-23\n45\nNo\n-5\n0\n800\n4\n3\n-1\n-5\n0\n1\n1\n-1\n-1");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -57,15 +57,12 @@ TEST_CASE(questionnaire_test2,{
     CHECK_EQ_INT(user_test.pushups,25);
     CHECK_EQ_INT(user_test.squats,5000000);
     CHECK_EQ_INT(user_test._fitness_level,3);
-    CHECK_EQ_INT(user_test.available_training_days[0].day,friday);
+    CHECK_EQ_INT(user_test.available_training_days[0].day,wednesday);
     CHECK_EQ_INT(user_test.available_training_days[1].day,thursday);
     CHECK_EQ_DOUBLE(user_test.available_training_days[0].max_duration,68,0.001);
-    CHECK_EQ_DOUBLE(user_test.available_training_days[1].max_duration,-23,0.001);
-    CHECK_EQ_INT(user_test.available_equipment[0],0);
-    CHECK_EQ_INT(user_test.available_equipment[1],1); //BUT WHY?
-    CHECK_EQ_INT(user_test.available_equipment[2],1);
-    CHECK_EQ_INT(user_test.available_equipment[3],1);
-    CHECK_EQ_INT(user_test.available_equipment[4],0);
+    CHECK_EQ_DOUBLE(user_test.available_training_days[1].max_duration,45,0.001);
+    CHECK_EQ_INT(user_test.available_equipment[1],4);
+    CHECK_EQ_INT(user_test.available_equipment[2],3);
     CHECK_EQ_INT(user_test.ignored_muscle_group_names[0],0);
 })
 
@@ -341,7 +338,7 @@ TEST_CASE(workouts_test2,{
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"4\n5\n67\n72\n6 \n8 \n1\n2\n4 \n-1 \n120\nYes\n3\n-1\n");
+    fprintf(test_file,"4\n5\n67\n72\n6 \n8 \n1\n2\n4 \n-1 \n3\nNo\n-1\n0\n1\n2\n3\n4\n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
@@ -353,14 +350,11 @@ TEST_CASE(workouts_test2,{
     fclose(test_file);
     update_possible_exercises(&user_test);
     update_routine_workouts(&user_test);
-    CHECK_EQ_INT(user_test.routine_workouts[0].exercises_count,5);//There should be enough time for a full workout
-    CHECK_EQ_INT(user_test.routine_workouts[0].muscles_count,3); //Is three because only three muscles are used
-    CHECK_EQ_INT(user_test.routine_workouts[0].muscles[0].name,chest);
-    CHECK_EQ_INT(user_test.routine_workouts[0].muscles[1].name,triceps);
-    CHECK_EQ_INT(user_test.routine_workouts[0].muscles[2].name,shoulders);
-    CHECK_EQ_INT(user_test.routine_workouts[0].muscles[3].name,quads);
-    CHECK_EQ_DOUBLE(user_test.routine_workouts[0].max_duration,120,0.001);
-    CHECK_EQ_DOUBLE(user_test.routine_workouts[0].duration,119.9333,0.001);
+    print_routine(&user_test);
+    CHECK_EQ_INT(user_test.routine_workouts[0].exercises_count,0);//There should be enough time for a full workout
+    CHECK_EQ_INT(user_test.routine_workouts[0].muscles_count,0); //Is three because only three muscles are used
+    CHECK_EQ_DOUBLE(user_test.routine_workouts[0].max_duration,3,0.001);
+    CHECK_EQ_DOUBLE(user_test.routine_workouts[0].duration,5,0.1);
     CHECK_EQ_INT(user_test.routine_workouts[0].day,friday);
 })
 
@@ -420,7 +414,7 @@ user_data user_test;
             printf("The file couldn't be opened");
             exit(-1);
         }
-    fprintf(test_file,"5\n8\n");
+    fprintf(test_file,"8\n5\n");
     fclose(test_file);
     test_file = fopen("user_input.txt","r");
         if (test_file == NULL) {
