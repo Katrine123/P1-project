@@ -205,45 +205,46 @@ void update_ignored_muscle_groups(user_data *user,FILE* file) {
         user->ignored_muscle_group_names[user->ignored_muscle_group_names_count++] = answers[i];
     }
 }
-void start_new_user_questionnaire(user_data *user, FILE* file) {
 
-     // Welcome message to new users.
-     printf("\nWelcome to your personalized fitness trainer, "
-            "please answer this questionnaire to create your own personal workout routine.");
-
+void update_date(enum months* month, int *day, FILE* file) {
     //Finds the current date - Is used for streak
     printf("What is the current date? Please write the month:");
     do {
-        homemade_scan(integer,&user->last_date.month,file);
-        if(user->last_date.month>12 || user->last_date.month <1) {
+        homemade_scan(integer,month,file);
+        if(*month > 12 || *month <1) {
             printf("Please enter a valid month");
         }
-    }while(user->last_date.month>12 || user->last_date.month <1);
+    }while(*month>12 || *month <1);
 
     printf("Now please enter the day");
     int right;
     do {
         right = 1;
-        homemade_scan(integer,&user->last_date.day,file);
-        if(user->last_date.day <1) {
+        homemade_scan(integer,day,file);
+        if(*day <1) {
             printf("Please enter a valid day");
             right = 0;
-        }else if(user->last_date.day>28) {
-            if(user->last_date.month == feb) {
+        }else if(*day>28) {
+            if(*month == feb) {
                 printf("Please enter a valid day");
                 right = 0;
-            }else if(user->last_date.day>30 && (user->last_date.month == apr ||user->last_date.month ==  jun || user->last_date.month ==  sep || user->last_date.month ==  nov)) {
+            }else if(*day>30 && (*month == apr ||*month ==  jun || *month ==  sep || *month ==  nov)) {
                 printf("Please enter a valid day");
                 right = 0;
-            }else if(user->last_date.day>31) {
+            }else if(*day>31) {
                 printf("Please enter a valid day");
                 right = 0;
             }
         }
     }while(right == 0);
+}
 
+void start_new_user_questionnaire(user_data *user, FILE* file) {
 
-
+     // Welcome message to new users.
+     printf("\nWelcome to your personalized fitness trainer, "
+            "please answer this questionnaire to create your own personal workout routine.");
+    update_date(&user->last_date.month,&user->last_date.day,file);
     user->streak =0;
 
     // Asks the user's age (our program does not work with children)

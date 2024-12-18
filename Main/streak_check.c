@@ -5,10 +5,9 @@ int is_less_than_week(date current, date last);
 
 void streak_check(user_data* user, FILE* file) {
     printf("Last date: %d/%d\n",user->last_date.day,user->last_date.month);
-    printf("What is the current date? Please write the date, enter, and then month");
     date temp;
-    homemade_scan(integer,&temp.day,file);
-    homemade_scan(integer,&temp.month,file);
+    update_date(&temp.month,&temp.day,file);
+
     int val = is_less_than_week(temp,user->last_date);
     if(val == 1) {
         user->streak ++;

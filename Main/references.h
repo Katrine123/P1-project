@@ -147,6 +147,7 @@ char* naming_training_goal(enum training_goal_e name);
 
 void start_new_user_questionnaire(user_data *user, FILE* file);
 void update_available_training_days(user_data *user,FILE* file);
+void update_date(enum months* month, int *day, FILE* file);
 
 #pragma endregion
 #pragma region exercises.c
