@@ -118,6 +118,8 @@ void update_available_training_days(user_data *user,FILE* file);
 #pragma region exercises.c
 
 void update_possible_exercises(user_data *user_data);
+double base_weight_bench_press(user_data *user);
+int base_amount_calculation(user_data *user, int user_1rm_exercise);
 
 #pragma endregion
 #pragma region workouts.c

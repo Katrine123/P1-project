@@ -66,10 +66,13 @@ add_executable(tests tests.c)
 #target_link_libraries(tests exercises workouts print_routine new_user_questionnaire tools references mtest)
 
 target_link_libraries(tests
-        new_user_questionnaire
         exercises
-        workouts
-        print_routine
+        evaluation_questionnaire
+        new_user_questionnaire
+        upgrade_downgrade
+        savesystem
         tools
         references
+        workouts
+        print_routine
         mtest)

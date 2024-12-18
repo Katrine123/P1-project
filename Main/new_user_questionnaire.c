@@ -163,9 +163,11 @@ void update_available_training_days(user_data *user, FILE* file) {
 
         // Get available time
         double input;
-        int valid_input = 1;
+        int valid_input;
         do {
+            valid_input = 1;
             homemade_scan(long_float, &input,file);
+            printf("%lf",input);
 
             if (input > 1440) {
                 printf("\nInvalid input. That is more minutes than there is in a day. Please try again.");
