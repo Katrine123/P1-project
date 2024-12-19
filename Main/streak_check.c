@@ -3,6 +3,7 @@
 how_many_days_left(date last);
 int is_less_than_week(date current, date last);
 
+///Asks the user for the date, and add to or resets streak based on the answer
 void streak_check(user_data* user, FILE* file) {
     printf("Last date: %d/%d\n",user->last_date.day,user->last_date.month);
     date temp;
@@ -19,6 +20,7 @@ void streak_check(user_data* user, FILE* file) {
     save_user_data_save(user);
 }
 
+//Checks whether two dates has more than a week between them
 int is_less_than_week(date current, date last) {
     if(current.month == last.month){
         if(current.day > last.day+7) {
@@ -38,6 +40,7 @@ int is_less_than_week(date current, date last) {
     }
 }
 
+//Returns how many days there are left in the month based on the date
 how_many_days_left(date last) {
     switch (last.month){
         case jan: return 31 - last.day;

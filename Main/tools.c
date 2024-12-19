@@ -42,7 +42,7 @@ int homemade_scan(data_type type, void* input, FILE *file) {//Uses a void for in
     return is_right;
 }
 
-// Naming functions
+// Naming functions - Takes enum as input and returns string
 char* naming_equipment(enum equipment eq) {
     switch(eq) {
         case barbell: return "Barbell";

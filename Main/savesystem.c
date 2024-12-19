@@ -103,6 +103,7 @@ int check_for_user_data_save() {
         return(0);
     }
 }
+
 int reset_user_data_save() {
     FILE * file;
     if ((file = fopen(user_data_save_file_name, "w"))) {
@@ -113,6 +114,7 @@ int reset_user_data_save() {
     printf("\nFile opening error.");
     return (0);
 }
+
 /// Saves data like this {[lorem] ipsum}. Returns 1 if successful.
 int add_to_user_data_save(const char *data, const char *data_name) {
     FILE * file;
@@ -124,6 +126,7 @@ int add_to_user_data_save(const char *data, const char *data_name) {
     printf("\nFile opening error.");
     return (0);
 }
+///Saves user_data in file
 void save_user_data_save(user_data *user) {
 
     reset_user_data_save();
@@ -153,6 +156,8 @@ void save_user_data_save(user_data *user) {
     add_to_user_data_save(double_to_str(user->streak), "k_streak");
 
 }
+
+///Loads user_data into struct
 void load_user_data_save(user_data *user) {
     user_save_data data;
     FILE *file;
@@ -264,6 +269,7 @@ void reset_user_upgrades_save(user_data *user) {
     }
     fclose(file);
 }
+
 void save_user_upgrades_save(user_data *user, int data[user->possible_exercises_count+1]) {
     FILE *file = fopen(user_upgrades_save_file_name, "w");
     for (int i = 0; i < user->possible_exercises_count; i++) {
@@ -271,6 +277,7 @@ void save_user_upgrades_save(user_data *user, int data[user->possible_exercises_
     }
     fclose(file);
 }
+
 void get_data_from_user_upgrades_save(user_data *user, int *data) {
     FILE *f = fopen(user_upgrades_save_file_name, "r");
 
