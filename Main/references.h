@@ -192,5 +192,6 @@ void save_user_upgrades_save(user_data *user, int data[user->possible_resistance
 void get_data_from_user_upgrades_save(user_data *user, int* data);
 
 #pragma endregion
-
+#pragma region streak_check.c
 void streak_check(user_data* user, FILE* file);
+#pragma endregion

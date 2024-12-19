@@ -51,6 +51,7 @@ void get_multiple_answers_to_enum_list(int* answers, int* answers_count, int inp
                 break;
             }
         }
+        //Is input duplicate?
         if (is_input_duplicate) {
             printf("\nYou have already selected this item. Please try again.");
             continue;
@@ -66,8 +67,8 @@ void get_multiple_answers_to_enum_list(int* answers, int* answers_count, int inp
         answers[(*answers_count)++] = input;
     } while(*answers_count < input_list_max);
 }
-int qsort_compare_training_day_in_ascending_order(const void* a, const void* b) {
 
+int qsort_compare_training_day_in_ascending_order(const void* a, const void* b) {
     training_day* day_a = (training_day*)a;
     training_day* day_b = (training_day*)b;
     return (day_a->day - day_b->day);
@@ -116,6 +117,7 @@ void update_available_equipment(user_data *user, FILE* file) {
         update_available_equipment(user,file);
     }
 }
+
 void update_available_training_days(user_data *user, FILE* file) {
 
     // Reset
@@ -209,6 +211,7 @@ void update_ignored_muscle_groups(user_data *user,FILE* file) {
 void update_date(enum months* month, int *day, FILE* file) {
     //Finds the current date - Is used for streak
     printf("\nWhat is the current date? Please write the month:");
+    //Is valid month?
     do {
         homemade_scan(integer,month,file);
         if(*month > 12 || *month <1) {
@@ -218,6 +221,7 @@ void update_date(enum months* month, int *day, FILE* file) {
 
     printf("\nNow please enter the day");
     int right;
+    //Is valid day? Based on month
     do {
         right = 1;
         homemade_scan(integer,day,file);
