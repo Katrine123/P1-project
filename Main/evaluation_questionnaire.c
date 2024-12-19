@@ -3,7 +3,7 @@
 
 #include "references.h"
 
-// returns an int depending on answer from 1 to 5, can easily be changed with enum if thy want :3
+
 void start_evaluation_questionnaire(user_data *user,FILE* file) {
     // Continues looping until the user quits the program
     while(1) {

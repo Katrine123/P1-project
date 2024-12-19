@@ -95,7 +95,7 @@ double base_weight_weighted_squats(user_data *user) {
     }
     return weight_to_lift_rounded;
 }
-// Air squats should be the exercise if the perosn can take less than 15 consecutive air squats
+// Air squats should be the exercise if the person can take less than 15 consecutive air squats
 int base_amount_air_squats(user_data *user) {
     //  The calculation takes into account the users 1rm, fitness_level and training goal when calculating reps.
     return base_amount_calculation(user, user->squats);
@@ -117,9 +117,6 @@ int base_amount_pushups(user_data *user) {
 }
 
 int base_amount_burpees(user_data *user) {
-    /*  We are taking into account that this exercise is more difficult than others
-     *  Level of exercise should be amplified by a factor of 2
-     */
     return base_amount_calculation(user, (user->pushups+user->squats));
 }
 
@@ -130,7 +127,6 @@ int base_amount_jumping_jacks(user_data *user) {
 // Exercise array update functions
 
 int is_equipment_available(user_data *user, enum equipment _equipment) {
-
     // Foreach available piece of equipment
     for (int i = 0; i < user->available_equipment_count; i++) {
 
@@ -139,28 +135,25 @@ int is_equipment_available(user_data *user, enum equipment _equipment) {
             return 1;
         }
     }
-
     // Return false if the target equipment is not found
     return 0;
 }
-int does_not_contain_ignored_muscle_group(user_data *user, exercise _exercise) {
 
+int does_not_contain_ignored_muscle_group(user_data *user, exercise _exercise) {
     // Foreach muscle group that the exercise targets
     for (int i = 0; i < _exercise.muscles_count; i++) {
-
         // Foreach ignored muscle group
         for (int j = 0; j < user->ignored_muscle_group_names_count; j++) {
-
             // Return false if found
             if (_exercise.muscles[i].name == user->ignored_muscle_group_names[j]) {
                 return 0;
             }
         }
     }
-
     // Return true if not found
     return 1;
 }
+
 void update_possible_resistance_exercises(user_data *user)
 {
     // Reset array of valid aerobic exercises
@@ -265,7 +258,6 @@ void update_possible_resistance_exercises(user_data *user)
     }
 }
 void update_possible_aerobic_exercises(user_data *user) {
-
     // Reset array of valid aerobic exercises
     user->possible_aerobic_exercises_count = 0;
 
@@ -300,7 +292,6 @@ void update_possible_aerobic_exercises(user_data *user) {
     user->possible_aerobic_exercises[user->possible_aerobic_exercises_count++] = _jumping_jacks;
 }
 
-// Global functions
 
 void update_possible_exercises(user_data *user) {
     update_possible_resistance_exercises(user);
