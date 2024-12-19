@@ -38,13 +38,6 @@ void downgrade_function(user_data *user, int input) {
         }
     }
 }
-//A function that saves the data whenever an exercise is upgraded or downgraded
-void upgrade_or_downgrade_exercise(user_data *user, int exercise_index, int addition_to_upgrade) {
-    int temp_save[user->possible_exercises_count];
-    get_data_from_user_upgrades_save(user, temp_save);
-    temp_save[exercise_index] = temp_save[exercise_index] + addition_to_upgrade;
-    save_user_upgrades_save(user, temp_save);
-}
 
 void start_upgrade_downgrade_questionnaire(user_data *user) {
     update_possible_exercises(user); // because possible exercises are used in the upgrade/downgrade function
@@ -67,13 +60,13 @@ void start_upgrade_downgrade_questionnaire(user_data *user) {
                     //  printing the altered exercise:
                     check_if_body_weight_exercise_and_print(user, i);
                     user->possible_exercises[i]->counter_upgrade_downgrade++;
-                    upgrade_or_downgrade_exercise(user, i, 1);
+                    save_exercise_upgrade_to_user_upgrades_save(user, i, 1);
                 } else if(second_answer == 'd') {
                     downgrade_function(user, i);
                     //  printing the altered exercise:
                     check_if_body_weight_exercise_and_print(user, i);
                     user->possible_exercises[i]->counter_upgrade_downgrade--;
-                    upgrade_or_downgrade_exercise(user, i, -1);
+                    save_exercise_upgrade_to_user_upgrades_save(user, i, -1);
                 } else if(second_answer == 's') {
                     //  printing the unaltered exercise:
                     check_if_body_weight_exercise_and_print(user, i);

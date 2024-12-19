@@ -188,7 +188,7 @@ void load_user_data_save(user_data *user);
 
 // User upgrades save
 void reset_user_upgrades_save(user_data *user);
-void save_user_upgrades_save(user_data *user, int data[user->possible_resistance_exercises_count]);
+void save_exercise_upgrade_to_user_upgrades_save(user_data *user, int exercise_index, int addition_to_upgrade);
 void get_data_from_user_upgrades_save(user_data *user, int* data);
 
 #pragma endregion

@@ -270,6 +270,7 @@ void reset_user_upgrades_save(user_data *user) {
     fclose(file);
 }
 
+/// Saves all user upgrades to the user upgrades save file
 void save_user_upgrades_save(user_data *user, int data[user->possible_exercises_count+1]) {
     FILE *file = fopen(user_upgrades_save_file_name, "w");
     for (int i = 0; i < user->possible_exercises_count; i++) {
@@ -291,6 +292,14 @@ void get_data_from_user_upgrades_save(user_data *user, int *data) {
         token = strtok(NULL, ",");
     }
     fclose(f);
+}
+
+/// Updates the user upgrades save file with a specific exercise's upgrade and then saves the user upgrades save file.
+void save_exercise_upgrade_to_user_upgrades_save(user_data *user, int exercise_index, int addition_to_upgrade) {
+    int temp_save[user->possible_exercises_count];
+    get_data_from_user_upgrades_save(user, temp_save);
+    temp_save[exercise_index] = temp_save[exercise_index] + addition_to_upgrade;
+    save_user_upgrades_save(user, temp_save);
 }
 
 
