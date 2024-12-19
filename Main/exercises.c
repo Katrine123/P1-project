@@ -11,7 +11,8 @@
 double round_down_to_nearest (double number, double divisor) {
     return floor(number / divisor) * divisor;
 }
-
+/*function to make the input from questionnaire a value of amount of reps
+ according to their training goal*/
 int training_goal_reps(user_data *user) {
     int training_goal_reps = 0;
     if(user->training_goal == MUSCULAR_ENDURANCE) {
@@ -23,7 +24,8 @@ int training_goal_reps(user_data *user) {
     }
     return training_goal_reps;
 }
-
+/*function to convert their training goal from questionnaire to a factor that determines how many percent
+of the 1rm they have to lift according to their fitness goal*/
 double training_goal_converter(user_data *user) {
     double training_goal_converter = 0;
     if(user->training_goal == MUSCULAR_ENDURANCE) {
@@ -35,7 +37,8 @@ double training_goal_converter(user_data *user) {
     }
     return training_goal_converter;
 }
-
+/*Function to make the input from questionnaire a value that can be used to calculate how many percent
+they have to lift according to their fitness level*/
 double fitness_level(user_data *user) {
     double fitness_level = 0;
     if (user->_fitness_level == novice) {

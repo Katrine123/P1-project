@@ -9,13 +9,16 @@ void check_if_body_weight_exercise_and_print(user_data *user, int i) {
     }
 }
 void upgrade_function(user_data *user, int input) {
+    //check if it's a body weight exercise and then put addition onto repetitions
     if(user->possible_exercises[input]->is_body_weight_exercise == 1) {
         user->possible_exercises[input]->reps += user->possible_exercises[input]->addition;
+    //if not a body weight exercise the addition will be put onto the weight in the else
     } else {
         user->possible_exercises[input]->base_weight += user->possible_exercises[input]->addition;
     }
 }
 void downgrade_function(user_data *user, int input) {
+    //check if it's a body weight exercise and then put addition onto repetitions
     if (user->possible_exercises[input]->is_body_weight_exercise == 1) {
         // Ensure reps cannot go below 0
         if (user->possible_exercises[input]->reps > user->possible_exercises[input]->addition) {
@@ -24,6 +27,7 @@ void downgrade_function(user_data *user, int input) {
             user->possible_exercises[input]->reps = 0;
             printf("Repetitions cannot be reduced further!\n");
         }
+    //if not a body weight exercise the addition will be put onto the weight in the else
     } else {
         // Ensure weight cannot go below 0
         if (user->possible_exercises[input]->base_weight > user->possible_exercises[input]->addition) {
@@ -34,7 +38,7 @@ void downgrade_function(user_data *user, int input) {
         }
     }
 }
-
+//A function that saves the data whenever an exercise is upgraded or downgraded
 void upgrade_or_downgrade_exercise(user_data *user, int exercise_index, int addition_to_upgrade) {
     int temp_save[user->possible_exercises_count];
     get_data_from_user_upgrades_save(user, temp_save);
